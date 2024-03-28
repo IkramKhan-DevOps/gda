@@ -66,24 +66,20 @@
 						 </li>
 						 <li class="menu-item-has-children"><a href="#">Downloads<i class="fas fa-chevron-down"></i></a>
 							<ul class="sub-menu">
-								 <li><a href="#">Advertisements</a></li>
-								 <li><a href="#">Boqs</a></li>
-								 <li><a href="#">Building Bye Laws</a></li>
-								 <li><a href="#">Documents</a></li>
-								 <li><a href="#">Archives</a></li>
-							</ul>
+								 <li><a href=" {% url 'website:tenders' %}">Tenders</a></li>
+								 <li><a href="{% url 'website:building_bye_laws' %}">Building Bye Laws</a></li>
+								 <li><a href="{% url 'website:budget' %}">Budget</a></li>
+								 <li><a href="{% url 'website:boqs' %}">Boqs</a></li>
+								</ul>
 						 </li>
 
 						<li><a href="{% url 'website:attractions' %}">Attractions</a></li>
 
 						<li class="menu-item-has-children"><a href="#">More<i class="fas fa-chevron-down"></i></a>
 							<ul class="sub-menu">
-								<li><a href="{% url 'website:about' %}">About us</a></li> 
 								<li><a href="{% url 'website:gda_act' %}">GDA Act</a></li>
 								<li><a href="{% url 'website:team' %}">Team</a></li>
 								<li><a href="{% url 'website:departments' %}">Departments</a></li>
-								<li><a href="#">Developments</a></li>
-								<li><a href="#">Building Permissions</a></li>
 								<li class="menu-item-has-children"><a href="#">Taxation<i class="fas fa-chevron-down"></i></a>
 									<ul class="sub-menu">
 										 <li><a href="{% url 'website:propertytax' %}">Property Taxes</a></li>
@@ -119,11 +115,10 @@
 					 
 					 <li class="menu-item-has-children"><a href="#">Downloads<i class="fas fa-chevron-down"></i></a>
 						<ul class="sub-menu">
-							 <li><a href="#">Advertisements</a></li>
-							 <li><a href="#">Boqs</a></li>
-							 <li><a href="#">Building Bye Laws</a></li>
-							 <li><a href="#">Documents</a></li>
-							 <li><a href="#">Archives</a></li>
+							<li><a href=" {% url 'website:tenders' %}">Tenders</a></li>
+							<li><a href="{% url 'website:building_bye_laws' %}">Building Bye Laws</a></li>
+							<li><a href="{% url 'website:budget' %}">Budget</a></li>
+							<li><a href="{% url 'website:boqs' %}">Boqs</a></li>
 						</ul>
 					 </li>
 
@@ -131,13 +126,9 @@
 
 					<li class="menu-item-has-children"><a href="#">More<i class="fas fa-chevron-down"></i></a>
 						<ul class="sub-menu">
-							<li><a href="{% url 'website:about' %}">About us</a></li> 
 							<li><a href="{% url 'website:gda_act' %}">GDA Act</a></li>
 							<li><a href="{% url 'website:team' %}">Team</a></li>
 							<li><a href="{% url 'website:departments' %}">Departments</a></li>
-							<li><a href="#">Developments</a></li>
-							<li><a href="{% url 'website:building_permissions' %}">Building Permissions</a></li>
-							<li><a href="{% url 'website:budget' %}">Budget</a></li>
 							<li class="menu-item-has-children"><a href="#">Taxation<i class="fas fa-chevron-down"></i></a>
 								<ul class="sub-menu">
 									 <li><a href="{% url 'website:propertytax' %}">Property Taxes</a></li>

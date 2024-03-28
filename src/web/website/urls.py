@@ -7,7 +7,7 @@ from .views import (home, about,budget,
                     conservancytax,propertytax, 
                     attractions, attractionlist,attractiondetail,
                     boqs, emergencyContact, jurisdiction, contactUs,
-                    buildingPermissions)
+                    buildingByeLaws)
 
 from django.urls import path
 app_name = "website"
@@ -37,5 +37,5 @@ urlpatterns = [
      path('boqs/', boqs, name ='boqs'),
      path('emergency-contact/', emergencyContact, name = 'emergency_contact'),
      path('area-of-jurisdiction/', jurisdiction, name = 'jurisdiction'),
-     path('building-permissions/', buildingPermissions, name='building_permissions')
+     path('building-bye-laws/', buildingByeLaws, name='building_bye_laws')
 ]
