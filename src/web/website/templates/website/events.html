@@ -1,0 +1,176 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+
+
+{% block title %} Event Details {% endblock title %}
+    
+
+
+{% block content %}
+
+
+<!--==================================================-->
+<!-- Start  Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area mt-4">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12 text-center">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Event Details</h4>
+					</div>
+					<ul>
+						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Event</a></li>
+						<li>Details</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Breadcumb Area -->
+<!--==================================================-->
+
+
+
+<!--Events Page Start-->
+<section class="events-page mt-4">
+    <div class="container">
+        <div class="row">
+            <!--Event Three Single Start-->
+            <div class="col-xl-4 col-lg-4">
+                <div class="event-three__single">
+                    <div class="event-three__img-box">
+                        <div class="event-three__img">
+                            <img src="{% static 'website/images/events/event-3-1.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="event-three__content">
+                        <div class="event-three__meta-and-title">
+                            <ul class="event-three__meta list-unstyled">
+                                <li>
+                                    <div class="icon">
+                                        <span class="fa fa-clock"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>08:00am</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="fa fa-map-marker"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Nathia Gali</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <h3 class="event-three__title"><a href="event-details.html">Snow Festival</a>
+                            </h3>
+                        </div>
+                        <div class="event-three__btn-box">
+                            <a href="event-details.html" class="event-three__btn">Read More<i
+                                    class="icon-right-arrow"></i></a>
+                        </div>
+                        <div class="event-three__date">
+                            <p>20 Jan, 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Event Three Single End-->
+            <!--Event Three Single Start-->
+            <div class="col-xl-4 col-lg-4">
+                <div class="event-three__single">
+                    <div class="event-three__img-box">
+                        <div class="event-three__img">
+                            <img src="{% static 'website/images/events/event-3-2.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="event-three__content">
+                        <div class="event-three__meta-and-title">
+                            <ul class="event-three__meta list-unstyled">
+                                <li>
+                                    <div class="icon">
+                                        <span class="fa fa-clock"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>08:00am</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="fa fa-map-marker"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Galiyat</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <h3 class="event-three__title"><a href="event-details.html">Vintage Car Rally</a>
+                            </h3>
+                        </div>
+                        <div class="event-three__btn-box">
+                            <a href="event-details.html" class="event-three__btn">Read More<i
+                                    class="icon-right-arrow"></i></a>
+                        </div>
+                        <div class="event-three__date">
+                            <p>20 Jan, 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Event Three Single End-->
+            <!--Event Three Single Start-->
+            <div class="col-xl-4 col-lg-4">
+                <div class="event-three__single">
+                    <div class="event-three__img-box">
+                        <div class="event-three__img">
+                            <img src="{% static 'website/images/events/event-3-3.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="event-three__content">
+                        <div class="event-three__meta-and-title">
+                            <ul class="event-three__meta list-unstyled">
+                                <li>
+                                    <div class="icon">
+                                        <span class="fa fa-clock"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>08:00am</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="fa fa-map-marker"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Donga Gali</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <h3 class="event-three__title"><a href="event-details.html">New Tourism Projects</a>
+                            </h3>
+                        </div>
+                        <div class="event-three__btn-box">
+                            <a href="event-details.html" class="event-three__btn">Read More<i
+                                    class="icon-right-arrow"></i></a>
+                        </div>
+                        <div class="event-three__date">
+                            <p>20 Jan, 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Event Three Single End-->
+        </div>
+    </div>
+</section>
+<!--Events Page End-->
+
+
+
+{% endblock content %}

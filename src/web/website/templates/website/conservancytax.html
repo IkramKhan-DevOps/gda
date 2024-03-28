@@ -1,0 +1,77 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+
+
+{% block title %} Conservancy Taxes {% endblock title %}
+    
+
+
+{% block content %}
+
+
+<!--==================================================-->
+<!-- Start  Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area mt-4">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12 text-center">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Conservancy Taxes</h4>
+					</div>
+					<ul>
+						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Conservancy</a></li>
+						<li>tax</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Breadcumb Area -->
+<!--==================================================-->
+
+<div class="container mt-5">
+    <h2>Conservancy Tax Calculator</h2>
+    
+    <div class="form-group">
+        <label for="conservancyTypeSelect">Select Tax Type:</label>
+        <select class="form-control" id="conservancyTypeSelect">
+            <option value="">Select Tax Type</option>
+            <option value="commercial">Commercial</option>
+            <option value="residential">Residential</option>
+        </select>
+    </div>
+    
+    <div id="commercialTaxSection" style="display: none;">
+        <div class="form-group">
+            <label for="numRooms">Number of Rooms:</label>
+            <input type="number" class="form-control" id="numRooms">
+        </div>
+        <button type="button" class="btn btn-primary">Calculate Tax</button>
+    </div>
+    
+    <div id="residentialTaxSection" style="display: none;">
+        <div class="form-group">
+            <label for="landSize">Enter Land Size (in Kanal):</label>
+            <input type="number" class="form-control" id="landSize">
+        </div>
+        <button type="button" class="btn btn-primary">Calculate Tax</button>
+    </div>
+    
+    <div id="taxResultSection" class="form-group mt-3" style="display: none;">
+        <label for="taxResult">Calculated Tax:</label>
+        <input type="text" class="form-control" id="taxResult" readonly>
+    </div>
+</div>
+
+<!-- Add space below the section -->
+<div class="container mt-5 mb-5">
+    <!-- Your footer content goes here -->
+</div>
+
+
+{% endblock content %}
