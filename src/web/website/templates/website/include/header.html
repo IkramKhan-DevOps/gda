@@ -10,16 +10,15 @@
 			<div class="col-lg-6 col-md-6">
 				<div class="top-header-info">
 					<ul>
-						<li><i class="bi bi-geo-alt"></i>Main Manshera Road Abbottabad
-							KPK</li>
-						<li><i class="bi bi-envelope-open"></i> mediacellgda@gmail.com</li>
+						<li><i class="bi bi-geo-alt"></i>{{app.address}}</li>
+						<li><i class="bi bi-envelope-open"></i>{{app.contact_email1}}</li>
 					</ul>
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6">
 				<div class="top-header-right">
 					<div class="top-header-contact">
-						<span><i class="bi bi-telephone-fill"></i>+92 666 888 0000</span>
+						<span><i class="bi bi-telephone-fill"></i>{{app.contact_phone1}}</span>
 					</div>
 					<div class="top-header-social-icon">
 						<ul>
@@ -50,49 +49,46 @@
 		<div class="row align-items-center">
 			<div class="col-lg-3">
 				<div class="header-logo">
-                    <a href="index.html"><img src="{% static 'website/images/home1/logo.png' %}" alt="logo"></a>
+                    <a href="{% url 'website:home' %}" ><img width = "70px"  src="{% if app.logo %}{{app.logo.url}}{% else %}https//:placehold.co/100{%endif%}" alt="logo"></a>
                 </div>
 			</div>
 			
 			<div class="col-lg-9">
 				<div class="header-menu">
 					<ul>
-						<li class="menu-item-has-children"><a href="#">Home</i></a></li>
+						<li class="menu-item-has-children"><a href="{% url 'website:home' %}">Home</i></a></li>
 						
 						<li class="menu-item-has-children"><a href="#">Accomodations<i class="fas fa-chevron-down"></i></a>
 							<ul class="sub-menu">
-								 <li><a href="about.html">Restaurants</a></li>
-								 <li><a href="service.html">Hotels and Cafes</a></li>
+								 <li><a href="{% url 'website:hotels' %}">Restaurants</a></li>
+								 <li><a href="{% url 'website:cafe' %}">Hotels and Cafes</a></li>
 							</ul>
 						 </li>
-
-						 
-						 
 						 <li class="menu-item-has-children"><a href="#">Downloads<i class="fas fa-chevron-down"></i></a>
 							<ul class="sub-menu">
-								 <li><a href="about.html">Advertisements</a></li>
-								 <li><a href="service.html">Boqs</a></li>
-								 <li><a href="service.html">Building Bye Laws</a></li>
-								 <li><a href="service.html">Documents</a></li>
-								 <li><a href="service.html">Archives</a></li>
+								 <li><a href="#">Advertisements</a></li>
+								 <li><a href="#">Boqs</a></li>
+								 <li><a href="#">Building Bye Laws</a></li>
+								 <li><a href="#">Documents</a></li>
+								 <li><a href="#">Archives</a></li>
 							</ul>
 						 </li>
 
-						<li><a href="about.html">Attractions</a></li>
+						<li><a href="{% url 'website:attractions' %}">Attractions</a></li>
 
 						<li class="menu-item-has-children"><a href="#">More<i class="fas fa-chevron-down"></i></a>
 							<ul class="sub-menu">
-								<li><a href="about.html">About us</a></li> 
-								<li><a href="service.html">GDA Act</a></li>
-								<li><a href="service.html">Team</a></li>
-								<li><a href="service.html">Departments</a></li>
-								<li><a href="service.html">Developments</a></li>
-								<li><a href="contact.html">Building Permissions</a></li>
+								<li><a href="{% url 'website:about' %}">About us</a></li> 
+								<li><a href="{% url 'website:gda_act' %}">GDA Act</a></li>
+								<li><a href="{% url 'website:team' %}">Team</a></li>
+								<li><a href="{% url 'website:departments' %}">Departments</a></li>
+								<li><a href="#">Developments</a></li>
+								<li><a href="#">Building Permissions</a></li>
 								<li class="menu-item-has-children"><a href="#">Taxation<i class="fas fa-chevron-down"></i></a>
 									<ul class="sub-menu">
-										 <li><a href="about.html">Property Taxes</a></li>
-										 <li><a href="service.html">Conservancy Taxes</a></li>
-										 <li><a href="service.html">Water Taxes</a></li>
+										 <li><a href="{% url 'website:propertytax' %}">Property Taxes</a></li>
+										 <li><a href="{% url 'website:conservancytax' %}">Conservancy Taxes</a></li>
+										 <li><a href="{% url 'website:watertax' %}">Water Taxes</a></li>
 									</ul>
 								 </li>	 
 							</ul>
@@ -110,12 +106,12 @@
 	<div class="mobile-menu">
 		<nav class="header-menu">
 				<ul class="nav_scroll">
-					<li class="menu-item-has-children"><a href="#">Home</i></a></li>
+					<li class="menu-item-has-children"><a href="{% url 'website:home' %}">Home</i></a></li>
 					
 					<li class="menu-item-has-children"><a href="#">Accomodations<i class="fas fa-chevron-down"></i></a>
 						<ul class="sub-menu">
-							 <li><a href="about.html">Restaurants</a></li>
-							 <li><a href="service.html">Hotels and Cafes</a></li>
+							 <li><a href="{% url 'website:hotels' %}">Hotels</a></li>
+							 <li><a href="{% url 'website:cafe' %}">Cafes</a></li>
 						</ul>
 					 </li>
 
@@ -123,35 +119,33 @@
 					 
 					 <li class="menu-item-has-children"><a href="#">Downloads<i class="fas fa-chevron-down"></i></a>
 						<ul class="sub-menu">
-							 <li><a href="about.html">Advertisements</a></li>
-							 <li><a href="service.html">Boqs</a></li>
-							 <li><a href="service.html">Building Bye Laws</a></li>
-							 <li><a href="service.html">Documents</a></li>
-							 <li><a href="service.html">Archives</a></li>
+							 <li><a href="#">Advertisements</a></li>
+							 <li><a href="#">Boqs</a></li>
+							 <li><a href="#">Building Bye Laws</a></li>
+							 <li><a href="#">Documents</a></li>
+							 <li><a href="#">Archives</a></li>
 						</ul>
 					 </li>
 
-					<li><a href="about.html">Attractions</a></li>
+					<li><a href="{% url 'website:attractions' %}">Attractions</a></li>
 
 					<li class="menu-item-has-children"><a href="#">More<i class="fas fa-chevron-down"></i></a>
 						<ul class="sub-menu">
-							<li><a href="service.html">About us</a></li> 
-							<li><a href="service.html">GDA Act</a></li>
-							<li><a href="service.html">Team</a></li>
-							<li><a href="service.html">Departments</a></li>
-							<li><a href="service.html">Developments</a></li>
-							<li><a href="contact.html">Building Permissions</a></li>
-							<li><a href="contact.html">Budget</a></li>
+							<li><a href="{% url 'website:about' %}">About us</a></li> 
+							<li><a href="{% url 'website:gda_act' %}">GDA Act</a></li>
+							<li><a href="{% url 'website:team' %}">Team</a></li>
+							<li><a href="{% url 'website:departments' %}">Departments</a></li>
+							<li><a href="#">Developments</a></li>
+							<li><a href="{% url 'website:building_permissions' %}">Building Permissions</a></li>
+							<li><a href="{% url 'website:budget' %}">Budget</a></li>
 							<li class="menu-item-has-children"><a href="#">Taxation<i class="fas fa-chevron-down"></i></a>
 								<ul class="sub-menu">
-									 <li><a href="about.html">Property Taxes</a></li>
-									 <li><a href="service.html">Conservancy Taxes</a></li>
-									 <li><a href="service.html">Water Taxes</a></li>
+									 <li><a href="{% url 'website:propertytax' %}">Property Taxes</a></li>
+									 <li><a href="{% url 'website:conservancytax' %}">Conservancy Taxes</a></li>
+									 <li><a href="{% url 'website:watertax' %}">Water Taxes</a></li>
 								</ul>
-							 </li>
-							 
+							</li> 
 						</ul>
-					
 				</ul>
 		</nav>
 	</div>

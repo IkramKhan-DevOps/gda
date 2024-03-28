@@ -1,11 +1,21 @@
-from .views import home, about,budget, feedback,team, teamDetails, act, department,departmentDetails,hotels,hotelsDetails,cafedetail,cafe, tenders, event, eventdetail,watertax, conservancytax,propertytax, attractions, attractionlist,attractiondetail
+from .views import (home, about,budget, 
+                    team, teamDetails, 
+                    act, department,departmentDetails,
+                    hotels,hotelsDetails,cafedetail,
+                    cafe, tenders, event, 
+                    eventdetail,watertax, 
+                    conservancytax,propertytax, 
+                    attractions, attractionlist,attractiondetail,
+                    boqs, emergencyContact, jurisdiction, contactUs,
+                    buildingPermissions)
+
 from django.urls import path
 app_name = "website"
 urlpatterns = [
      path('', home, name='home'),
      path('about/', about, name='about'),
      path('budget/', budget, name='budget'),
-     path('feedback/', feedback, name='feedback'),
+     path('contact-us/', contactUs, name='contact_us'),
      path('team/', team, name='team'),
      path('teamDetails/', teamDetails, name='teamDetails'),
      path('act/', act, name='gda_act'),
@@ -24,4 +34,8 @@ urlpatterns = [
      path('attractions/', attractions, name='attractions'),
      path('attractionlist/', attractionlist, name='attractionlist'),
      path('attractiondetail/', attractiondetail, name='attractiondetail'),
+     path('boqs/', boqs, name ='boqs'),
+     path('emergency-contact/', emergencyContact, name = 'emergency_contact'),
+     path('area-of-jurisdiction/', jurisdiction, name = 'jurisdiction'),
+     path('building-permissions/', buildingPermissions, name='building_permissions')
 ]

@@ -11,8 +11,8 @@ def about(request):
 def budget(request):
     return render(request, 'website/budget.html')
 
-def feedback(request):
-    return render(request, 'website/feedback.html')
+def contactUs(request):
+    return render(request, 'website/contactUs.html')
 
 def team(request):
     return render(request, 'website/team.html')
@@ -45,7 +45,7 @@ def cafedetail(request):
     return render(request, 'website/cafedetail.html')
 
 def event(request):
-    return render(request, 'website/event.html')
+    return render(request, 'website/events.html')
 
 def eventdetail(request):
     return render(request, 'website/eventdetail.html')
@@ -67,3 +67,15 @@ def attractionlist(request):
 
 def attractiondetail(request):
     return render(request, 'website/attractiondetail.html')
+
+def boqs(request):
+    return render(request,'website/boqs.html')
+
+def emergencyContact(request):
+    return render(request,'website/emergencyContact.html')
+
+def jurisdiction(request):
+    return render(request, 'website/jurisdiction.html')
+
+def buildingPermissions(request):
+    return render( request ,'website/buildingPermissions')

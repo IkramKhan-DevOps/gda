@@ -43,18 +43,19 @@
 
 
 
-<style>{% block style %} {% endblock style %}</style>
+<style> {% block style %} {% endblock style %} </style>
 </head>
 
 <body>
+    
     {% include 'website/include/header.html' %}
 
     {% block content %} {% endblock content %}
     
-     {% include 'website/include/footer.html' %} 
+    {% include 'website/include/footer.html' %} 
 
 
-     {% block internal-js %} {% endblock internal-js %} 
+    {% block internal-js %} {% endblock internal-js %} 
         
         <!-- jquery js -->
         <script src="{% static 'website/js/vendor/jquery-3.6.2.min.js' %}"></script>

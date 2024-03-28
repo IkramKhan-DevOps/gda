@@ -34,16 +34,16 @@
 		<div class="row add-footer-class">
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="footer-logo">
-					<a href="index.html"><img src="{% static 'website/images/home1/logo.png' %}" alt="logo"></a>
+					<a href="index.html"><img width="75px" src="{{app.logo.url}}" alt="logo"></a>
 				</div>
-				<p class="footer-desc">Proactively restore timely alignments after client environmentals</p>
+				<p class="footer-desc">{{app.tagline}}</p>
 				<div class="footer-contect-info">
 					<div class="footer-contact-info-title">
 						<h4>Contact</h4>
 					</div>
 					<ul>
-						<li><i class="bi bi-telephone-plus-fill"></i>+92 666 888 0000</li>
-						<li><i class="bi bi-envelope-open-fill"></i>mediacellgda@gmail.com</li>
+						<li><i class="bi bi-telephone-plus-fill"></i>{{app.contact_phone1}}</li>
+						<li><i class="bi bi-envelope-open-fill"></i>{{app.contact_email1}}</li>
 					</ul>
 				</div>
 			</div>
@@ -54,11 +54,11 @@
 					</div>
 					<div class="footer-widget-menu">
 						<ul>
-							<li><a href="index.html"><i class="fas fa-angle-right"></i>Home</a></li>
-							<li><a href="about.html"><i class="fas fa-angle-right"></i>About Us</a></li>
-							<li><a href="service.html"><i class="fas fa-angle-right"></i>Emergency Services</a></li>
-							<li><a href="team.html"><i class="fas fa-angle-right"></i>Area Of jurisdiction</a></li>
-							<li><a href="blog-grid.html"><i class="fas fa-angle-right"></i>Services</a></li>
+							<li><a href="{% url 'website:home' %}"><i class="fas fa-angle-right"></i>Home</a></li>
+							<li><a href="{% url 'website:about' %}"><i class="fas fa-angle-right"></i>About Us</a></li>
+							<li><a href="{% url 'website:emergency_contact' %}"><i class="fas fa-angle-right"></i>Emergency Services</a></li>
+							<li><a href="{% url 'website:jurisdiction' %}"><i class="fas fa-angle-right"></i>Area Of jurisdiction</a></li>
+							<li><a href="{% url 'website:departments' %}"><i class="fas fa-angle-right"></i>Departments</a></li>
 						</ul>
 					</div>
 				</div>
@@ -70,12 +70,9 @@
 					</div>
 					<div class="footer-widget-menu">
 						<ul>
-							<li><a href="testimonial.html"><i class="fas fa-angle-right"></i>Gallery</a></li>
-							<li><a href="contact.html"><i class="fas fa-angle-right"></i>Contact Us</a></li>
 							<li><a href="donation.html"><i class="fas fa-angle-right"></i> Events</a></li>
-							<li><a href="faqs.html"><i class="fas fa-angle-right"></i>FAQ</a></li>
-							<li><a href="faqs.html"><i class="fas fa-angle-right"></i>FeedBack</a></li>
-							<li><a href="service.html"><i class="fas fa-angle-right"></i>Careers</a></li>
+							<li><a href="{% url 'website:contact_us' %}"><i class="fas fa-angle-right"></i>Contact Us</a></li>
+							
 						</ul>
 					</div>
 				</div>
