@@ -1,0 +1,77 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+
+{% block title %} Attractions {% endblock title %}
+
+{% block content %}
+
+<!--==================================================-->
+<!-- Start Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12 text-center">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Attractions</h4>
+					</div>
+					<ul>
+						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Galiyat</a></li>
+						<li>Attractions</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Breadcumb Area -->
+<!--==================================================-->
+<section class="feature-five mt-5">
+    <div class="container">
+        <div class="row">
+            <!-- Feature One Single Start -->
+            <div class="col-xl-4 col-lg-4">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'website/images/attractions/attractions-1.jpg' %}" alt="Nathia Gali">
+                    <div class="card-body">
+                        <h3 class="card-title">Nathia Gali</h3>
+                        <p class="card-text">A serene hill station in Pakistan, 8,200 feet high, where lush greenery and a cool climate converge for a picturesque retreat.</p>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- Feature One Single End -->
+            
+            <!-- Feature One Single Start -->
+            <div class="col-xl-4 col-lg-4">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'website/images/attractions/attractions-2.jpg' %}" alt="Ayubia">
+                    <div class="card-body"> {% url "" %}
+                        <a href=""></a><h3 class="card-title">Thandyani</h3>
+                        <p class="card-text">A captivating hill station in Pakistan's Galyat range, celebrated for its enchanting alpine meadows and refreshing climate.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Feature One Single End -->
+
+            <!-- Feature One Single Start -->
+            <div class="col-xl-4 col-lg-4">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'website/images/attractions/attractions-3.jpg' %}" alt="Khanaspur">
+                    <div class="card-body">
+                        <h3 class="card-title">Dunga Gali</h3>
+                        <p class="card-text">A serene haven in Pakistan, offering tranquility amidst charming landscapes for a perfect getaway.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Feature One Single End -->
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+    
+    

@@ -1,0 +1,272 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+
+
+{% block title %} Emergency Contact {% endblock title %}
+    
+
+
+
+{% block style %}
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+body {
+    background: url('E:/GDA/Govity/main-html/assets/images/backgrounds/budget bg.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'DM Sans', sans-serif;
+    color: #ecf0f1;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+h2 {
+    text-align: center;
+    font-size: 36px; /* Increased font size */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: black; /* Changed color to black */
+    padding: 30px 0;
+    animation: flashy 1.5s infinite alternate, opacityIncrease 1s ease-in-out; /* Added flashy and opacity increase animations */
+    cursor: pointer; /* Add pointer cursor for better indication */
+}
+
+
+@keyframes opacityIncrease {
+    from {
+        opacity: 0; /* Start with 0 opacity */
+    }
+    to {
+        opacity: 1; /* Increase to full opacity */
+    }
+}
+
+.table-wrapper {
+    margin: 10px 10px 70px; 
+    overflow-x: auto; 
+    transform: scale(0.9); 
+    transition: transform 0.5s ease-in-out;
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 14px; /* Increased font size */
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+    overflow: hidden; 
+}
+
+.fl-table td,
+.fl-table th {
+    text-align: center;
+    padding: 15px; /* Increased padding for better spacing */
+    position: relative;
+    color: #333; /* Darkened text color */
+}
+
+.fl-table td:not(:last-child),
+.fl-table th:not(:last-child) {
+    border-right: 2px solid rgba(0, 0, 0, 0.5); /* Darkened column lines */
+}
+
+.fl-table thead th {
+    color: #ffffff;
+    background: #4FC3A1;
+    transition: color 0.3s ease-in-out; /* Responsive color change on hover */
+}
+
+.fl-table thead th:nth-child(1):hover,
+.fl-table thead th:nth-child(3):hover,
+.fl-table thead th:nth-child(5):hover {
+    color: #f39c12; /* Change this color to the desired hover color (yellow or orange) */
+}
+
+.fl-table thead th:nth-child(2):hover,
+.fl-table thead th:nth-child(4):hover,
+.fl-table thead th:nth-child(6):hover {
+    color: #f39c12; /* Change this color to the desired hover color (yellow) */
+}
+
+.fl-table thead th:nth-child(1) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table thead th:nth-child(2) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table thead th:nth-child(3) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table thead th:nth-child(4) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table thead th:nth-child(5) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table thead th:nth-child(6) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+.fl-table tr:hover {
+    background-color: #f2f2f2; /* Light background color on hover */
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .fl-table {
+        display: block;
+    }
+
+    .table-wrapper:before {
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        color: white;
+        padding: 0 0 10px;
+    }
+
+    .fl-table thead,
+    .fl-table tbody,
+    .fl-table thead th {
+        display: block;
+    }
+
+    .fl-table thead th:last-child {
+        border-bottom: none;
+    }
+
+    .fl-table thead {
+        float: left;
+    }
+
+    .fl-table tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+
+    .fl-table td,
+    .fl-table th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 180px; /* Increased width */
+        font-size: 13px;
+        text-overflow: ellipsis;
+        color: #333; /* Darkened text color */
+    }
+
+    .fl-table thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+
+    .fl-table tbody tr {
+        display: table-cell;
+    }
+
+    .fl-table tbody tr:nth-child(odd) {
+        background: none;
+    }
+
+    .fl-table tr:nth-child(even) {
+        background: transparent;
+    }
+
+
+{% endblock style %}
+
+
+{% block content %}
+
+
+<!--==================================================-->
+<!-- Start Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12 text-center">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Emergency Contact</h4>
+					</div>
+					<ul>
+						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Galiyat</a></li>
+						<li>Emergency Contacts</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Breadcumb Area -->
+<!--==================================================-->
+
+
+<section class="tenders-page">
+    <div class="container">
+        <h2>Emergency Contacts</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Phone Number</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Police</td>
+                        <td>15</td>
+                        <td>Dunga Gali</td>
+                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                    </tr>
+                    <tr>
+                        <td>Fire Brigade</td>
+                        <td>1122</td>
+                        <td>Changla Gali</td>
+                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+    
+{% endblock content %}
+    
