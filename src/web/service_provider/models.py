@@ -30,3 +30,18 @@ class ServiceProvider(models.Model):
     def __str__(self):
         return self.name
 
+
+class Service(models.Model):
+    provider = models.ForeignKey('ServiceProvider', on_delete=models.CASCADE, related_name='services')
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    duration = models.CharField(max_length=100)
+    is_available = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name_plural = 'Services'
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name

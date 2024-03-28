@@ -1,20 +1,14 @@
 from django.urls import path
 
-from src.web.service_provider.views import DashboardView, BookingView, ProfileView, ReviewsView, WishlistView, SettingView, \
+from src.web.service_provider.views import DashboardView, ProfileView, ReviewsView, WishlistView, SettingView, \
     OrdersView, TravellersView, TravelAgentsView, InvoicesView, PaymentsView, CurrencyView, SubscriberView, \
-    LocationView, BranchesView, VehicleView, EditProfileView, BranchesAddView, BranchesUpdateView, BranchesDeleteView
+    LocationView, EditProfileView
 
 app_name = "service_provider"
 
 urlpatterns = [
     path('service_provider/dashboard/', DashboardView.as_view(), name="dashboard"),
-    path('service_provider/booking/', BookingView.as_view(), name="booking"),
-    path('service_provider/branches/', BranchesView.as_view(), name="branches"),
-    path('service_provider/add/branch/', BranchesAddView.as_view(), name="add-branch"),
-    path('service_provider/update/branch/<int:pk>/', BranchesUpdateView.as_view(), name="update-branch"),
-    path('service_provider/delete/branch/<int:id>/', BranchesDeleteView.as_view(), name="delete-branch"),
     path('service_provider/orders/', OrdersView.as_view(), name="orders"),
-    path('service_provider/vehicle/', VehicleView.as_view(), name="vehicle"),
 
     path('service_provider/travellers/', TravellersView.as_view(), name="travellers"),
 
