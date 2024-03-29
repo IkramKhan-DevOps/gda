@@ -48,7 +48,7 @@ def event(request):
     return render(request, 'website/events.html')
 
 def eventdetail(request):
-    return render(request, 'website/eventdetail.html')
+    return render(request, 'website/eventdetails.html')
 
 def watertax(request):
     return render(request, 'website/watertax.html')
@@ -77,5 +77,5 @@ def emergencyContact(request):
 def jurisdiction(request):
     return render(request, 'website/jurisdiction.html')
 
-def buildingPermissions(request):
-    return render( request ,'website/buildingPermissions')
+def buildingByeLaws(request):
+    return render( request ,'website/buildingbyelaws.html')

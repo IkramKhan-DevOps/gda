@@ -34,7 +34,7 @@
 		<div class="row add-footer-class">
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="footer-logo">
-					<a href="index.html"><img width="75px" src="{{app.logo.url}}" alt="logo"></a>
+					<a href="{% url 'website:home' %}"><img width="75px" src="{{app.logo.url}}" alt="logo"></a>
 				</div>
 				<p class="footer-desc">{{app.tagline}}</p>
 				<div class="footer-contect-info">
@@ -50,7 +50,7 @@
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="footer-widget-content">
 					<div class="footer-widget-title">
-						<h4>Company</h4>
+						<h4>Quick Links</h4>
 					</div>
 					<div class="footer-widget-menu">
 						<ul>
@@ -66,11 +66,11 @@
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="footer-widget-content">
 					<div class="footer-widget-title">
-						<h4>Quick Links</h4>
+						<h4> More</h4>
 					</div>
 					<div class="footer-widget-menu">
 						<ul>
-							<li><a href="donation.html"><i class="fas fa-angle-right"></i> Events</a></li>
+							<li><a href="{% url 'website:event' %}"><i class="fas fa-angle-right"></i> Events</a></li>
 							<li><a href="{% url 'website:contact_us' %}"><i class="fas fa-angle-right"></i>Contact Us</a></li>
 							
 						</ul>

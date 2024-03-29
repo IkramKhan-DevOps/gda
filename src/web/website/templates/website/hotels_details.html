@@ -62,33 +62,31 @@
     }
 
     /* Product Card Styles */
-.product-card {
-box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-border-radius: 10px;
-overflow: hidden;
-width: 300px; /* Fixed width */
-height: 400px; /* Fixed height */
-}
+    .product-card {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        width: 300px; /* Fixed width */
+        height: 400px; /* Fixed height */
+    }
 
-.product-card img {
-width: 100%; /* Full width of the card */
-height: 200px; /* Fixed height for the image */
-object-fit: cover; /* Ensures the image covers the area without distortion */
-}
+    .product-card img {
+        width: 100%; /* Full width of the card */
+        height: 200px; /* Fixed height for the image */
+        object-fit: cover; /* Ensures the image covers the area without distortion */
+    }
 
-.product-card .card-body {
-padding: 15px;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-height: 200px; /* Remaining height for the content */
-}
+    .product-card .card-body {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 200px; /* Remaining height for the content */
+    }
 
-.product-card .card-title, .card-text {
-margin: 0;
-}
-    
-
+    .product-card .card-title, .card-text {
+    margin: 0;
+    }
     
 {% endblock style %}
     
@@ -122,12 +120,12 @@ margin: 0;
 
 <section class="hotel-details-section">
 			
-    <div class="container py-5"> <!-- Add padding on y-axis -->
+    <div class="container py-5"> 
         <div class="row">
             <!-- Hotel Details -->
-            <div class="col-lg-12"> <!-- Make it full width on large screens -->
+            <div class="col-lg-12">
                 <h2 class="mt-0">Elites Hotel</h2>
-                <h3 class="pt-4">Description</h3> <!-- Add padding to the top -->
+                <h3 class="pt-4">Description</h3>
                 <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est. Nulla facilisi cras fermentum odio eu feugiat pretium nibh. Non odio euismod lacinia at quis risus sed vulputate odio. Aliquet nibh praesent tristique magna. Et ligula ullamcorper malesuada proin libero nunc consequat interdum. At tellus at urna condimentum mattis. Sem et tortor consequat id porta nibh. Malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Eu feugiat pretium nibh ipsum consequat nisl vel pretium. Tincidunt tortor aliquam nulla facilisi cras fermentum odio. Nulla aliquet enim tortor at auctor urna nunc id. Viverra ipsum nunc aliquet bibendum enim facilisis. Tellus molestie nunc non blandit massa enim nec. Tincidunt dui ut ornare lectus sit. Diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Nisl nisi scelerisque eu ultrices vitae auctor eu. Tincidunt vitae semper quis lectus nulla at.
 
                     Sit amet aliquam id diam maecenas ultricies mi eget. Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat. Habitasse platea dictumst quisque sagittis purus sit amet volutpat. Volutpat ac tincidunt vitae semper quis lectus nulla at volutpat. Penatibus et magnis dis parturient. Consectetur adipiscing elit ut aliquam purus sit. Arcu ac tortor dignissim convallis. Proin libero nunc consequat interdum varius sit amet mattis. Convallis a cras semper auctor neque vitae tempus. Eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Vel elit scelerisque mauris pellentesque pulvinar. Fringilla phasellus faucibus scelerisque eleifend. Habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Sodales neque sodales ut etiam sit amet. Amet volutpat consequat mauris nunc congue nisi vitae suscipit. Pulvinar mattis nunc sed blandit libero volutpat sed cras ornare. Nunc faucibus a pellentesque sit amet porttitor eget dolor morbi. Mi eget mauris pharetra et ultrices neque ornare. Arcu non odio euismod lacinia at. Ipsum dolor sit amet consectetur.
@@ -161,7 +159,7 @@ margin: 0;
             
 
             <!-- Hotel Image -->
-            <div class="col-lg-12 order-lg-first"> <!-- Make it full width on large screens and order it first -->
+            <div class="col-lg-12 order-lg-first">
                 
                     <img src="{% static 'website/images/hotels/hotels-4.jpeg' %}" alt="" class="img-fluid rounded shadow-sm mb-4"> <!-- Add margin to the bottom -->
                 
