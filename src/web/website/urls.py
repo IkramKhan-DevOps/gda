@@ -1,4 +1,6 @@
 from .views import (
+
+    NewsLetterCreateView,
     home, about, budget,
     team, teamDetails,
     act, department, departmentDetails,
@@ -14,7 +16,16 @@ from .views import (
 from django.urls import path
 
 app_name = "website"
+
+
+# OFFICIAL
 urlpatterns = [
+    path('newsletter/create/', NewsLetterCreateView.as_view(), name='newsletter-create'),
+]
+
+
+# UN OFFICIAL
+urlpatterns += [
     path('', home, name='home'),
     path('about/', about, name='about'),
     path('budget/', budget, name='budget'),

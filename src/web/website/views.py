@@ -1,7 +1,35 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.views import View
+
+from src.core.models import NewsLetter
+
+""" OFFICIAL """
 
 
-# Create your views here.
+class NewsLetterCreateView(View):
+
+    def post(self, request):
+        email = request.POST.get('email')
+
+        # Check if email is provided
+        if not email:
+            messages.error(request, 'Please provide your email address.')
+            return redirect(request.META.get('HTTP_REFERER'))
+
+        # Check if email is already subscribed
+        if NewsLetter.objects.filter(email=email).exists():
+            messages.error(request, f"{email} you have already subscribed to our newsletter.")
+            return redirect(request.META.get('HTTP_REFERER'))
+
+        # Save email to database
+        NewsLetter.objects.create(email=email)
+        messages.success(request, 'You have successfully subscribed to our newsletter.')
+        return redirect(request.META.get('HTTP_REFERER'))
+
+
+""" UN-OFFICIAL """
+
 
 def home(request):
     return render(request, 'website/home.html')

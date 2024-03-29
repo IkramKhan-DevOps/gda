@@ -24,6 +24,23 @@ class Country(models.Model):
         return self.name
 
 
+class NewsLetter(models.Model):
+    email = models.EmailField(max_length=100, unique=True)
+    is_active = models.BooleanField(default=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_on']
+        verbose_name_plural = 'News Letters'
+
+    def __str__(self):
+        return self.email
+
+    def clean(self):
+        if NewsLetter.objects.filter(email=self.email).exists():
+            raise ValidationError(f"{self.email} you have already subscribed to our newsletter.")
+
+
 class Application(models.Model):
     name = models.CharField(max_length=100, help_text='Application name', default='Exarth')
     short_name = models.CharField(max_length=10, help_text='Your application short name', default='EX')
