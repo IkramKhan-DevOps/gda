@@ -17,6 +17,7 @@ handler500 = handler500
 """ INTERNAL REQUIRED APPS ----------------------------------------------------------------------------------------- """
 urlpatterns += [
     path('', include('src.web.urls')),
+    path('', include('src.services.events.urls')),
 ]
 
 

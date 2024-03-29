@@ -76,7 +76,7 @@ cd gda
 2. apply migrations
 ```bash
 pip install -r requirements.txt
-python manage.py makemigrations users core servive_provider
+python manage.py makemigrations users core servive_provider events
 python manage.py migrate
 ```
 

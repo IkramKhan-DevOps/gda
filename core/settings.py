@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     # YOUR APPS
     'src.core.apps.CoreConfig',
     'src.services.users.apps.UsersConfig',
+    'src.services.events.apps.EventAppConfig',
 
     # WEB APPS
     'src.web.website',
