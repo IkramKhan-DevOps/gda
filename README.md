@@ -5,9 +5,8 @@
 </p>
 <hr>
 
-# PROJECT NAME 😕
-
-_application tagline here_
+# Galyat Development Authority 😕
+_lets build Galyat_
 
 application detailed down description here
 
@@ -66,18 +65,33 @@ Please check the detailed down requirements here wrt iterations
 
 # EXTRA
 
-## How to run locally
-
-```shell
-git clone https://github.com/IkramKhan-DevOps/lib-boilderplatedjango.git
-cd lib-boilderplatedjango.git
-pip install -r requirements.txt
-python manage.py makemigrations core users
-python manage.py migrate
-py manage.py runserver
+## STEPS TO RUN
+1. Clone the repository
+```bash
+git clone https://github.com/IkramKhan-DevOps/gda.git
+cd gda
 ```
 
-<h4>ALERT !</h4>
-<p>Application is developed by <a href="https://github.com/IkramKhan-DevOps/">MARK I</a> at <b><a href="https://exarth.com">Exarth</a></b>.
-<small style="color: indianred">( NDA protected )</small>
-</p>
+1. Install the requirements
+2. apply migrations
+```bash
+pip install -r requirements.txt
+python manage.py makemigrations users core
+python manage.py migrate
+```
+
+1. Run the server
+```bash
+python manage.py runserver
+```
+
+## NOTE!
+- Please make sure to create a virtual environment before installing the requirements
+- Please make sure to create a `.env` file and add the required environment variables use `.env.example` as a reference
+- Please make sure to create a superuser to access the admin panel
+
+## CONTRIBUTING
+This project is supervised Technical Directory of <a href="">Galyat Development Authority</a> and 
+developed and maintained by <a href="https://exarth.com/">Team Exarth</a>. 
+
+

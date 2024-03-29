@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.urls import path, include, re_path
-from django.views.generic import TemplateView
 from django.views.static import serve
 
 from core.settings import ENVIRONMENT, MEDIA_ROOT, STATIC_ROOT
@@ -18,7 +17,6 @@ handler500 = handler500
 """ INTERNAL REQUIRED APPS ----------------------------------------------------------------------------------------- """
 urlpatterns += [
     path('', include('src.web.urls')),
-    # path('api/', include('src.api.urls')),
 ]
 
 
@@ -41,7 +39,3 @@ if ENVIRONMENT != 'server':
     urlpatterns += [
         path("__reload__/", include("django_browser_reload.urls"))
     ]
-
-    # urlpatterns += [
-    #     path('', TemplateView.as_view(template_name='dev/starter-page.html')),  # use: for home page/remove this
-    # ]

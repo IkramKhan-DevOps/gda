@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db import models
+from django_resized import ResizedImageField
 
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -30,22 +31,25 @@ class Application(models.Model):
         max_length=100, help_text='Your application business line', default='Your digital partner'
     )
     description = models.TextField(
-        default="Your technology partner in innovations, automation and business intelligence.",
-        help_text='Application description'
+        default="Add your project description here.", help_text='Application Description'
     )
 
-    favicon = models.ImageField(
-        upload_to='core/application/images', null=True, blank=True, help_text='Application favicon'
+    favicon = ResizedImageField(
+        upload_to='core/application/images',
+        null=True, blank=True, size=[250, 250], quality=75, force_format='PNG',
+        help_text='Application favicon'
     )
-    logo = models.ImageField(
-        upload_to='core/application/images', null=True, blank=True,
+    logo = ResizedImageField(
+        upload_to='core/application/images', null=True, blank=True, size=[500, 500], quality=75, force_format='PNG',
         help_text='Application real colors logo'
     )
-    logo_dark = models.ImageField(
-        upload_to='core/application/images', null=True, blank=True, help_text='For dark theme only'
+    logo_dark = ResizedImageField(
+        upload_to='core/application/images', null=True, blank=True, size=[500, 500], quality=75, force_format='PNG',
+        help_text='For dark theme only'
     )
-    logo_light = models.ImageField(
-        upload_to='core/application/images', null=True, blank=True, help_text='For light theme only'
+    logo_light = ResizedImageField(
+        upload_to='core/application/images', null=True, blank=True, size=[500, 500], quality=75, force_format='PNG',
+        help_text='For light theme only'
     )
 
     contact_email1 = models.EmailField(
@@ -62,7 +66,7 @@ class Application(models.Model):
     )
 
     address = models.CharField(
-        max_length=255, help_text='office address', default='123 Main St, Abbotabad, KPK Pakistan'
+        max_length=255, help_text='office address', default='your main office address'
     )
     latitude = models.DecimalField(max_digits=10, decimal_places=6, help_text='latitude', default=23.7)
     longitude = models.DecimalField(max_digits=10, decimal_places=6, help_text='longitude', default=90.3)

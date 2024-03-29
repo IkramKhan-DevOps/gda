@@ -15,22 +15,22 @@ from src.web.service_provider.models import ServiceProvider
 
 @method_decorator(login_required, name='dispatch')
 class DashboardView(TemplateView):
-    template_name = 'service_provider/dashboard.html'
+    template_name = 'agency/dashboard.html'
 
 
 @method_decorator(login_required, name='dispatch')
 class OrdersView(TemplateView):
-    template_name = 'service_provider/orders.html'
+    template_name = 'agency/orders.html'
 
 
 @method_decorator(login_required, name='dispatch')
 class TravellersView(TemplateView):
-    template_name = 'service_provider/travellers.html'
+    template_name = 'agency/travellers.html'
 
 
 @method_decorator(login_required, name='dispatch')
 class ProfileView(TemplateView):
-    template_name = 'service_provider/profile.html'
+    template_name = 'agency/profile.html'
 
 
 @method_decorator(login_required, name='dispatch')
