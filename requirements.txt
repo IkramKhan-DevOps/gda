@@ -12,10 +12,10 @@ django-filter
 django-allauth == 0.55.0
 django-resized
 python-decouple
-django-ckeditor
 django-crispy-forms
 djangorestframework
 dj-rest-auth
+django-ckeditor-5
 
 crispy-bootstrap5
 django-browser-reload

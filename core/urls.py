@@ -6,13 +6,12 @@ from core.settings import ENVIRONMENT, MEDIA_ROOT, STATIC_ROOT
 from src.core.handlers import (
     handler404, handler500
 )
-urlpatterns = []
 
+urlpatterns = []
 
 """ HANDLERS ------------------------------------------------------------------------------------------------------- """
 handler404 = handler404
 handler500 = handler500
-
 
 """ INTERNAL REQUIRED APPS ----------------------------------------------------------------------------------------- """
 urlpatterns += [
@@ -20,20 +19,18 @@ urlpatterns += [
     path('', include('src.services.events.urls')),
 ]
 
-
 """ EXTERNAL REQUIRED APPS ----------------------------------------------------------------------------------------- """
 urlpatterns += [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
 ]
 
-
 """ STATIC AND MEDIA FILES ----------------------------------------------------------------------------------------- """
 urlpatterns += [
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve, {'document_root': STATIC_ROOT}),
+    path("ckeditor5/", include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),
 ]
-
 
 """ DEVELOPMENT ONLY -------------------------------------------------------------------------------------------- """
 if ENVIRONMENT != 'server':
