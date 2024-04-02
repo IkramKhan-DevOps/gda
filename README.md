@@ -5,8 +5,8 @@
 </p>
 <hr>
 
-# Galyat Development Authority 😕
-_lets build Galyat_
+# Galiyat Development Authority 😕
+_lets build Galiyat_
 
 application detailed down description here
 
@@ -76,7 +76,7 @@ cd gda
 2. apply migrations
 ```bash
 pip install -r requirements.txt
-python manage.py makemigrations users core servive_provider events
+python manage.py makemigrations users core service_provider events management gallery dinestay attractions news
 python manage.py migrate
 ```
 
@@ -91,7 +91,7 @@ python manage.py runserver
 - Please make sure to create a superuser to access the admin panel
 
 ## CONTRIBUTING
-This project is supervised Technical Directory of <a href="">Galyat Development Authority</a> and 
+This project is supervised Technical Directory of <a href="">Galiyat Development Authority</a> and 
 developed and maintained by <a href="https://exarth.com/">Team Exarth</a>. 
 
 
