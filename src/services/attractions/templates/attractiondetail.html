@@ -1,0 +1,173 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block title %}
+    Attractions Details
+{% endblock title %}
+
+
+{% block style %}
+
+    /* Custom Styles */
+    .attractions-details-section {
+        font-family: 'Arial', sans-serif; /* You can choose a more decorative font if preferred */
+        color: #333; /* Standard text color for readability */
+        background-color: #f4f4f4; /* Light background to offset the text and image */
+    }
+    
+    .attractions-details-section h2 {
+        color: #0056b3; /* A deeper blue for the attraction name */
+        font-size: 2.8rem; /* Slightly larger font size */
+    }
+    
+    .attractions-details-section h3 {
+        color: #008000; /* A rich green for subheadings */
+        font-size: 1.8rem; /* Slightly larger font size */
+        margin-top: 1rem; /* Space above the subheading */
+    }
+    
+    .attractions-details-section p {
+        font-size: 1.1rem;
+        line-height: 1.8; /* Increased line-height */
+        color: #555; /* Slightly lighter text for the description */
+    }
+    
+    .attractions-info strong {
+        color: #343a40; /* Bootstrap's dark grey */ 
+    }
+    
+    .list-inline-item .badge {
+        background-color: #ff9800; /* A bright orange for tags */
+        color: #fff;
+        padding: 0.5em 1em;
+    }
+    
+    .additional-images img {
+        border: 4px solid #0056b3; /* Blue border for additional images */
+        margin: 0.5rem; /* Space around images */
+    }
+    
+    /* Main Image Enhancement */
+    .attractions-main-image {
+        box-shadow: 0 8px 15px rgba(0,0,0,0.3); /* Add shadow for depth */
+        border-radius: 10px; /* Rounded corners for the image */
+    }
+    
+    /* Responsive Image Grid */
+    @media (min-width: 992px) {
+        .additional-images .p-1 {
+            width: 33.3333%; /* Three images per row on larger screens */
+            padding: 0.5rem;
+        }
+    }
+
+    /* Product Card Styles */
+.attractions-card {
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+border-radius: 10px;
+overflow: hidden;
+width: 300px; /* Fixed width */
+height: 400px; /* Fixed height */
+}
+
+.attractions-card img {
+width: 100%; /* Full width of the card */
+height: 200px; /* Fixed height for the image */
+object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.attractions-card .card-body {
+padding: 15px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+height: 200px; /* Remaining height for the content */
+}
+
+.attractions-card .card-title, .card-text {
+margin: 0;
+}
+    
+
+    
+{% endblock style %}
+    
+
+{% block content %}
+
+<!--==================================================-->
+<!-- Start Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12 text-center">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Attractions</h4>
+					</div>
+					<ul>
+						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Cafe</a></li>
+						<li>Details</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Breadcumb Area -->
+<!--==================================================-->
+
+
+<section class="attractions-details-section">
+			
+    <div class="container py-5"> <!-- Add padding on y-axis -->
+        <div class="row">
+            <!-- Attraction Details -->
+            <div class="col-lg-12"> <!-- Make it full width on large screens -->
+                <h2 class="mt-0">MushkPuri Track</h2>
+                <h3 class="pt-4">Description</h3> <!-- Add padding to the top -->
+                <p class="mb-4">A serene haven in Pakistan, offering tranquility amidst charming landscapes for a perfect getaway.</p> <!-- Add margin to the bottom -->
+
+                <h3>Details</h3>
+                <div class="attractions-info mb-4"> <!-- Add margin to the bottom -->
+                    <p><strong>Location:</strong> Nathiagali</p>
+                    <p><strong>Distance from Downtown:</strong> 4 km</p>
+                    <p><strong>Rating:</strong> 4.5/5</p>
+                    <p><strong>Open Hours:</strong> 9:00 AM - 6:00 PM</p>
+                        <p><strong>Entry Fee:</strong> $10 per person</p>
+                        <p><strong>Facilities:</strong> Parking, Restrooms, Food stalls</p>
+                    </div>
+    
+                    <h3>Additional Information</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut velit quis enim tincidunt consequat sed ut odio. Sed eu urna sed lorem aliquet laoreet. Integer nec risus nec sapien lobortis sollicitudin. Proin euismod felis nec magna lobortis, in scelerisque ligula ultrices. In hac habitasse platea dictumst. Integer auctor, sapien nec sodales viverra, nulla odio placerat tortor, a consectetur nisl velit nec leo.</p>
+    
+                    <h3>How to Get There</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut velit quis enim tincidunt consequat sed ut odio. Sed eu urna sed lorem aliquet laoreet. Integer nec risus nec sapien lobortis sollicitudin. Proin euismod felis nec magna lobortis, in scelerisque ligula ultrices. In hac habitasse platea dictumst. Integer auctor, sapien nec sodales viverra, nulla odio placerat tortor, a consectetur nisl velit nec leo.</p>
+    
+                    <h3>Gallery</h3>
+                    <div class="additional-images d-flex flex-wrap">
+                        <div class="p-1">
+                            <img src="{% static 'website/images/attractions/gallery-1.jpg' %}" alt="Additional Image" class="img-fluid rounded">
+                        </div>
+                        <div class="p-1">
+                            <img src="{% static 'website/images/attractions/gallery-2.jpg' %}" alt="Additional Image" class="img-fluid rounded">
+                        </div>
+                        <div class="p-1">
+                            <img src="{% static 'website/images/attractions/gallery-3.jpg' %}" alt="Additional Image" class="img-fluid rounded">
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Attraction Image -->
+                <div class="col-lg-12 order-lg-first"> <!-- Make it full width on large screens and order it first -->
+                    <img src="{% static 'website/images/attractions/attractions-3.jpg' %}" alt="Khanaspur" class="img-fluid rounded shadow-sm mb-4"> <!-- Add margin to the bottom -->
+                </div>
+            </div>
+        </div>
+    
+    </section>
+    
+    {% endblock content %}
+    

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django_resized import ResizedImageField
 
 class DocumentType(models.Model):
     name = models.CharField(max_length=100)
@@ -35,3 +35,28 @@ class Document(models.Model):
 
     def __str__(self):
         return self.title
+
+    
+
+class Departments(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
+    rank = models.CharField(blank=True, null=True, max_length=100)
+    image = ResizedImageField(
+        size=[500, 500], quality=75, upload_to='management/departments/images', blank=True, null=True,
+        help_text='size of image must be 500*500 and format must be png image file'
+    )
+    message = models.TextField(blank=True, null=True)
+    is_active = models.BooleanField(default=True)
+
+    created_on = models.DateTimeField(auto_now_add=True)
+    
+
+    class Meta:
+        ordering = ['-id']
+        verbose_name = 'Department'
+        verbose_name_plural = 'Departments'
+
+    def __str__(self):
+        return self.name
+    

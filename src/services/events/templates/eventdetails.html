@@ -1,0 +1,113 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+
+
+{% block title %} Event Details {% endblock title %}
+    
+
+
+{% block content %}
+
+
+<!--==================================================-->
+<!-- Start  Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area mt-4">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12 text-center">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Event Details</h4>
+					</div>
+					<ul>
+						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Event</a></li>
+						<li>Details</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Breadcumb Area -->
+<!--==================================================-->
+        <!--Event Details Start-->
+        <section class="event-details mt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="event-details__left">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="event-details__date-box">
+                                        <div class="event-details__date-box-shape-1">
+                                            <img src="{% static 'website/images/shapes/event-details-shape-1.png' %}" alt="">
+                                        </div>
+                                        <div class="event-details__date-title-and-icon">
+                                            <div class="event-details__date-icon">
+                                                <span class="icon-calendar"></span>
+                                            </div>
+                                            <h3 class="event-details__date-title">Date & Time</h3>
+                                        </div>
+                                        <p class="event-details__date-text">8:00 am to 9:30 pm <br>
+                                            01 Febuary, 2021</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="event-details__location">
+                                        <div class="event-details__location-shape-1">
+                                            <img src="{% static 'website/images/shapes/event-details-shape-2.png' %}" alt="">
+                                        </div>
+                                        <div class="event-details__location-title-and-icon">
+                                            <div class="event-details__location-icon">
+                                                <span class="icon-placeholder"></span>
+                                            </div>
+                                            <h3 class="event-details__location-title">Location</h3>
+                                        </div>
+                                        <p class="event-details__location-text">Hotel Elites NathiaGali, Nathia Gali Rd, adjacent MCB Bank, Nathia Gali</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="event-details__title-1">Event overview</h3>
+                            <p class="event-details__text-1">Neque porro est qui dolorem ipsum quia quaed inventore
+                                veritatis et quasi architecto beatae vitae dicta sunt explicabo. Aelltes port lacus quis
+                                enim var sed efficitur turpis gilla sed sit amet finibus eros. Lorem Ipsum is simply
+                                dummy text of the printing and typesetting industry.</p>
+                            <p class="event-details__text-2">Biophilia is the idea that humans possess an innate
+                                tendency to seek connections with nature. The term translates</p>
+                            <p class="event-details__text-3">When an unknown printer took a galley of type and scrambled
+                                it to make a type specimen book. It has survived not only five centuries, but also the
+                                leap into electronic typesetting, remaining essentially unchanged. Aelltes port lacus
+                                quis enim var sed efficitur turpis gilla sed sit amet finibus eros.</p>
+                            <div class="event-details__img">
+                                <img src="assets/images/resources/event-details-img.jpg" alt="">
+                            </div>
+                            <p class="event-details__text-4">Biophilia is the idea that humans possess an innate
+                                tendency to seek connections with nature. The term translates When an unknown printer
+                                took a galley of type and scrambled it to make a type specimen book. It has survived not
+                                only five centuries, but also the leap into electronic typesetting, remaining
+                                essentially unchanged. Aelltes port lacus quis enim var sed efficitur turpis gilla sed
+                                sit amet finibus eros. Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry.</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="event-details__right">
+                            <div class="event-details__user-info">
+                                <h3 class="event-details__user-name">Elites</h3>
+                                <p class="event-details__user-text">Details About sponser</p>
+                                <a href="tel:+9212340800" class="event-details__user-number">+92 (1234) 0800</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Event Details End-->
+
+
+
+
+{% endblock content %}
