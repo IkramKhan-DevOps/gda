@@ -15,8 +15,8 @@ class AccommodationFeature(models.Model):
 
     class Meta:
         ordering = ['-id']
-        verbose_name = 'Dining Feature'
-        verbose_name_plural = 'Dining Features'
+        verbose_name = 'Accommodation Feature'
+        verbose_name_plural = 'Accommodation Features'
         
     def __str__(self):
         return self.name
