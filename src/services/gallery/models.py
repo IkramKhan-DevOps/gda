@@ -29,7 +29,7 @@ class Video(models.Model):
     
     video = models.URLField(
         max_length=100,help_text='Enter the URL of the video' 
-        )
+    )
     thumbnail = ResizedImageField(
         size=[500, 500], quality=75, upload_to='gallery/thumbnails', blank=True, null=True,
         help_text='size of logo must be 500*500 and format must be png image file'
@@ -44,7 +44,6 @@ class Video(models.Model):
         verbose_name_plural = 'Videos'
         
     def delete(self, *args, **kwargs):
-        self.video.delete(save=True)
         self.thumbnail.delete(save=True)
         super(Video, self).delete(*args, **kwargs)
         

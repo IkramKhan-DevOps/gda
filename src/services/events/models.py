@@ -12,7 +12,7 @@ class EventType(models.Model):
     description = models.TextField(blank=True, null=True)
 
     is_active = models.BooleanField(default=True)
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-id']
@@ -52,7 +52,7 @@ class Event(models.Model):
     longitude = models.FloatField(blank=True, null=True)
 
     is_active = models.BooleanField(default=True)
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-id']
@@ -80,7 +80,7 @@ class EventImage(models.Model):
     )
 
     is_active = models.BooleanField(default=True)
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-id']
@@ -105,7 +105,7 @@ class Participant(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
     is_active = models.BooleanField(default=True)
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-id']
@@ -129,7 +129,7 @@ class Guest(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, blank=True, null=True)
 
     is_active = models.BooleanField(default=True)
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-id']

@@ -14,7 +14,7 @@ class Country(models.Model):
 
     is_services_available = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['name']
@@ -27,10 +27,10 @@ class Country(models.Model):
 class NewsLetter(models.Model):
     email = models.EmailField(max_length=100, unique=True)
     is_active = models.BooleanField(default=True)
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-created_on']
+        ordering = ['-created_at']
         verbose_name_plural = 'News Letters'
 
     def __str__(self):
@@ -94,7 +94,7 @@ class Application(models.Model):
 
     version = models.CharField(max_length=10, help_text='Current version', default='1.0.0')
     is_active = models.BooleanField(default=True)
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name_plural = "Application"
