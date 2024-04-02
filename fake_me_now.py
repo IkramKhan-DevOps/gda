@@ -1,18 +1,22 @@
+from random import sample
+
 from django.contrib.sites.models import Site
 from django.db import IntegrityError
 from faker import Faker
 from django.conf import settings
 from core.settings import DOMAIN
-from gda.src.services.dinestay.models import (
+from src.services.dinestay.models import (
     Accommodation, Type, DiningVenue)
 from src.core.models import Country, NewsLetter
 from src.services.events.models import (
     Event, EventType, Participant, Guest
 )
+from src.services.attractions.models import (
+    Attraction, AttractionCategory, AttractionFeature
+)
 from src.services.management.models import Document, DocumentType
 from src.services.users.models import User
 
-settings.configure()
 fake = Faker()
 
 """ HELPERS """
@@ -354,7 +358,134 @@ def guest_fake():
             print(e.__str__())
 
 
+"""" ATTRACTION APP """
+
+
+def attraction_feature_fake():
+    __print_start("Attraction Feature")
+    attraction_features = [
+        {"name": "Cafe"},
+        {"name": "Bar"},
+        {"name": "Restaurant"},
+        {"name": "Park"},
+        {"name": "Museum"},
+        {"name": "Zoo"},
+        {"name": "Beach"},
+        {"name": "Shopping Mall"},
+        {"name": "Amusement Park"},
+        {"name": "Theater"},
+        {"name": "Cinema"},
+        {"name": "Library"},
+        {"name": "Gym"},
+        {"name": "Spa"},
+        {"name": "Salon"},
+        {"name": "Hotel"},
+        {"name": "Resort"},
+        {"name": "Motel"},
+        {"name": "Inn"},
+    ]
+
+    for attraction_feature_data in attraction_features:
+        name = attraction_feature_data["name"]
+
+        try:
+            AttractionFeature.objects.create(
+                name=name,
+            )
+
+            print(f"---- object: {name} created.")
+        except IntegrityError as e:
+            print(e.__str__())
+
+    __print_ended("Attraction Feature")
+
+
+def attraction_category_fake():
+    __print_start("Attraction Category")
+    attraction_categories = [
+        {"name": "Museum"},
+        {"name": "Park"},
+        {"name": "Zoo"},
+        {"name": "Beach"},
+        {"name": "Shopping Mall"},
+        {"name": "Amusement Park"},
+        {"name": "Theater"},
+        {"name": "Cinema"},
+        {"name": "Library"},
+        {"name": "Gym"},
+        {"name": "Spa"},
+        {"name": "Salon"},
+    ]
+
+    for attraction_category_data in attraction_categories:
+        name = attraction_category_data["name"]
+
+        try:
+            AttractionCategory.objects.create(
+                name=name,
+            )
+
+            print(f"---- object: {name} created.")
+        except IntegrityError as e:
+            print(e.__str__())
+
+    __print_ended("Attraction Category")
+
+
+def attraction_fake():
+    __print_start("Attraction")
+    attractions = [
+        {"name": "John X Museum"},
+        {"name": "Jane Y Park"},
+        {"name": "Michael Z Zoo"},
+        {"name": "Emily A Beach"},
+        {"name": "David B Shopping Mall"},
+        {"name": "Sophia C Amusement Park"},
+        {"name": "Daniel D Theater"},
+        {"name": "Olivia E Cinema"},
+        {"name": "William F Library"},
+        {"name": "Emma G Gym"},
+        {"name": "Noah H Spa"},
+        {"name": "Ava I Salon"},
+        {"name": "Liam J Hotel"},
+        {"name": "Charlotte K Resort"},
+        {"name": "Mia L Motel"},
+        {"name": "James M Inn"},
+    ]
+
+    for attraction in attractions:
+        name = attraction["name"]
+        category = AttractionCategory.objects.order_by('?').first()
+        description = fake.paragraph()
+        address = fake.address()
+        latitude = fake.latitude()
+        longitude = fake.longitude()
+        thumbnail = fake.image_url()
+        video = fake.url()
+        features = sample(list(AttractionFeature.objects.all()), k=5)
+
+        try:
+            attraction = Attraction.objects.create(
+                name=name,
+                category=category,
+                description=description,
+                address=address,
+                latitude=latitude,
+                longitude=longitude,
+                thumbnail=thumbnail,
+                video=video,
+            )
+            attraction.features.add(*features)
+
+            print(f"---- object: {name} created.")
+        except IntegrityError as e:
+            print(e.__str__())
+
+    __print_ended("Attraction")
+
+
 """ DINE STAY APP """
+
 
 def type_fake():
     __print_start("Type")
@@ -380,7 +511,8 @@ def type_fake():
             print(e.__str__())
 
     __print_ended("Type")
-    
+
+
 def accommodation_fake():
     __print_start("Accommodation")
     accommodations = [
@@ -470,22 +602,25 @@ def dining_venue_fake():
 
     
 def main():
-    basic_configuration()
+    # basic_configuration()
+    #
+    # country_fake()
+    # load_newsletters()
+    #
+    # document_type_fake()
+    # document_fake()
+    #
+    # event_type_fake()
+    # event_fake()
+    # participant_fake()
+    # guest_fake()
+    # accommodation_fake()
+    # type_fake()
+    # dining_venue_fake()
 
-    country_fake()
-    load_newsletters()
-
-    document_type_fake()
-    document_fake()
-
-    event_type_fake()
-    event_fake()
-    participant_fake()
-    guest_fake()
-    accommodation_fake()
-    type_fake()
-    dining_venue_fake()
-    
+    attraction_feature_fake()
+    attraction_category_fake()
+    attraction_fake()
 
 
 if __name__ == '__main__':

@@ -1,33 +1,50 @@
 from django.contrib import admin
 
 from .models import (
-    AttractionPoint, TagAttraction
+    AttractionFeature, Attraction, AttractionImage, AttractionCategory
 )
 
-@admin.register(AttractionPoint)
-class AttractionPointAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'description', 'created_at']
-    list_filter = ['is_active', 'created_at']
-    search_fields = ['name']
-    date_hierarchy = 'created_at'
-    readonly_fields = ['created_at']
-    fieldsets = [
-        ('', {'fields': ['name', 'description','features', 'is_active']}),
-        ('content', {'fields': ['content', 'image', 'video', 'thumbnail']}),
-        ('Location', {'fields': ['address','area', 'lat', 'lon']}),
-        ('Dates', {'fields': ['created_at']}),
-    ]
 
-
-
-@admin.register(TagAttraction)
-class TagAttractionAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'is_active']
+@admin.register(AttractionFeature)
+class AttractionFeatureAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'is_active', 'created_at']
     list_filter = ['is_active']
     search_fields = ['name']
+    list_per_page = 100
+
+
+@admin.register(AttractionCategory)
+class AttractionCategoryAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'is_active', 'created_at']
+    list_filter = ['is_active']
+    search_fields = ['name']
+    list_per_page = 100
+
+
+@admin.register(Attraction)
+class AttractionAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('', {'fields': ['name', 'is_active']}),
+        ('', {
+            'fields': [
+                'name', 'category', 'features', 'description',
+            ],
+        }),
+        ('media', {'fields': ['thumbnail', 'video']}),
+        ('location', {'fields': ['address', 'latitude', 'longitude']}),
+        ('content', {'fields': ['content']}),
+        ('Status and Dates', {'fields': ['is_active', 'created_at']}),
+
     ]
-    
-    def delete(self, *args, **kwargs):
-        super(TagAttraction, self).delete(*args, **kwargs)
+    list_display = ['id', 'name', 'address', 'latitude', 'longitude', 'is_active', 'created_at']
+    list_filter = ['is_active']
+    search_fields = ['name', 'address']
+    list_per_page = 100
+    readonly_fields = ['created_at']
+
+
+@admin.register(AttractionImage)
+class AttractionImageAdmin(admin.ModelAdmin):
+    list_display = ['id', 'attraction', 'image', 'is_active', 'created_at']
+    list_filter = ['is_active']
+    search_fields = ['attraction__name']
+    list_per_page = 100
