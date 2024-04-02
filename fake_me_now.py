@@ -5,8 +5,8 @@ from django.db import IntegrityError
 from faker import Faker
 from django.conf import settings
 from core.settings import DOMAIN
-from src.services.dinestay.models import (
-    Accommodation, Type, DiningVenue)
+from src.services.dine_stay.models import (
+    Accommodation, Type, Dining)
 from src.core.models import Country, NewsLetter
 from src.services.events.models import (
     Event, EventType, Participant, Guest
@@ -579,7 +579,7 @@ def dining_venue_fake():
         lon = fake.longitude()
 
         try:
-            DiningVenue.objects.create(
+            Dining.objects.create(
                 name=name,
                 description=description,
                 thumbnail=thumbnail,
