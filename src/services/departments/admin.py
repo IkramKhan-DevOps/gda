@@ -22,7 +22,7 @@ class DepartmentAdmin(admin.ModelAdmin):
     search_fields = ['name']
     readonly_fields = ['created_at']
     fieldsets = [
-        ('', {'fields': ['name', 'description', 'rank', 'image', 'message', 'is_active']}),
+        ('', {'fields': ['name', 'description','image', 'is_active']}),
         ('Dates', {'fields': ['created_at']}),
     ]
 
