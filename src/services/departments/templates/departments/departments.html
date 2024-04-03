@@ -37,43 +37,42 @@
 <!--==================================================-->
 
 <div class="project-area inner mt-4">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 text-center">
-				<div class="section-title center">
-					<h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">latest works </h4>
-					<h1>Building A Greener Future</h1>
-					<h1>Get Echofy Benefits</h1>
-				</div>
-			</div>
-		</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-title center">
+                    <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">OUR DEPARTMENTS </h4>
+                    <h1>Galiyat Development Authority</h1>
+                    <h1>Building A Greener Future</h1>
+                </div>
+            </div>
+        </div>
 
-    		{% for dept in departments %}
-        		<div class="row">
-            		<div class="col-lg-4 col-md-6">
-                		<div class="single-project-box">
-                    		<div class="project-thumb">
-                        		<img src="{{ dept.image.url }}" alt="">
-                    		</div>
-                    		<div class="project-content">
-                        		<h4>{{ dept.name }} Department</h4>
-                        
-                            		{% for director in dept.directors.all %}
-                                		<p>Director: {{ director.name }}</p>
-									{% endfor %}
-                        
-                        		<a href="#" class="project-button">View Details<i class="bi bi-arrow-right-short"></i></a>
-                        
-                        		<div class="project-shape">
-                            		<img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
-                        		</div>
-                    		</div>
-                		</div>
-            		</div>								
-        		</div>
-    		{% endfor %}
+        {% for dept in departments %}
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-project-box">
+                        <div class="project-thumb">
+                            <img src="{{ dept.image.url }}" alt="">
+                        </div>
+                        <div class="project-content">
+                            <h4>{{ dept.name }} Department</h4>
+                            {% if dept.director %}
+                                <p>Director: {{ dept.director.name }}</p>
+                            {% else %}
+                                <p>No Director Assigned</p>
+                            {% endif %}
+                            <a href="{% url 'departments:department_detail' dept.slug %}" class="project-button">View Details<i class="bi bi-arrow-right-short"></i></a>
+                            <div class="project-shape">
+                                <img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>								
+            </div>
+        {% endfor %}
 
-	</div>
+    </div>
 </div>
 
 <!--==================================================-->

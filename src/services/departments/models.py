@@ -7,6 +7,7 @@ from django_ckeditor_5.fields import CKEditor5Field
 class Department(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
+    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
     image = ResizedImageField(
         size=[500, 500], quality=75, upload_to='projects/department/images', blank=True, null=True,
         help_text='size of image must be 500*500 and format must be png image file'
@@ -22,6 +23,10 @@ class Department(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def save(self, *args, **kwargs):
+        self.slug = self.name.replace(' ', '-').lower()
+        super(Department, self).save(*args, **kwargs)
     
     
 class Personnel(models.Model):
