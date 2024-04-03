@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (
-    Accommodation, AccommodationCategory, Dining, AccommodationFeature, DiningFeature
+    Accommodation, AccommodationCategory, Dining, AccommodationFeature, DiningFeature, AccommodationImages, DiningImages
 )
 
 
@@ -21,6 +21,11 @@ class AccommodationCategoryAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 
+class AccommodationImageInline(admin.TabularInline):
+    model = AccommodationImages
+    extra = 3
+
+
 @admin.register(Accommodation)
 class AccommodationAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'category', 'phone', 'email', 'is_active', 'created_at']
@@ -36,9 +41,11 @@ class AccommodationAdmin(admin.ModelAdmin):
         ('content', {'fields': ['description', 'content']}),
         ('Status and Dates', {'fields': ['is_active', 'created_at']}),
     ]
-
+    inlines = [AccommodationImageInline]
 
 """ DINING """
+
+
 
 
 @admin.register(DiningFeature)
@@ -46,6 +53,10 @@ class DiningFeatureAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'is_active', 'created_at']
     list_filter = ['is_active']
     search_fields = ['name']
+
+class DiningImageInline(admin.TabularInline):
+    model = DiningImages
+    extra = 3
 
 
 @admin.register(Dining)
@@ -64,9 +75,4 @@ class DineAdmin(admin.ModelAdmin):
         ('Status and Dates', {'fields': ['is_active', 'created_at']}),
     ]
 
-    
-
-
-
-
-
+    inlines = [DiningImageInline]

@@ -1,0 +1,106 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+
+{% block title %} Departments {% endblock title %}
+
+
+{% block content %}
+<!--==================================================-->
+<!-- Start Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12 text-center">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Departments</h4>
+					</div>
+					<ul>
+						<li><a href="#"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">GDA</a></li>
+						<li>Departments</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Breadcumb Area -->
+<!--==================================================-->
+
+
+
+<!--==================================================-->
+<!-- Strat Department Area -->
+<!--==================================================-->
+<div class="project-area inner mt-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<div class="section-title center">
+					<h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">latest works </h4>
+					<h1>Building A Greener Future</h1>
+					<h1>Get Echofy Benifits</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4 col-md-6">
+				<div class="single-project-box">
+					<div class="project-thumb">
+						<img src="{% static 'website/images/departments/img-1.jpg' %}" alt="">
+					</div>
+					<div class="project-content">
+						<h4>Mr.Zahid Hussain kazmi</h4>
+						<a href="project-details.html">Technical Department</a>
+						<a class="project-button" href="project-details.html">View Details<i class="bi bi-arrow-right-short"></i></a>
+						<div class="project-shape">
+							<img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</div>				
+			<div class="col-lg-4 col-md-6">
+				<div class="single-project-box">
+					<div class="project-thumb">
+						<img src="{% static 'website/images/departments/img-2.jpg' %}" alt="">
+					</div>
+					<div class="project-content">
+						<h4>Environment</h4>
+						<a href="project-details.html">Mr.Adnan</a>
+						<a class="project-button" href="project-details.html">BCA<i class="bi bi-arrow-right-short"></i></a>
+						<div class="project-shape">
+							<img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</div>				
+			<div class="col-lg-4 col-md-6">
+				<div class="single-project-box">
+					<div class="project-thumb">
+						<img src="{% static 'website/images/departments/img-3.jpg' %}" alt="">
+					</div>
+					<div class="project-content">
+						<h4>Mr.Tehmas Ayub</h4>
+						<a href="project-details.html">Tourism Department</a>
+						<a class="project-button" href="project-details.html">View Details<i class="bi bi-arrow-right-short"></i></a>
+						<div class="project-shape">
+							<img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</div>				
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Department Area -->
+<!--==================================================-->
+
+
+
+{% endblock content %}
+    
+    

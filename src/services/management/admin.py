@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import (
-    Document, DocumentType, Department
+    Document, DocumentType, GalleryImage, GalleryVideo, News, NewsImages
 )
+
 
 
 @admin.register(Document)
@@ -23,13 +24,48 @@ class DocumentTypeAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 
-@admin.register(Department)
-class DepartmentAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'is_active', 'created_at']
+
+
+@admin.register(GalleryImage)
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'description', 'created_at']
     list_filter = ['is_active', 'created_at']
-    search_fields = ['name']
+    search_fields = ['title']
+    date_hierarchy = 'created_at'
     readonly_fields = ['created_at']
     fieldsets = [
-        ('', {'fields': ['name', 'description', 'rank', 'image', 'message', 'is_active']}),
+        ('', {'fields': ['title', 'description', 'image', 'is_active']}),
         ('Dates', {'fields': ['created_at']}),
     ]
+    
+
+@admin.register(GalleryVideo)
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'description', 'created_at']
+    list_filter = ['is_active', 'created_at']
+    search_fields = ['title']
+    date_hierarchy = 'created_at'
+    readonly_fields = ['created_at']
+    fieldsets = [
+        ('', {'fields': ['title', 'description', 'video', 'thumbnail', 'is_active']}),
+        ('Dates', {'fields': ['created_at']}),
+    ]
+
+
+class NewsImagesInline(admin.TabularInline):
+    model = NewsImages
+    extra = 3
+
+@admin.register(News)
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'description', 'created_at']
+    list_filter = ['is_active', 'created_at']
+    search_fields = ['title']
+    date_hierarchy = 'created_at'
+    readonly_fields = ['created_at', 'updated_at']
+    fieldsets = [
+        ('', {'fields': ['title', 'description', 'is_active']}),
+        ('content', {'fields': ['content', 'thumbnail']}),
+        ('Dates', {'fields': ['created_at', 'updated_at']}),
+    ]
+    inlines = [NewsImagesInline] 

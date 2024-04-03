@@ -78,6 +78,20 @@ class Accommodation(models.Model):
     def delete(self, *args, **kwargs):
         self.thumbnail.delete(save=True)
         super(Accommodation, self).delete(*args, **kwargs)
+        
+class AccommodationImages(models.Model):
+    accommodation = models.ForeignKey(Accommodation, on_delete=models.SET_NULL, related_name='accommodation_images', null = True)
+    image = ResizedImageField(
+        size=[500, 500], quality=75, upload_to='dine-stay/accommodation/images', blank=True, null=True,
+        help_text='size of image must be 500*500 and format must be png image file'
+    )
+
+    class Meta:
+        verbose_name = 'Accommodation Image'
+        verbose_name_plural = 'Accommodation Images'
+
+    def __str__(self):
+        return self.accommodation.name
 
 
 """ DINING """
@@ -143,3 +157,17 @@ class Dining(models.Model):
         self.thumbnail.delete(save=True)
         super(Dining, self).delete(*args, **kwargs)
         
+
+class DiningImages(models.Model):
+    dining = models.ForeignKey(Dining, on_delete=models.SET_NULL, related_name='dining_images', null= True)
+    image = ResizedImageField(
+        size=[500, 500], quality=75, upload_to='dine-stay/diningVenue/images', blank=True, null=True,
+        help_text='size of image must be 500*500 and format must be png image file'
+    )
+
+    class Meta:
+        verbose_name = 'Dining Image'
+        verbose_name_plural = 'Dining Images'
+
+    def __str__(self):
+        return self.dining.name

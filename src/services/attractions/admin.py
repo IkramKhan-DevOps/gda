@@ -21,6 +21,11 @@ class AttractionCategoryAdmin(admin.ModelAdmin):
     list_per_page = 100
 
 
+class AttractionImageInline(admin.TabularInline):
+    model = AttractionImage
+    extra = 3
+
+
 @admin.register(Attraction)
 class AttractionAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -40,11 +45,5 @@ class AttractionAdmin(admin.ModelAdmin):
     search_fields = ['name', 'address']
     list_per_page = 100
     readonly_fields = ['created_at']
+    inlines = [AttractionImageInline]
 
-
-@admin.register(AttractionImage)
-class AttractionImageAdmin(admin.ModelAdmin):
-    list_display = ['id', 'attraction', 'image', 'is_active', 'created_at']
-    list_filter = ['is_active']
-    search_fields = ['attraction__name']
-    list_per_page = 100
