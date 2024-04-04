@@ -7,6 +7,8 @@ from django_ckeditor_5.fields import CKEditor5Field
 class Department(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
+    content = CKEditor5Field('Text', config_name='extends', null=True, blank=True)
+    mission_statement = models.TextField(blank=True, null=True)
     slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
     image = ResizedImageField(
         size=[500, 500], quality=75, upload_to='projects/department/images', blank=True, null=True,
@@ -63,6 +65,22 @@ class DirectorGeneral(Personnel):
         ordering = ['-id']
         verbose_name = 'Director General'
         verbose_name_plural = 'Director Generals'
+    
+    def __str__(self):
+        return self.name
+    
+    def delete(self, *args, **kwargs):
+        self.image.delete(save=True)
+        super(Directors, self).delete(*args, **kwargs)
+
+
+class Chairman(Personnel):
+    department = models.CharField(max_length=100, default="Chairman")
+    
+    class Meta:
+        ordering = ['-id']
+        verbose_name = 'Chairman'
+        verbose_name_plural = 'Chairmen'
     
     def __str__(self):
         return self.name

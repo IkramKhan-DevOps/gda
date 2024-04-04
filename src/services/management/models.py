@@ -91,7 +91,7 @@ class GalleryVideo(models.Model):
 class News(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    content = CKEditor5Field('Text', config_name='extends', null=True, blank=True)
+    content = CKEditor5Field('Text', config_name='extends', null=True, blank=True, help_text='Add content here')
     thumbnail = ResizedImageField(
         size=[500, 500], quality=75, upload_to='news/images', blank=True, null=True,
         help_text='size of image must be 500*500 and format must be png image file'

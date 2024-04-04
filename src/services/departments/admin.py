@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Projects, Department, Directors, DirectorGeneral
+from .models import Projects, Department, Directors, DirectorGeneral, Chairman
 
 @admin.register(Projects)
 class ProjectAdmin(admin.ModelAdmin):
@@ -22,7 +22,8 @@ class DepartmentAdmin(admin.ModelAdmin):
     search_fields = ['name']
     readonly_fields = ['created_at']
     fieldsets = [
-        ('', {'fields': ['name', 'description','image', 'is_active']}),
+        ('', {'fields': ['name', 'image','mission_statement', 'is_active']}),
+        ('content', {'fields': ['description','content']}),
         ('Dates', {'fields': ['created_at']}),
     ]
 
@@ -42,6 +43,19 @@ class PersonalAdmin(admin.ModelAdmin):
     
 @admin.register(DirectorGeneral)
 class DirectorGeneralAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'created_at']
+    list_filter = ['created_at']
+    search_fields = ['name']
+    date_hierarchy = 'created_at'
+    readonly_fields = ['created_at']
+    fieldsets = [
+        ('', {'fields': ['image','name', 'message']}),
+        ('Dates', {'fields': ['created_at']}),
+    ]
+    
+    
+@admin.register(Chairman)
+class ChairmanAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'created_at']
     list_filter = ['created_at']
     search_fields = ['name']

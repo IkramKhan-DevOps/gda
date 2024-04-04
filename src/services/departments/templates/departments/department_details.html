@@ -20,8 +20,16 @@
 						<h4>Department Details</h4>
 					</div>
 					<ul>
+						
+						{% if department.name %}
+						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">{{department.name}}</a></li>
+						<li>Department Details</li>
+						{% else %}
 						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">GDA</a></li>
 						<li>Department Details</li>
+						{% endif %}
+							
+						
 					</ul>
 				</div>
 			</div>
@@ -51,41 +59,21 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="project-details-content">
-							<h4>Rapidiously Formulate efficient</h4>
-							<p class="project-details-desc">Alternative innovation to ethical network environmental whiteboard pursue compelling results for premier methods empowerment. Dramatically architect go forward opportunities before user-centric partnerships. Credibly implement exceptional </p>	
+							<h4>About Our Department</h4>
+							{{department.description}}
+							<h3>More Details</h3>
+							<p class="project-details-desc">{{department.content}}</p>
 
-							<p class="project-details-desc">Continually fashion orthogonal leadership skills whereas wireless metrics. Uniquely syndicate exceptional opportunities with interdependent users. Globally enhance fully tested meta-services rather than pandemic solutions. Proactively integrate client-integrate go forward architectures and turnkey meta-services. Interactively harness integrated ROI whereas frictionless products.</p>
+							
+							<a class="project-details-text" href="#">Our Mission</a>
 
-							<h3>Quickly Parallel Task</h3>
-							<p class="project-details-desc">Innovate wireless e-markets for inexpensive e-markets. Monotonectally grow progressive processes before seamless ideas facilitate an expanded array of scenarios rather than backend users. Objectively impact intuitive users and low-risk high-yield networks. Conveniently supply visionary</p>
-
-							<div class="row align-items-center">
-								<div class="col-lg-6">
-									<div class="project-details-item-images">
-										<img src="{% static 'website/images/inner-images/project-details-item-images.jpg' %}" alt="">
-									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="project-details-list-item">
-										<h4>Project Benifits</h4>
-										<ul>
-											<li><i class="bi bi-check-circle-fill"></i>Innovate wireless market</li>
-											<li><i class="bi bi-check-circle-fill"></i>Productivate resource sucking</li>
-											<li><i class="bi bi-check-circle-fill"></i>Proactively unleash oriented communities</li>
-											<li><i class="bi bi-check-circle-fill"></i>Credibly develop progressive archi</li>
-											<li><i class="bi bi-check-circle-fill"></i>Phosfluorescently to customer</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<a class="project-details-text" href="#">Competently architect intermandated deliverables client niches continually underwhelm</a>
-
-							<p class="project-details-desc">Appropriately communicate economically sound e-commerce after enterprise services. Dramatically target cross-media solutions and error-free platforms. Monotonectally pontificate 24/365 human capital and dynamic potentialities compellingly pursue</p>
+							<p class="project-details-desc">{{department.mission_statement}}</p>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-4">
+			
+			<div class="col-lg-4 mt-4">
 				<div class="row">
 					<div class="col-lg-12">
 					   <div class="widget-sidber-contact-box">
@@ -102,6 +90,7 @@
 					</div>
 				</div>
 			</div>
+		
 		</div>
 	</div>
 </div>
@@ -124,52 +113,29 @@
 				</div>
 			</div>
 		</div>
+		
+		
+	{% if departments %}
+		{% for dept in departments %}
+			
 		<div class="row">
 			<div class="col-lg-4 col-md-6">
 				<div class="single-project-box">
 					<div class="project-thumb">
-						<img src="{% static 'website/images/departments/img-3.jpg' %}" alt="">
+						<img src="{{dept.image.url}}" alt="">
 					</div>
 					<div class="project-content">
-						<h4>Mr.Tehmas Ayub</h4>
-						<a href="project-details.html">Tourism Department</a>
-						<a class="project-button" href="project-details.html">View Details<i class="bi bi-arrow-right-short"></i></a>
+						<h4>Mr.{{director.name}}</h4>
+						<a href="{% url 'departments:department_detail' dept.slug %}">{{dept.name}}</a>
+						<a class="project-button" href="{% url 'departments:department_detail' dept.slug %}">View Details<i class="bi bi-arrow-right-short"></i></a>
 						<div class="project-shape">
 							<img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
 						</div>
 					</div>
 				</div>
-			</div>					
-			<div class="col-lg-4 col-md-6">
-				<div class="single-project-box">
-					<div class="project-thumb">
-						<img src="{% static 'website/images/departments/img-3.jpg' %}" alt="">
-					</div>
-					<div class="project-content">
-						<h4>Mr.Tehmas Ayub</h4>
-						<a href="project-details.html">Tourism Department</a>
-						<a class="project-button" href="project-details.html">View Details<i class="bi bi-arrow-right-short"></i></a>
-						<div class="project-shape">
-							<img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
-						</div>
-					</div>
-				</div>
-			</div>					
-			<div class="col-lg-4 col-md-6">
-				<div class="single-project-box">
-					<div class="project-thumb">
-						<img src="{% static 'website/images/departments/img-3.jpg' %}" alt="">
-					</div>
-					<div class="project-content">
-						<h4>Mr.Tehmas Ayub</h4>
-						<a href="project-details.html">Tourism Department</a>
-						<a class="project-button" href="project-details.html">View Details<i class="bi bi-arrow-right-short"></i></a>
-						<div class="project-shape">
-							<img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
-						</div>
-					</div>
-				</div>
-			</div>						
+			</div>
+		{% endfor %}					
+	{% endif %}		
 		</div>
 	</div>
 </div>

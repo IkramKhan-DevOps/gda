@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'src.services.dine_stay.apps.DineStayAppConfig',
     'src.services.attractions.apps.AttractionAppConfig',
     'src.services.departments.apps.DepartmentsAppConfig',
+    'src.services.forest.apps.ForestAppConfig',
 
     # WEB APPS
     'src.web.website',
