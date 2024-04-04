@@ -1,14 +1,15 @@
 from django.contrib import admin
-from .models import Greenery, GreeneryType, Wildlife
+from .models import Greenery, GreeneryType, Wildlife, WildlifeType
 
 @admin.register(Greenery)
 class GreeneryAdmin(admin.ModelAdmin):
     list_display = ('name', 'created_at', 'is_active')
     list_filter = ('is_active', 'created_at')
     search_fields = ('name', 'id')
+    readonly_fields = ('created_at',)
     fieldsets = (
-        ('', {'fields': ('name', 'image', 'content', 'types')}),
-        ('Status', {'fields': ('is_active',)}),
+        ('', {'fields': ('name', 'image', 'content','is_active', 'types')}),
+        ('Dates', {'fields': ('created_at',)}),
     )
     
 @admin.register(GreeneryType)
@@ -24,7 +25,17 @@ class WildlifeAdmin(admin.ModelAdmin):
     list_display = ('name', 'created_at', 'is_active')
     list_filter = ('is_active', 'created_at')
     search_fields = ('name', 'id')
+    readonly_fields = ('created_at',)
     fieldsets = (
-        ('', {'fields': ('name', 'image', 'content')}),
-        ('Status', {'fields': ('is_active',)}),
+        ('', {'fields': ('name', 'image', 'content', 'is_active', 'types' )}),
+        ('Dates', {'fields': ('created_at',)}),
+        
+    )
+
+@admin.register(WildlifeType)
+class WildlifeTypeAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+    fieldsets = (
+        ('', {'fields': ('name',)}),
     )
