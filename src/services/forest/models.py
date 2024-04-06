@@ -8,7 +8,8 @@ class Wildlife(models.Model):
     image = ResizedImageField(
         size=[800, 600], quality=75, upload_to='forest/wildlife', help_text='size of image must be 800*600'
         )
-    types = models.ManyToManyField('WildlifeType', related_name='wildlife', blank=True, help_text='Select the type of wildlife eg birds, animals etc')
+    types = models.ManyToManyField('WildlifeType', related_name='type', blank=True, help_text='Select the type of wildlife eg birds, animals etc')
+    
     content = CKEditor5Field(
         'Text', config_name='extends', null=True, blank=True, help_text='Description of the wildlife'
         )

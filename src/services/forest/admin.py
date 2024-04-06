@@ -39,3 +39,4 @@ class WildlifeTypeAdmin(admin.ModelAdmin):
     fieldsets = (
         ('', {'fields': ('name',)}),
     )
+    
