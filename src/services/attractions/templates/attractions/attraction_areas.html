@@ -42,9 +42,9 @@
                 <!-- Feature Start -->
                 <div class="col-xl-4 col-lg-4">
                     <div class="card"> 
-                        <a href="{% url 'website:attractiondetail' %}"><img class="card-img-top" src="{{area.image.url}} "></a>
+                        <a href="{% url 'attractions:attraction_points' area.slug %}"><img class="card-img-top" src="{{area.image.url}} "></a>
                         <div class="card-body">
-                            <a href="{% url 'website:attractiondetail' %}"><h3 class="card-title">{{area.name}}</h3></a>
+                            <a href="{% url 'attractions:attraction_points' area.slug %}"><h3 class="card-title">{{area.name}}</h3></a>
                             <p class="card-text">{{area.detail}}</p>
                             <a href="{% url 'attractions:attraction_points' area.slug %}" class="btn btn-primary">View Points</a>
                         </div>
