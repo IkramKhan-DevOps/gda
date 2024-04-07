@@ -19,6 +19,7 @@ urlpatterns += [
     path('', include('src.services.events.urls', namespace='events')),
     path('', include('src.services.departments.urls', namespace='departments')),
     path('', include('src.services.attractions.urls', namespace='attractions')),
+    path('', include('src.services.dine_stay.urls', namespace='dine_stay')),
 ]
 
 """ EXTERNAL REQUIRED APPS ----------------------------------------------------------------------------------------- """

@@ -40,6 +40,7 @@ class AccommodationCategory(models.Model):
 class Accommodation(models.Model):
     name = models.CharField(max_length=255, unique=True)
     description = models.TextField(null=True, blank=True)
+    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
     content = CKEditor5Field('Text', config_name='extends', null=True, blank=True)
 
     video = models.URLField(
@@ -74,6 +75,10 @@ class Accommodation(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def save(self, *args, **kwargs):
+        self.slug = self.name.replace(' ', '-').lower()
+        super(Accommodation, self).save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
         self.thumbnail.delete(save=True)
@@ -117,7 +122,7 @@ class DiningFeature(models.Model):
 
 class Dining(models.Model):
     name = models.CharField(max_length=255, unique=True)
-
+    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
     content = CKEditor5Field('Text', config_name='extends', null=True, blank=True)
 
@@ -156,6 +161,10 @@ class Dining(models.Model):
     def delete(self, *args, **kwargs):
         self.thumbnail.delete(save=True)
         super(Dining, self).delete(*args, **kwargs)
+        
+    def save(self, *args, **kwargs):
+        self.slug = self.name.replace(' ', '-').lower()
+        super(Dining, self).save(*args, **kwargs)
         
 
 class DiningImages(models.Model):
