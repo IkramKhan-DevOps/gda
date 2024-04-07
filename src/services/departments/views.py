@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView
-from .models import Department, Directors, Chairman
+from .models import Department, Directors
 
 
 class DepartmentListView(ListView):

@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (
-    AttractionFeature, Attraction, AttractionImage, AttractionCategory
+    AttractionFeature, Attraction, AttractionImage, AttractionCategory, AttractionArea
 )
 
 
@@ -35,7 +35,7 @@ class AttractionAdmin(admin.ModelAdmin):
             ],
         }),
         ('media', {'fields': ['thumbnail', 'video']}),
-        ('location', {'fields': ['address', 'latitude', 'longitude']}),
+        ('location', {'fields': ['area','address', 'latitude', 'longitude']}),
         ('content', {'fields': ['content']}),
         ('Status and Dates', {'fields': ['is_active', 'created_at']}),
 
@@ -47,3 +47,12 @@ class AttractionAdmin(admin.ModelAdmin):
     readonly_fields = ['created_at']
     inlines = [AttractionImageInline]
 
+
+@admin.register(AttractionArea)
+class AttractionAreaAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'is_active', 'created_at']
+    list_filter = ['is_active']
+    search_fields = ['name']
+    list_per_page = 100
+    readonly_fields = ['created_at', 'slug']
+    

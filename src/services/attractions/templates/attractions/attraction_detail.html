@@ -119,55 +119,53 @@ margin: 0;
 <!-- End Breadcumb Area -->
 <!--==================================================-->
 
-
 <section class="attractions-details-section">
-			
-    <div class="container py-5"> <!-- Add padding on y-axis -->
+    <div class="container py-5"> 
         <div class="row">
-            <!-- Attraction Details -->
-            <div class="col-lg-12"> <!-- Make it full width on large screens -->
-                <h2 class="mt-0">MushkPuri Track</h2>
-                <h3 class="pt-4">Description</h3> <!-- Add padding to the top -->
-                <p class="mb-4">A serene haven in Pakistan, offering tranquility amidst charming landscapes for a perfect getaway.</p> <!-- Add margin to the bottom -->
+            {% if attraction %}
+                <!-- Attraction Details -->
+                <div class="col-lg-12"> 
+                    <h2 class="mt-0">{{ attraction.name }}</h2>
+                    <h3 class="pt-4">Description</h3> 
+                    <p class="mb-4">{{ attraction.description }}</p>
 
-                <h3>Details</h3>
-                <div class="attractions-info mb-4"> <!-- Add margin to the bottom -->
-                    <p><strong>Location:</strong> Nathiagali</p>
-                    <p><strong>Distance from Downtown:</strong> 4 km</p>
-                    <p><strong>Rating:</strong> 4.5/5</p>
-                    <p><strong>Open Hours:</strong> 9:00 AM - 6:00 PM</p>
-                        <p><strong>Entry Fee:</strong> $10 per person</p>
-                        <p><strong>Facilities:</strong> Parking, Restrooms, Food stalls</p>
+                    <h3>Details</h3>
+                    <div class="attractions-info mb-4"> 
+                        <p><strong>Location:</strong> {{ attraction.address }}</p>
+                        <p><strong>Facilities:</strong> {{ attraction.features }}</p>
+                        <p><strong>Category:</strong> {{ attraction.category }}</p>
+                        <p><strong>Features:</strong> {{ attraction.features }}</p>
                     </div>
-    
+
                     <h3>Additional Information</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut velit quis enim tincidunt consequat sed ut odio. Sed eu urna sed lorem aliquet laoreet. Integer nec risus nec sapien lobortis sollicitudin. Proin euismod felis nec magna lobortis, in scelerisque ligula ultrices. In hac habitasse platea dictumst. Integer auctor, sapien nec sodales viverra, nulla odio placerat tortor, a consectetur nisl velit nec leo.</p>
-    
-                    <h3>How to Get There</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut velit quis enim tincidunt consequat sed ut odio. Sed eu urna sed lorem aliquet laoreet. Integer nec risus nec sapien lobortis sollicitudin. Proin euismod felis nec magna lobortis, in scelerisque ligula ultrices. In hac habitasse platea dictumst. Integer auctor, sapien nec sodales viverra, nulla odio placerat tortor, a consectetur nisl velit nec leo.</p>
-    
+                    <p>{{attraction.content}}</p>
                     <h3>Gallery</h3>
-                    <div class="additional-images d-flex flex-wrap">
-                        <div class="p-1">
-                            <img src="{% static 'website/images/attractions/gallery-1.jpg' %}" alt="Additional Image" class="img-fluid rounded">
+                    {% if attraction.images.all %}
+                        <div class="additional-images d-flex flex-wrap">
+                            {% for image in attraction.images.all %}
+                                <div class="p-1">
+                                    <img src="{{ image.image.url }}" alt="Additional Image" class="img-fluid rounded">
+                                </div>
+                            {% endfor %}
                         </div>
-                        <div class="p-1">
-                            <img src="{% static 'website/images/attractions/gallery-2.jpg' %}" alt="Additional Image" class="img-fluid rounded">
-                        </div>
-                        <div class="p-1">
-                            <img src="{% static 'website/images/attractions/gallery-3.jpg' %}" alt="Additional Image" class="img-fluid rounded">
-                        </div>
-                    </div>
+                    {% else %}
+                        <h3> No Image Found </h3>
+                    {% endif %}
                 </div>
-    
+
                 <!-- Attraction Image -->
-                <div class="col-lg-12 order-lg-first"> <!-- Make it full width on large screens and order it first -->
-                    <img src="{% static 'website/images/attractions/attractions-3.jpg' %}" alt="Khanaspur" class="img-fluid rounded shadow-sm mb-4"> <!-- Add margin to the bottom -->
+                <div class="col-lg-12 order-lg-first"> 
+                    <img src="{{ attraction.thumbnail.url }}" alt="{{ attraction.name }}" class="img-fluid rounded shadow-sm mb-4"> 
                 </div>
-            </div>
+            {% else %}
+                <div class="col-md-12">
+                    <h2>Attraction Not Found</h2>
+                </div>
+            {% endif %}
         </div>
-    
-    </section>
+    </div>
+</section>
+
     
     {% endblock content %}
     

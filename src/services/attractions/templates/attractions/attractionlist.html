@@ -1,0 +1,71 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+
+{% block title %} Attractions Areas {% endblock title %}
+
+{% block content %}
+
+<!--==================================================-->
+<!-- Start Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12 text-center">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Attractions List</h4>
+					</div>
+					<ul>
+						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Galiyat</a></li>
+						<li>Attractions</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Breadcumb Area -->
+<!--==================================================-->
+
+
+<section class="feature-five mt-5 mb-50" >
+    <div class="container">
+        <div class="row">
+        
+            {% if areas %}
+
+                    {% for area in areas %}
+
+                <!-- Feature Start -->
+                <div class="col-xl-4 col-lg-4">
+                    <div class="card"> 
+                        <a href="{% url 'website:attractiondetail' %}"><img class="card-img-top" src="{{area.image.url}} "></a>
+                        <div class="card-body">
+                            <a href="{% url 'website:attractiondetail' %}"><h3 class="card-title">{{area.name}}</h3></a>
+                            <p class="card-text">{{area.detail}}</p>
+                            <a href="{% url 'attractions:attraction_points' area.slug %}" class="btn btn-primary">View Points</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature End -->
+                    
+                    {% endfor %}
+
+            {% else %}
+            
+                <div class="mt-50 mb-100 ml-200">
+                <h3>No Attraction Areas Found</h3>
+            </div>
+        
+            {% endif %}
+            
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+    
+    
