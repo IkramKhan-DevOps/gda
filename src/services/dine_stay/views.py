@@ -4,7 +4,6 @@ from django.views.generic import ListView, DetailView
 class AccommodationListView(ListView):
     model = Accommodation
     template_name = 'dine_stay/accommodations.html'
-    context_object_name = 'accommodations'
     paginate_by = 10
     
     def get_queryset(self):
@@ -15,6 +14,7 @@ class AccommodationListView(ListView):
         context = super().get_context_data(**kwargs)
         context['accommodations'] = self.get_queryset()
         return context
+    
     
 class AccommodationDetailView(DetailView):
     model = Accommodation
@@ -31,10 +31,10 @@ class AccommodationDetailView(DetailView):
         
         return context
     
+    
 class DiningListView(ListView):
     model = Dining
-    template_name = 'dine_stay/dinings.html'
-    context_object_name = 'dinings'
+    template_name = 'dine_stay/dining.html'
     paginate_by = 10
     
     def get_queryset(self):
@@ -49,8 +49,7 @@ class DiningListView(ListView):
     
 class DiningDetailView(DetailView):
     model = Dining
-    template_name = 'dine_stay/dining_details.html'
-    context_object_name = 'dining'
+    template_name = 'dine_stay/dining_detail.html'
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
     

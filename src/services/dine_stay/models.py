@@ -51,6 +51,7 @@ class Accommodation(models.Model):
         help_text='size of thumbnail must be 500*500 and format must be png image file'
     )
 
+    area = models.ManyToManyField('DiningAndAccommodationArea', related_name='accommodation_area', blank=True)
     category = models.ForeignKey(AccommodationCategory, on_delete=models.SET_NULL, blank=True, null=True)
     features = models.ManyToManyField(AccommodationFeature, related_name='features', blank=True)
 
@@ -83,6 +84,7 @@ class Accommodation(models.Model):
     def delete(self, *args, **kwargs):
         self.thumbnail.delete(save=True)
         super(Accommodation, self).delete(*args, **kwargs)
+        
         
 class AccommodationImages(models.Model):
     accommodation = models.ForeignKey(Accommodation, on_delete=models.SET_NULL, related_name='accommodation_images', null = True)
@@ -126,6 +128,7 @@ class Dining(models.Model):
     description = models.TextField(null=True, blank=True)
     content = CKEditor5Field('Text', config_name='extends', null=True, blank=True)
 
+    area = models.ManyToManyField('DiningAndAccommodationArea', related_name='dining_area', blank=True)
     features = models.ManyToManyField(DiningFeature, related_name='features', blank=True)
     
     video = models.URLField(
@@ -180,3 +183,24 @@ class DiningImages(models.Model):
 
     def __str__(self):
         return self.dining.name
+    
+    
+""" DINING and ACCOMMODATION Area"""
+
+class DiningAndAccommodationArea(models.Model):
+    name = models.CharField(max_length=50, unique=True, help_text='Name of the area e.g Nathiagali, Ayubia etc', null = True)
+    image = ResizedImageField(
+        size=[800, 600], quality=75, upload_to='dine-stay/area', help_text='size of image must be 800*600'
+    )
+    
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = 'Area Dining and Accommodation'
+        verbose_name_plural = 'Area Dining and Accommodations'
+        
+    def delete(self, *args, **kwargs):
+        self.image.delete()
+        super(DiningAndAccommodationArea, self).delete(*args, **kwargs)
+        

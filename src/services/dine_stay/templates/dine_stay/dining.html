@@ -1,0 +1,70 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+
+{% block title %} Dining {% endblock title %}
+
+
+
+  
+
+{% block content %}
+
+<!--==================================================-->
+<!-- Start Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12 text-center">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Dinning</h4>
+					</div>
+					<ul>
+						<li><a href="{% url 'website:home' %}"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Galiyat</a></li>
+						<li>Dinning</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Breadcumb Area -->
+<!--==================================================-->
+
+
+{% if dinings %}
+{% for dining in dinings %}
+<div class="container my-5">
+  <!--Section: Content-->
+  <section class="text-center">
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card">
+          <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+            <img src="{{dining.thumbnail.url}}" class="img-fluid" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{dining.name}}</h5>
+            <p class="card-text">
+              {{dining.description|truncatechars:120}}
+            </p>
+            <a href="{% url 'dine_stay:dining_detail' dining.slug %}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!--Section: Content-->
+
+</div>
+<!--Main layout-->
+{% endfor %}
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,184 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block title %}
+    Hotel Details
+{% endblock title %}
+
+
+{% block style %}
+
+    /* Custom Styles */
+    .hotel-details-section {
+        font-family: 'Arial', sans-serif; /* You can choose a more decorative font if preferred */
+        color: #333; /* Standard text color for readability */
+        background-color: #f4f4f4; /* Light background to offset the text and image */
+    }
+    
+    .hotel-details-section h2 {
+        color: #0056b3; /* A deeper blue for the hotel name */
+        font-size: 2.8rem; /* Slightly larger font size */
+    }
+    
+    .hotel-details-section h3 {
+        color: #008000; /* A rich green for subheadings */
+        font-size: 1.8rem; /* Slightly larger font size */
+        margin-top: 1rem; /* Space above the subheading */
+    }
+    
+    .hotel-details-section p {
+        font-size: 1.1rem;
+        line-height: 1.8; /* Increased line-height */
+        color: #555; /* Slightly lighter text for the description */
+    }
+    
+    .hotel-info strong {
+        color: #343a40; /* Bootstrap's dark grey */ 
+    }
+    
+    .list-inline-item .badge {
+        background-color: #ff9800; /* A bright orange for tags */
+        color: #fff;
+        padding: 0.5em 1em;
+    }
+    
+    .additional-images img {
+        border: 4px solid #0056b3; /* Blue border for additional images */
+        margin: 0.5rem; /* Space around images */
+    }
+    
+    /* Main Image Enhancement */
+    .hotel-main-image {
+        box-shadow: 0 8px 15px rgba(0,0,0,0.3); /* Add shadow for depth */
+        border-radius: 10px; /* Rounded corners for the image */
+    }
+    
+    /* Responsive Image Grid */
+    @media (min-width: 992px) {
+        .additional-images .p-1 {
+            width: 33.3333%; /* Three images per row on larger screens */
+            padding: 0.5rem;
+        }
+    }
+
+    /* Product Card Styles */
+    .product-card {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        width: 300px; /* Fixed width */
+        height: 400px; /* Fixed height */
+    }
+
+    .product-card img {
+        width: 100%; /* Full width of the card */
+        height: 200px; /* Fixed height for the image */
+        object-fit: cover; /* Ensures the image covers the area without distortion */
+    }
+
+    .product-card .card-body {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 200px; /* Remaining height for the content */
+    }
+
+    .product-card .card-title, .card-text {
+    margin: 0;
+    }
+    
+{% endblock style %}
+    
+
+{% block content %}
+
+<!--==================================================-->
+<!-- Start Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12 text-center">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Hotels</h4>
+					</div>
+					<ul>
+						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Hotel</a></li>
+						<li>Details</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Breadcumb Area -->
+<!--==================================================-->
+
+
+<section class="hotel-details-section">
+			
+    <div class="container py-5"> 
+        <div class="row">
+            
+            {% if accommodations %}
+                
+            {% for hotel in accommodations %}
+            <!-- Hotel Details -->
+            <div class="col-lg-12">
+                <h2 class="mt-0">{{hotel.name}}</h2>
+                <h3 class="pt-4">Description</h3>
+                <p class="mb-4">{{hotel.content | safe}}</p>
+
+                <h3>Details</h3>
+                <div class="hotel-info mb-4"> 
+                    <p><strong>Phone Number:</strong>{{hotel.phone}}</p>
+                    <p><strong>Area:</strong>#</p>
+                    <p><strong>Location:</strong>{{hotel.address}}</p>
+                </div>
+                <h3>Facilities</h3>
+                
+                
+                <ul class="list-inline mb-4">
+                    <li class="list-inline-item"><span class="badge bg-primary">#</span></li>
+                </ul>
+            </div>
+            
+
+            <!-- Hotel Image -->
+            <div class="col-lg-12 order-lg-first">
+                
+                    <img src="{{hotel.thumbnail.url}}" alt="" class="img-fluid rounded shadow-sm mb-4">
+            </div>
+
+                    <div class="col-lg-12">
+                    <h3>Additional Images</h3>
+                
+                    {% if hotel.image %}
+                    {% for image in hotel.image %}
+                    
+                    
+                    <div class="additional-images d-flex flex-wrap">
+                            <div class="p-1">
+                                <img src="{{image.image.url}}" alt="Additional Image" class="img-fluid rounded">
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                        <h2>No Image Found</h2>
+                    {% endif %}
+
+            {% endfor %}
+            {% else %}
+                    <h2>No Hotel Found</h2>
+            {% endif %}
+        </div>
+    </div>
+
+</section>
+
+{% endblock content %}
+    

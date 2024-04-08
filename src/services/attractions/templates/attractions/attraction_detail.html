@@ -127,7 +127,7 @@ margin: 0;
                 <div class="col-lg-12"> 
                     <h2 class="mt-0">{{ attraction.name }}</h2>
                     <h3 class="pt-4">Description</h3> 
-                    <p class="mb-4">{{ attraction.description }}</p>
+                    <p class="mb-4">{{ attraction.description | safe }}</p>
 
                     <h3>Details</h3>
                     <div class="attractions-info mb-4"> 
@@ -138,7 +138,7 @@ margin: 0;
                     </div>
 
                     <h3>Additional Information</h3>
-                    <p>{{attraction.content}}</p>
+                    <p>{{attraction.content | safe}}</p>
                     <h3>Gallery</h3>
                     {% if attraction.images.all %}
                         <div class="additional-images d-flex flex-wrap">

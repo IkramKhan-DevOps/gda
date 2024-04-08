@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (
-    Accommodation, AccommodationCategory, Dining, AccommodationFeature, DiningFeature, AccommodationImages, DiningImages
+    Accommodation, AccommodationCategory, Dining, AccommodationFeature, DiningFeature, AccommodationImages, DiningImages, DiningAndAccommodationArea
 )
 
 
@@ -37,16 +37,13 @@ class AccommodationAdmin(admin.ModelAdmin):
         ('media', {'fields': ['video', 'thumbnail']}),
         ('Contact', {'fields': ['phone', 'email']}),
         ('Social Links', {'fields': ['website', 'facebook', 'instagram']}),
-        ('Location', {'fields': ['address', 'latitude', 'longitude']}),
+        ('Location', {'fields': ['area','address', 'latitude', 'longitude']}),
         ('content', {'fields': ['description', 'content']}),
         ('Status and Dates', {'fields': ['is_active', 'created_at']}),
     ]
     inlines = [AccommodationImageInline]
 
 """ DINING """
-
-
-
 
 @admin.register(DiningFeature)
 class DiningFeatureAdmin(admin.ModelAdmin):
@@ -70,9 +67,19 @@ class DineAdmin(admin.ModelAdmin):
         ('media', {'fields': ['video', 'thumbnail']}),
         ('Contact', {'fields': ['phone', 'email']}),
         ('Social Links', {'fields': ['website', 'facebook', 'instagram']}),
-        ('Location', {'fields': ['address', 'latitude', 'longitude']}),
+        ('Location', {'fields': ['area','address', 'latitude', 'longitude']}),
         ('content', {'fields': ['description', 'content']}),
         ('Status and Dates', {'fields': ['is_active', 'created_at']}),
     ]
 
     inlines = [DiningImageInline]
+    
+    
+""" DINING AND ACCOMMODATION AREA """
+@admin.register(DiningAndAccommodationArea)
+class DiningAndAccommodationAreaAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name']
+    search_fields = ['name']
+    fieldsets = [
+        ('', {'fields': ['name']}),
+    ]

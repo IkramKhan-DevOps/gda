@@ -4,7 +4,7 @@ from .views import AccommodationListView, AccommodationDetailView, DiningListVie
 app_name = 'events'
 urlpatterns = [
 path('accommodations/', AccommodationListView.as_view(), name='accommodations'),
-path('accommodations/<slug:slug>/', AccommodationDetailView.as_view(), name='accommodation_detail'),
+path('accommodations/<slug:slug>/', AccommodationDetailView.as_view(), name='hotel_details'),
 path('dinings/', DiningListView.as_view(), name='dinings'),
 path('dinings/<slug:slug>/', DiningDetailView.as_view(), name='dining_detail'),
 

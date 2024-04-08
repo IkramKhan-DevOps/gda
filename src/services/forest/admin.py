@@ -17,7 +17,7 @@ class GreeneryTypeAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
     fieldsets = (
-        ('', {'fields': ('name',)}),
+        ('', {'fields': ('name', 'image')}),
     )
     
 @admin.register(Wildlife)
@@ -27,7 +27,7 @@ class WildlifeAdmin(admin.ModelAdmin):
     search_fields = ('name', 'id')
     readonly_fields = ('created_at',)
     fieldsets = (
-        ('', {'fields': ('name', 'image', 'content', 'is_active', 'types' )}),
+        ('', {'fields': ('name','scientific_name', 'image','description', 'content', 'is_active', 'types' )}),
         ('Dates', {'fields': ('created_at',)}),
         
     )
@@ -37,6 +37,6 @@ class WildlifeTypeAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
     fieldsets = (
-        ('', {'fields': ('name',)}),
+        ('', {'fields': ('name', 'image')}),
     )
     

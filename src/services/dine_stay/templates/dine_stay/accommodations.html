@@ -170,26 +170,39 @@
           </div>
         </div>
       </div>
-      <div class="col-md-8">
+
+<!--======================Hotel Card End============================-->
+
+{% if accommodations %}
+      
+{% for hotel in accommodations %}
+
+
+<div class="col-md-8">
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-4 hotel-card">
             <div class="product-single">
               <div class="product-img">
-                <a href="{% url 'website:hotels_details' %}"><img src="{% static 'website/images/hotels/hotel.jpeg' %}" alt=" Main Image" class="img-fluid"></a>
+                <a href="{% url 'dine_stay:hotel_details' hotel.slug %}"><img src="{{hotel.thumbnail.url}}" alt=" Main Image" class="img-fluid"></a>
               </div>
               <div class="product-content">
                 <h4 class="product-title">
-                  <a href="{% url 'website:hotels_details' %}">Elites Hotel</a>
+                  <a href="{% url 'dine_stay:hotel_details' hotel.slug %}">{{hotel.name}}</a>
                 </h4>
-                <p class="product-location">Location: Nathiagali</p>
-                <p class="product-budget">Budget: High</p>
-                <p class="product-luxury">Luxury: High</p>
+                <p class="product-budget">Category:{{hotel.category}}</p>
               </div>
             </div>
           </div>
 
         </div>
       </div>
+      {% endfor %}
+
+{% else %}
+<p>No Hotels Found</p>
+      {% endif %}
+<!--======================Hotel Card End============================-->
+
     </div>
   </div>
 </section>
