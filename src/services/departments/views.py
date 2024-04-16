@@ -1,5 +1,6 @@
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import Department, Directors
+from .models import Chairman, Department, DirectorGeneral, Directors, Personnel
 
 
 class DepartmentListView(ListView):
@@ -37,19 +38,18 @@ class DepartmentDetailView(DetailView):
         return context
 
 
-class DirectorListView(ListView):
-    model = Directors
-    template_name = 'departments/directors.html'
-    context_object_name = 'directors'
-    paginate_by = 10
-    
-    def get_queryset(self):
-        directors = Directors.objects.filter(is_active=True)
-        for director in directors:
-            director.department = Department.objects.filter(directors=director).first()
-        return directors
+class PersonalsView(ListView):
+    template_name = 'departments/team.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['directors'] = self.get_queryset()
-        return context
+    def get(self, request, *args, **kwargs):
+        chairmen = Chairman.objects.filter(is_active=True)
+        director_generals = DirectorGeneral.objects.filter(is_active=True)
+        directors = Directors.objects.filter(is_active=True)
+        
+        team_members = {
+            'chairmen': chairmen,
+            'director_generals': director_generals,
+            'directors': directors,
+        }
+        
+        return render(request, self.template_name, team_members)

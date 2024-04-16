@@ -1,7 +1,7 @@
 from django.db import models
 from django_resized import ResizedImageField
 from django_ckeditor_5.fields import CKEditor5Field
-
+from django.utils.text import slugify
 
 class Wildlife(models.Model):
     name = models.CharField(max_length=255)
@@ -33,8 +33,9 @@ class Wildlife(models.Model):
         super().delete(*args, **kwargs)
         
     def save(self, *args, **kwargs):
-        self.slug = self.name.replace(' ', '-').lower()
-        super(Wildlife , self).save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 
 class WildlifeType(models.Model):

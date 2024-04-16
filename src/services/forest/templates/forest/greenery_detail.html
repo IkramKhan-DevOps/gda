@@ -3,7 +3,7 @@
 
 
 
-{% block title %} Wild life Details {% endblock title %}
+{% block title %} Event Details {% endblock title %}
   
 
 {% block content %}
@@ -12,14 +12,13 @@
 <!--==================================================-->
 <!-- Start  Breadcumb Area -->
 <!--==================================================-->
-
 <div class="breadcumb-area mt-4">
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-lg-12 text-center">
 				<div class="breadcumb-content">
 					<div class="breadcumb-title">
-						<h4>{{wildlife_details.name}}</h4>
+						<h4>{{greenery_details.name}}</h4>
 					</div>
 					<ul>
 						
@@ -29,22 +28,21 @@
 		</div>
 	</div>
 </div>
-
 <!--==================================================-->
 <!-- End Breadcumb Area -->
 <!--==================================================-->
 
-<section class="event-details mt-4 mb-5">
+<section class="event-details mt-4">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card bg-light rounded shadow-sm">
-                    <img src="{{ wildlife_details.image.url }}" alt="{{ wildlife_details.name }}" class="card-img-top img-fluid">
+                    <img src="{{ wildlife_details.image.url }}" alt="{{ greenery_details.name }}" class="card-img-top img-fluid">
                     <div class="card-body">
-                        <h5 class="card-title mt-2 text-success">{{ wildlife_details.name }}</h5>
-                        <p class="text-muted">{{ wildlife_details.scientific_name }}</p>
-                        <p class="text-justify">{{ wildlife_details.description }}</p>
-                        <p class="text-justify">{{ wildlife_details.content | safe }}</p>
+                        <h5 class="card-title mt-2 text-success">{{ greenry_details.name }}</h5>
+                        <p class="text-muted">{{ greenery_details.scientific_name }}</p>
+                        <p class="text-justify">{{ greenery_details.description }}</p>
+                        <p class="text-justify">{{ greenery_details.content | safe }}</p>
                     </div>
                 </div>
             </div>

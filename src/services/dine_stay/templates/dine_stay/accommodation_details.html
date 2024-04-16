@@ -135,18 +135,16 @@
                 <h3>Details</h3>
                 <div class="hotel-info mb-4"> 
                     <p><strong>Phone Number:</strong>{{hotel.phone}}</p>
-                    <p><strong>Area:</strong>#</p>
+                    <p><strong>Area:</strong>{{hotel.area.name}}</p>
                     <p><strong>Location:</strong>{{hotel.address}}</p>
+                    <p><strong>Features:</strong> 
+                        <ul>
+                            {% for feature in hotel.features.all %}
+                                <li>{{ feature.name }}</li>
+                            {% endfor %}
+                        </ul>
                 </div>
-                <h3>Facilities</h3>
-                
-                
-                <ul class="list-inline mb-4">
-                    <li class="list-inline-item"><span class="badge bg-primary">#</span></li>
-                </ul>
-            </div>
             
-
             <!-- Hotel Image -->
             <div class="col-lg-12 order-lg-first">
                 

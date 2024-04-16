@@ -1,0 +1,37 @@
+
+{% block title %}
+    FeedBack
+{% endblock title %}
+
+
+{% block content %}
+<h1>Feedback Form</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+    <!-- Display form errors -->
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field, errors in form.errors.items %}
+                <strong>{{ field|title }}</strong>:
+                {% for error in errors %}
+                    {{ error }}
+                {% endfor %}
+                <br>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Display success message if provided -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock content %}
+    

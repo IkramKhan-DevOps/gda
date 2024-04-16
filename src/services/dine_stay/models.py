@@ -51,7 +51,7 @@ class Accommodation(models.Model):
         help_text='size of thumbnail must be 500*500 and format must be png image file'
     )
 
-    area = models.ManyToManyField('DiningAndAccommodationArea', related_name='accommodation_area', blank=True)
+    area = models.ForeignKey('DiningAndAccommodationArea', related_name='accommodations', on_delete=models.SET_NULL, blank=True, null=True)
     category = models.ForeignKey(AccommodationCategory, on_delete=models.SET_NULL, blank=True, null=True)
     features = models.ManyToManyField(AccommodationFeature, related_name='features', blank=True)
 
@@ -128,7 +128,7 @@ class Dining(models.Model):
     description = models.TextField(null=True, blank=True)
     content = CKEditor5Field('Text', config_name='extends', null=True, blank=True)
 
-    area = models.ManyToManyField('DiningAndAccommodationArea', related_name='dining_area', blank=True)
+    area = models.ForeignKey('DiningAndAccommodationArea', related_name='dining_areas', on_delete=models.SET_NULL, blank=True, null=True)
     features = models.ManyToManyField(DiningFeature, related_name='features', blank=True)
     
     video = models.URLField(
