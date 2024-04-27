@@ -460,7 +460,6 @@ def attraction_fake():
         address = fake.address()
         latitude = fake.latitude()
         longitude = fake.longitude()
-        thumbnail = fake.image_url()
         video = fake.url()
         features = sample(list(AttractionFeature.objects.all()), k=5)
 
@@ -472,8 +471,6 @@ def attraction_fake():
                 address=address,
                 latitude=latitude,
                 longitude=longitude,
-                thumbnail=thumbnail,
-                video=video,
             )
             attraction.features.add(*features)
 
@@ -492,7 +489,6 @@ def accommodation_fake():
     for i in range(10):
         name = fake.sentence()
         description = fake.paragraph()
-        thumbnail = fake.image_url()
         video = fake.url()
         content = fake.paragraph()
         phone = fake.phone_number()
@@ -506,7 +502,6 @@ def accommodation_fake():
             Accommodation.objects.create(
                 name=name,
                 description=description,
-                thumbnail=thumbnail,
                 video=video,
                 content=content,
                 phone=phone,
@@ -529,7 +524,6 @@ def dining_venue_fake():
     for i in range(10):
         name = fake.sentence()
         description = fake.paragraph()
-        thumbnail = fake.image_url()
         video = fake.url()
         content = fake.paragraph()
         phone = fake.phone_number()
@@ -543,7 +537,6 @@ def dining_venue_fake():
             Dining.objects.create(
                 name=name,
                 description=description,
-                thumbnail=thumbnail,
                 video=video,
                 content=content,
                 phone=phone,

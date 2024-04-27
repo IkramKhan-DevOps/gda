@@ -7,4 +7,4 @@ class FeedbackAppConfig(AppConfig):
     verbose_name = 'Feedback'
 
     def ready(self):
-        import src.services.management.signals
+        import src.services.feedback.signals

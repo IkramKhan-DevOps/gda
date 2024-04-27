@@ -6,5 +6,5 @@ class EventAppConfig(AppConfig):
     name = 'src.services.events'
     verbose_name = 'Events'
 
-    def ready(self):
-        import src.services.events.signals
+    # def ready(self):
+        # import src.services.events.signals
