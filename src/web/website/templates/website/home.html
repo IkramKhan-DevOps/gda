@@ -2,26 +2,101 @@
 {% load static %}
 
 {% block title %} Home {% endblock title %}
+
+{% block style %}
+
+	.jumbotron {
+		background-color: #f8f9fa;
+		padding: 3rem;
+		border-radius: 15px;
+	}
+	.jumbotron h1 {
+		font-size: 3.5rem;
+		font-weight: bold;
+		text-align: center;
+	}
+	.jumbotron p {
+		font-size: 2rem;
+		text-align: center;
+	}
+	.jumbotron span {
+		font-size: 3.5rem;
+		color: #18cf30;
+	}	
+
+	.about-thumb {
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.about-image {
+		position: relative;
+		overflow: hidden;
+		border: 10px solid #fff; /* White border */
+		border-radius: 10px;
+	}
+	
+	.about-image img {
+		display: block;
+		width: 100%;
+		height: auto;
+		transition: transform 0.5s;
+	}
+	
+	.image-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		opacity: 0;
+		transition: opacity 0.5s;
+	}
+	
+	.hover-elements {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		opacity: 0;
+		transition: opacity 0.5s;
+	}
+	
+	.hover-content {
+		text-align: center;
+		color: #fff;
+	}
+	
+	.about-thumb:hover .image-overlay {
+		opacity: 1;
+	}
+	
+	.about-thumb:hover .hover-elements {
+		opacity: 1;
+	}
+	
+{% endblock style %}
+	
 {% block content %}	
-    	{% comment %} <!-- loder -->
-	<div class="loader-wrapper">
-		<span class="loader"></span>
-		<div class="loder-section left-section"></div>
-		<div class="loder-section right-section"></div>
-	</div> {% endcomment %}
 
 <!--==================================================-->
 <!-- Start Hero Area -->
 <!--==================================================-->
+
 <div class="hero-slides owl-carousel">	
 	<div class="hero-area d-flex align-items-center">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-12">
 					<div class="hero-content">
-						<h4 class="sub-title" data-animation="fadeInUp" data-delay="100ms">Galiyat Development Authority</h4>
-						<h1 class="main-title" data-animation="fadeInUp" data-delay="400ms">Be Safe Controls</h1>
-						<h1 class="main-title-2" data-animation="fadeInUp" data-delay="600ms" data-duration="1000ms">Environment</h1>
+						<h4 class="sub-title" data-animation="fadeInUp" data-delay="100ms">Tourist Destination of Pakistan</h4>
+						<h1 class="main-title" data-animation="fadeInUp" data-delay="400ms">Galiyat Development</h1>
+						<h1 class="main-title-2" data-animation="fadeInUp" data-delay="600ms" data-duration="1000ms">Authority</h1>
 						<p class="hero-desc" data-animation="fadeInUp" data-delay="800ms" data-duration="1000ms">Professionally optimize interdependent intellectual interoperable connect best practices. Progressively fabricate done</p>
 					</div>
 					<div class="echofy-button" data-animation="fadeInUp" data-delay="1000ms">
@@ -36,9 +111,9 @@
 		</div>
 		<div class="hero-social-icon" data-animation="fadeInLeft" data-delay="1000ms">
 			<ul>
-	            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-				<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+	            <li><a href="https://www.facebook.com/gdaabbottabad/"><i class="fab fa-facebook-f"></i></a></li>
+				<li><a href="https://twitter.com/gdaabbottabad?lang=en"><i class="fab fa-twitter"></i></a></li>
+				<li><a href="https://www.instagram.com/gdaabbottabad/"><i class="fab fa-instagram"></i></a></li>
 				<li class="text">Follow Us</li>
 			</ul>
 		</div>
@@ -50,9 +125,9 @@
 			<div class="row align-items-center">
 				<div class="col-lg-12">
 					<div class="hero-content">
-						<h4 class="sub-title" data-animation="fadeInUp" data-delay="100ms">Natural Environment</h4>
-						<h1 class="main-title" data-animation="fadeInUp" data-delay="400ms">Be Safe Controls</h1>
-						<h1 class="main-title-2" data-animation="fadeInUp" data-delay="600ms">Environment</h1>
+						<h4 class="sub-title" data-animation="fadeInUp" data-delay="100ms">Tourist Destination of Pakistan</h4>
+						<h1 class="main-title" data-animation="fadeInUp" data-delay="400ms">Galiyat Development</h1>
+						<h1 class="main-title-2" data-animation="fadeInUp" data-delay="600ms">Authority</h1>
 						<p class="hero-desc" data-animation="fadeInUp" data-delay="800ms">Professionally optimize interdependent intellectual interoperable connect best practices. Progressively fabricate done</p>
 					</div>
 					<div class="echofy-button" data-animation="fadeInUp" data-delay="1000ms">
@@ -67,9 +142,9 @@
 		</div>
 		<div class="hero-social-icon" data-animation="fadeInLeft" data-delay="1000ms">
 			<ul>
-	            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-				<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+	            <li><a href="https://www.facebook.com/gdaabbottabad/"><i class="fab fa-facebook-f"></i></a></li>
+				<li><a href="https://twitter.com/gdaabbottabad?lang=en"><i class="fab fa-twitter"></i></a></li>
+				<li><a href="https://www.instagram.com/gdaabbottabad/"><i class="fab fa-instagram"></i></a></li>
 				<li class="text">Follow Us</li>
 			</ul>
 		</div>
@@ -84,57 +159,34 @@
 <!--==================================================-->
 <!-- Start Text Area -->
 <!--==================================================-->
+s
 <section class="echofy-text-section" data-cues="zoomIn">
 	<div class="inner-container">
 		<div class="marquee">
+
 			<div class="marquee-block"> 
 				<!-- content-box -->
 				<div class="content-box">
-					<h6 class="title"><span><img src="{% static 'website/images/home1/text-shape.png' %}" alt="">Environmental</span></h6>
+					<h6 class="title"><span><img src="{% static 'website/images/home1/text-shape2.png' %}" width = auto height = 50px alt="">Galiyat Development Authority</span></h6>
 				</div>
 				<!-- content-box -->
 				<div class="content-box">
-					<h6 class="title"><span><img src="{% static 'website/images/home1/text-shape.png' %}" alt="">Ocean-Recycling</span></h6>
+					<h6 class="title"><span><img src="{% static 'website/images/home1/text-shape2.png' %}" width = auto height = 50px alt="">Tourist Destination of Pakistan</span></h6>
 				</div>
 				<!-- content-box -->
 				<div class="content-box">
-					<h6 class="title"><span><img src="{% static 'website/images/home1/text-shape.png' %}" alt="">Environmental</span></h6>
+					<h6 class="title"><span><img src="{% static 'website/images/home1/text-shape2.png' %}" width = auto height = 50px alt="">Galiyat Development Authority</span></h6>
 				</div>
 				<!-- content-box -->
 				<div class="content-box">
-					<h6 class="title"><span><img src="{% static 'website/images/home1/text-shape.png' %}" alt="">Renewable-Energy</span></h6>
+					<h6 class="title"><span><img src="{% static 'website/images/home1/text-shape2.png' %}" width = auto height = 50px alt="">Tourist Destination of Pakistan</span></h6>
 				</div>
-				<!-- content-box -->
-				<div class="content-box">
-					<h6 class="title"><span><img src="{% static 'website/images/home1/text-shape.png' %}" alt="">Ocean-Recycling</span></h6>
-				</div>
+				
 			</div>
-			<div class="marquee-block"> 
-				<!-- content-box -->
-				<div class="content-box">
-					<h6 class="title"><span><img src="{% static 'website/images/home1/text-shape.png' %}" alt="">Environmental</span></h6>
-				</div>
-				<!-- content-box -->
-				<div class="content-box">
-					<h6 class="title"><span><img src="{% static 'website/images/home1/text-shape.png' %}" alt="">Ocean-Recycling</span></h6>
-				</div>
-				<!-- content-box -->
-				<div class="content-box">
-					<h6 class="title"><span><img src="{% static 'website/images/home1/text-shape.png' %}" alt="">Environmental</span></h6>
-				</div>
-				<!-- content-box -->
-				<div class="content-box">
-					<h6 class="title"><span><img src="{% static 'website/images/home1/text-shape.png' %}" alt="">Renewable-Energy</span></h6>
-				</div>
-				<!-- content-box -->
-				<div class="content-box">
-					<h6 class="title"><span><img src="{% static 'website/images/home1/text-shape.png' %}" alt="">Ocean-Recycling</span></h6>
-				</div>
-			</div>
+			
 	  	</div>
 	</div>
 </section>
-
 
 <!--==================================================-->
 <!-- End Text Area -->
@@ -143,32 +195,61 @@
 
 
 <!--==================================================-->
+<!-- Start Counter Area -->
+<!--==================================================-->
+
+<div class="container mt-5">
+	<div class="jumbotron">
+		<h1 class="display-4">Welcome to Galiyat, Pakistan's hidden gem!</h1>
+		<p class="lead">Join the <span class="font-weight-bold">{{ visit_count }} </span>  people who have explored our website!</p>
+	</div>
+</div>
+
+
+<!--==================================================-->
+<!-- End Counter Area -->
+<!--==================================================-->
+
+<!--==================================================-->
 <!-- Strat About Area -->
 <!--==================================================-->
+
 <div class="about-area">
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-lg-6">
 				<div class="about-thumb">
-					<img src="{% static 'website/images/home1/about-thumb.png' %}" alt="">
-					<img class="about-thumb-shape" src="{% static 'website/images/home1/about-award.png' %}" alt="">
+					<div class="about-image">
+						<img src="{% static 'website/images/home1/about-thumb1.png' %}" height="800px" alt="">
+						<div class="image-overlay"></div>
+						<div class="hover-elements">
+							<div class="hover-elements">
+								<div class="hover-content">
+									<h3>Chairman Galiyat Development Authority</h3>
+									<p>As the Chairman of the Galiyat Development Authority, I am committed to leading our organization towards a sustainable and prosperous future. Our mission is to preserve the natural beauty of the Galiyat region while fostering economic growth and ensuring the well-being of our communities. Together, we are building a better tomorrow for generations to come.</p>
+								</div>
+							</div>
+							
+						</div>
+					</div>
 				</div>
+				
+				
 			</div>
 			<div class="col-lg-6">
 				<div class="about-right">
 					<div class="section-title left">
 						<h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">About GDA</h4>
-						<h1>Environmental Sustainable</h1>
-						<h1>Forever Green Future</h1>
+						<h1>Preserving Nature, </h1>
+						<h1>Building Tomorrow</h1>
 					</div>
 					<div class="single-about-box">
 						<div class="about-box-icon">
 							<img src="{% static 'website/images/home1/about-icon-1.png' %}" alt="">
 						</div>
 						<div class="about-box-content">
-							<h4>Economic Benefits</h4>
-							<p>Alternative innovation after ethical to network environmental
-                             whiteboard transparent growth natural done</p>
+							<h4>Environmental Leadership</h4>
+							<p>As the Chairman of the Board of Authority at GDA, Mr. Jehanzeb Khan is leading our efforts towards a sustainable and green future. Under his guidance, we are committed to fostering economic growth while preserving our environment.</p>
 						</div>
 					</div>					
 					<div class="single-about-box">
@@ -176,13 +257,18 @@
 							<img src="{% static 'website/images/home1/about-icon-2.png' %}" alt="">
 						</div>
 						<div class="about-box-content">
-							<h4>Safe Environment</h4>
-							<p>Alternative innovation after ethical to network environmental
-                             whiteboard transparent growth natural done</p>
+							<h4>Commitment to Safety</h4>
+							<p>At GDA, safety and environmental sustainability go hand in hand. With Mr. Jehanzeb Khan as our Chairman, we ensure that our projects not only bring economic benefits but also create a safe environment for everyone.</p>
+						</div>
+					</div>
+					<div class="single-about-box">
+						<div class="about-box-content">
+							<h4>Chairman Board of Authority GDA</h4>
+							<p>Mr. Jehanzeb Khan is the Chairman of the Board of Authority at GDA, leading our organization towards a sustainable and prosperous future. His visionary leadership ensures that our projects are environmentally friendly and economically beneficial.</p>
 						</div>
 					</div>
 					<div class="echofy-button">
-						<a href="about.html">More About <img src="{% static 'website/images/home1/button-shape.png' %}" alt=""></a>
+						<a href="departments:departments">More About Us<img src="{% static 'website/images/home1/button-shape.png' %}" alt=""></a>
 						<img class="two" src="{% static 'website/images/home1/button-shape-2.png' %}" alt="">
 					</div>	
                     <div class="about-shape-1">
@@ -196,6 +282,7 @@
 		</div>
 	</div>
 </div>
+
 
 <!--==================================================-->
 <!-- End About Area -->
@@ -477,6 +564,7 @@
 <!--==================================================-->
 <!-- Strat Project Area -->
 <!--==================================================-->
+
 <div class="project-area">
 	<div class="container-fluid">
 		<div class="row">

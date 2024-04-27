@@ -1,13 +1,11 @@
 from django.db import models
-from django_resized import ResizedImageField
-from django_ckeditor_5.fields import CKEditor5Field
 
 
 class Feedback(models.Model):
-    name = models.CharField(max_length=100, blank=False, required = True,)
-    email = models.EmailField(required=True, blank=False)
-    subject = models.CharField(max_length=100, blank=False, required = True,)
-    message = models.TextField(blank=False, required = True,)
+    name = models.CharField(max_length=100, blank=False)
+    email = models.EmailField(blank=False)
+    subject = models.CharField(max_length=100, blank=False)
+    message = models.TextField(blank=False)
     
     created_at = models.DateTimeField(auto_now_add=True)
     

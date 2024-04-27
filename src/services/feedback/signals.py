@@ -8,6 +8,6 @@ def send_feedback_email(sender, instance, created, **kwargs):
     if created:
         subject = 'New Feedback Submission'
         message = f'Name: {instance.name}\nEmail: {instance.email}\nSubject: {instance.subject}\nMessage: {instance.message}'
-        sender_email = 'alikazmi855@email.com'  # Update with your email address
-        recipient_list = ['alikazmi7767@email.com']  # Update with recipient email addresses
+        sender_email = 'alikazmi855@email.com'  # --------> my email address
+        recipient_list = ['alikazmi7767@email.com']  # ---------> receiver email address
         send_mail(subject, message, sender_email, recipient_list)

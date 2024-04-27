@@ -1,6 +1,6 @@
+from django.urls import path
+from .views import *
 
-
-app_name = 'events'
 urlpatterns = [
-
+     path('feedback/', FormView.as_view(), name='feedback'),
 ]

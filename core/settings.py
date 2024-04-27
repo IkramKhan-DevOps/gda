@@ -72,7 +72,8 @@ INSTALLED_APPS = [
     'src.services.attractions.apps.AttractionAppConfig',
     'src.services.departments.apps.DepartmentsAppConfig',
     'src.services.forest.apps.ForestAppConfig',
-    # 'src.services.weather.apps.WeatherAppConfig', Not used yet
+    'src.services.feedback.apps.FeedbackAppConfig',
+    
 
     # WEB APPS
     'src.web.website',
