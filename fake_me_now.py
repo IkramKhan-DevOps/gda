@@ -6,7 +6,7 @@ from faker import Faker
 from django.conf import settings
 from core.settings import DOMAIN
 from src.services.dine_stay.models import (
-    Accommodation, Type, Dining)
+    Accommodation, Dining)
 from src.core.models import Country, NewsLetter
 from src.services.events.models import (
     Event, EventType, Participant, Guest
@@ -495,7 +495,6 @@ def accommodation_fake():
         thumbnail = fake.image_url()
         video = fake.url()
         content = fake.paragraph()
-        stay_type = Type.objects.order_by('?').first()
         phone = fake.phone_number()
         email = fake.email()
         website = fake.url()
@@ -510,7 +509,6 @@ def accommodation_fake():
                 thumbnail=thumbnail,
                 video=video,
                 content=content,
-                stay_type=stay_type,
                 phone=phone,
                 email=email,
                 website=website,
@@ -534,7 +532,6 @@ def dining_venue_fake():
         thumbnail = fake.image_url()
         video = fake.url()
         content = fake.paragraph()
-        dine_type = Type.objects.order_by('?').first()
         phone = fake.phone_number()
         email = fake.email()
         website = fake.url()
@@ -549,7 +546,6 @@ def dining_venue_fake():
                 thumbnail=thumbnail,
                 video=video,
                 content=content,
-                dine_type=dine_type,
                 phone=phone,
                 email=email,
                 website=website,
@@ -565,24 +561,25 @@ def dining_venue_fake():
     print("Dining Venue ended")
     
 def main():
-    # basic_configuration()
-    
-    # country_fake()
-    # load_newsletters()
-    
-    # document_type_fake()
-    # document_fake()
-    
-    # event_type_fake()
-    # event_fake()
-    # participant_fake()
-    # guest_fake()
-    # accommodation_fake()
-    # dining_venue_fake()
-
-    # attraction_feature_fake()
-    # attraction_category_fake()
+    basic_configuration()
+    #
+    country_fake()
+    load_newsletters()
+    #
+    document_type_fake()
+    document_fake()
+    #
+    event_type_fake()
+    event_fake()
+    participant_fake()
+    guest_fake()
+    accommodation_fake()
+    dining_venue_fake()
+    #
+    attraction_feature_fake()
+    attraction_category_fake()
     attraction_fake()
+
 
 
 if __name__ == '__main__':

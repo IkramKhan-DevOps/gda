@@ -3,6 +3,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from .models import Feedback
 
+
 @receiver(post_save, sender=Feedback)
 def send_feedback_email(sender, instance, created, **kwargs):
     if created:
