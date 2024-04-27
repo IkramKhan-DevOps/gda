@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.views import View
-
 from src.core.models import NewsLetter
+from .models import Visit
 
 """ OFFICIAL """
 
@@ -31,9 +31,28 @@ class NewsLetterCreateView(View):
 """ UN-OFFICIAL """
 
 
-def home(request):
-    return render(request, 'website/home.html')
+def format_visit_count(count):
+    if count < 1000:
+        return str(count)
+    elif count < 1000000:
+        return f"{count // 1000}k"
+    elif count < 1000000000:
+        return f"{count // 1000000}M"
+    else:
+        return f"{count // 1000000000}B"
 
+def home(request):
+    visit_count = Visit.objects.first()
+
+    if not visit_count:
+        visit_count = Visit.objects.create(count=0)
+
+    visit_count.count += 1
+    visit_count.save()
+
+    formatted_count = format_visit_count(visit_count.count)
+
+    return render(request, 'website/home.html', {'visit_count': formatted_count})
 
 def about(request):
     return render(request, 'website/about.html')

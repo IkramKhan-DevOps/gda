@@ -1,0 +1,52 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block title %} Wild life list{% endblock title %}
+
+{% block content %}
+<!-- Start  Breadcumb Area -->
+<div class="breadcumb-area mt-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12 text-center">
+                <div class="breadcumb-content">
+                    <div class="breadcumb-title">
+                        <h4>WildLife Types</h4>
+                    </div>
+                    <ul>
+                        <li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">WildLife</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcumb Area -->
+
+<!-- Events Page Start -->
+<section class="events-page mt-4 mb-5">
+    <div class="container">
+        <div class="row">
+            
+            {% for wildlife_type in wildlife_types %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <a href="{% url 'forest:wildlife_list' %}">
+                        <img src="{{ wildlife_type.image.url }}" class="card-img-top" alt="Wildlife Type Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <span class="font-weight-bold text-muted">{{ wildlife_type.name }}</span>
+                        <h5 class="card-title mt-2">{{ wildlife_type.name }}</h5>
+                        <a href="{% url 'forest:wildlife_list'%}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+<!-- Events Page End -->
+
+
+{% endblock content %}

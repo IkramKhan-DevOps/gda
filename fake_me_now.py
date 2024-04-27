@@ -487,39 +487,8 @@ def attraction_fake():
 """ DINE STAY APP """
 
 
-def type_fake():
-    __print_start("Type")
-    types = [
-        {"name": "Hotel", "image": "Hotel image"},
-        {"name": "Resort", "image": "Resort image"},
-        {"name": "Motel", "image": "Motel image"},
-        {"name": "Inn", "image": "Inn image"},
-    ]
-
-    for type_data in types:
-        name = type_data["name"]
-        image = type_data["image"]
-
-        try:
-            Type.objects.create(
-                name=name,
-                image=image,
-            )
-
-            print(f"---- object: {name} created.")
-        except IntegrityError as e:
-            print(e.__str__())
-
-    __print_ended("Type")
-
-
 def accommodation_fake():
-    __print_start("Accommodation")
-    accommodations = [
-        {"name": "Hotel", "description": "Hotel description", "thumbnail": "Hotel thumbnail", "video": "Hotel video",
-         "content": "Hotel content", "stay_type": "Hotel", "phone": "+1234567890", "email": "guest1@gmail.com", "website": "www.hotel.com", "address": "Hotel address", "lat": "Hotel lat", "lon": "Hotel lon"},
-        {"name": "Resort", "description": "Resort description", "thumbnail": "Resort thumbnail", "video": "Resort video", "content": "Resort content", "stay_type": "Resort", "phone": "+1987654321", "email": "Hotel@gmail.com" , "website": "www.resort.com", "address": "Resort address", "lat": "Resort lat", "lon": "Resort lon"},
-    ] 
+    print("Accommodation")
     for i in range(10):
         name = fake.sentence()
         description = fake.paragraph()
@@ -531,8 +500,8 @@ def accommodation_fake():
         email = fake.email()
         website = fake.url()
         address = fake.address()
-        lat = fake.latitude()
-        lon = fake.longitude()
+        latitude = fake.latitude()
+        longitude = fake.longitude()
 
         try:
             Accommodation.objects.create(
@@ -546,24 +515,19 @@ def accommodation_fake():
                 email=email,
                 website=website,
                 address=address,
-                lat=lat,
-                lon=lon,
+                latitude=latitude,
+                longitude=longitude,
             )
 
             print(f"---- object: {name} created.")
         except IntegrityError as e:
             print(e.__str__())
             
-    __print_ended("Accommodation")
+    print("Accommodation ended")
     
     
 def dining_venue_fake():
-    __print_start("Dining Venue")
-    dining_venues = [
-        {"name": "Restaurant", "description": "Restaurant description", "thumbnail": "Restaurant thumbnail", "video": "Restaurant video", "content": "Restaurant content", "dine_type": "Restaurant", "phone": "+1234567890", "email": "alpiune@gmail.com" , "website": "www.restaurant.com", "address": "Restaurant address", "lat": "Restaurant lat", "lon": "Restaurant lon"},
-        {"name": "Cafe", "description": "Cafe description", "thumbnail": "Cafe thumbnail", "video": "Cafe video", "content": "Cafe content", "dine_type": "Cafe", "phone": "+1987654321", "email": "sweetTooth@gmail.com", "website": "www.cafe.com", "address": "Cafe address", "lat": "Cafe lat", "lon": "Cafe lon"},
-    ]
-    
+    print("Dining Venue")
     for i in range(10):
         name = fake.sentence()
         description = fake.paragraph()
@@ -575,8 +539,8 @@ def dining_venue_fake():
         email = fake.email()
         website = fake.url()
         address = fake.address()
-        lat = fake.latitude()
-        lon = fake.longitude()
+        latitude = fake.latitude()
+        longitude = fake.longitude()
 
         try:
             Dining.objects.create(
@@ -590,36 +554,34 @@ def dining_venue_fake():
                 email=email,
                 website=website,
                 address=address,
-                lat=lat,
-                lon=lon,
+                latitude=latitude,
+                longitude=longitude,
             )
 
             print(f"---- object: {name} created.")
         except IntegrityError as e:
             print(e.__str__())
         
-    __print_ended("Dining Venue")    
-
+    print("Dining Venue ended")
     
 def main():
     # basic_configuration()
-    #
+    
     # country_fake()
     # load_newsletters()
-    #
+    
     # document_type_fake()
     # document_fake()
-    #
+    
     # event_type_fake()
     # event_fake()
     # participant_fake()
     # guest_fake()
     # accommodation_fake()
-    # type_fake()
     # dining_venue_fake()
 
-    attraction_feature_fake()
-    attraction_category_fake()
+    # attraction_feature_fake()
+    # attraction_category_fake()
     attraction_fake()
 
 

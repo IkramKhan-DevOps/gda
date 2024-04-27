@@ -1,0 +1,74 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+
+{% block title %} Attractions {% endblock title %}
+
+{% block content %}
+
+<!--==================================================-->
+<!-- Start Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12 text-center">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Attractions</h4>
+					</div>
+					<ul>
+						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Galiyat</a></li>
+						<li>Attractions</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Breadcumb Area -->
+<!--==================================================-->
+
+
+<section class="feature-five mt-5 mb-5">
+    <div class="container">
+        <div class="row">
+            {% if attractions %}
+
+            {% for attraction in attractions  %}
+            
+            <!-- Feature One Single Start -->
+            <div class="col-xl-4 col-lg-4">
+                <div class="card">
+                    <a href=" {% url 'attractions:attraction_detail' attraction.slug %}"><img class="card-img-top" src="{{attraction.thumbnail.url}}" alt="Ayubia"></a>
+                    <div class="card-body">
+                        <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
+                            
+                            <p style="color: #333; margin-left: 10px; font-weight: bold;">{{attraction.address}}</p>
+                        
+                            <a href=" {% url 'attractions:attraction_detail' attraction.slug %}"><h3 class="card-title">{{attraction.name}}</h3></a>
+                            <p class="card-text">{{attraction.description}}</p>
+                            <a href="{% url 'attractions:attraction_detail' attraction.slug %}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Feature One Single End -->
+
+            {% endfor %}
+
+            {% else %}
+
+            <div class="mt-50 mb-100 ml-200">
+                <h3>No Attraction Points Found</h3>
+            </div>
+
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+    
+    

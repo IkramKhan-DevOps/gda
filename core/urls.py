@@ -16,7 +16,14 @@ handler500 = handler500
 """ INTERNAL REQUIRED APPS ----------------------------------------------------------------------------------------- """
 urlpatterns += [
     path('', include('src.web.urls')),
-    path('', include('src.services.events.urls')),
+    path('', include('src.services.events.urls', namespace='events')),
+    path('', include('src.services.departments.urls', namespace='departments')),
+    path('', include('src.services.attractions.urls', namespace='attractions')),
+    path('', include('src.services.dine_stay.urls', namespace='dine_stay')),
+    path('', include('src.services.forest.urls', namespace='forest')),
+    path('', include('src.services.feedback.urls')),
+    
+    
 ]
 
 """ EXTERNAL REQUIRED APPS ----------------------------------------------------------------------------------------- """

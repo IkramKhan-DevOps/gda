@@ -1,0 +1,148 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block title %} Department Details {% endblock title %}
+    
+
+
+{% block content %}
+
+
+<!--==================================================-->
+<!-- Start Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12 text-center">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Department Details</h4>
+					</div>
+					<ul>
+						
+						{% if department.name %}
+						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">{{department.name}}</a></li>
+						<li>Department Details</li>
+						{% else %}
+						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">GDA</a></li>
+						<li>Department Details</li>
+						{% endif %}
+							
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Breadcumb Area -->
+<!--==================================================-->
+
+
+
+<!--==================================================-->
+<!-- Strat Details Area-->
+<!--==================================================-->
+<div class="project-details-area mt-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="project-details-thumb">
+					<img src="{% static 'website/images/inner-images/project-details-thumb.jpg' %}" alt="">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="project-details-content">
+							<h4>About Our Department</h4>
+							{{department.description | safe}}
+							<h3>More Details</h3>
+							<p class="project-details-desc">{{department.content}}</p>
+
+							
+							<a class="project-details-text" href="#">Our Mission</a>
+
+							<p class="project-details-desc">{{department.mission_statement}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-lg-4 mt-4">
+				<div class="row">
+					<div class="col-lg-12">
+					   <div class="widget-sidber-contact-box">
+							<div class="widget-sidber-contact">
+								<img src="{% static 'website/images/inner-images/sidber-cont-icon.png' %}" alt="">
+							</div>
+							<p class="widget-sidber-contact-text">Call Us Anytime</p>
+							<h3 class="widget-sidber-contact-number">+123 (4567) 890</h3>
+							<span class="widget-sidber-contact-gmail"><i class="bi bi-envelope-fill"></i> mailto:example@gmail.com</span>
+							<div class="widget-sidber-contact-btn">
+								<a href="contact.html">Contact Us <i class="bi bi-arrow-right"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Details Area-->
+<!--==================================================-->
+
+
+
+<!--==================================================-->
+<!-- Strat Departments Area -->
+<!--==================================================-->
+<div class="project-area inner">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<div class="section-title center">
+					<h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Other </h4>
+					<h1>Departments</h1>
+				</div>
+			</div>
+		</div>
+		
+		
+	{% if departments %}
+		{% for dept in departments %}
+			
+		<div class="row">
+			<div class="col-lg-4 col-md-6">
+				<div class="single-project-box">
+					<div class="project-thumb">
+						<img src="{{dept.image.url}}" alt="">
+					</div>
+					<div class="project-content">
+						<h4>Mr.{{director.name}}</h4>
+						<a href="{% url 'departments:department_detail' dept.slug %}">{{dept.name}}</a>
+						<a class="project-button" href="{% url 'departments:department_detail' dept.slug %}">View Details<i class="bi bi-arrow-right-short"></i></a>
+						<div class="project-shape">
+							<img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}					
+	{% endif %}		
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End Department Area -->
+<!--==================================================-->
+
+    
+{% endblock content %}
+    

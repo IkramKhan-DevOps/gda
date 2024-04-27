@@ -5,6 +5,15 @@ from .models import (
 )
 
 
+class EventImageInline(admin.TabularInline):
+    model = EventImage
+    extra = 3
+
+
+class GuestInline(admin.TabularInline):
+    model = Guest
+    extra = 1
+
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     list_display = [
@@ -22,6 +31,7 @@ class EventAdmin(admin.ModelAdmin):
         ('Status', {'fields': ['is_active']}),
         ('Dates', {'fields': ['start_date', 'end_date', 'created_at']}),
     ]
+    inlines = [EventImageInline, GuestInline]
 
 
 @admin.register(EventType)
@@ -30,22 +40,8 @@ class EventTypeAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 
-@admin.register(EventImage)
-class EventImageAdmin(admin.ModelAdmin):
-    list_display = ['id', 'event', 'image', 'is_active', 'created_at']
-    list_filter = ['is_active']
-    search_fields = ['event']
-
-
 @admin.register(Participant)
 class ParticipantAdmin(admin.ModelAdmin):
     list_display = ['id', 'event', 'user', 'is_active', 'created_at']
     list_filter = ['is_active', 'created_at']
     search_fields = ['event', 'user']
-
-
-@admin.register(Guest)
-class GuestAdmin(admin.ModelAdmin):
-    list_display = ['id', 'full_name', 'email', 'phone_number', 'designation', 'is_active', 'created_at']
-    search_fields = ['event', 'full_name', 'email', 'phone_number']
-    list_filter = ['is_active', 'event']

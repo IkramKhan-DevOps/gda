@@ -60,10 +60,10 @@
 					<ul>
 						<li class="menu-item-has-children"><a href="{% url 'website:home' %}">Home</i></a></li>
 						
-						<li class="menu-item-has-children"><a href="#">Accomodations<i class="fas fa-chevron-down"></i></a>
+						<li class="menu-item-has-children"><a href="#">Dine & Stay<i class="fas fa-chevron-down"></i></a>
 							<ul class="sub-menu">
-								 <li><a href="{% url 'website:hotels' %}">Restaurants</a></li>
-								 <li><a href="{% url 'website:cafe' %}">Hotels and Cafes</a></li>
+								 <li><a href="{% url 'dine_stay:accommodations' %}">Restaurants</a></li>
+								 <li><a href="{% url 'dine_stay:dinings' %}">Hotels and Cafes</a></li>
 							</ul>
 						 </li>
 						 <li class="menu-item-has-children"><a href="#">Downloads<i class="fas fa-chevron-down"></i></a>
@@ -75,20 +75,17 @@
 								</ul>
 						 </li>
 
-						<li><a href="{% url 'website:attractions' %}">Attractions</a></li>
+						<li><a href="{% url 'attractions:attractions_list' %}">Attractions</a></li>
 
 						<li class="menu-item-has-children"><a href="#">More<i class="fas fa-chevron-down"></i></a>
 							<ul class="sub-menu">
 								<li><a href="{% url 'website:gda_act' %}">GDA Act</a></li>
-								<li><a href="{% url 'website:team' %}">Team</a></li>
-								<li><a href="{% url 'website:departments' %}">Departments</a></li>
+								<li><a href="{% url 'departments:gda_team' %}">Team</a></li>
+								<li><a href="{% url 'departments:departments' %}">Departments</a></li>
 								<li class="menu-item-has-children"><a href="#">Taxation<i class="fas fa-chevron-down"></i></a>
-									<ul class="sub-menu">
-										 <li><a href="{% url 'website:propertytax' %}">Property Taxes</a></li>
-										 <li><a href="{% url 'website:conservancytax' %}">Conservancy Taxes</a></li>
-										 <li><a href="{% url 'website:watertax' %}">Water Taxes</a></li>
-									</ul>
-								 </li>	 
+								<li><a href="{% url 'website:propertytax' %}">Property Taxes</a></li>
+								<li><a href="{% url 'website:conservancytax' %}">Conservancy Taxes</a></li>
+								<li><a href="{% url 'website:watertax' %}">Water Taxes</a></li> 
 							</ul>
 						 </li>
 					</ul>
@@ -129,7 +126,7 @@
 					<li class="menu-item-has-children"><a href="#">More<i class="fas fa-chevron-down"></i></a>
 						<ul class="sub-menu">
 							<li><a href="{% url 'website:gda_act' %}">GDA Act</a></li>
-							<li><a href="{% url 'website:team' %}">Team</a></li>
+							<li><a href="{% url 'departments:gda_team' %}">Team</a></li>
 							<li><a href="{% url 'website:departments' %}">Departments</a></li>
 							<li class="menu-item-has-children"><a href="#">Taxation<i class="fas fa-chevron-down"></i></a>
 								<ul class="sub-menu">

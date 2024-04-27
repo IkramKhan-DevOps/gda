@@ -69,10 +69,11 @@ INSTALLED_APPS = [
     'src.services.events.apps.EventAppConfig',
     'src.services.management.apps.ManagementAppConfig',
     'src.services.dine_stay.apps.DineStayAppConfig',
-    'src.services.gallery.apps.GalleryAppConfig',
     'src.services.attractions.apps.AttractionAppConfig',
-    'src.services.projects.apps.ProjectsAppConfig',
-    'src.services.news.apps.NewsAppConfig',
+    'src.services.departments.apps.DepartmentsAppConfig',
+    'src.services.forest.apps.ForestAppConfig',
+    'src.services.feedback.apps.FeedbackAppConfig',
+    
 
     # WEB APPS
     'src.web.website',

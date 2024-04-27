@@ -37,6 +37,7 @@ class AttractionCategory(models.Model):
 class Attraction(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
+    area = models.ForeignKey( 'AttractionArea', related_name='attractions', on_delete=models.SET_NULL, null=True, blank=False)
     category = models.ForeignKey(
         AttractionCategory, related_name='attractions', on_delete=models.SET_NULL, null=True, blank=False
     )
@@ -94,3 +95,27 @@ class AttractionImage(models.Model):
 
     def __str__(self):
         return self.attraction.name
+
+
+class AttractionArea(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    detail = models.TextField(help_text='Short description of area', null=True, blank=False)
+    slug = models.SlugField(max_length=100, unique=True, null = True)
+    image = ResizedImageField(
+        size=[800, 600], quality=75, upload_to='attractions/attraction/area', help_text='Size of image must be 800*600', null = True
+    )
+
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-id']
+        verbose_name = 'Area'
+        verbose_name_plural = 'Areas'
+
+    def __str__(self):
+        return self.name
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(AttractionArea, self).save(*args, **kwargs)
