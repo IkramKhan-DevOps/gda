@@ -113,15 +113,6 @@ def cafe(request):
 def cafedetail(request):
     return render(request, 'website/cafedetail.html')
 
-
-def event(request):
-    return render(request, 'website/events.html')
-
-
-def eventdetail(request):
-    return render(request, 'website/eventdetails.html')
-
-
 def watertax(request):
     return render(request, 'website/watertax.html')
 
@@ -132,19 +123,6 @@ def conservancytax(request):
 
 def propertytax(request):
     return render(request, 'website/property_tax.html')
-
-
-def attractions(request):
-    return render(request, 'website/attraction.html')
-
-
-def attractionlist(request):
-    return render(request, 'website/attractionlist.html')
-
-
-def attractiondetail(request):
-    return render(request, 'website/attractiondetail.html')
-
 
 def boqs(request):
     return render(request, 'website/boqs.html')
