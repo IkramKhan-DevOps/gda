@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator
 
 from .filters import AttractionAreaFilter, AttractionPointFilter
-from .models import Attraction, AttractionArea
+from .models import Attraction, AttractionArea, AttractionCategory
 from django.views.generic import ListView, DetailView, TemplateView, View
 
 
@@ -52,3 +52,8 @@ class AttractionDetailView(DetailView):
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
 
+    def get_context_data(self, **kwargs):
+        context = super(AttractionDetailView, self).get_context_data(**kwargs)
+        context['attraction_category'] = AttractionCategory.objects.all()[:15]
+        context['latest_attractions'] = Attraction.objects.filter(area_id__in=AttractionArea.objects.all())
+        return context
