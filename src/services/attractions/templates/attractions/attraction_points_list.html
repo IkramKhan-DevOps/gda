@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="blog-content">
                                     <a href="{% url 'attractions:attraction_detail' object.slug %}">{{ object.name }}</a>
-                                    <p>{{ object.detail|slice:200 }}...</p>
+                                    <p>{{ object.description|slice:200 }}...</p>
                                 </div>
                                 <div class="blog-arthor">
                                     <div class="blog-author-title">

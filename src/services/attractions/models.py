@@ -96,7 +96,6 @@ class AttractionImage(models.Model):
     def __str__(self):
         return self.attraction.name
 
-
 class AttractionArea(models.Model):
     name = models.CharField(max_length=100, unique=True)
     detail = models.TextField(help_text='Short description of area', null=True, blank=False)
