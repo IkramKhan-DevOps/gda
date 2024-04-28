@@ -6,5 +6,5 @@ class AttractionAppConfig(AppConfig):
     name = 'src.services.attractions'
     verbose_name = 'Attractions'
 
-    def ready(self):
-        import src.services.events.signals
+    # def ready(self):
+    #     import src.services.events.signals

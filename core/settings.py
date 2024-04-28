@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 
     # STARTER APPS
+    'widget_tweaks',
     'crispy_forms',
     'crispy_bootstrap5',
     'django_filters',
@@ -77,7 +78,6 @@ INSTALLED_APPS = [
 
     # WEB APPS
     'src.web.website',
-    'src.web.service_provider',
     'src.web.accounts',
     'src.web.admins',
 

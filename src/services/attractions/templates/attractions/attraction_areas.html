@@ -1,4 +1,5 @@
 {% extends 'website/base.html' %}
+{% load core_tags %}
 {% load static %}
 
 
@@ -6,66 +7,204 @@
 
 {% block content %}
 
-<!--==================================================-->
-<!-- Start Breadcumb Area -->
-<!--==================================================-->
-<div class="breadcumb-area">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-12 text-center">
-				<div class="breadcumb-content">
-					<div class="breadcumb-title">
-						<h4>Attractions List</h4>
-					</div>
-					<ul>
-						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Galiyat</a></li>
-						<li>Attractions</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Breadcumb Area -->
-<!--==================================================-->
-
-
-<section class="feature-five mt-5 mb-50" >
-    <div class="container">
-        <div class="row">
-        
-            {% if areas %}
-
-                    {% for area in areas %}
-
-                <!-- Feature Start -->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="card"> 
-                        <a href="{% url 'attractions:attraction_points' area.slug %}"><img class="card-img-top" src="{{area.image.url}} "></a>
-                        <div class="card-body">
-                            <a href="{% url 'attractions:attraction_points' area.slug %}"><h3 class="card-title">{{area.name}}</h3></a>
-                            <p class="card-text">{{area.detail}}</p>
-                            <a href="{% url 'attractions:attraction_points' area.slug %}" class="btn btn-primary">View Points</a>
+    <!--==================================================-->
+    <!-- Start Breadcumb Area -->
+    <!--==================================================-->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcumb-content">
+                        <div class="breadcumb-title">
+                            <h4>Attractions List</h4>
                         </div>
+                        <ul>
+                            <li><a href="index.html"><img
+                                    src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Galiyat</a>
+                            </li>
+                            <li>Attractions</li>
+                        </ul>
                     </div>
                 </div>
-                <!-- Feature End -->
-                    
-                    {% endfor %}
-
-            {% else %}
-            
-                <div class="mt-50 mb-100 ml-200">
-                <h3>No Attraction Areas Found</h3>
             </div>
-        
-            {% endif %}
-            
         </div>
     </div>
-</section>
+    <!--==================================================-->
+    <!-- End Breadcumb Area -->
+    <!--==================================================-->
+
+
+    <section class="feature-five mt-5 mb-50">
+        <div class="container justify-content-center">
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <form method="get">
+
+                        <div class="input-group mb-3">
+                            {{ filter_form }}
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-success btn-lg" type="submit"><i
+                                        class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="container">
+
+            <div class="row" id="attraction_areas_point_list">
+
+                {% if object_list %}
+                    {% for object in object_list %}
+                        <div class="col-lg-4 col-md-6 card-length">
+                            <div class="single-blog-box">
+                                <div class="single-blog-thumb">
+                                    <img src="{{ object.image|image_or_placeholder }}" alt="">
+                                </div>
+                                <div class="blog-content">
+                                    <a href="{% url 'attractions:attraction_points' object.slug %}">{{ object.name }}</a>
+                                    <p>{{ object.detail|slice:200 }}...</p>
+                                </div>
+                                <div class="blog-arthor">
+                                    <div class="blog-author-title">
+                                        <h6><span><i class="fa fa-eye"></i></span>View Points</h6>
+                                    </div>
+                                    <div class="blog-button">
+                                        <a href="{% url 'attractions:attraction_points' object.slug %}"><i
+                                                class="bi bi-arrow-right-short"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="mt-50 mb-100 ml-200">
+                        <h3 class="text-danger">No Attraction Areas Found</h3>
+                    </div>
+                {% endif %}
+
+
+            </div>
+            <nav class="custome-pagination">
+                <ul class="pagination justify-content-center">
+                    {% if object_list.has_next %}
+                        <li class="page-item">
+                            <button id="load-more-btn" class="btn btn-success btn-md text-white mt-4">Load More
+                            </button>
+                            <div class="align-items-center mb-4 mt-3 mt-sm-0" id="loading-spinner"
+                                 style="display:none;">
+
+                                <div class="spinner-grow text-success" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-success" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-success" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-success" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-success" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-success" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+
+                            </div>
+
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <div class="row align-items-center mb-4 text-center text-sm-start" id="pagination-element">
+                <div class="col-sm-5">
+                    <div class="text-muted" id="pagination-info">
+                        Showing {{ object_list.start_index }} to {{ object_list.end_index }}
+                        of {{ object_list.paginator.count }} entries
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock content %}
-    
-    
+{% block internal-js %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var page = {% if object_list.has_next %}{{ object_list.next_page_number }}{% else %}null{% endif %};
+            var maxPages = {{ object_list.paginator.num_pages }};
+            var loading = false;
+
+            function loadMore() {
+                if (loading || page === null || page > maxPages) {
+                    return;
+                }
+                loading = true;
+                $('#load-more-btn').hide();
+                $('#loading-spinner').show();
+                var searchQuery = window.location.search;
+
+                var filter_queryset = null
+                if (searchQuery) {
+                    filter_queryset = searchQuery + '&page=' + page
+                } else {
+                    filter_queryset = '?page=' + page
+                }
+
+                $.ajax({
+                    url: filter_queryset,
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (data) {
+                        var $data = $(data);
+                        var $shopList = $data.find('#attraction_areas_point_list');
+
+                        if ($shopList.find('.card-length').length > 0) {
+                            $('#attraction_areas_point_list').append($shopList.html());
+                            $('#loading-spinner').hide();
+                            $('#load-more-btn').show();
+                            page++;
+                            loading = false;
+
+                            updatePaginationInfo();
+                        } else {
+                            $('#loading-spinner').hide();
+                            $('#load-more-btn').hide();
+                        }
+                    },
+                    error: function () {
+                        loading = false;
+                    }
+                });
+            }
+
+            function updatePaginationInfo() {
+                $('#pagination-info').text('Showing 1 to ' + $('#attraction_areas_point_list .card-length').length + ' of {{ object_list.paginator.count }} entries');
+
+                if (page === null || page > maxPages) {
+                    $('#load-more-btn').hide();
+                }
+            }
+
+            if (page === null || page > maxPages) {
+                $('#load-more-btn').hide();
+            }
+
+            $('#load-more-btn').on('click', loadMore);
+        });
+    </script>
+{% endblock %}
+

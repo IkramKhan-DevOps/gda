@@ -6,5 +6,5 @@ class ManagementAppConfig(AppConfig):
     name = 'src.services.management'
     verbose_name = 'management'
 
-    def ready(self):
-        import src.services.management.signals
+    # def ready(self):
+    #     import src.services.management.signals

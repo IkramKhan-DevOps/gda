@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.generic import TemplateView
+
 from src.core.models import NewsLetter
 from .models import Visit
 
@@ -41,18 +43,24 @@ def format_visit_count(count):
     else:
         return f"{count // 1000000000}B"
 
-def home(request):
-    visit_count = Visit.objects.first()
 
-    if not visit_count:
-        visit_count = Visit.objects.create(count=0)
+class HomeTemplateView(TemplateView):
+    template_name = 'website/home.html'
 
-    visit_count.count += 1
-    visit_count.save()
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        visit_count = Visit.objects.first()
 
-    formatted_count = format_visit_count(visit_count.count)
+        if not visit_count:
+            visit_count = Visit.objects.create(count=0)
 
-    return render(request, 'website/home.html', {'visit_count': formatted_count})
+        visit_count.count += 1
+        visit_count.save()
+
+        formatted_count = format_visit_count(visit_count.count)
+        context['formatted_count'] = formatted_count
+        return context
+
 
 def about(request):
     return render(request, 'website/about.html')

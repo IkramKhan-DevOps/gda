@@ -6,7 +6,7 @@
 {% block style %}
 
 	.jumbotron {
-		background-color: #f8f9fa;
+		background-color: #f8f9fa00;
 		padding: 3rem;
 		border-radius: 15px;
 	}
@@ -225,8 +225,8 @@ s
 						<div class="hover-elements">
 							<div class="hover-elements">
 								<div class="hover-content">
-									<h3>Chairman Galiyat Development Authority</h3>
-									<p>As the Chairman of the Galiyat Development Authority, I am committed to leading our organization towards a sustainable and prosperous future. Our mission is to preserve the natural beauty of the Galiyat region while fostering economic growth and ensuring the well-being of our communities. Together, we are building a better tomorrow for generations to come.</p>
+									<h3 class="text-white">Chairman Galiyat Development Authority</h3><br>
+									<p class="text-white">As the Chairman of the Galiyat Development Authority, I am committed to leading our organization towards a sustainable and prosperous future. Our mission is to preserve the natural beauty of the Galiyat region while fostering economic growth and ensuring the well-being of our communities. Together, we are building a better tomorrow for generations to come.</p>
 								</div>
 							</div>
 							
@@ -298,7 +298,7 @@ s
 		<div class="row">
 			<div class="col-lg-9">
 				<div class="section-title left">
-					<h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Our Services</h4>
+					<h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Galiyat Attractions</h4>
 					<h1>GDA Provides Environment</h1>
 					<h1>Leading Services</h1>
 				</div>
@@ -307,6 +307,7 @@ s
 		</div>
 		<div class="row">
 			<div class="service-list-1 owl-carousel">
+                {% for obj in '1234' %}
 			   <div class="col-lg-12">
 					<div class="single-service-box">
 						<div class="service-content">
@@ -323,58 +324,8 @@ s
 							<img src="{% static 'website/images/home1/service-box-shape.png' %}" alt="">
 						</div>
 					</div>
-			   </div>			  
-			    <div class="col-lg-12">
-				  <div class="single-service-box">
-					<div class="service-content">
-						<div class="service-content-icon">
-							<img src="{% static 'website/images/home1/service-icon2.png' %}" alt="">
-						</div>
-						<h4>Safe Environment</h4>
-						<p>Alternative innovation to ethical network environmental whiteboard transparenes natural to environment</p>
-					</div>
-					<div class="service-thumb">
-						<img src="{% static 'website/images/home1/service-2.jpg' %}" alt="">
-					</div>
-					<div class="service-box-shape">
-						<img src="{% static 'website/images/home1/service-box-shape.png' %}" alt="">
-					</div>
-				  </div>
-			    </div>		  
-			    <div class="col-lg-12">
-				   <div class="single-service-box">
-					  <div class="service-content">
-						   <div class="service-content-icon">
-							  <img src="{% static 'website/images/home1/service-icon3.png' %}" alt="">
-						   </div>
-						  <h4>Dirty Recycling</h4>
-						   <p>Alternative innovation to ethical network environmental whiteboard transparenes natural to environment</p>
-					   </div>
-					    <div class="service-thumb">
-						   <img src="{% static 'website/images/home1/service-3.jpg' %}" alt="">
-					    </div>
-					    <div class="service-box-shape">
-						    <img src="{% static 'website/images/home1/service-box-shape.png' %}" alt="">
-					    </div>
-				   </div>
-			    </div>
-			    <div class="col-lg-12">
-				  <div class="single-service-box">
-					<div class="service-content">
-						<div class="service-content-icon">
-							<img src="{% static 'website/images/home1/service-icon2.png' %}" alt="">
-						</div>
-						<h4>Safe Environment</h4>
-						<p>Alternative innovation to ethical network environmental whiteboard transparenes natural to environment</p>
-					</div>
-					<div class="service-thumb">
-						<img src="{% static 'website/images/home1/service-2.jpg' %}" alt="">
-					</div>
-					<div class="service-box-shape">
-						<img src="{% static 'website/images/home1/service-box-shape.png' %}" alt="">
-					</div>
-				  </div>
-			    </div>	
+			   </div>
+                {% endfor %}
 			</div>
 		</div>
 	</div>

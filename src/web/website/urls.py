@@ -1,7 +1,7 @@
 from .views import (
 
     NewsLetterCreateView,
-    home, about, budget,
+    about, budget,
     team, teamDetails,
     act, department, departmentDetails,
     hotels, hotelsDetails, cafedetail,
@@ -10,7 +10,7 @@ from .views import (
     conservancytax, propertytax,
     attractions, attractionlist, attractiondetail,
     boqs, emergencyContact, jurisdiction, contactUs,
-    buildingByeLaws
+    buildingByeLaws, HomeTemplateView
 )
 
 from django.urls import path
@@ -26,7 +26,7 @@ urlpatterns = [
 
 # UN OFFICIAL
 urlpatterns += [
-    path('', home, name='home'),
+    path('', HomeTemplateView.as_view(), name='home'),
     path('about/', about, name='about'),
     path('budget/', budget, name='budget'),
     path('contact-us/', contactUs, name='contact_us'),
