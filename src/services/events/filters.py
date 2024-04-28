@@ -13,7 +13,3 @@ class EventFilter(django_filters.FilterSet):
         super().__init__(*args, **kwargs)
         self.form.fields['name'].widget.attrs.update(
             {'class': 'form-control input-text', 'placeholder': 'Enter Event Name'})
-
-
-
-
