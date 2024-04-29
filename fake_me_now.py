@@ -556,22 +556,22 @@ def dining_venue_fake():
 def main():
     basic_configuration()
     #
-    country_fake()
-    load_newsletters()
+    # country_fake()
+    # load_newsletters()
+
+    # document_type_fake()
+    # document_fake()
+
+    # event_type_fake()
+    # event_fake()
+    # participant_fake()
+    # guest_fake()
+    # accommodation_fake()
+    # dining_venue_fake()
     #
-    document_type_fake()
-    document_fake()
-    #
-    event_type_fake()
-    event_fake()
-    participant_fake()
-    guest_fake()
-    accommodation_fake()
-    dining_venue_fake()
-    #
-    attraction_feature_fake()
-    attraction_category_fake()
-    attraction_fake()
+    # attraction_feature_fake()
+    # attraction_category_fake()
+    # attraction_fake()
 
 
 

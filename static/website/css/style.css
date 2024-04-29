@@ -1758,6 +1758,10 @@ transform: rotate(360deg);
     transform: scale(1.2) skew(-10deg);
 }
 
+.single-blog-box:hover .single-blog-thumb img {
+    transform: scale(1.2) skew(-10deg);
+}
+
 .blog-content {
     border: 1px solid rgba(0,24,25,0.1);
     padding: 27px 32px 28px;
@@ -8403,7 +8407,7 @@ p.blog-list-desc {
 
 .home-six.blog-area {
     padding: 111px 0 125px;
-    background: #F7F7F7;
+    background: rgba(247, 247, 247, 0);
 }
 
 .home-six .single-blog-box {
@@ -8436,7 +8440,7 @@ p.blog-list-desc {
 .home-six .blog-content {
     border: transparent;
     padding: 23px 32px 54px;
-    background: #fff;
+    background: #f5f5f5;
     position: relative;
 }
 

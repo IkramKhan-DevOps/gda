@@ -1,212 +1,252 @@
 {% extends 'website/base.html' %}
+{% load widget_tweaks %}
+{% load core_tags %}
 {% load static %}
 
 
-{% block title %} Hotels {% endblock title %}
-
-
-{% block style %}
-.shop-one {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  .hotel-card {
-    margin-bottom: 20px;
-    width: calc(33.333% - 40px); /* Subtracting the total margin from the width */
-  }
-  
-  .product-single {
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    background-color: white;
-    transition: transform 0.3s ease-in-out; /* Adding a transition for hover effect */
-  }
-  
-  .product-img img {
-  width: 100%;
-  height: 200px; /* Fixed height for all images /
-  object-fit: cover; / Ensures the image covers the area without stretching */
-  border-radius: 5px;
-  }
-  
-  .product-content {
-  text-align: center;
-  background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); /* Vibrant gradient background /
-  padding: 10px;
-  border-radius: 0 0 5px 5px; / Rounded corners at the bottom */
-  }
-  
-  .product-title {
-  color: #333;
-  margin-top: 10px;
-  font-weight: bold; /* Making the title bolder */
-  }
-  
-  .product-location, .product-budget, .product-luxury {
-  color: #666;
-  font-size: 0.9em;
-  }
-  
-  /* Adding a hover effect to the product cards for interactivity */
-  .product-single:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  }
-  
-  @media screen and (max-width: 768px) {
-  .hotel-card {
-  flex-basis: 100%;
-  margin-bottom: 20px;
-  }
-  }
-  /* Base styles for product attributes */
-  .product-location, .product-budget, .product-luxury {
-    font-size: 0.85em; /* Modestly sized font */
-    font-weight: 500; /* Medium weight for subtlety */
-    color: #555; /* A neutral, darker grey for sophistication */
-    margin: 3px 0; /* Vertical spacing for clarity */
-    padding: 2px 0; /* Minimal padding to maintain structure without bulk */
-  }
-  
-  /* Style adjustments for the attribute containers */
-  .product-content {
-    text-align: center;
-    padding: 15px; /* Uniform padding around the content for a boxed layout */
-    background-color: #fafafa; /* A light grey background for a slight contrast */
-    border: 1px solid #e0e0e0; /* A light border for definition */
-    border-radius: 4px; /* Slightly rounded corners for a soft look */
-  }
-  
-  /* Typography enhancements for titles and attributes */
-  .product-title {
-    color: #333; /* A deep grey for the title for focus */
-    margin: 12px 0 8px; /* Spacing around the title for visual hierarchy */
-    font-size: 1em; /* A modest increase in title size for importance */
-    font-weight: 600; /* Slightly bolded for emphasis */
-  }
-  
-  /* Subtle hover effects for interactivity without distraction */
-  .product-single:hover {
-    border-color: #c0c0c0; /* Darken the border slightly on hover */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* A gentle shadow for depth */
-  }
-  
-  .product-single:hover .product-title {
-    color: #2c3e50; /* A subtle color shift for the title on hover */
-  }
-  
-  @media screen and (max-width: 768px) {
-    .hotel-card {
-      flex-basis: 100%; /* Full width for mobile responsiveness */
-      margin-bottom: 20px; /* Space between cards on mobile */
-    }
-  }
-    
-{% endblock style %}
-    
+{% block title %} Accommodation List {% endblock title %}
 
 {% block content %}
 
-<!--==================================================-->
-<!-- Start Breadcumb Area -->
-<!--==================================================-->
-<div class="breadcumb-area">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-12 text-center">
-				<div class="breadcumb-content">
-					<div class="breadcumb-title">
-						<h4>Hotels</h4>
-					</div>
-					<ul>
-						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Galiyat</a></li>
-						<li>Hotels</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Breadcumb Area -->
-<!--==================================================-->
+    <!--==================================================-->
+    <!-- Start Breadcumb Area -->
+    <!--==================================================-->
 
-
-<section class="shop-one mt-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">Filters</h5>
-            <form>
-              <div class="form-group">
-                <label for="price-filter">Price:</label>
-                <select class="form-control" id="price-filter">
-                  <option value="all">All</option>
-                  <option value="low">Low</option>
-                  <option value="medium">Medium</option>
-                  <option value="high">High</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="area-filter">Area:</label>
-                <select class="form-control" id="area-filter">
-                  <option value="all">All</option>
-                  <option value="nathiagali">Nathiagali</option>
-                  <option value="other">Other Areas</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="facility-filter">Facility:</label>
-                <input type="text" class="form-control" id="facility-filter" placeholder="Enter Facility">
-              </div>
-              <button type="submit" class="btn btn-primary">Apply Filters</button>
-            </form>
-          </div>
-        </div>
-      </div>
-
-<!--======================Hotel Card End============================-->
-
-{% if accommodations %}
-      
-{% for hotel in accommodations %}
-
-
-<div class="col-md-8">
-        <div class="row">
-          <div class="col-xs-12 col-sm-6 col-md-4 hotel-card">
-            <div class="product-single">
-              <div class="product-img">
-                <a href="{% url 'dine_stay:hotel_details' hotel.slug %}"><img src="{{hotel.thumbnail.url}}" alt=" Main Image" class="img-fluid"></a>
-              </div>
-              <div class="product-content">
-                <h4 class="product-title">
-                  <a href="{% url 'dine_stay:hotel_details' hotel.slug %}">{{hotel.name}}</a>
-                </h4>
-                <p class="product-budget">Category:{{hotel.category}}</p>
-              </div>
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcumb-content">
+                        <div class="breadcumb-title">
+                            <h4>Attractions List</h4>
+                        </div>
+                        <ul>
+                            <li><a href="index.html">
+                                <img
+                                        src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}"
+                                        alt="">GDA</a>
+                            </li>
+                            <li>Our Attractions</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
+        </div>
+    </div>
+
+    <!--==================================================-->
+    <!-- End Breadcumb Area -->
+    <!--==================================================-->
+
+
+    <section class="feature-five mt-5 mb-50">
+        <div class="container justify-content-center">
+
+            <div class="col-md-12">
+                <form method="get">
+                    <div class="row ">
+                        <div class="input-group mb-3">
+                            {% render_field filter_form.name class="form-control" placeholder='Enter Accommadation Name ' %}
+                            <small class="filter_form-text text-muted">{{ filter_form.name.help_text }}</small>
+                            {% if filter_form.name.errors %}
+                                <ul class="text-danger">
+                                    {% for error in filter_form.name.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+
+                            {% render_field filter_form.category class="form-control" placeholder='Nathia Gali Church Park ' %}
+                            <small class="filter_form-text text-muted">{{ filter_form.category.help_text }}</small>
+                            {% if filter_form.category.errors %}
+                                <ul class="text-danger">
+                                    {% for error in filter_form.category.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                            {% render_field filter_form.area class="form-control" placeholder='Nathia Gali Church Park ' %}
+                            <small class="filter_form-text text-muted">{{ filter_form.area.help_text }}</small>
+                            {% if filter_form.area.errors %}
+                                <ul class="text-danger">
+                                    {% for error in filter_form.area.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-success btn-lg" type="submit"><i
+                                        class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+
 
         </div>
-      </div>
-      {% endfor %}
+        <div class="home-six">
+            <div class="container">
+                <div class="row" id="accommodation_list">
 
-{% else %}
-<p>No Hotels Found</p>
-      {% endif %}
-<!--======================Hotel Card End============================-->
+                    {% if object_list %}
+                        {% for object in object_list %}
+                            <div class="col-lg-4 col-md-6  mb-4 card-length">
+                                <div class="single-blog-box">
+                                    <div class="blog-thumb">
+                                        <img src="{{ object.thumbnail|image_or_placeholder }}" alt="">
+                                    </div>
+                                    <div class="blog-content">
+                                        <div class="blog-text">
+                                            <span>{{ object.category }}</span>
+                                        </div>
+                                        <a href="{% url 'diny_stay:accommodation-detail' object.id %}">{{ object.name }}</a>
+                                        <p>{{ object.description|slice:100 }}...</p>
 
-    </div>
-  </div>
-</section>
+                                        <div class="blog-button">
+                                            <a href="{% url 'diny_stay:accommodation-detail' object.id %}">Explore
+                                                More<i class="bi bi-arrow-right-short"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="meta-blog">
+                                        <span>{{ object.created_at.date }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div class="mt-50 mb-100 ml-200">
+                            <h3 class="text-danger">No Accommodation Found</h3>
+                        </div>
+                    {% endif %}
+
+
+                </div>
+               <div class="mt-4">
+                    <nav class="custome-pagination">
+                    <ul class="pagination justify-content-center">
+                        {% if object_list.has_next %}
+                            <li class="page-item">
+                                <button id="load-more-btn" style="background-color: #49ae45;border-radius: 30px; " class="btn btn-rounded btn-lg text-white mt-4"><span>Load More</span>
+                                </button>
+                                <div class="align-items-center mb-4 mt-3 mt-sm-0" id="loading-spinner"
+                                     style="display:none;">
+
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+
+                                </div>
+
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+
+                <div class="row align-items-center mb-4 text-center text-sm-start" id="pagination-element">
+                    <div class="col-sm-5">
+                        <div class="text-muted" id="pagination-info">
+                            Showing {{ object_list.start_index }} to {{ object_list.end_index }}
+                            of {{ object_list.paginator.count }} entries
+                        </div>
+                    </div>
+                </div>
+               </div>
+
+            </div>
+
+        </div>
+    </section>
 
 {% endblock content %}
-    
-    
+{% block internal-js %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $("#id_category option:first").text("Select Category");
+            $("#id_area option:first").text("Select Area");
+
+            var page = {% if object_list.has_next %}{{ object_list.next_page_number }}{% else %}null{% endif %};
+            var maxPages = {{ object_list.paginator.num_pages }};
+            var loading = false;
+
+            function loadMore() {
+                if (loading || page === null || page > maxPages) {
+                    return;
+                }
+                loading = true;
+                $('#load-more-btn').hide();
+                $('#loading-spinner').show();
+                var searchQuery = window.location.search;
+
+                var filter_queryset = null
+                if (searchQuery) {
+                    filter_queryset = searchQuery + '&page=' + page
+                } else {
+                    filter_queryset = '?page=' + page
+                }
+
+                $.ajax({
+                    url: filter_queryset,
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (data) {
+                        var $data = $(data);
+                        var $shopList = $data.find('#accommodation_list');
+
+                        if ($shopList.find('.card-length').length > 0) {
+                            $('#accommodation_list').append($shopList.html());
+                            $('#loading-spinner').hide();
+                            $('#load-more-btn').show();
+                            page++;
+                            loading = false;
+
+                            updatePaginationInfo();
+                        } else {
+                            $('#loading-spinner').hide();
+                            $('#load-more-btn').hide();
+                        }
+                    },
+                    error: function () {
+                        loading = false;
+                    }
+                });
+            }
+
+            function updatePaginationInfo() {
+                $('#pagination-info').text('Showing 1 to ' + $('#accommodation_list .card-length').length + ' of {{ object_list.paginator.count }} entries');
+
+                if (page === null || page > maxPages) {
+                    $('#load-more-btn').hide();
+                }
+            }
+
+            if (page === null || page > maxPages) {
+                $('#load-more-btn').hide();
+            }
+
+            $('#load-more-btn').on('click', loadMore);
+        });
+    </script>
+
+{% endblock %}
+

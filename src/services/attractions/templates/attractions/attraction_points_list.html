@@ -39,11 +39,9 @@
     <!--==================================================-->
 
 
-    <section class="feature-five mt-5 mb-5">
+    <section class="feature-five mt-5 mb-50">
         <div class="container">
-
             <div class="row">
-
                 <div class="col-md-12">
                     <form method="get">
                         <div class="row ">
@@ -78,16 +76,17 @@
                     </form>
 
                 </div>
-
             </div>
-
-            <div class="row" id="attraction_areas_list">
+        </div>
+         <div class=" home-six">
+        <div class="container">
+            <div class="row" id="attraction_point_list">
 
                 {% if object_list %}
                     {% for object in object_list %}
-                        <div class="col-lg-4 col-md-6 card-length">
+                        <div class="col-lg-4 col-md-6 mb-4  card-length">
                             <div class="single-blog-box">
-                                <div class="single-blog-thumb">
+                                <div class="blog-thumb">
                                     {% if object.thumbnail %}
                                         <img src="{{ object.thumbnail|image_or_placeholder }}" alt="">
                                     {% else %}
@@ -95,17 +94,19 @@
                                     {% endif %}
                                 </div>
                                 <div class="blog-content">
-                                    <a href="{% url 'attractions:attraction_detail' object.slug %}">{{ object.name }}</a>
-                                    <p>{{ object.description|slice:200 }}...</p>
-                                </div>
-                                <div class="blog-arthor">
-                                    <div class="blog-author-title">
-                                        <h6><span><i class="fa fa-eye"></i></span>View Points</h6>
+                                    <div class="blog-text">
+                                        <span>{{ object.created_at }}</span>
                                     </div>
+                                    <a href="{% url 'attractions:attraction_points' object.id %}">{{ object.name }}</a>
+                                    <p>{{ object.detail|slice:100 }}...</p>
+
                                     <div class="blog-button">
-                                        <a href="{% url 'attractions:attraction_detail' object.slug %}"><i
-                                                class="bi bi-arrow-right-short"></i></a>
+                                        <a href="{% url 'attractions:attraction_points' object.slug %}">Explore
+                                            More<i class="bi bi-arrow-right-short"></i></a>
                                     </div>
+                                </div>
+                                <div class="meta-blog">
+                                    <span>{{ object.created_at.date }}</span>
                                 </div>
                             </div>
                         </div>
@@ -163,7 +164,11 @@
                 </div>
             </div>
         </div>
+
+    </div>
+
     </section>
+
 
 {% endblock content %}
 
@@ -198,10 +203,10 @@
                     dataType: 'html',
                     success: function (data) {
                         var $data = $(data);
-                        var $shopList = $data.find('#attraction_areas_list');
+                        var $shopList = $data.find('#attraction_point_list');
 
                         if ($shopList.find('.card-length').length > 0) {
-                            $('#attraction_areas_list').append($shopList.html());
+                            $('#attraction_point_list').append($shopList.html());
                             $('#loading-spinner').hide();
                             $('#load-more-btn').show();
                             page++;
@@ -220,7 +225,7 @@
             }
 
             function updatePaginationInfo() {
-                $('#pagination-info').text('Showing 1 to ' + $('#attraction_areas_list .card-length').length + ' of {{ object_list.paginator.count }} entries');
+                $('#pagination-info').text('Showing 1 to ' + $('#attraction_point_list .card-length').length + ' of {{ object_list.paginator.count }} entries');
 
                 if (page === null || page > maxPages) {
                     $('#load-more-btn').hide();
