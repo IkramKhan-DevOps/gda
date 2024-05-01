@@ -4,62 +4,65 @@
 {% block title %} Conservancy Tax Calculator {% endblock title %}
 
 
-
 {% block content %}
 
-
     <!--==================================================-->
-    <!-- Start  Breadcumb Area -->
+    <!-- Start Breadcumb Area -->
     <!--==================================================-->
-    <div class="breadcumb-area mt-4">
+    <div class="breadcumb-area">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12 text-center">
                     <div class="breadcumb-content">
                         <div class="breadcumb-title">
-                            <h4>Conservancy Taxes</h4>
+                            <h4>Conservancy Tax Calculator</h4>
                         </div>
                         <ul>
                             <li><a href="index.html"><img
-                                    src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Conservancy</a>
+                                    src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">GDA</a>
                             </li>
-                            <li>tax</li>
+                            <li>Conservancy Tax Calculator</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--==================================================-->
-    <!-- End Breadcumb Area -->
-    <!--==================================================-->
-
 
 
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-6">
                 <div class="card  m-4 p-4">
-                    <h5 class="text-success text-center">Read This For Water Tax Calculation</h5><br>
+                    <h5 class="text-success text-center">Read This For Property Tax Calculation</h5><br>
                     <ol>
                         <li>✅<strong>Read Instructions:</strong> Find and read the guidelines provided under "<em>Read
-                            This For Water Tax Calculation</em>".
-                        </li><br>
-
-                        <li>✅<strong>Select Town Area:</strong> Choose your town area from the available options.</li><br>
+                            This For Conservancy Tax Calculation</em>".
+                        </li>
+                        <br>
 
                         <li>✅<strong>Select Property Type:</strong> Select the type of property you own (e.g.,
                             residential, commercial).
-                        </li><br>
+                        </li>
+                        <br>
+                        <li>✅<strong>Input Rooms/Area:</strong> Input total number of rooms or total area in kanal
+                        </li>
+                        <br>
 
-                        <li>✅<strong>Calculate Tax:</strong> Once both town area and property type are selected, click on
+
+                        <li>✅<strong>Calculate Tax:</strong> Once both town area and property type are selected, click
+                            on
                             "<em>Calculate</em>" to determine the tax price.
-                        </li><br>
+                        </li>
+                        <br>
 
-                        <li>✅<strong>View Results:</strong> Check the calculated tax price displayed on the screen.</li><br>
+                        <li>✅<strong>View Results:</strong> Check the calculated tax price displayed on the screen.</li>
+                        <br>
 
-                        <li>✅<strong>Source Verification:</strong>The tax prices are Calculated from Galiyat Development Authority which is accurate and reliability.
-                        </li><br>
+                        <li>✅<strong>Source Verification:</strong>The tax prices are Calculated from Galiyat Development
+                            Authority which is accurate and reliability.
+                        </li>
+                        <br>
 
                         <li>✅<strong>Need Help?</strong> For any assistance or queries, feel free to reach out for
                             support.
@@ -69,20 +72,10 @@
             </div>
 
             <div class="col-lg-6">
-                <div class="card m-4 p-1">
-                    <img src="{% static 'website/images/water.gif' %}" style="height: 408px">
+                <div class="card m-4 p-2">
+                    <img src="{% static 'website/conservancy.gif' %}" style="height: 408px">
 
                     <form>
-                        <div class="form-group">
-                            <label for="townSelect">Select Town:</label>
-                            <select class="form-control" id="townSelect">
-                                <option value="">Select Town</option>
-                                <option value="nathiagali">Nathiagali</option>
-                                <option value="dungaGali">Dunga Gali</option>
-                                <option value="khanaspur">Khanaspur</option>
-                                <option value="ayubia">Ayubia</option>
-                            </select>
-                        </div>
                         <div class="form-group">
                             <label for="propertyTypeSelect">Select Property Type:</label>
                             <select class="form-control" id="propertyTypeSelect">
@@ -91,7 +84,7 @@
                                 <option value="commercial">Commercial</option>
                             </select>
                         </div>
-
+                        <input class="form-control mt-4" placeholder="Enter total rooms" >
                         <div class="row ">
                             <div class="col-12 text-center mt-4">
                                 <span>YOUR TAX IS : 0 RS</span><br>

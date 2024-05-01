@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 
 from src.core.models import NewsLetter
 from .models import Visit
+from ...apps.weather.bll import get_galiyat_weather
 
 """ OFFICIAL """
 
@@ -49,6 +50,8 @@ class HomeTemplateView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
+        print(get_galiyat_weather(self))
+        context['weather_data'] = get_galiyat_weather(self)
         visit_count = Visit.objects.first()
 
         if not visit_count:
@@ -113,6 +116,7 @@ def cafe(request):
 def cafedetail(request):
     return render(request, 'website/cafedetail.html')
 
+
 def watertax(request):
     return render(request, 'website/watertax.html')
 
@@ -123,6 +127,7 @@ def conservancytax(request):
 
 def propertytax(request):
     return render(request, 'website/property_tax.html')
+
 
 def boqs(request):
     return render(request, 'website/boqs.html')

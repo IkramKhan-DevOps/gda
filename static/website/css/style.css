@@ -1379,7 +1379,6 @@ a.project-button:hover i{
     height: 100%;
     right: 84px;
     top: 98px;
-    background: url(../images/home1/process-two-shape-1.png);
     background-repeat: no-repeat;
 }
 
@@ -1387,10 +1386,7 @@ a.project-button:hover i{
     background: transparent;
 }
 
-.single-process-box-two.style-three:before{
-    background: url(../images/home1/process-two-shape-2.png);
-    background-repeat: no-repeat;
-}
+
 
 .process-icon-thumb-two{
     position: relative;
@@ -1400,8 +1396,8 @@ a.project-button:hover i{
 .process-icon-thumb-two:before {
     position: absolute;
     content: "";
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     left: 0;
     right: 0;
     top: 17px;
