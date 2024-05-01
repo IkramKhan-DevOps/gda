@@ -1,4 +1,6 @@
 {% extends 'website/base.html' %}
+{% load widget_tweaks %}
+{% load core_tags %}
 {% load static %}
 
 
@@ -6,78 +8,162 @@
 
 
 {% block content %}
-<!--==================================================-->
-<!-- Start Breadcumb Area -->
-<!--==================================================-->
-<div class="breadcumb-area">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-12 text-center">
-				<div class="breadcumb-content">
-					<div class="breadcumb-title">
-						<h4>Departments</h4>
-					</div>
-					<ul>
-						<li><a href="#"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">GDA</a></li>
-						<li>Departments</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Breadcumb Area -->
-<!--==================================================-->
-
-
-
-<!--==================================================-->
-<!-- Strat Department Area -->
-<!--==================================================-->
-
-<div class="project-area inner mt-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="section-title center">
-                    <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">OUR DEPARTMENTS </h4>
-                    <h1>Galiyat Development Authority</h1>
-                    <h1>Building A Greener Future</h1>
+    <!--==================================================-->
+    <!-- Start Breadcumb Area -->
+    <!--==================================================-->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcumb-content">
+                        <div class="breadcumb-title">
+                            <h4>Departments</h4>
+                        </div>
+                        <ul>
+                            <li><a href="#"><img
+                                    src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">GDA</a>
+                            </li>
+                            <li>Departments</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!--==================================================-->
+    <!-- End Breadcumb Area -->
+    <!--==================================================-->
 
-        {% for dept in departments %}
+
+
+    <!--==================================================-->
+    <!-- Strat Department Area -->
+    <!--==================================================-->
+
+    <section class="feature-five mt-5 mb-50">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-project-box">
-                        <div class="project-thumb">
-                            <img src="{{ dept.image.url }}" alt="">
-                        </div>
-                        <div class="project-content">
-                            <h4>{{ dept.name }} Department</h4>
-                            {% if dept.director %}
-                                <p>Director: {{ dept.director.name }}</p>
-                            {% else %}
-                                <p>No Director Assigned</p>
-                            {% endif %}
-                            <a href="{% url 'departments:department_detail' dept.slug %}" class="project-button">View Details<i class="bi bi-arrow-right-short"></i></a>
-                            <div class="project-shape">
-                                <img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
+                <div class="col-md-12">
+                    <form method="get">
+                        <div class="row ">
+                            <div class="input-group mb-3">
+                                {% render_field filter_form.name class="form-control" placeholder='Enter Department Name ' %}
+                                <small class="filter_form-text text-muted">{{ filter_form.name.help_text }}</small>
+                                {% if filter_form.name.errors %}
+                                    <ul class="text-danger">
+                                        {% for error in filter_form.name.errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-success btn-lg" type="submit"><i
+                                            class="fa fa-search"></i>
+                                    </button>
+                                </div>
                             </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class=" home-six">
+            <div class="container">
+                <div class="row" id="attraction_areas_list">
+
+                    {% if object_list %}
+                        {% for object in object_list %}
+                            <div class="col-lg-4 col-md-6 mb-4  card-length">
+                                <div class="single-blog-box">
+                                    <div class="blog-thumb">
+                                        {% if object.image %}
+                                            <img src="{{ object.image|image_or_placeholder }}" alt="">
+                                        {% else %}
+                                            <img src="https://placehold.co/200" alt="">
+                                        {% endif %}
+                                    </div>
+                                    <div class="blog-content">
+                                        <div class="blog-text">
+                                            <span>{{ object.created_at }}</span>
+                                        </div>
+                                        <a href="{% url 'departments:department_detail' object.id %}">{{ object.name }}</a>
+                                        <p>{{ object.detail|slice:100 }}...</p>
+
+                                        <div class="blog-button">
+                                            <a href="{% url 'departments:department_detail' object.slug %}">Explore
+                                                More<i class="bi bi-arrow-right-short"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="meta-blog">
+                                        <span>{{ object.created_at.date }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div class="mt-50 mb-100 ml-200">
+                            <h3 class="text-danger">No Departments Found</h3>
+                        </div>
+                    {% endif %}
+
+
+                </div>
+                <nav class="custome-pagination">
+                    <ul class="pagination justify-content-center">
+                        {% if object_list.has_next %}
+                            <li class="page-item">
+                                <button id="load-more-btn" class="btn btn-success btn-md text-white mt-4">Load More
+                                </button>
+                                <div class="align-items-center mb-4 mt-3 mt-sm-0" id="loading-spinner"
+                                     style="display:none;">
+
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+
+                                </div>
+
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                <div class="row align-items-center mb-4 text-center text-sm-start" id="pagination-element">
+                    <div class="col-sm-5">
+                        <div class="text-muted" id="pagination-info">
+                            Showing {{ object_list.start_index }} to {{ object_list.end_index }}
+                            of {{ object_list.paginator.count }} entries
                         </div>
                     </div>
-                </div>								
+                </div>
             </div>
-        {% endfor %}
 
-    </div>
-</div>
+        </div>
 
-<!--==================================================-->
-<!-- End Department Area -->
-<!--==================================================-->
+    </section>
+
+    <!--==================================================-->
+    <!-- End Department Area -->
+    <!--==================================================-->
 
 
 

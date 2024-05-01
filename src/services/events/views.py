@@ -27,6 +27,6 @@ class EventDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(EventDetailView, self).get_context_data(**kwargs)
-        context['event_type'] = EventType.objects.all()[:15]
-        context['latest_events'] = Event.objects.order_by("-created_at")
+        context['event_type'] = EventType.objects.all()[:5]
+        context['latest_events'] = Event.objects.order_by("-created_at")[:5]
         return context

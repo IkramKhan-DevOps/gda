@@ -118,7 +118,7 @@ class Participant(models.Model):
 
 class Guest(models.Model):
     full_name = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(null=True,blank=True)
     phone_number = PhoneNumberField(blank=True, null=True, )
     designation = models.CharField(max_length=100, blank=True, null=True)
     image = ResizedImageField(

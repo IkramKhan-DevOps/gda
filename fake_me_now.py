@@ -515,10 +515,10 @@ def accommodation_fake():
             print(f"---- object: {name} created.")
         except IntegrityError as e:
             print(e.__str__())
-            
+
     print("Accommodation ended")
-    
-    
+
+
 def dining_venue_fake():
     print("Dining Venue")
     for i in range(10):
@@ -550,9 +550,10 @@ def dining_venue_fake():
             print(f"---- object: {name} created.")
         except IntegrityError as e:
             print(e.__str__())
-        
+
     print("Dining Venue ended")
-    
+
+
 def main():
     basic_configuration()
     #
@@ -572,7 +573,6 @@ def main():
     # attraction_feature_fake()
     # attraction_category_fake()
     # attraction_fake()
-
 
 
 if __name__ == '__main__':

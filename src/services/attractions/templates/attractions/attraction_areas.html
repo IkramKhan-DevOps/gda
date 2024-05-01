@@ -69,94 +69,94 @@
                 </div>
             </div>
         </div>
-         <div class=" home-six">
-        <div class="container">
-            <div class="row" id="attraction_areas_list">
+        <div class=" home-six">
+            <div class="container">
+                <div class="row" id="attraction_areas_list">
 
-                {% if object_list %}
-                    {% for object in object_list %}
-                        <div class="col-lg-4 col-md-6 mb-4  card-length">
-                            <div class="single-blog-box">
-                                <div class="blog-thumb">
-                                    {% if object.image %}
-                                        <img src="{{ object.image|image_or_placeholder }}" alt="">
-                                    {% else %}
-                                        <img src="https://placehold.co/200" alt="">
-                                    {% endif %}
-                                </div>
-                                <div class="blog-content">
-                                    <div class="blog-text">
-                                        <span>{{ object.created_at }}</span>
+                    {% if object_list %}
+                        {% for object in object_list %}
+                            <div class="col-lg-4 col-md-6 mb-4  card-length">
+                                <div class="single-blog-box">
+                                    <div class="blog-thumb">
+                                        {% if object.image %}
+                                            <img src="{{ object.image|image_or_placeholder }}" alt="">
+                                        {% else %}
+                                            <img src="https://placehold.co/200" alt="">
+                                        {% endif %}
                                     </div>
-                                    <a href="{% url 'attractions:attraction_points' object.id %}">{{ object.name }}</a>
-                                    <p>{{ object.detail|slice:100 }}...</p>
+                                    <div class="blog-content">
+                                        <div class="blog-text">
+                                            <span>{{ object.created_at }}</span>
+                                        </div>
+                                        <a href="{% url 'attractions:attraction_points' object.id %}">{{ object.name }}</a>
+                                        <p>{{ object.detail|slice:100 }}...</p>
 
-                                    <div class="blog-button">
-                                        <a href="{% url 'attractions:attraction_points' object.slug %}">Explore
-                                            More<i class="bi bi-arrow-right-short"></i></a>
+                                        <div class="blog-button">
+                                            <a href="{% url 'attractions:attraction_points' object.slug %}">Explore
+                                                More<i class="bi bi-arrow-right-short"></i></a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="meta-blog">
-                                    <span>{{ object.created_at.date }}</span>
+                                    <div class="meta-blog">
+                                        <span>{{ object.created_at.date }}</span>
+                                    </div>
                                 </div>
                             </div>
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div class="mt-50 mb-100 ml-200">
+                            <h3 class="text-danger">No Attraction Areas Found</h3>
                         </div>
-                    {% endfor %}
-
-                {% else %}
-
-                    <div class="mt-50 mb-100 ml-200">
-                        <h3 class="text-danger">No Attraction Areas Found</h3>
-                    </div>
-                {% endif %}
-
-
-            </div>
-            <nav class="custome-pagination">
-                <ul class="pagination justify-content-center">
-                    {% if object_list.has_next %}
-                        <li class="page-item">
-                            <button id="load-more-btn" class="btn btn-success btn-md text-white mt-4">Load More
-                            </button>
-                            <div class="align-items-center mb-4 mt-3 mt-sm-0" id="loading-spinner"
-                                 style="display:none;">
-
-                                <div class="spinner-grow text-success" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                                <div class="spinner-grow text-success" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                                <div class="spinner-grow text-success" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                                <div class="spinner-grow text-success" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                                <div class="spinner-grow text-success" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                                <div class="spinner-grow text-success" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-
-                            </div>
-
-                        </li>
                     {% endif %}
-                </ul>
-            </nav>
-            <div class="row align-items-center mb-4 text-center text-sm-start" id="pagination-element">
-                <div class="col-sm-5">
-                    <div class="text-muted" id="pagination-info">
-                        Showing {{ object_list.start_index }} to {{ object_list.end_index }}
-                        of {{ object_list.paginator.count }} entries
+
+
+                </div>
+                <nav class="custome-pagination">
+                    <ul class="pagination justify-content-center">
+                        {% if object_list.has_next %}
+                            <li class="page-item">
+                                <button id="load-more-btn" class="btn btn-success btn-md text-white mt-4">Load More
+                                </button>
+                                <div class="align-items-center mb-4 mt-3 mt-sm-0" id="loading-spinner"
+                                     style="display:none;">
+
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+
+                                </div>
+
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                <div class="row align-items-center mb-4 text-center text-sm-start" id="pagination-element">
+                    <div class="col-sm-5">
+                        <div class="text-muted" id="pagination-info">
+                            Showing {{ object_list.start_index }} to {{ object_list.end_index }}
+                            of {{ object_list.paginator.count }} entries
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
 
     </section>
 
