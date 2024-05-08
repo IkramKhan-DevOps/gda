@@ -74,42 +74,168 @@
             <div class="col-lg-6">
                 <div class="card m-4 p-2">
                     <img src="{% static 'website/images/water.gif' %}" style="height: 408px">
-
-                    <form>
-                        <div class="form-group">
-                            <label for="townSelect">Select Town:</label>
-                            <select class="form-control" id="townSelect">
-                                <option value="">Select Town</option>
-                                <option value="nathiagali">Nathiagali</option>
-                                <option value="dungaGali">Dunga Gali</option>
-                                <option value="khanaspur">Khanaspur</option>
-                                <option value="ayubia">Ayubia</option>
-                            </select>
+                    <div class="form-group">
+                        <label for="townSelect">Select Town:</label>
+                        <select name="town" id="town" class="form-control">
+                            <option class="option" value="empty"> Select Your Town</option>
+                            <option class="option" value="Nathiagali">Nathiagali</option>
+                            <option class="option" value="Donga_Gali">Donga Gali</option>
+                            <option class="option" value="Thandiani">Thandiani</option>
+                            <option class="option" value="Khaira_Gali">Khaira Gali</option>
+                            <option class="option" value="Chanlga_Gali">Chanlga Glai</option>
+                            <option class="option" value="Ayubia">Ayubia</option>
+                            <option class="option" value="Khanaspur">Khanaspur</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyTypeSelect">Select Property Type:</label>
+                        <select name="property_type" id="property_type" class="form-control"
+                                onchange="selectPropertyType()">
+                            <option class="option" value="empty"> Select Property Type</option>
+                            <option class="option" value="Commmercial">Commmercial</option>
+                            <option class="option" value="Residential">Residential</option>
+                        </select>
+                    </div>
+                    <div id="Commmercial" style="display: none;">
+                        <div class="col-25">
+                            <label for="fname">Total Number of Room</label>
                         </div>
-                        <div class="form-group">
-                            <label for="propertyTypeSelect">Select Property Type:</label>
-                            <select class="form-control" id="propertyTypeSelect">
-                                <option value="">Select Property Type</option>
-                                <option value="residential">Residential</option>
-                                <option value="commercial">Commercial</option>
-                            </select>
+                        <div class="col-75">
+                            <input type="text" id="input_num1" class="form-control" name="value2"
+                                   placeholder="Number of Room...">
                         </div>
-                        <div class="row ">
-                            <div class="col-12 text-center mt-4">
-                                <span>YOUR TAX IS : 0 RS</span><br>
-                                <button type="button" class="btn text-white mt-2 "
-                                        style="border-radius: 30px;background-color: #49AE44">Calculate Tax
-                                </button>
+                        <p></p>
+                        <center><p></p>
+                            <div class="row">
+                                <input type="button" style="background-color: #49AE44" class=" btn text-white"
+                                       onclick="calculate()"
+                                       value="Calculate">
                             </div>
+                            <p></p></center>
+                    </div>
+                    <div id="Residential" style="display: none;">
+                        <div class="col-25">
+                            <label for="fname">Total Land Area in Kanal</label>
                         </div>
-                    </form>
-
+                        <div class="col-75">
+                            <input type="text" id="input_num" class="form-control" name="value2"
+                                   placeholder="Land Area in Kanal...">
+                        </div>
+                        <p></p>
+                        <center><p></p>
+                            <div class="row">
+                                <input type="button" class="btn text-white" style="background-color: #49AE44"
+                                       onclick="calculate()"
+                                       value="Calculate">
+                            </div>
+                            <p></p></center>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center mt-4">
+                            <span id="tax_label">Tax is </span>
+                            <span id="result">0&nbsp;&nbsp;RS</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
 
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            $('#property_type').change(function () {
+                $('.box').hide();
+                $('#' + $(this).val()).show();
+            });
+        });
+
+        function selectPropertyType() {
+            var selectBox = document.getElementById("property_type");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            if (selectedValue === "Residential") {
+                document.getElementById("Residential").style.display = "block";
+                document.getElementById("Commmercial").style.display = "none";
+            } else if (selectedValue === "Commmercial") {
+                document.getElementById("Residential").style.display = "none";
+                document.getElementById("Commmercial").style.display = "block";
+            }
+        }
+
+
+        function calculate() {
+            var town = document.getElementById('town').value;
+            var property_type = document.getElementById('property_type').value;
+            var input_num = document.getElementById('input_num').value;
+            var input_num1 = document.getElementById('input_num1').value;
+
+            if (town == 'Nathiagali' && property_type == 'Commmercial') {
+                var result = eval(input_num1 * 1000);
+            } else {
+                if (town == 'Donga_Gali' && property_type == 'Commmercial') {
+                    var result = eval(input_num1 * 1000);
+                } else {
+                    if (town == 'Thandiani' && property_type == 'Commmercial') {
+                        var result = eval(input_num1 * 1000);
+                    } else {
+                        if (town == 'Khaira_Gali' && property_type == 'Commmercial') {
+                            var result = eval(input_num1 * 500);
+                        } else {
+                            if (town == 'Chanlga_Gali' && property_type == 'Commmercial') {
+                                var result = eval(input_num1 * 500);
+                            } else {
+                                if (town == 'Ayubia' && property_type == 'Commmercial') {
+                                    var result = eval(input_num1 * 500);
+                                } else {
+                                    if (town == 'Khanaspur' && property_type == 'Commmercial') {
+                                        var result = eval(input_num1 * 500);
+                                    } else {
+                                        if (town == 'empty' || property_type == 'empty') {
+                                            var result = 0.00;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (town == 'Nathiagali' && property_type == 'Residential') {
+                var result = eval(input_num * 5000);
+            } else {
+                if (town == 'Donga_Gali' && property_type == 'Residential') {
+                    var result = eval(input_num * 5000);
+                } else {
+                    if (town == 'Thandiani' && property_type == 'Residential') {
+                        var result = eval(input_num * 5000);
+                    } else {
+                        if (town == 'Khaira_Gali' && property_type == 'Residential') {
+                            var result = eval(input_num * 4000);
+                        } else {
+                            if (town == 'Chanlga_Gali' && property_type == 'Residential') {
+                                var result = eval(input_num * 4000);
+                            } else {
+                                if (town == 'Ayubia' && property_type == 'Residential') {
+                                    var result = eval(input_num * 4000);
+                                } else {
+                                    if (town == 'Khanaspur' && property_type == 'Residential') {
+                                        var result = eval(input_num * 4000);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            document.getElementById('result').innerHTML = result * 2;
+
+        }
+
+    </script>
 
 
 

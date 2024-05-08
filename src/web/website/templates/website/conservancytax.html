@@ -74,27 +74,55 @@
             <div class="col-lg-6">
                 <div class="card m-4 p-2">
                     <img src="{% static 'website/conservancy.gif' %}" style="height: 408px">
-
-                    <form>
-                        <div class="form-group">
-                            <label for="propertyTypeSelect">Select Property Type:</label>
-                            <select class="form-control" id="propertyTypeSelect">
-                                <option value="">Select Property Type</option>
-                                <option value="residential">Residential</option>
-                                <option value="commercial">Commercial</option>
-                            </select>
+                    <div class="form-group">
+                        <label for="propertyTypeSelect">Select Property Type:</label>
+                        <select class="form-control" id="propertyTypeSelect" onchange="selectPropertyType()">
+                            <option value="">Select Property Type</option>
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial</option>
+                        </select>
+                    </div>
+                    <div id="commercial" style="display: none;">
+                        <div class="col-25">
+                            <label for="fname">Total Number of Room</label>
                         </div>
-                        <input class="form-control mt-4" placeholder="Enter total rooms" >
-                        <div class="row ">
-                            <div class="col-12 text-center mt-4">
-                                <span>YOUR TAX IS : 0 RS</span><br>
-                                <button type="button" class="btn text-white mt-2 "
-                                        style="border-radius: 30px;background-color: #49AE44">Calculate Tax
-                                </button>
+                        <div class="col-75">
+                            <input type="text" id="txt1" class="form-control" name="value2"
+                                   placeholder="Number of Room...">
+                        </div>
+                        <p></p>
+                        <center><p></p>
+                            <div class="row">
+                                <input type="button" style="background-color: #49AE44" class=" btn text-white"
+                                       onclick="commercial_validation()"
+                                       value="Calculate">
                             </div>
-                        </div>
-                    </form>
+                            <p></p></center>
+                    </div>
 
+                    <div id="residential" style="display: none;">
+                        <div class="col-25">
+                            <label for="fname">Total Land Area in Kanal</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="txt2" class="form-control" name="value2"
+                                   placeholder="Land Area in Kanal...">
+                        </div>
+                        <p></p>
+                        <center><p></p>
+                            <div class="row">
+                                <input type="button" class="btn text-white" style="background-color: #49AE44"
+                                       onclick="residential_validation()"
+                                       value="Calculate">
+                            </div>
+                            <p></p></center>
+                    </div>
+
+                    <div class="row">
+                        <div class="col text-center mt-4">
+                            <span id="result"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -102,6 +130,52 @@
         </div>
     </div>
 
+    <script type="text/javascript">
+        function selectPropertyType() {
+            var selectBox = document.getElementById("propertyTypeSelect");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            if (selectedValue === "residential") {
+                document.getElementById("residential").style.display = "block";
+                document.getElementById("commercial").style.display = "none";
+            } else if (selectedValue === "commercial") {
+                document.getElementById("residential").style.display = "none";
+                document.getElementById("commercial").style.display = "block";
+            }
+        }
 
+        function commercial_validation() {
+            var valu = document.getElementById("txt1").value;
+            if (valu >= 1 && valu <= 10) {
+                document.getElementById("result").innerHTML = " Tax is Rs 12000";
+            } else {
+                if (valu >= 11 && valu <= 15) {
+                    document.getElementById("result").innerHTML = "Tax is Rs 18000";
+                } else {
+                    if (valu >= 16 && valu <= 20) {
+                        document.getElementById("result").innerHTML = "Tax is Rs 24000";
+                    } else {
+                        if (valu >= 21 && valu <= 30) {
+                            document.getElementById("result").innerHTML = "Tax is Rs 36000";
+                        } else {
+                            document.getElementById("result").innerHTML = "Rooms can't exceed from 30...!";
+                        }
+                    }
+                }
+            }
+        }
+
+        function residential_validation() {
+            var valu = document.getElementById("txt2").value;
+            fixed = 4000;
+            if (valu == 1) {
+                document.getElementById("result").innerHTML ="Tax is Rs " +  fixed * 2;
+            } else {
+                valu = valu - 1;
+                fixed = eval(4000 + (valu * 1000));
+                document.getElementById("result").innerHTML = "Tax is Rs " + fixed * 2;
+
+            }
+        }
+    </script>
 
 {% endblock content %}

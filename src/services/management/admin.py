@@ -1,14 +1,12 @@
 from django.contrib import admin
 from .models import (
-    Document, DocumentType, GalleryImage, GalleryVideo, News, NewsImages
+    Document, DocumentType, GalleryImage, GalleryVideo, News, NewsImages, HomeSlider
 )
 
 
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'file', 'document_type', 'is_active', 'created_at']
-
-
 
 
 @admin.register(DocumentType)
@@ -61,3 +59,8 @@ class NewsAdmin(admin.ModelAdmin):
         ('Dates', {'fields': ['created_at', 'updated_at']}),
     ]
     inlines = [NewsImagesInline]
+
+
+@admin.register(HomeSlider)
+class HomeSliderAdmin(admin.ModelAdmin):
+    list_display = ['title', 'tagline']

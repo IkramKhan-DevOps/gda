@@ -85,28 +85,31 @@
                     <form>
                         <div class="form-group">
                             <label for="townSelect">Select Town:</label>
+
                             <select class="form-control" id="townSelect">
-                                <option value="">Select Town</option>
-                                <option value="nathiagali">Nathiagali</option>
-                                <option value="dungaGali">Dunga Gali</option>
-                                <option value="khanaspur">Khanaspur</option>
-                                <option value="ayubia">Ayubia</option>
+                                <option value="1">Nathiagali</option>
+                                <option value="2">Donagali</option>
+                                <option value="3">Changalagali</option>
+                                <option value="4">Khairagali</option>
+                                <option value="5">Khanspur</option>
+                                <option value="6">Thandiyani</option>
+                                <option value="7">Ghoradhaka</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="propertyTypeSelect">Select Property Type:</label>
                             <select class="form-control" id="propertyTypeSelect">
                                 <option value="">Select Property Type</option>
-                                <option value="residential">Residential</option>
-                                <option value="commercial">Commercial</option>
+                                <option value="1">Residential</option>
+                                <option value="2">Commercial</option>
                             </select>
                         </div>
-                        <input class="form-control mt-3" placeholder="Area in Sq Yard">
-                        <input class="form-control mt-3" placeholder="Area in Sq Foot">
+                        <input class="form-control mt-3" id="txtlandaera" placeholder="Total Land Area in Square Yard">
+                        <input class="form-control mt-3" id="txtcover" placeholder="Total Covered Area in Square FT">
                         <div class="row ">
                             <div class="col-12 text-center mt-4">
-                                <span>YOUR TAX IS : 0 RS</span><br>
-                                <button type="button" class="btn text-white mt-2 "
+                                <span>YOUR TAX IS : <b id="valtax">0</b> RS</span><br>
+                                <button type="button" onclick="taxcalc()" class="btn text-white mt-2 "
                                         style="border-radius: 30px;background-color: #49AE44">Calculate Tax
                                 </button>
                             </div>
@@ -116,10 +119,254 @@
                 </div>
             </div>
 
-
         </div>
     </div>
 
+    <script>
+        function taxcalc() {
+            var ee = document.getElementById("townSelect");
+            var town = ee.options[ee.selectedIndex].value;
+            var e = document.getElementById("propertyTypeSelect");
+            var property_type = e.options[e.selectedIndex].value;
+            var landaera = document.getElementById("txtlandaera").value;
+            var coveaera = document.getElementById("txtcover").value;
+            var callandaera = 0;
+            var remaningland = 0;
+            var coverchallenaera = 0;
 
+
+            if (landaera == '')
+                alert('Please enter Landaera');
+            if (coveaera == '')
+                alert('Please enter Coveredaera');
+            if (town == 1 | town == 2 | town == 3 | town == 4) {
+                var tax = 0;
+                var c = 0;
+                var l = 0;
+
+                if (property_type == 1) {
+                    if (landaera <= 500) {
+                        callandaera = landaera * 4;
+                    } else if (landaera >= 501) {
+                        remaningland = landaera - 500;
+                        callandaera = 500 * 4;
+                        callandaera += remaningland * 5;
+                    }
+                    remaningland = 0;
+                    if (coveaera <= 3000) {
+                        coverchallenaera = coveaera * 4;
+                    } else if (coveaera >= 3001) {
+                        remaningland = coveaera - 3000;
+                        coverchallenaera = (3000 * 4) + (remaningland * 5);
+                    }
+
+                    tax = (callandaera) + (coverchallenaera);
+                } else {
+                    if (landaera <= 310) {
+                        callandaera = landaera * 8;
+                    } else if (landaera > 310) {
+                        remaningland = landaera - 310;
+                        callandaera = 310 * 8;
+                        callandaera += remaningland * 9;
+                    }
+                    remaningland = 0;
+                    if (coveaera <= 1500) {
+                        coverchallenaera = coveaera * 9;
+                    } else if (coveaera >= 1501 & coveaera <= 3000) {
+                        remaningland = coveaera - 1500;
+                        coverchallenaera = 1500 * 9;
+                        coverchallenaera += (remaningland * 10);
+                    } else if (coveaera >= 3001 & coveaera <= 4500) {
+                        remaningland = coveaera - 3000;
+                        coverchallenaera = 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += (remaningland * 12);
+                    } else if (coveaera >= 4501 & coveaera <= 6000) {
+                        remaningland = coveaera - 4500;
+                        coverchallenaera = 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += 1500 * 12;
+                        coverchallenaera += (remaningland * 14);
+                    } else if (coveaera >= 6001 & coveaera <= 7500) {
+                        remaningland = coveaera - 6000;
+                        coverchallenaera = 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += 1500 * 12;
+                        coverchallenaera += 1500 * 14;
+                        coverchallenaera += (remaningland * 16);
+                    } else if (coveaera >= 7501) {
+                        remaningland = coveaera - 7500;
+                        coverchallenaera = 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += 1500 * 12;
+                        coverchallenaera += 1500 * 14;
+                        coverchallenaera += 1500 * 16;
+                        coverchallenaera += (remaningland * 18);
+                    }
+                    tax = (callandaera) + (coverchallenaera);
+
+                }
+            } else if (town == 5 | town == 6) {
+                var tax = 0;
+                var c = 0;
+                var l = 0;
+
+
+                if (property_type == 1) {
+                    if (landaera <= 300) {
+                        callandaera = landaera * 3;
+                    } else if (landaera >= 301 & landaera <= 600) {
+                        remaningland = landaera - 300;
+                        callandaera = 300 * 3;
+                        callandaera += remaningland * 4;
+                    } else if (landaera >= 601) {
+                        remaningland = landaera - 600;
+                        callandaera = 300 * 3;
+                        callandaera += 300 * 4;
+                        callandaera += remaningland * 5;
+                    }
+                    remaningland = 0;
+                    if (coveaera <= 2500) {
+                        coverchallenaera = coveaera * 3;
+                    } else if (coveaera >= 2501 & coveaera <= 3500) {
+                        remaningland = coveaera - 2500;
+                        coverchallenaera = (2500 * 3) + (remaningland * 4);
+                    } else if (coveaera >= 3501) {
+                        remaningland = coveaera - 2500;
+                        coverchallenaera = 2500 * 3
+                        coverchallenaera += 1000 * 4
+                        coverchallenaera += (remaningland * 5);
+                    }
+
+                    tax = (callandaera) + (coverchallenaera);
+                } else {
+
+                    if (landaera <= 310) {
+                        callandaera = landaera * 6;
+                    } else if (landaera >= 501) {
+                        remaningland = landaera - 310;
+                        callandaera = 310 * 6;
+                        callandaera += remaningland * 7;
+                    }
+                    remaningland = 0;
+                    if (coveaera <= 1500) {
+                        coverchallenaera = coveaera * 8;
+                    } else if (coveaera >= 1501 & coveaera <= 3000) {
+                        remaningland = coveaera - 1500;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += (remaningland * 9);
+                    } else if (coveaera >= 3001 & coveaera <= 4500) {
+                        remaningland = coveaera - 3000;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += (remaningland * 10);
+                    } else if (coveaera >= 4501 & coveaera <= 6000) {
+                        remaningland = coveaera - 4500;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += (remaningland * 12);
+                    } else if (coveaera >= 6001 & coveaera <= 7500) {
+                        remaningland = coveaera - 6000;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += 1500 * 12;
+                        coverchallenaera += (remaningland * 14);
+                    } else if (coveaera >= 7501) {
+                        remaningland = coveaera - 7500;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += 1500 * 12;
+                        coverchallenaera += 1500 * 14;
+                        coverchallenaera += (remaningland * 16);
+                    }
+                    tax = (callandaera) + (coverchallenaera);
+
+                }
+            } else if (town == 7) {
+                var tax = 0;
+                var c = 0;
+                var l = 0;
+
+
+                if (property_type == 1) {
+                    if (landaera <= 300) {
+                        callandaera = landaera * 3;
+                    } else if (landaera >= 301 & landaera <= 600) {
+                        remaningland = landaera - 300;
+                        callandaera = 300 * 3;
+                        callandaera += remaningland * 4;
+                    } else if (landaera >= 601) {
+                        remaningland = landaera - 600;
+                        callandaera = 300 * 3;
+                        callandaera += 300 * 4;
+                        callandaera += remaningland * 5;
+                    }
+                    remaningland = 0;
+                    if (coveaera <= 2500) {
+                        coverchallenaera = coveaera * 3;
+                    } else if (coveaera >= 2501 & coveaera <= 3500) {
+                        remaningland = coveaera - 2500;
+                        coverchallenaera = (2500 * 3) + (remaningland * 6);
+                    } else if (coveaera >= 3501) {
+                        remaningland = coveaera - 2500;
+                        coverchallenaera = 2500 * 3
+                        coverchallenaera += 1000 * 6
+                        coverchallenaera += (remaningland * 5);
+                    }
+
+                    tax = (callandaera) + (coverchallenaera);
+                } else {
+
+                    if (landaera <= 310) {
+                        callandaera = landaera * 6;
+                    } else if (landaera >= 501) {
+                        remaningland = landaera - 310;
+                        callandaera = 310 * 6;
+                        callandaera += remaningland * 7;
+                    }
+                    remaningland = 0;
+                    if (coveaera <= 1500) {
+                        coverchallenaera = coveaera * 8;
+                    } else if (coveaera >= 1501 & coveaera <= 3000) {
+                        remaningland = coveaera - 1500;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += (remaningland * 9);
+                    } else if (coveaera >= 3001 & coveaera <= 4500) {
+                        remaningland = coveaera - 3000;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += (remaningland * 10);
+                    } else if (coveaera >= 4501 & coveaera <= 6000) {
+                        remaningland = coveaera - 4500;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += (remaningland * 12);
+                    } else if (coveaera >= 6001 & coveaera <= 7500) {
+                        remaningland = coveaera - 6000;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += 1500 * 12;
+                        coverchallenaera += (remaningland * 14);
+                    } else if (coveaera >= 7501) {
+                        remaningland = coveaera - 7500;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += 1500 * 12;
+                        coverchallenaera += 1500 * 14;
+                        coverchallenaera += (remaningland * 16);
+                    }
+                    tax = (callandaera) + (coverchallenaera);
+
+                }
+            }
+            document.getElementById("valtax").innerHTML = tax;
+        }
+    </script>
 
 {% endblock content %}

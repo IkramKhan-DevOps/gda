@@ -1,4 +1,5 @@
 {% extends 'website/base.html' %}
+{% load core_tags %}
 {% load static %}
 
 {% block title %} Home {% endblock title %}
@@ -89,75 +90,87 @@
     <!--==================================================-->
 
     <div class="hero-slides owl-carousel">
-        <div class="hero-area d-flex align-items-center">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-12">
-                        <div class="hero-content">
-                            <h4 class="sub-title" data-animation="fadeInUp" data-delay="100ms">Tourist Destination of
-                                Pakistan</h4>
-                            <h1 class="main-title" data-animation="fadeInUp" data-delay="400ms">Galiyat Development</h1>
-                            <h1 class="main-title-2" data-animation="fadeInUp" data-delay="600ms"
-                                data-duration="1000ms">Authority</h1>
-                            <p class="hero-desc" data-animation="fadeInUp" data-delay="800ms" data-duration="1000ms">
-                                Professionally optimize interdependent intellectual interoperable connect best
-                                practices. Progressively fabricate done</p>
+        {% if home_slider %}
+            {% for slider in home_slider %}
+                <div class="hero-area d-flex align-items-center"
+                     style="background-image: url('{{ slider.image|image_or_placeholder }}')">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-12">
+                                <div class="hero-content">
+                                    <h4 class="sub-title" data-animation="fadeInUp" data-delay="100ms">{{ slider.tagline}}</h4>
+                                    <h1 class="main-title" data-animation="fadeInUp" data-delay="400ms">{{ slider.title }}</h1>
+                                    <h1 class="main-title-2" data-animation="fadeInUp" data-delay="600ms"
+                                        data-duration="1000ms">Authority</h1>
+                                    <p class="hero-desc" data-animation="fadeInUp" data-delay="800ms"
+                                       data-duration="1000ms">
+                                        {{ slider.message }}</p>
+                                </div>
+                                <div class="echofy-button" data-animation="fadeInUp" data-delay="1000ms">
+                                    <a href="#">Let’s Talk <img
+                                            src="{% static 'website/images/home1/button-shape.png' %}"
+                                            alt=""></a>
+                                    <img class="two" src="{% static 'website/images/home1/button-shape-2.png' %}"
+                                         alt="">
+                                </div>
+                                <div class="echofy-button two" data-animation="fadeInUp" data-delay="1200ms">
+                                    <a href="#">Read More</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="echofy-button" data-animation="fadeInUp" data-delay="1000ms">
-                            <a href="#">Let’s Talk <img src="{% static 'website/images/home1/button-shape.png' %}"
-                                                        alt=""></a>
-                            <img class="two" src="{% static 'website/images/home1/button-shape-2.png' %}" alt="">
-                        </div>
-                        <div class="echofy-button two" data-animation="fadeInUp" data-delay="1200ms">
-                            <a href="#">Read More</a>
+                    </div>
+                    <div class="hero-social-icon" data-animation="fadeInLeft" data-delay="1000ms">
+                        <ul>
+                            <li><a href="https://www.facebook.com/gdaabbottabad/"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li><a href="https://twitter.com/gdaabbottabad?lang=en"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li><a href="https://www.instagram.com/gdaabbottabad/"><i class="fab fa-instagram"></i></a>
+                            </li>
+                            <li class="text">Follow Us</li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="hero-area d-flex align-items-center">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <div class="hero-content">
+                                <h4 class="sub-title" data-animation="fadeInUp" data-delay="100ms">Tourist Destination
+                                    of
+                                    Pakistan</h4>
+                                <h1 class="main-title" data-animation="fadeInUp" data-delay="400ms">Galiyat
+                                    Development</h1>
+                                <h1 class="main-title-2" data-animation="fadeInUp" data-delay="600ms"
+                                    data-duration="1000ms">Authority</h1>
+                                <p class="hero-desc" data-animation="fadeInUp" data-delay="800ms"
+                                   data-duration="1000ms">
+                                    Professionally optimize interdependent intellectual interoperable connect best
+                                    practices. Progressively fabricate done</p>
+                            </div>
+                            <div class="echofy-button" data-animation="fadeInUp" data-delay="1000ms">
+                                <a href="#">Let’s Talk <img src="{% static 'website/images/home1/button-shape.png' %}"
+                                                            alt=""></a>
+                                <img class="two" src="{% static 'website/images/home1/button-shape-2.png' %}" alt="">
+                            </div>
+                            <div class="echofy-button two" data-animation="fadeInUp" data-delay="1200ms">
+                                <a href="#">Read More</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="hero-social-icon" data-animation="fadeInLeft" data-delay="1000ms">
-                <ul>
-                    <li><a href="https://www.facebook.com/gdaabbottabad/"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="https://twitter.com/gdaabbottabad?lang=en"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="https://www.instagram.com/gdaabbottabad/"><i class="fab fa-instagram"></i></a></li>
-                    <li class="text">Follow Us</li>
-                </ul>
-            </div>
-        </div>
-
-
-        <div class="hero-area hero-style d-flex align-items-center">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-12">
-                        <div class="hero-content">
-                            <h4 class="sub-title" data-animation="fadeInUp" data-delay="100ms">Tourist Destination of
-                                Pakistan</h4>
-                            <h1 class="main-title" data-animation="fadeInUp" data-delay="400ms">Galiyat Development</h1>
-                            <h1 class="main-title-2" data-animation="fadeInUp" data-delay="600ms">Authority</h1>
-                            <p class="hero-desc" data-animation="fadeInUp" data-delay="800ms">Professionally optimize
-                                interdependent intellectual interoperable connect best practices. Progressively
-                                fabricate done</p>
-                        </div>
-                        <div class="echofy-button" data-animation="fadeInUp" data-delay="1000ms">
-                            <a href="about.html">Let’s Talk <img
-                                    src="{% static 'website/images/home1/button-shape.png' %}" alt=""></a>
-                            <img class="two" src="{% static 'website/images/home1/button-shape-2.png' %}" alt="">
-                        </div>
-                        <div class="echofy-button two" data-animation="fadeInUp" data-delay="1200ms">
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
+                <div class="hero-social-icon" data-animation="fadeInLeft" data-delay="1000ms">
+                    <ul>
+                        <li><a href="https://www.facebook.com/gdaabbottabad/"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://twitter.com/gdaabbottabad?lang=en"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.instagram.com/gdaabbottabad/"><i class="fab fa-instagram"></i></a></li>
+                        <li class="text">Follow Us</li>
+                    </ul>
                 </div>
             </div>
-            <div class="hero-social-icon" data-animation="fadeInLeft" data-delay="1000ms">
-                <ul>
-                    <li><a href="https://www.facebook.com/gdaabbottabad/"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="https://twitter.com/gdaabbottabad?lang=en"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="https://www.instagram.com/gdaabbottabad/"><i class="fab fa-instagram"></i></a></li>
-                    <li class="text">Follow Us</li>
-                </ul>
-            </div>
-        </div>
+        {% endif %}
     </div>
 
     <!--==================================================-->
@@ -217,7 +230,8 @@
     <div class="container mt-5">
         <div class="jumbotron">
             <h1 class="display-4">Welcome to Galiyat, Pakistan's hidden gem!</h1>
-            <p class="lead">Join the <span class="font-weight-bold">{{ visit_count }} </span> people who have explored
+            <p class="lead mt-2">Join the <span class="font-weight-bold">{{ formatted_count }} </span> people who have
+                explored
                 our website!</p>
         </div>
     </div>
@@ -237,18 +251,15 @@
                 <div class="col-lg-6">
                     <div class="about-thumb">
                         <div class="about-image">
-                            <img src="{% static 'website/images/home1/about-thumb1.png' %}" height="800px" alt="">
+                            <img src="{{ chairman.image|image_or_placeholder }}" height="800px" alt="">
                             <div class="image-overlay"></div>
                             <div class="hover-elements">
                                 <div class="hover-elements">
                                     <div class="hover-content">
+                                        <h3 class="text-white">{{ chairman.name }}</h3><br>
                                         <h3 class="text-white">Chairman Galiyat Development Authority</h3><br>
-                                        <p class="text-white">As the Chairman of the Galiyat Development Authority, I am
-                                            committed to leading our organization towards a sustainable and prosperous
-                                            future. Our mission is to preserve the natural beauty of the Galiyat region
-                                            while fostering economic growth and ensuring the well-being of our
-                                            communities. Together, we are building a better tomorrow for generations to
-                                            come.</p>
+
+                                        <p class="text-white">{{ chairman.message }}.</p>
                                     </div>
                                 </div>
 
@@ -316,11 +327,11 @@
 
     <!--==================================================-->
     <!-- End About Area -->
-<div class="area-two">
-        <div class="container">
-            <div class="row">
+    <div class="area-two mt-4">
+        <div class="container mt-4">
+            <div class="row mt-4">
                 <div class="col-lg-12 text-center">
-                    <div class="section-title center">
+                    <div class="section-title center mt-4">
                         <h4><img src="/static/website/images/home1/section-shape.png" alt="">Weather Condition</h4>
                         <h1>Weather Condition of Galiyat</h1>
                     </div>
@@ -334,7 +345,7 @@
                         </div>
                         <div class="process-two-content">
                             <h4>Temperature</h4>
-                           <p><b>{{ weather_data.current_temperature_2m }}°C</b></p>
+                            <p><b>{{ weather_data.current_temperature_2m }}°C</b></p>
                         </div>
                     </div>
                 </div>
@@ -360,7 +371,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="col-lg-2 col-md-6 col-sm-6">
                     <div class="single-process-box-two">
                         <div class="process-icon-thumb-two">
                             <img src="/static/website/images/icon/rain.png" style="height: 100px" alt="">
@@ -403,31 +414,38 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="section-title left">
-                        <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Galiyat Attractions
+                        <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Galiyat Attraction
                         </h4>
-                        <h1>GDA Provides Environment</h1>
-                        <h1>Leading Services</h1>
+                        <h1>Tourist Attraction Areas in Galiyat </h1>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="service-list-1 owl-carousel">
-                    {% for obj in '1234' %}
-                        <div class="col-lg-12">
-                            <div class="single-service-box">
-                                <div class="service-content">
-                                    <div class="service-content-icon">
-                                        <img src="{% static 'website/images/home1/service-icon1.png' %}" alt="">
+                <div class="project-list-1 home-six owl-carousel">
+                    {% for object in restaurant %}
+                        <div class="col-lg-12 p-1">
+                            <div class="single-blog-box">
+                                <div class="blog-thumb">
+                                    {% if object.image %}
+                                        <img src="{{ object.image|image_or_placeholder }}" alt="">
+                                    {% else %}
+                                        <img src="https://placehold.co/200" alt="">
+                                    {% endif %}
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-text">
+                                        <span>{{ object.created_at }}</span>
                                     </div>
-                                    <h4>Cleaning Ocean</h4>
-                                    <p>Alternative innovation to ethical network environmental whiteboard transparenes
-                                        natural to environment</p>
+                                    <a href="{% url 'attractions:attraction_points' object.id %}">{{ object.name }}</a>
+                                    <p>{{ object.detail|slice:100 }}...</p>
+
+                                    <div class="blog-button">
+                                        <a href="{% url 'attractions:attraction_points' object.slug %}">Explore
+                                            More<i class="bi bi-arrow-right-short"></i></a>
+                                    </div>
                                 </div>
-                                <div class="service-thumb">
-                                    <img src="{% static 'website/images/home1/service-1.jpg' %}" alt="">
-                                </div>
-                                <div class="service-box-shape">
-                                    <img src="{% static 'website/images/home1/service-box-shape.png' %}" alt="">
+                                <div class="meta-blog">
+                                    <span>{{ object.created_at.date }}</span>
                                 </div>
                             </div>
                         </div>
@@ -579,39 +597,39 @@
     <!--==================================================-->
     <!-- Strat Process Area -->
     <!--==================================================-->
-    <div class="process-area">
-        <div class="container">
-            <div class="row align-items-center" id="poress-row">
-                <div class="col-lg-6 col-md-12">
-                    <div class="porcess-thumb">
-                        <img src="{% static 'website/images/home1/process-thumb.jpg' %}" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="process-left">
-                        <div class="section-title left">
-                            <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Contact Us</h4>
-                            <h1>Fresh Environmental</h1>
-                            <h1>Plant & Safe Trees</h1>
-                            <p class="section-desc">
-                                Competently cultivate worldwide e-tailers through principle-centered value
-                                professionally engineer high-payoff deliverables without exceptional processes.
-                                Rapidiously network cost effective vortals
-                            </p>
-                        </div>
-                        <div class="echofy-button">
-                            <a href="contact.html">Contact Us <img
-                                    src="{% static 'website/images/home1/button-shape.png' %}" alt=""></a>
-                            <img class="two" src="{% static 'website/images/home1/button-shape-2.png' %}" alt="">
-                        </div>
-                        <div class="process-shape">
-                            <img src="{% static 'website/images/home1/about-shape-2.png' %}" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {#    <div class="process-area">#}
+    {#        <div class="container">#}
+    {#            <div class="row align-items-center" id="poress-row">#}
+    {#                <div class="col-lg-6 col-md-12">#}
+    {#                    <div class="porcess-thumb">#}
+    {#                        <img src="{% static 'website/images/home1/process-thumb.jpg' %}" alt="">#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="col-lg-6 col-md-12">#}
+    {#                    <div class="process-left">#}
+    {#                        <div class="section-title left">#}
+    {#                            <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Contact Us</h4>#}
+    {#                            <h1>Fresh Environmental</h1>#}
+    {#                            <h1>Plant & Safe Trees</h1>#}
+    {#                            <p class="section-desc">#}
+    {#                                Competently cultivate worldwide e-tailers through principle-centered value#}
+    {#                                professionally engineer high-payoff deliverables without exceptional processes.#}
+    {#                                Rapidiously network cost effective vortals#}
+    {#                            </p>#}
+    {#                        </div>#}
+    {#                        <div class="echofy-button">#}
+    {#                            <a href="contact.html">Contact Us <img#}
+    {#                                    src="{% static 'website/images/home1/button-shape.png' %}" alt=""></a>#}
+    {#                            <img class="two" src="{% static 'website/images/home1/button-shape-2.png' %}" alt="">#}
+    {#                        </div>#}
+    {#                        <div class="process-shape">#}
+    {#                            <img src="{% static 'website/images/home1/about-shape-2.png' %}" alt="">#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
 
     <!--==================================================-->
     <!-- End Process Area -->
@@ -623,8 +641,8 @@
     <!-- Strat Project Area -->
     <!--==================================================-->
 
-    <div class="project-area">
-        <div class="container-fluid">
+    <div class="service-area">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-9">
                     <div class="section-title left">
@@ -635,87 +653,35 @@
                 </div>
             </div>
             <div class="row">
-                <div class="project-list-1 owl-carousel">
-                    <div class="col-lg-12">
-                        <div class="single-project-box">
-                            <div class="project-thumb">
-                                <img src="{% static 'website/images/home1/project-1.jpg' %}" alt="">
-                            </div>
-                            <div class="project-content">
-                                <h4>Climate</h4>
-                                <a href="#">Cleaning Forest</a>
-                                <a class="project-button" href="#">View Details<i
-                                        class="bi bi-arrow-right-short"></i></a>
-                                <div class="project-shape">
-                                    <img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
+                <div class="project-list-1 home-six owl-carousel">
+                    {% for object in restaurant %}
+                        <div class="col-lg-12 p-1">
+                            <div class="single-blog-box">
+                                <div class="blog-thumb">
+                                    {% if object.image %}
+                                        <img src="{{ object.image|image_or_placeholder }}" alt="">
+                                    {% else %}
+                                        <img src="https://placehold.co/200" alt="">
+                                    {% endif %}
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-text">
+                                        <span>{{ object.created_at }}</span>
+                                    </div>
+                                    <a href="{% url 'attractions:attraction_points' object.id %}">{{ object.name }}</a>
+                                    <p>{{ object.detail|slice:100 }}...</p>
+
+                                    <div class="blog-button">
+                                        <a href="{% url 'attractions:attraction_points' object.slug %}">Explore
+                                            More<i class="bi bi-arrow-right-short"></i></a>
+                                    </div>
+                                </div>
+                                <div class="meta-blog">
+                                    <span>{{ object.created_at.date }}</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="single-project-box">
-                            <div class="project-thumb">
-                                <img src="{% static 'website/images/home1/project-2.jpg' %}" alt="">
-                            </div>
-                            <div class="project-content">
-                                <h4>Environment</h4>
-                                <a href="#">Climate Solutions</a>
-                                <a class="project-button" href="#">View Details<i
-                                        class="bi bi-arrow-right-short"></i></a>
-                                <div class="project-shape">
-                                    <img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="single-project-box">
-                            <div class="project-thumb">
-                                <img src="{% static 'website/images/home1/project-3.jpg' %}" alt="">
-                            </div>
-                            <div class="project-content">
-                                <h4>Recycling</h4>
-                                <a href="#">Plastic Recycling</a>
-                                <a class="project-button" href="#">View Details<i
-                                        class="bi bi-arrow-right-short"></i></a>
-                                <div class="project-shape">
-                                    <img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="single-project-box">
-                            <div class="project-thumb">
-                                <img src="{% static 'website/images/home1/project-4.jpg' %}" alt="">
-                            </div>
-                            <div class="project-content">
-                                <h4>Climate</h4>
-                                <a href="#">Ocean Cleaning</a>
-                                <a class="project-button" href="#">View Details<i
-                                        class="bi bi-arrow-right-short"></i></a>
-                                <div class="project-shape">
-                                    <img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="single-project-box">
-                            <div class="project-thumb">
-                                <img src="{% static 'website/images/home1/project-3.jpg' %}" alt="">
-                            </div>
-                            <div class="project-content">
-                                <h4>Recycling</h4>
-                                <a href="#">Plastic Recycling</a>
-                                <a class="project-button" href="#">View Details<i
-                                        class="bi bi-arrow-right-short"></i></a>
-                                <div class="project-shape">
-                                    <img src="{% static 'website/images/home1/project-shape.png' %}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -794,160 +760,50 @@
     <!--==================================================-->
     <!-- Strat Testimonial Area-->
     <!--==================================================-->
-    <div class="testimonial-area">
+    <div class="service-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-title center">
-                        <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Testimonials</h4>
-                        <h1>Clients Best Feedback About</h1>
-                        <h1>GDA Provision</h1>
+                <div class="col-lg-9">
+                    <div class="section-title left">
+                        <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Our Projects</h4>
+                        <h1>Finished the Latest Leading</h1>
+                        <h1>Environmental Works</h1>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="testimonial-list-1 owl-carousel">
-                    <div class="col-lg-12">
-                        <div class="single-testimonial-box">
-                            <div class="testi-qutoe">
-                                <img src="{% static 'website/images/home1/testi-quote.png' %}" alt="">
-                            </div>
-                            <div class="testi-author">
-                                <div class="testi-author-thumb">
-                                    <img src="{% static 'website/images/home1/testi-author-1.png' %}" alt="">
+                <div class="project-list-1 home-six owl-carousel">
+                    {% for object in dinning %}
+                        <div class="col-lg-12 p-1">
+                            <div class="single-blog-box">
+                                <div class="blog-thumb">
+                                    <img src="{{ object.thumbnail|image_or_placeholder }}" alt="">
                                 </div>
-                                <div class="testi-author-content">
-                                    <div class="testi-author-rating">
-                                        <ul>
-                                            <li><i class="bi bi-star-fill"></i></li>
-                                            <li><i class="bi bi-star-fill"></i></li>
-                                            <li><i class="bi bi-star-fill"></i></li>
-                                            <li><i class="bi bi-star-fill"></i></li>
-                                            <li><i class="bi bi-star-fill"></i></li>
-                                        </ul>
+                                <div class="blog-content">
+                                    <div class="blog-text">
+                                        <span>{{ object.category }}</span>
                                     </div>
-                                    <h4>Anjelina Watson</h4>
-                                    <p>UI/UX Designer</p>
+                                    <a href="{% url 'diny_stay:dining_detail' object.id %}">{{ object.name }}</a>
+                                    <p>{{ object.description|slice:50 }}...</p>
+
+                                    <div class="blog-button">
+                                        <a href="{% url 'diny_stay:dining_detail' object.id %}">Explore
+                                            More<i class="bi bi-arrow-right-short"></i></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <p class="testi-desc">
-                                “Competently cultivate worldwide e-tailers through to principles
-                                professionally engineer high-payoff deliverables without excet
-                                Rapidiously network effective”
-                            </p>
-                            <div class="what-for-comment">
-                                <p>Service Quality</p>
+                                <div class="meta-blog">
+                                    <span>{{ object.created_at.date }}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="single-testimonial-box">
-                            <div class="testi-qutoe">
-                                <img src="{% static 'website/images/home1/testi-quote.png' %}" alt="">
-                            </div>
-                            <div class="testi-author">
-                                <div class="testi-author-thumb">
-                                    <img src="{% static 'website/images/home1/testi-author-2.png' %}" alt="">
-                                </div>
-                                <div class="testi-author-content">
-                                    <div class="testi-author-rating">
-                                        <ul>
-                                            <li><i class="bi bi-star-fill"></i></li>
-                                            <li><i class="bi bi-star-fill"></i></li>
-                                            <li><i class="bi bi-star-fill"></i></li>
-                                            <li><i class="bi bi-star-fill"></i></li>
-                                            <li><i class="bi bi-star-half"></i></li>
-                                        </ul>
-                                    </div>
-                                    <h4>John D. Alexon</h4>
-                                    <p>Web Developer</p>
-                                </div>
-                            </div>
-                            <p class="testi-desc">
-                                “Competently cultivate worldwide e-tailers through to principles
-                                professionally engineer high-payoff deliverables without excet
-                                Rapidiously network effective”
-                            </p>
-                            <div class="what-for-comment">
-                                <p>Supports</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
-        </div>
-        <div class="testi-shape">
-            <img src="{% static 'website/images/home1/testi-shape.png' %}" alt="">
-        </div>
-        <div class="testi-shape-tow">
-            <img src="{% static 'website/images/home1/testi-shape-1.png' %}" alt="">
-        </div>
-        <div class="testi-shape-three">
-            <img src="{% static 'website/images/home1/testi-shape-2.png' %}" alt="">
-        </div>
-        <div class="testi-shape-four">
-            <img src="{% static 'website/images/home1/testi-shape-3.png' %}" alt="">
-        </div>
-        <div class="testi-shape-five">
-            <img src="{% static 'website/images/home1/testi-shape-4.png' %}" alt="">
         </div>
     </div>
 
     <!--==================================================-->
     <!-- Strat Testimonial Area-->
-    <!--==================================================-->
-
-
-
-    <!--==================================================-->
-    <!-- Strat Brand Area-->
-    <!--==================================================-->
-    <div class="brand-area">
-        <div class="container">
-            <div class="row" id="brand-bg">
-                <div class="col-lg-12">
-                    <div class="brand-content">
-                        <h4>All over the world 100,000+ Customers</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="brand-list-1 owl-carousel">
-                        <div class="col-md-12">
-                            <div class="single-brand-box">
-                                <img src="{% static 'website/images/home1/brand-1.png' %}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="single-brand-box">
-                                <img src="{% static 'website/images/home1/brand-2.png' %}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="single-brand-box">
-                                <img src="{% static 'website/images/home1/brand-1.png' %}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="single-brand-box">
-                                <img src="{% static 'website/images/home1/brand-4.png' %}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="single-brand-box">
-                                <img src="{% static 'website/images/home1/brand-5.png' %}" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-shape">
-                <img src="{% static 'website/images/home1/brand-shape.png' %}" alt="">
-            </div>
-        </div>
-    </div>
-
-    <!--==================================================-->
-    <!-- End Brand Area-->
     <!--==================================================-->
 
 
@@ -967,63 +823,39 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-box">
-                        <div class="single-team-thumb">
-                            <img src="{% static 'website/images/home1/team-1.png' %}" alt="">
-                        </div>
-                        <div class="team-content">
-                            <h4>Connie Diaz</h4>
-                            <p>CEO & Founder</p>
-                            <div class="team-social-icon">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                </ul>
+                {% for object in director_general %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-team-box">
+                            <div class="single-team-thumb">
+                                <img src="{{ object.image|image_or_placeholder }}" style="height:250px" alt="">
+                            </div>
+                            <div class="team-content">
+                                <h4>{{ object.name }}</h4>
+                                <p>Director General</p>
+                                <div class="team-social-icon">
+                                    <p class="text-secondary p-3">{{ object.message }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-box">
-                        <div class="single-team-thumb">
-                            <img src="{% static 'website/images/home1/team-2.png' %}" alt="">
-                        </div>
-                        <div class="team-content">
-                            <h4>James E. Huey</h4>
-                            <p>Co Founder</p>
-                            <div class="team-social-icon">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                </ul>
+                {% endfor %}
+                {% for object in director %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-team-box">
+                            <div class="single-team-thumb">
+                                <img src="{{ object.image|image_or_placeholder }}" style="height:250px" alt="">
+                            </div>
+                            <div class="team-content">
+                                <h4>{{ object.name }}</h4>
+                                <p>Director of {{ object.department }}</p>
+                                <div class="team-social-icon">
+                                    <p class="text-secondary p-3">{{ object.message }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-box">
-                        <div class="single-team-thumb">
-                            <img src="{% static 'website/images/home1/team-3.png' %}" alt="">
-                        </div>
-                        <div class="team-content">
-                            <h4>June D. Vargas</h4>
-                            <p>Environmental</p>
-                            <div class="team-social-icon">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+
             </div>
         </div>
     </div>

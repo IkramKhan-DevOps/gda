@@ -12,7 +12,7 @@ class EventListView(ListView):
         context = super(EventListView, self).get_context_data(**kwargs)
         _filter = EventFilter(self.request.GET, queryset=self.get_queryset())
         context['filter_form'] = _filter.form
-        paginator = Paginator(_filter.qs, 1)
+        paginator = Paginator(_filter.qs, 10)
         page_number = self.request.GET.get('page')
         page_object = paginator.get_page(page_number)
         context['object_list'] = page_object

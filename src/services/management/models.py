@@ -136,3 +136,20 @@ class NewsImages(models.Model):
     def delete(self, *args, **kwargs):
         self.image.delete(save=True)
         super(NewsImages, self).delete(*args, **kwargs)
+
+
+class HomeSlider(models.Model):
+    title = models.CharField(max_length=100)
+    tagline = models.CharField(max_length=250)
+    image = ResizedImageField(
+        size=[500, 500], quality=75, upload_to='news/images', blank=True, null=True,
+        help_text='size of image must be 500*500 and format must be png image file'
+    )
+    message = models.TextField()
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-id']
+        verbose_name = 'Home Slider Image'
+        verbose_name_plural = 'Home Slider Images'

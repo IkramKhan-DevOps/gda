@@ -6,6 +6,10 @@ from django.views.generic import TemplateView
 from src.core.models import NewsLetter
 from .models import Visit
 from ...apps.weather.bll import get_galiyat_weather
+from ...services.attractions.models import Attraction, AttractionArea
+from ...services.departments.models import Directors, DirectorGeneral, Chairman
+from ...services.dine_stay.models import Accommodation, Dining
+from ...services.management.models import HomeSlider
 
 """ OFFICIAL """
 
@@ -50,8 +54,16 @@ class HomeTemplateView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(get_galiyat_weather(self))
-        context['weather_data'] = get_galiyat_weather(self)
+        # context['weather_data'] = get_galiyat_weather(self)
+        context['top_attractions'] = AttractionArea.objects.all()[:10]
+        context['restaurant'] = Accommodation.objects.all()[:10]
+        context['dinning'] = Dining.objects.all()[:10]
+
+        context['chairman'] = Chairman.objects.order_by('-created_at').first()
+        context['director'] = Directors.objects.all()[:5]
+        context['director_general'] = DirectorGeneral.objects.all()[:5]
+        context['home_slider'] = HomeSlider.objects.all()
+
         visit_count = Visit.objects.first()
 
         if not visit_count:
@@ -124,9 +136,6 @@ def watertax(request):
 def conservancytax(request):
     return render(request, 'website/conservancytax.html')
 
-
-def propertytax(request):
-    return render(request, 'website/property_tax.html')
 
 
 def boqs(request):

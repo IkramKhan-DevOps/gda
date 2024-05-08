@@ -95,7 +95,7 @@
                         <div class="col-lg-12">
                             <div class="widget-sidber">
                                 <div class="widget_search">
-                                    <form action="{% url 'events:events' %}"
+                                    <form action="{% url 'events:event_list' %}"
                                           method="get">
                                         <input type="text" name="name" value="" placeholder="Search Here"
                                                title="Search for:">
@@ -113,7 +113,7 @@
                                     <ul>
                                         {% for category in event_type %}
                                             <li>
-                                                <a href="{% url 'events:events' %}?event_type={{ category.id }}"><img
+                                                <a href="{% url 'events:event_list' %}?event_type={{ category.id }}"><img
                                                         src="{% static 'website/images/inner-images/category-icon.png' %}"
                                                         alt="">{{ category.name }}<i class="bi bi-arrow-right"></i></a>
                                             </li>
