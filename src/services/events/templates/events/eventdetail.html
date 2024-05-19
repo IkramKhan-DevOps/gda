@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-    {{object.name}}
+    {{ object.name }}
 {% endblock title %}
 
 
@@ -17,7 +17,7 @@
 {% block content %}
 
     <!--==================================================-->
-                <!-- Start Breadcumb Area -->
+    <!-- Start Breadcumb Area -->
     <!--==================================================-->
     <div class="breadcumb-area">
         <div class="container">
@@ -25,6 +25,7 @@
                 <div class="col-lg-12 text-center">
                     <div class="breadcumb-content">
                         <div class="breadcumb-title">
+                            <span><img src="{{ object.thumbnail|image_or_placeholder }}" alt=""></span>
                             <h4>{{ object.name }}</h4>
                         </div>
                         <ul>
@@ -39,7 +40,7 @@
         </div>
     </div>
     <!--==================================================-->
-                <!-- End Breadcumb Area -->
+    <!-- End Breadcumb Area -->
     <!--==================================================-->
 
     <section class="event-details-section">
@@ -50,17 +51,30 @@
                         <div class="col-lg-12">
                             <div class="blog-details-content">
                                 <div class="meta-blog">
-                                    <span><img src="{{ object.thumbnail|image_or_placeholder }}" alt=""></span>
                                 </div>
                                 <p class="blog-details-desc">{{ object.description }}</p>
                                 <p class="blog-details-desc">{{ object.content|safe }}</p>
-                                <h3>Features of {{ object.name }}</h3><br>
-                                <div class="blog-details-list-item">
-                                    <ul>
-                                        {% for obj in object.features.all %}
-                                            <li><i class="bi bi-check-circle-fill"></i>{{ obj }}</li>
+                                       <h3 class="text-success mt-4 text-center">Our Guests</h3>
+                                <div class="row">
+                                    {% if object.guest_set.all %}
+                                        {% for guest in object.guest_set.all %}
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="single-team-box">
+                                                    <div class="single-team-thumb">
+                                                        <img src="{{ guest.image|image_or_placeholder }}" alt="">
+                                                    </div>
+                                                    <div class="team-content">
+                                                        <h4>Connie Diaz</h4>
+                                                        <p>CEO &amp; Founder</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         {% endfor %}
-                                    </ul>
+                                    {% else %}
+                                        <div class="col-lg-4 col-md-6">
+                                        <b class="text-danger text-center">Guest Not Added yet</b>
+                                        </div>
+                                    {% endif %}
                                 </div>
                                 <div style="width: 100%">
                                     <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0"
@@ -70,6 +84,7 @@
                                         </a>
                                     </iframe>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -80,7 +95,7 @@
                         <div class="col-lg-12">
                             <div class="widget-sidber">
                                 <div class="widget_search">
-                                    <form action="{% url 'events:events'%}"
+                                    <form action="{% url 'events:event_list' %}"
                                           method="get">
                                         <input type="text" name="name" value="" placeholder="Search Here"
                                                title="Search for:">
@@ -98,7 +113,7 @@
                                     <ul>
                                         {% for category in event_type %}
                                             <li>
-                                                <a href="{% url 'events:events' %}?event_type={{ category.id }}"><img
+                                                <a href="{% url 'events:event_list' %}?event_type={{ category.id }}"><img
                                                         src="{% static 'website/images/inner-images/category-icon.png' %}"
                                                         alt="">{{ category.name }}<i class="bi bi-arrow-right"></i></a>
                                             </li>
@@ -134,5 +149,70 @@
             </div>
         </div>
     </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-title center">
+                    <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Images</h4>
+                    <h1>Images of {{ object }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="project-list-2 owl-carousel mb-4">
+                {% if  object.eventimage_set %}
+                    {% for image in object.eventimage_set.all %}
+
+                        <div class="col-lg-12 mb-4">
+                            <div class="single-project-box">
+                                <div class="project-thumb">
+                                    <img src="{{ image.image|image_or_placeholder }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-lg-12 text-center"><b>Images not uploaded Yet</b></div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to remove the disabled class from navigation buttons and dots
+            function removeDisabled() {
+                var disabledElements = document.querySelectorAll(' .owl-dots.disabled');
+                disabledElements.forEach(function (element) {
+                    element.classList.remove('disabled');
+                });
+            }
+
+            var owlDots = document.querySelectorAll('.owl-dots');
+
+            // Loop through each element with the class "owl-dots"
+            owlDots.forEach(function (dot) {
+                // Remove the "disabled" class
+                dot.classList.remove('disabled');
+
+                // Add click event listener to each dot
+                dot.addEventListener('click', function () {
+                    // Remove the "disabled" class when a dot is clicked
+                    dot.classList.remove('disabled');
+                });
+            });
+
+            // Call the function initially
+            removeDisabled();
+
+            // Check for and remove the disabled class every 5 seconds
+            setInterval(removeDisabled, 1); // 5000 milliseconds = 5 seconds
+        });
+
+    </script>
+
+
 {% endblock content %}
     

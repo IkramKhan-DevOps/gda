@@ -81,13 +81,15 @@
 
             </div>
 
-            <div class="row" id="events_list">
+        <div class="home-six">
+            <div class="container">
+                  <div class="row" id="events_list">
 
                 {% if object_list %}
                     {% for object in object_list %}
-                        <div class="col-lg-4 col-md-6 card-length">
+                                <div class="col-lg-4 col-md-6 mb-4  card-length">
                             <div class="single-blog-box">
-                                <div class="single-blog-thumb">
+                                <div class="blog-thumb">
                                     {% if object.thumbnail %}
                                         <img src="{{ object.thumbnail|image_or_placeholder }}" alt="">
                                     {% else %}
@@ -95,17 +97,19 @@
                                     {% endif %}
                                 </div>
                                 <div class="blog-content">
+                                    <div class="blog-text">
+                                        <span>{{ object.created_at }}</span>
+                                    </div>
                                     <a href="{% url 'events:event_detail' object.slug %}">{{ object.name }}</a>
-                                    <p>{{ object.description|slice:200 }}...</p>
-                                </div>
-                                <div class="blog-arthor">
-                                    <div class="blog-author-title">
-                                        <h6><span><i class="fa fa-eye"></i></span>View Points</h6>
-                                    </div>
+                                    <p>{{ object.description|slice:100 }}...</p>
+
                                     <div class="blog-button">
-                                        <a href="{% url 'events:event_detail' object.slug %}"><i
-                                                class="bi bi-arrow-right-short"></i></a>
+                                        <a href="{% url 'events:event_detail' object.slug %}">Explore
+                                            More<i class="bi bi-arrow-right-short"></i></a>
                                     </div>
+                                </div>
+                                <div class="meta-blog">
+                                    <span>{{ object.created_at.date }}</span>
                                 </div>
                             </div>
                         </div>
@@ -162,6 +166,9 @@
                     </div>
                 </div>
             </div>
+            </div>
+        </div>
+
         </div>
     </section>
 

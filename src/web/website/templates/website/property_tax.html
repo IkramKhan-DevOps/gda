@@ -1,74 +1,372 @@
 {% extends 'website/base.html' %}
 {% load static %}
 
-
-
-{% block title %} Property Taxes {% endblock title %}
-    
+{% block title %} Property Tax Calculator {% endblock title %}
 
 
 {% block content %}
 
+    <!--==================================================-->
+    <!-- Start Breadcumb Area -->
+    <!--==================================================-->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcumb-content">
+                        <div class="breadcumb-title">
+                            <h4>Property Tax Calculator</h4>
+                        </div>
+                        <ul>
+                            <li><a href="index.html"><img
+                                    src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">GDA</a>
+                            </li>
+                            <li>Property Tax Calculator</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!--==================================================-->
-<!-- Start  Breadcumb Area -->
-<!--==================================================-->
-<div class="breadcumb-area mt-4">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-12 text-center">
-				<div class="breadcumb-content">
-					<div class="breadcumb-title">
-						<h4>Property Taxes</h4>
-					</div>
-					<ul>
-						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Property</a></li>
-						<li>tax</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Breadcumb Area -->
-<!--==================================================-->
 
-<div class="container mt-5">
-    <h2>Property Tax Calculator</h2>
-    <form>
-        <div class="form-group">
-            <label for="townSelect">Select Town:</label>
-            <select class="form-control" id="townSelect">
-                <option value="">Select Town</option>
-                <option value="nathiagali">Nathiagali</option>
-                <option value="dungagali">Dungagali</option>
-                <option value="changlaGali">Changla Gali</option>
-                <option value="khanaspur">Khanaspur</option>
-            </select>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card  m-4 p-4">
+                    <h5 class="text-success text-center">Read This For Property Tax Calculation</h5><br>
+                    <ol>
+                        <li>✅<strong>Read Instructions:</strong> Find and read the guidelines provided under "<em>Read
+                            This For property Tax Calculation</em>".
+                        </li>
+                        <br>
+
+                        <li>✅<strong>Select Town Area:</strong> Choose your town area from the available options.</li>
+                        <br>
+
+                        <li>✅<strong>Select Property Type:</strong> Select the type of property you own (e.g.,
+                            residential, commercial).
+                        </li>
+                        <br>
+
+                        <li>✅<strong>Area in Sq Yard:</strong> Input your total land area in square yard
+                        </li>
+                        <br>
+
+                        <li>✅<strong>Area in Sq Feet:</strong> Input your total land area in square feet
+                        </li>
+                        <br>
+
+                        <li>✅<strong>Calculate Tax:</strong> Once both town area and property type are selected, click
+                            on
+                            "<em>Calculate</em>" to determine the tax price.
+                        </li>
+                        <br>
+
+                        <li>✅<strong>View Results:</strong> Check the calculated tax price displayed on the screen.</li>
+                        <br>
+
+                        <li>✅<strong>Source Verification:</strong>The tax prices are Calculated from Galiyat Development
+                            Authority which is accurate and reliability.
+                        </li>
+                        <br>
+
+                        <li>✅<strong>Need Help?</strong> For any assistance or queries, feel free to reach out for
+                            support.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card m-4 p-2">
+                    <img src="{% static 'website/images/property-tax.jpg' %}" style="height: 408px">
+
+                    <form>
+                        <div class="form-group">
+                            <label for="townSelect">Select Town:</label>
+
+                            <select class="form-control" id="townSelect">
+                                <option value="1">Nathiagali</option>
+                                <option value="2">Donagali</option>
+                                <option value="3">Changalagali</option>
+                                <option value="4">Khairagali</option>
+                                <option value="5">Khanspur</option>
+                                <option value="6">Thandiyani</option>
+                                <option value="7">Ghoradhaka</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyTypeSelect">Select Property Type:</label>
+                            <select class="form-control" id="propertyTypeSelect">
+                                <option value="">Select Property Type</option>
+                                <option value="1">Residential</option>
+                                <option value="2">Commercial</option>
+                            </select>
+                        </div>
+                        <input class="form-control mt-3" id="txtlandaera" placeholder="Total Land Area in Square Yard">
+                        <input class="form-control mt-3" id="txtcover" placeholder="Total Covered Area in Square FT">
+                        <div class="row ">
+                            <div class="col-12 text-center mt-4">
+                                <span>YOUR TAX IS : <b id="valtax">0</b> RS</span><br>
+                                <button type="button" onclick="taxcalc()" class="btn text-white mt-2 "
+                                        style="border-radius: 30px;background-color: #49AE44">Calculate Tax
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
         </div>
-        <div class="form-group">
-            <label for="propertyTypeSelect">Select Property Type:</label>
-            <select class="form-control" id="propertyTypeSelect">
-                <option value="">Select Property Type</option>
-                <option value="residential">Residential</option>
-                <option value="commercial">Commercial</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="landArea">Total Land Area (Sq Yard):</label>
-            <input type="number" class="form-control" id="landArea">
-        </div>
-        <div class="form-group">
-            <label for="coveredArea">Total Covered Area (Sq FT):</label>
-            <input type="number" class="form-control" id="coveredArea">
-        </div>
-        <button type="button" class="btn btn-primary" onclick="calculatePropertyTax()">Calculate Tax</button>
-        <div class="form-group mt-3">
-            <label for="propertyTaxResult">Calculated Tax:</label>
-            <input type="text" class="form-control" id="propertyTaxResult" readonly>
-        </div>
-    </form>
-</div>
+    </div>
+
+    <script>
+        function taxcalc() {
+            var ee = document.getElementById("townSelect");
+            var town = ee.options[ee.selectedIndex].value;
+            var e = document.getElementById("propertyTypeSelect");
+            var property_type = e.options[e.selectedIndex].value;
+            var landaera = document.getElementById("txtlandaera").value;
+            var coveaera = document.getElementById("txtcover").value;
+            var callandaera = 0;
+            var remaningland = 0;
+            var coverchallenaera = 0;
+
+
+            if (landaera == '')
+                alert('Please enter Landaera');
+            if (coveaera == '')
+                alert('Please enter Coveredaera');
+            if (town == 1 | town == 2 | town == 3 | town == 4) {
+                var tax = 0;
+                var c = 0;
+                var l = 0;
+
+                if (property_type == 1) {
+                    if (landaera <= 500) {
+                        callandaera = landaera * 4;
+                    } else if (landaera >= 501) {
+                        remaningland = landaera - 500;
+                        callandaera = 500 * 4;
+                        callandaera += remaningland * 5;
+                    }
+                    remaningland = 0;
+                    if (coveaera <= 3000) {
+                        coverchallenaera = coveaera * 4;
+                    } else if (coveaera >= 3001) {
+                        remaningland = coveaera - 3000;
+                        coverchallenaera = (3000 * 4) + (remaningland * 5);
+                    }
+
+                    tax = (callandaera) + (coverchallenaera);
+                } else {
+                    if (landaera <= 310) {
+                        callandaera = landaera * 8;
+                    } else if (landaera > 310) {
+                        remaningland = landaera - 310;
+                        callandaera = 310 * 8;
+                        callandaera += remaningland * 9;
+                    }
+                    remaningland = 0;
+                    if (coveaera <= 1500) {
+                        coverchallenaera = coveaera * 9;
+                    } else if (coveaera >= 1501 & coveaera <= 3000) {
+                        remaningland = coveaera - 1500;
+                        coverchallenaera = 1500 * 9;
+                        coverchallenaera += (remaningland * 10);
+                    } else if (coveaera >= 3001 & coveaera <= 4500) {
+                        remaningland = coveaera - 3000;
+                        coverchallenaera = 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += (remaningland * 12);
+                    } else if (coveaera >= 4501 & coveaera <= 6000) {
+                        remaningland = coveaera - 4500;
+                        coverchallenaera = 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += 1500 * 12;
+                        coverchallenaera += (remaningland * 14);
+                    } else if (coveaera >= 6001 & coveaera <= 7500) {
+                        remaningland = coveaera - 6000;
+                        coverchallenaera = 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += 1500 * 12;
+                        coverchallenaera += 1500 * 14;
+                        coverchallenaera += (remaningland * 16);
+                    } else if (coveaera >= 7501) {
+                        remaningland = coveaera - 7500;
+                        coverchallenaera = 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += 1500 * 12;
+                        coverchallenaera += 1500 * 14;
+                        coverchallenaera += 1500 * 16;
+                        coverchallenaera += (remaningland * 18);
+                    }
+                    tax = (callandaera) + (coverchallenaera);
+
+                }
+            } else if (town == 5 | town == 6) {
+                var tax = 0;
+                var c = 0;
+                var l = 0;
+
+
+                if (property_type == 1) {
+                    if (landaera <= 300) {
+                        callandaera = landaera * 3;
+                    } else if (landaera >= 301 & landaera <= 600) {
+                        remaningland = landaera - 300;
+                        callandaera = 300 * 3;
+                        callandaera += remaningland * 4;
+                    } else if (landaera >= 601) {
+                        remaningland = landaera - 600;
+                        callandaera = 300 * 3;
+                        callandaera += 300 * 4;
+                        callandaera += remaningland * 5;
+                    }
+                    remaningland = 0;
+                    if (coveaera <= 2500) {
+                        coverchallenaera = coveaera * 3;
+                    } else if (coveaera >= 2501 & coveaera <= 3500) {
+                        remaningland = coveaera - 2500;
+                        coverchallenaera = (2500 * 3) + (remaningland * 4);
+                    } else if (coveaera >= 3501) {
+                        remaningland = coveaera - 2500;
+                        coverchallenaera = 2500 * 3
+                        coverchallenaera += 1000 * 4
+                        coverchallenaera += (remaningland * 5);
+                    }
+
+                    tax = (callandaera) + (coverchallenaera);
+                } else {
+
+                    if (landaera <= 310) {
+                        callandaera = landaera * 6;
+                    } else if (landaera >= 501) {
+                        remaningland = landaera - 310;
+                        callandaera = 310 * 6;
+                        callandaera += remaningland * 7;
+                    }
+                    remaningland = 0;
+                    if (coveaera <= 1500) {
+                        coverchallenaera = coveaera * 8;
+                    } else if (coveaera >= 1501 & coveaera <= 3000) {
+                        remaningland = coveaera - 1500;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += (remaningland * 9);
+                    } else if (coveaera >= 3001 & coveaera <= 4500) {
+                        remaningland = coveaera - 3000;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += (remaningland * 10);
+                    } else if (coveaera >= 4501 & coveaera <= 6000) {
+                        remaningland = coveaera - 4500;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += (remaningland * 12);
+                    } else if (coveaera >= 6001 & coveaera <= 7500) {
+                        remaningland = coveaera - 6000;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += 1500 * 12;
+                        coverchallenaera += (remaningland * 14);
+                    } else if (coveaera >= 7501) {
+                        remaningland = coveaera - 7500;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += 1500 * 12;
+                        coverchallenaera += 1500 * 14;
+                        coverchallenaera += (remaningland * 16);
+                    }
+                    tax = (callandaera) + (coverchallenaera);
+
+                }
+            } else if (town == 7) {
+                var tax = 0;
+                var c = 0;
+                var l = 0;
+
+
+                if (property_type == 1) {
+                    if (landaera <= 300) {
+                        callandaera = landaera * 3;
+                    } else if (landaera >= 301 & landaera <= 600) {
+                        remaningland = landaera - 300;
+                        callandaera = 300 * 3;
+                        callandaera += remaningland * 4;
+                    } else if (landaera >= 601) {
+                        remaningland = landaera - 600;
+                        callandaera = 300 * 3;
+                        callandaera += 300 * 4;
+                        callandaera += remaningland * 5;
+                    }
+                    remaningland = 0;
+                    if (coveaera <= 2500) {
+                        coverchallenaera = coveaera * 3;
+                    } else if (coveaera >= 2501 & coveaera <= 3500) {
+                        remaningland = coveaera - 2500;
+                        coverchallenaera = (2500 * 3) + (remaningland * 6);
+                    } else if (coveaera >= 3501) {
+                        remaningland = coveaera - 2500;
+                        coverchallenaera = 2500 * 3
+                        coverchallenaera += 1000 * 6
+                        coverchallenaera += (remaningland * 5);
+                    }
+
+                    tax = (callandaera) + (coverchallenaera);
+                } else {
+
+                    if (landaera <= 310) {
+                        callandaera = landaera * 6;
+                    } else if (landaera >= 501) {
+                        remaningland = landaera - 310;
+                        callandaera = 310 * 6;
+                        callandaera += remaningland * 7;
+                    }
+                    remaningland = 0;
+                    if (coveaera <= 1500) {
+                        coverchallenaera = coveaera * 8;
+                    } else if (coveaera >= 1501 & coveaera <= 3000) {
+                        remaningland = coveaera - 1500;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += (remaningland * 9);
+                    } else if (coveaera >= 3001 & coveaera <= 4500) {
+                        remaningland = coveaera - 3000;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += (remaningland * 10);
+                    } else if (coveaera >= 4501 & coveaera <= 6000) {
+                        remaningland = coveaera - 4500;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += (remaningland * 12);
+                    } else if (coveaera >= 6001 & coveaera <= 7500) {
+                        remaningland = coveaera - 6000;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += 1500 * 12;
+                        coverchallenaera += (remaningland * 14);
+                    } else if (coveaera >= 7501) {
+                        remaningland = coveaera - 7500;
+                        coverchallenaera = 1500 * 8;
+                        coverchallenaera += 1500 * 9;
+                        coverchallenaera += 1500 * 10;
+                        coverchallenaera += 1500 * 12;
+                        coverchallenaera += 1500 * 14;
+                        coverchallenaera += (remaningland * 16);
+                    }
+                    tax = (callandaera) + (coverchallenaera);
+
+                }
+            }
+            document.getElementById("valtax").innerHTML = tax;
+        }
+    </script>
 
 {% endblock content %}
