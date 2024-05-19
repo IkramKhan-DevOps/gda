@@ -8,14 +8,14 @@ cache_session = requests_cache.CachedSession('.cache', expire_after=14400)
 retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
 openmeteo = openmeteo_requests.Client(session=retry_session)
 url = "https://api.open-meteo.com/v1/forecast"
-
-location = WeatherLocation.objects.first()
+if WeatherLocation.objects.first():
+    location = WeatherLocation.objects.first()
 
 
 def get_galiyat_weather(self):
     params = {
-        "latitude": location.latitude,
-        "longitude": location.longitude,
+        "latitude": location.latitude or 30.10,
+        "longitude": location.longitude or 73.31,
         "current": ["temperature_2m", "relative_humidity_2m", "apparent_temperature", "is_day", "precipitation", "rain",
                     "showers", "snowfall", "weather_code", "cloud_cover", "pressure_msl", "surface_pressure",
                     "wind_speed_10m"]
