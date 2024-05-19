@@ -8,7 +8,7 @@ from .views import (
     cafe, tenders,
      watertax,
     conservancytax, propertytax,
-    boqs, emergencyContact, jurisdiction, contactUs,
+    boqs, emergencyContact, jurisdiction, ContactView,
     buildingByeLaws, HomeTemplateView
 )
 
@@ -28,7 +28,7 @@ urlpatterns += [
     path('', HomeTemplateView.as_view(), name='home'),
     path('about/', about, name='about'),
     path('budget/', budget, name='budget'),
-    path('contact-us/', contactUs, name='contact_us'),
+    path('contact-us/', ContactView.as_view(), name='contact_us'),
     # path('team/', team, name='team'),
     path('teamDetails/', teamDetails, name='teamDetails'),
     path('act/', act, name='gda_act'),

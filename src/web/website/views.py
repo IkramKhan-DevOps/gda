@@ -2,9 +2,14 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import TemplateView
+from django.urls import reverse_lazy
 
 from src.core.models import NewsLetter
 from .models import Visit
+from django.views.generic.edit import CreateView
+
+from ...services.feedback.forms import ContactForm
+from ...services.feedback.signals import send_feedback_email
 
 """ OFFICIAL """
 
@@ -70,8 +75,15 @@ def budget(request):
     return render(request, 'website/budget.html')
 
 
-def contactUs(request):
-    return render(request, 'website/contactUs.html')
+class ContactView(CreateView):
+    template_name = 'website/contactUs.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('website:contact_us')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "Your message has been sent successfully!")
+        return response
 
 
 def team(request):
@@ -113,6 +125,7 @@ def cafe(request):
 def cafedetail(request):
     return render(request, 'website/cafedetail.html')
 
+
 def watertax(request):
     return render(request, 'website/watertax.html')
 
@@ -123,6 +136,7 @@ def conservancytax(request):
 
 def propertytax(request):
     return render(request, 'website/property_tax.html')
+
 
 def boqs(request):
     return render(request, 'website/boqs.html')

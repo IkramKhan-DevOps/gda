@@ -1,16 +1,16 @@
 from django.views.generic import ListView, DetailView
 from django.core.paginator import Paginator
 from .filters import DinningFilter, AccommodationFilter
-from .models import Accommodation,AccommodationCategory,AccommodationFeature,AccommodationImages,Dining,DiningAndAccommodationArea,DiningFeature,DiningImages
-
-
+from .models import Accommodation, AccommodationCategory, AccommodationFeature, AccommodationImages, Dining, \
+    DiningAndAccommodationArea, DiningFeature, DiningImages
+from ..events.models import Event
 
 
 class AccommodationListView(ListView):
     model = Accommodation
     template_name = 'dine_stay/accommodations.html'
     paginate_by = 10
-    
+
     def get_queryset(self):
         accommodations = Accommodation.objects.filter(is_active=True)
         return accommodations
@@ -19,29 +19,29 @@ class AccommodationListView(ListView):
         context = super().get_context_data(**kwargs)
         context['accommodations'] = self.get_queryset()
         return context
-    
-    
+
+
 class AccommodationDetailView(DetailView):
     model = Accommodation
     template_name = 'dine_stay/accommodation_details.html'
     context_object_name = 'accommodation'
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         accommodation = self.get_object()
         context['accommodation'] = accommodation
         context['accommodations'] = Accommodation.objects.filter(is_active=True)
-        
+
         return context
-    
-    
+
+
 class DiningListView(ListView):
     model = Dining
     template_name = 'dine_stay/dining.html'
     paginate_by = 10
-    
+
     def get_queryset(self):
         dinings = Dining.objects.filter(is_active=True)
         return dinings
@@ -50,25 +50,23 @@ class DiningListView(ListView):
         context = super().get_context_data(**kwargs)
         context['dinings'] = self.get_queryset()
         return context
-    
-    
+
+
 class DiningDetailView(DetailView):
     model = Dining
     template_name = 'dine_stay/dining_detail.html'
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         dining = self.get_object()
         context['dining'] = dining
         context['dinings'] = Dining.objects.filter(is_active=True)
-        
+
         return context
-    
-    
-    
-    
+
+
 # ============================================================================================================================================
 
 
