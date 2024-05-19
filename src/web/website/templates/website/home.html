@@ -107,14 +107,14 @@
                                         {{ slider.message }}</p>
                                 </div>
                                 <div class="echofy-button" data-animation="fadeInUp" data-delay="1000ms">
-                                    <a href="#">Let’s Talk <img
+                                    <a href="{% url 'website:contact_us' %}">Let’s Talk <img
                                             src="{% static 'website/images/home1/button-shape.png' %}"
                                             alt=""></a>
                                     <img class="two" src="{% static 'website/images/home1/button-shape-2.png' %}"
                                          alt="">
                                 </div>
                                 <div class="echofy-button two" data-animation="fadeInUp" data-delay="1200ms">
-                                    <a href="#">Read More</a>
+                                    <a href="{% url 'website:about' %}">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -151,21 +151,21 @@
                                     practices. Progressively fabricate done</p>
                             </div>
                             <div class="echofy-button" data-animation="fadeInUp" data-delay="1000ms">
-                                <a href="#">Let’s Talk <img src="{% static 'website/images/home1/button-shape.png' %}"
+                                <a href="{% url 'website:contact_us' %}">Let’s Talk <img src="{% static 'website/images/home1/button-shape.png' %}"
                                                             alt=""></a>
                                 <img class="two" src="{% static 'website/images/home1/button-shape-2.png' %}" alt="">
                             </div>
                             <div class="echofy-button two" data-animation="fadeInUp" data-delay="1200ms">
-                                <a href="#">Read More</a>
+                                <a href="{% url 'website:about' %}">Read More</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="hero-social-icon" data-animation="fadeInLeft" data-delay="1000ms">
                     <ul>
-                        <li><a href="https://www.facebook.com/gdaabbottabad/"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="https://twitter.com/gdaabbottabad?lang=en"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="https://www.instagram.com/gdaabbottabad/"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="{{ app.facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="{{ app.twitter }}"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="{{ app.instagram }}"><i class="fab fa-instagram"></i></a></li>
                         <li class="text">Follow Us</li>
                     </ul>
                 </div>
@@ -308,7 +308,7 @@
                             </div>
                         </div>
                         <div class="echofy-button">
-                            <a href="departments:departments">More About Us<img
+                            <a href="{% url 'departments:gda_team' %}">More About Us<img
                                     src="{% static 'website/images/home1/button-shape.png' %}" alt=""></a>
                             <img class="two" src="{% static 'website/images/home1/button-shape-2.png' %}" alt="">
                         </div>
@@ -345,7 +345,7 @@
                         </div>
                         <div class="process-two-content">
                             <h4>Temperature</h4>
-                            <p><b>{{ weather_data.current_temperature_2m }}°C</b></p>
+                            <p><b>{{ weather_data.current_temperature_2m|floatformat:2 }} °C</b></p>
                         </div>
                     </div>
                 </div>

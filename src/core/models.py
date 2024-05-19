@@ -92,6 +92,16 @@ class Application(models.Model):
         max_length=255, default='https://exarth.com/terms-of-use/', help_text='Terms and Conditions page link'
     )
 
+    facebook = models.URLField(
+        max_length=255, default='https://exarth.com/terms-of-use/', help_text='Social Facebook link'
+    )
+    instagram = models.URLField(
+        max_length=255, default='https://exarth.com/terms-of-use/', help_text='Social Instagram link'
+    )
+    twitter = models.URLField(
+        max_length=255, default='https://exarth.com/terms-of-use/', help_text='Social Twitter link'
+    )
+
     version = models.CharField(max_length=10, help_text='Current version', default='1.0.0')
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -57,7 +57,7 @@ class HomeTemplateView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['weather_data'] = get_galiyat_weather(self)
+        context['weather_data'] = get_galiyat_weather(self)
         context['top_attractions'] = AttractionArea.objects.all()[:10]
         context['restaurant'] = Accommodation.objects.all()[:10]
         context['dinning'] = Dining.objects.all()[:10]

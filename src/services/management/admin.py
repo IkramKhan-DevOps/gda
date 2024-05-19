@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (
-    Document, DocumentType, GalleryImage, GalleryVideo, News, NewsImages, HomeSlider
+    Document, DocumentType, GalleryImage, GalleryVideo, News, NewsImages, HomeSlider, WeatherLocation
 )
 
 
@@ -64,3 +64,11 @@ class NewsAdmin(admin.ModelAdmin):
 @admin.register(HomeSlider)
 class HomeSliderAdmin(admin.ModelAdmin):
     list_display = ['title', 'tagline']
+
+
+@admin.register(WeatherLocation)
+class WeatherLocationAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('', {'fields': ['latitude', 'longitude']}),
+    ]
+    search_fields = ['id']

@@ -8,12 +8,12 @@ from .views import (
     act, department, departmentDetails,
     hotels, hotelsDetails, cafedetail,
     cafe, tenders,
-     watertax,
-    conservancytax, propertytax,
+    watertax,
+    conservancytax,
     boqs, emergencyContact, jurisdiction, ContactView,
     watertax,
     conservancytax,
-    boqs, emergencyContact, jurisdiction, contactUs,
+    boqs, emergencyContact, jurisdiction, ContactView,
     buildingByeLaws, HomeTemplateView
 )
 

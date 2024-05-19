@@ -2,157 +2,164 @@
 {% load core_tags %}
 
 <footer>
-<!--==================================================-->
-<!-- Startt Footer Area-->
-<!--==================================================-->
-<div class="footer-area">
-	<div class="container">
+    <!--==================================================-->
+    <!-- Startt Footer Area-->
+    <!--==================================================-->
+    <div class="footer-area">
+        <div class="container">
 
-        {# BANNER AREA #}
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="footer-social-address">
-					<div class="row align-items-center">
-						<div class="col-lg-6 col-md-12">
-							<div class="footer-social-address-content">
-								<h4>Stay with us On Social</h4>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-12">
-							<div class="footer-social-icon">
-								<ul>
-									<li class="text">FOLOW US :</li>
-								    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-								    <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+            {# BANNER AREA #}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-social-address">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-12">
+                                <div class="footer-social-address-content">
+                                    <h4>Stay with us On Social</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="footer-social-icon">
+                                    <ul>
+                                        <li class="text">FOLOW US :</li>
+                                        <li><a href="{{ app.facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="{{ app.twitter }}"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="{{ app.instagram }}"><i class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        {# FULL FOOTER #}
-        <div class="row add-footer-class">
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="footer-logo">
-					<a href="{% url 'website:home' %}"><img width="75px" src="{{ app.logo|image_or_placeholder:"70x70" }}" alt="logo"></a>
-				</div>
-				<p class="footer-desc">{{app.tagline}}</p>
-				<div class="footer-contect-info">
-					<div class="footer-contact-info-title">
-						<h4>Contact</h4>
-					</div>
-					<ul>
-						<li><i class="bi bi-telephone-plus-fill"></i>{{app.contact_phone1}}</li>
-						<li><i class="bi bi-envelope-open-fill"></i>{{app.contact_email1}}</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="footer-widget-content">
-					<div class="footer-widget-title">
-						<h4>Quick Links</h4>
-					</div>
-					<div class="footer-widget-menu">
-						<ul>
-							<li><a href="{% url 'website:home' %}"><i class="fas fa-angle-right"></i>Home</a></li>
-							<li><a href="{% url 'website:about' %}"><i class="fas fa-angle-right"></i>About Us</a></li>
-							<li><a href="{% url 'website:contact_us' %}"><i class="fas fa-angle-right"></i>Contact Us</a></li>
-							<li><a href="{% url 'website:emergency_contact' %}"><i class="fas fa-angle-right"></i>Emergency Services</a></li>
-							<li><a href="{% url 'website:jurisdiction' %}"><i class="fas fa-angle-right"></i>Area Of jurisdiction</a></li>
-							<li><a href="{% url 'website:departments' %}"><i class="fas fa-angle-right"></i>Departments</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>			
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="footer-widget-content">
-					<div class="footer-widget-title">
-						<h4> More</h4>
-					</div>
-					<div class="footer-widget-menu">
-						<ul>
-							{% comment %} <li><a href="{% url 'events:events' %}"><i class="fas fa-angle-right"></i> Events</a></li> {% endcomment %}
-							{% comment %} <li><a href=" {% url 'feedback:feedback' %} "><i class="fas fa-angle-right"></i>Feedback</a></li> {% endcomment %}
-							
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="footer-widget-content">
-					<div class="footer-widget-title">
-						<h4>Newsletter</h4>
-					</div>
-					<p>Subscribe our Newsletter</p>
-					<form action="{% url 'website:newsletter-create' %}" method="post">
-						<div class="single-newsletter-box">
-                            {% csrf_token %}
-							<input type="text" id="email" name="email" placeholder="Your Email">
-							<button type="submit">Subscribe Now</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-    {# COPY RIGHT #}
-	<div class="footer-bottom-area">
-		<div class="container">
-			<div class="row footer-bottom">
-				<div class="col-md-12 text-center">
-					<div class="footer-bottom-content">
-						<h4>
-                            © Copyrights 2024 All rights reserved <a href="#">Galiyat Development Authority</a>
-                            deveoped by <a href="https://exarth.com/"><b>Exarth</b></a> under the super-vision of
-                            <a href="#">Technical Director</a> of GDA.
-                        </h4>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Footer Area-->
-<!--==================================================-->
+            {# FULL FOOTER #}
+            <div class="row add-footer-class">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-logo">
+                        <a href="{% url 'website:home' %}"><img width="75px"
+                                                                src="{{ app.logo|image_or_placeholder:"70x70" }}"
+                                                                alt="logo"></a>
+                    </div>
+                    <p class="footer-desc">{{ app.tagline }}</p>
+                    <div class="footer-contect-info">
+                        <div class="footer-contact-info-title">
+                            <h4>Contact</h4>
+                        </div>
+                        <ul>
+                            <li><i class="bi bi-telephone-plus-fill"></i>{{ app.contact_phone1 }}</li>
+                            <li><i class="bi bi-envelope-open-fill"></i>{{ app.contact_email1 }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-widget-content">
+                        <div class="footer-widget-title">
+                            <h4>Quick Links</h4>
+                        </div>
+                        <div class="footer-widget-menu">
+                            <ul>
+                                <li><a href="{% url 'website:home' %}"><i class="fas fa-angle-right"></i>Home</a></li>
+                                <li><a href="{% url 'website:about' %}"><i class="fas fa-angle-right"></i>About Us</a>
+                                </li>
+                                <li><a href="{% url 'website:contact_us' %}"><i class="fas fa-angle-right"></i>Contact
+                                    Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-widget-content">
+                        <div class="footer-widget-title">
+                            <h4> More</h4>
+                        </div>
+                        <div class="footer-widget-menu">
+                            <ul>
+                                {% comment %} <li><a href="{% url 'events:events' %}"><i class="fas fa-angle-right"></i> Events</a></li> {% endcomment %}
+                                {% comment %} <li><a href=" {% url 'feedback:feedback' %} "><i class="fas fa-angle-right"></i>Feedback</a></li> {% endcomment %}
+                                <li><a href="{% url 'website:emergency_contact' %}"><i class="fas fa-angle-right"></i>Emergency
+                                    Services</a></li>
+                                <li><a href="{% url 'website:jurisdiction' %}"><i class="fas fa-angle-right"></i>Area Of
+                                    jurisdiction</a></li>
+                                <li><a href="{% url 'departments:departments' %}"><i class="fas fa-angle-right"></i>Departments</a>
+                                </li>
 
 
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-widget-content">
+                        <div class="footer-widget-title">
+                            <h4>Newsletter</h4>
+                        </div>
+                        <p>Subscribe our Newsletter</p>
+                        <form action="{% url 'website:newsletter-create' %}" method="post">
+                            <div class="single-newsletter-box">
+                                {% csrf_token %}
+                                <input type="text" id="email" name="email" placeholder="Your Email">
+                                <button type="submit">Subscribe Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<!--==================================================-->
-<!-- End search-popup Area-->
-<!--==================================================-->
-<div class="search-popup">
-	<button class="close-search style-two"><span class="flaticon-multiply"><i class="far fa-times-circle"></i></span></button>
-	<button class="close-search"><i class="bi bi-arrow-up"></i></button>
-	<form method="post" action="#">
-		<div class="form-group">
-			<input type="search" name="search-field" value="" placeholder="Search Here" required="">
-			<button type="submit"><i class="fa fa-search"></i></button>
-		</div>
-	</form>
-</div>
-<!--==================================================-->
-<!-- End search-popup Area-->
-<!--==================================================-->
+        {# COPY RIGHT #}
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="row footer-bottom">
+                    <div class="col-md-12 text-center">
+                        <div class="footer-bottom-content">
+                            <h4>
+                                © Copyrights 2024 All rights reserved <a href="#">Galiyat Development Authority</a>
+                                deveoped by <a href="https://exarth.com/"><b>Exarth</b></a> under the super-vision of
+                                <a href="#">Technical Director</a> of GDA.
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--==================================================-->
+    <!-- End Footer Area-->
+    <!--==================================================-->
 
 
+    <!--==================================================-->
+    <!-- End search-popup Area-->
+    <!--==================================================-->
+    <div class="search-popup">
+        <button class="close-search style-two"><span class="flaticon-multiply"><i
+                class="far fa-times-circle"></i></span></button>
+        <button class="close-search"><i class="bi bi-arrow-up"></i></button>
+        <form method="post" action="#">
+            <div class="form-group">
+                <input type="search" name="search-field" value="" placeholder="Search Here" required="">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+    </div>
+    <!--==================================================-->
+    <!-- End search-popup Area-->
+    <!--==================================================-->
 
-<!--==================================================-->
-<!-- Start scrollup section Section -->
-<!--==================================================-->
-<div class="prgoress_indicator active-progress">
+
+    <!--==================================================-->
+    <!-- Start scrollup section Section -->
+    <!--==================================================-->
+    <div class="prgoress_indicator active-progress">
         <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-          <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 0;"></path>
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                  style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 0;"></path>
         </svg>
- </div>
-<!--==================================================-->
-<!-- End scrollup section Section -->
-<!--==================================================-->
+    </div>
+    <!--==================================================-->
+    <!-- End scrollup section Section -->
+    <!--==================================================-->
 
 
 </footer>

@@ -153,3 +153,17 @@ class HomeSlider(models.Model):
         ordering = ['-id']
         verbose_name = 'Home Slider Image'
         verbose_name_plural = 'Home Slider Images'
+
+
+class WeatherLocation(models.Model):
+    latitude = models.FloatField(default='34.07')
+    longitude = models.FloatField(default='73.38')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-id']
+        verbose_name = 'Weather Location'
+        verbose_name_plural = 'Weather Locations'
+
+    def __str__(self):
+        return f"Location"
