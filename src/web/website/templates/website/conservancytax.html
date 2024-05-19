@@ -1,77 +1,181 @@
 {% extends 'website/base.html' %}
 {% load static %}
 
-
-
-{% block title %} Conservancy Taxes {% endblock title %}
-    
+{% block title %} Conservancy Tax Calculator {% endblock title %}
 
 
 {% block content %}
 
-
-<!--==================================================-->
-<!-- Start  Breadcumb Area -->
-<!--==================================================-->
-<div class="breadcumb-area mt-4">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-12 text-center">
-				<div class="breadcumb-content">
-					<div class="breadcumb-title">
-						<h4>Conservancy Taxes</h4>
-					</div>
-					<ul>
-						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Conservancy</a></li>
-						<li>tax</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Breadcumb Area -->
-<!--==================================================-->
-
-<div class="container mt-5">
-    <h2>Conservancy Tax Calculator</h2>
-    
-    <div class="form-group">
-        <label for="conservancyTypeSelect">Select Tax Type:</label>
-        <select class="form-control" id="conservancyTypeSelect">
-            <option value="">Select Tax Type</option>
-            <option value="commercial">Commercial</option>
-            <option value="residential">Residential</option>
-        </select>
-    </div>
-    
-    <div id="commercialTaxSection" style="display: none;">
-        <div class="form-group">
-            <label for="numRooms">Number of Rooms:</label>
-            <input type="number" class="form-control" id="numRooms">
+    <!--==================================================-->
+    <!-- Start Breadcumb Area -->
+    <!--==================================================-->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcumb-content">
+                        <div class="breadcumb-title">
+                            <h4>Conservancy Tax Calculator</h4>
+                        </div>
+                        <ul>
+                            <li><a href="index.html"><img
+                                    src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">GDA</a>
+                            </li>
+                            <li>Conservancy Tax Calculator</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button type="button" class="btn btn-primary">Calculate Tax</button>
     </div>
-    
-    <div id="residentialTaxSection" style="display: none;">
-        <div class="form-group">
-            <label for="landSize">Enter Land Size (in Kanal):</label>
-            <input type="number" class="form-control" id="landSize">
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card  m-4 p-4">
+                    <h5 class="text-success text-center">Read This For Property Tax Calculation</h5><br>
+                    <ol>
+                        <li>✅<strong>Read Instructions:</strong> Find and read the guidelines provided under "<em>Read
+                            This For Conservancy Tax Calculation</em>".
+                        </li>
+                        <br>
+
+                        <li>✅<strong>Select Property Type:</strong> Select the type of property you own (e.g.,
+                            residential, commercial).
+                        </li>
+                        <br>
+                        <li>✅<strong>Input Rooms/Area:</strong> Input total number of rooms or total area in kanal
+                        </li>
+                        <br>
+
+
+                        <li>✅<strong>Calculate Tax:</strong> Once both town area and property type are selected, click
+                            on
+                            "<em>Calculate</em>" to determine the tax price.
+                        </li>
+                        <br>
+
+                        <li>✅<strong>View Results:</strong> Check the calculated tax price displayed on the screen.</li>
+                        <br>
+
+                        <li>✅<strong>Source Verification:</strong>The tax prices are Calculated from Galiyat Development
+                            Authority which is accurate and reliability.
+                        </li>
+                        <br>
+
+                        <li>✅<strong>Need Help?</strong> For any assistance or queries, feel free to reach out for
+                            support.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card m-4 p-2">
+                    <img src="{% static 'website/conservancy.gif' %}" style="height: 408px">
+                    <div class="form-group">
+                        <label for="propertyTypeSelect">Select Property Type:</label>
+                        <select class="form-control" id="propertyTypeSelect" onchange="selectPropertyType()">
+                            <option value="">Select Property Type</option>
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial</option>
+                        </select>
+                    </div>
+                    <div id="commercial" style="display: none;">
+                        <div class="col-25">
+                            <label for="fname">Total Number of Room</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="txt1" class="form-control" name="value2"
+                                   placeholder="Number of Room...">
+                        </div>
+                        <p></p>
+                        <center><p></p>
+                            <div class="row">
+                                <input type="button" style="background-color: #49AE44" class=" btn text-white"
+                                       onclick="commercial_validation()"
+                                       value="Calculate">
+                            </div>
+                            <p></p></center>
+                    </div>
+
+                    <div id="residential" style="display: none;">
+                        <div class="col-25">
+                            <label for="fname">Total Land Area in Kanal</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="txt2" class="form-control" name="value2"
+                                   placeholder="Land Area in Kanal...">
+                        </div>
+                        <p></p>
+                        <center><p></p>
+                            <div class="row">
+                                <input type="button" class="btn text-white" style="background-color: #49AE44"
+                                       onclick="residential_validation()"
+                                       value="Calculate">
+                            </div>
+                            <p></p></center>
+                    </div>
+
+                    <div class="row">
+                        <div class="col text-center mt-4">
+                            <span id="result"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
-        <button type="button" class="btn btn-primary">Calculate Tax</button>
     </div>
-    
-    <div id="taxResultSection" class="form-group mt-3" style="display: none;">
-        <label for="taxResult">Calculated Tax:</label>
-        <input type="text" class="form-control" id="taxResult" readonly>
-    </div>
-</div>
 
-<!-- Add space below the section -->
-<div class="container mt-5 mb-5">
-    <!-- Your footer content goes here -->
-</div>
+    <script type="text/javascript">
+        function selectPropertyType() {
+            var selectBox = document.getElementById("propertyTypeSelect");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            if (selectedValue === "residential") {
+                document.getElementById("residential").style.display = "block";
+                document.getElementById("commercial").style.display = "none";
+            } else if (selectedValue === "commercial") {
+                document.getElementById("residential").style.display = "none";
+                document.getElementById("commercial").style.display = "block";
+            }
+        }
 
+        function commercial_validation() {
+            var valu = document.getElementById("txt1").value;
+            if (valu >= 1 && valu <= 10) {
+                document.getElementById("result").innerHTML = " Tax is Rs 12000";
+            } else {
+                if (valu >= 11 && valu <= 15) {
+                    document.getElementById("result").innerHTML = "Tax is Rs 18000";
+                } else {
+                    if (valu >= 16 && valu <= 20) {
+                        document.getElementById("result").innerHTML = "Tax is Rs 24000";
+                    } else {
+                        if (valu >= 21 && valu <= 30) {
+                            document.getElementById("result").innerHTML = "Tax is Rs 36000";
+                        } else {
+                            document.getElementById("result").innerHTML = "Rooms can't exceed from 30...!";
+                        }
+                    }
+                }
+            }
+        }
+
+        function residential_validation() {
+            var valu = document.getElementById("txt2").value;
+            fixed = 4000;
+            if (valu == 1) {
+                document.getElementById("result").innerHTML ="Tax is Rs " +  fixed * 2;
+            } else {
+                valu = valu - 1;
+                fixed = eval(4000 + (valu * 1000));
+                document.getElementById("result").innerHTML = "Tax is Rs " + fixed * 2;
+
+            }
+        }
+    </script>
 
 {% endblock content %}

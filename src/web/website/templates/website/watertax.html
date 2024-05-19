@@ -1,69 +1,241 @@
 {% extends 'website/base.html' %}
 {% load static %}
 
-
-
-{% block title %} Water Taxes {% endblock title %}
-    
+{% block title %} Water Tax Calculator {% endblock title %}
 
 
 {% block content %}
 
-
-<!--==================================================-->
-<!-- Start  Breadcumb Area -->
-<!--==================================================-->
-<div class="breadcumb-area mt-4">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-12 text-center">
-				<div class="breadcumb-content">
-					<div class="breadcumb-title">
-						<h4>Water Taxes</h4>
-					</div>
-					<ul>
-						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">water</a></li>
-						<li>tax</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Breadcumb Area -->
-<!--==================================================-->
-
-
-
-<div class="container mt-5">
-    <h2>Water Tax Calculator</h2>
-    <form>
-        <div class="form-group">
-            <label for="townSelect">Select Town:</label>
-            <select class="form-control" id="townSelect">
-                <option value="">Select Town</option>
-                <option value="nathiagali">Nathiagali</option>
-                <option value="dungaGali">Dunga Gali</option>
-                <option value="khanaspur">Khanaspur</option>
-                <option value="ayubia">Ayubia</option>
-            </select>
+    <!--==================================================-->
+    <!-- Start Breadcumb Area -->
+    <!--==================================================-->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcumb-content">
+                        <div class="breadcumb-title">
+                            <h4>Water Tax Calculator</h4>
+                        </div>
+                        <ul>
+                            <li><a href="index.html"><img
+                                    src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">GDA</a>
+                            </li>
+                            <li>Water Tax Calculator</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="propertyTypeSelect">Select Property Type:</label>
-            <select class="form-control" id="propertyTypeSelect">
-                <option value="">Select Property Type</option>
-                <option value="residential">Residential</option>
-                <option value="commercial">Commercial</option>
-            </select>
+    </div>
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card  m-4 p-4">
+                    <h5 class="text-success text-center">Read This For Property Tax Calculation</h5><br>
+                    <ol>
+                        <li>✅<strong>Read Instructions:</strong> Find and read the guidelines provided under "<em>Read
+                            This For Water Tax Calculation</em>".
+                        </li>
+                        <br>
+
+                        <li>✅<strong>Select Town Area:</strong> Choose your town area from the available options.</li>
+                        <br>
+
+                        <li>✅<strong>Select Property Type:</strong> Select the type of property you own (e.g.,
+                            residential, commercial).
+                        </li>
+                        <br>
+
+
+                        <li>✅<strong>Calculate Tax:</strong> Once both town area and property type are selected, click
+                            on
+                            "<em>Calculate</em>" to determine the tax price.
+                        </li>
+                        <br>
+
+                        <li>✅<strong>View Results:</strong> Check the calculated tax price displayed on the screen.</li>
+                        <br>
+
+                        <li>✅<strong>Source Verification:</strong>The tax prices are Calculated from Galiyat Development
+                            Authority which is accurate and reliability.
+                        </li>
+                        <br>
+
+                        <li>✅<strong>Need Help?</strong> For any assistance or queries, feel free to reach out for
+                            support.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card m-4 p-2">
+                    <img src="{% static 'website/images/water.gif' %}" style="height: 408px">
+                    <div class="form-group">
+                        <label for="townSelect">Select Town:</label>
+                        <select name="town" id="town" class="form-control">
+                            <option class="option" value="empty"> Select Your Town</option>
+                            <option class="option" value="Nathiagali">Nathiagali</option>
+                            <option class="option" value="Donga_Gali">Donga Gali</option>
+                            <option class="option" value="Thandiani">Thandiani</option>
+                            <option class="option" value="Khaira_Gali">Khaira Gali</option>
+                            <option class="option" value="Chanlga_Gali">Chanlga Glai</option>
+                            <option class="option" value="Ayubia">Ayubia</option>
+                            <option class="option" value="Khanaspur">Khanaspur</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyTypeSelect">Select Property Type:</label>
+                        <select name="property_type" id="property_type" class="form-control"
+                                onchange="selectPropertyType()">
+                            <option class="option" value="empty"> Select Property Type</option>
+                            <option class="option" value="Commmercial">Commmercial</option>
+                            <option class="option" value="Residential">Residential</option>
+                        </select>
+                    </div>
+                    <div id="Commmercial" style="display: none;">
+                        <div class="col-25">
+                            <label for="fname">Total Number of Room</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="input_num1" class="form-control" name="value2"
+                                   placeholder="Number of Room...">
+                        </div>
+                        <p></p>
+                        <center><p></p>
+                            <div class="row">
+                                <input type="button" style="background-color: #49AE44" class=" btn text-white"
+                                       onclick="calculate()"
+                                       value="Calculate">
+                            </div>
+                            <p></p></center>
+                    </div>
+                    <div id="Residential" style="display: none;">
+                        <div class="col-25">
+                            <label for="fname">Total Land Area in Kanal</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="input_num" class="form-control" name="value2"
+                                   placeholder="Land Area in Kanal...">
+                        </div>
+                        <p></p>
+                        <center><p></p>
+                            <div class="row">
+                                <input type="button" class="btn text-white" style="background-color: #49AE44"
+                                       onclick="calculate()"
+                                       value="Calculate">
+                            </div>
+                            <p></p></center>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center mt-4">
+                            <span id="tax_label">Tax is </span>
+                            <span id="result">0&nbsp;&nbsp;RS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
-        <button type="button" class="btn btn-primary" onclick="document.getElementById('taxResult').value = calculateTax()">Calculate Tax</button>
-        <div class="form-group mt-3">
-            <label for="taxResult">Calculated Tax:</label>
-            <input type="text" class="form-control" id="taxResult" readonly>
-        </div>
-    </form>
-</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            $('#property_type').change(function () {
+                $('.box').hide();
+                $('#' + $(this).val()).show();
+            });
+        });
+
+        function selectPropertyType() {
+            var selectBox = document.getElementById("property_type");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            if (selectedValue === "Residential") {
+                document.getElementById("Residential").style.display = "block";
+                document.getElementById("Commmercial").style.display = "none";
+            } else if (selectedValue === "Commmercial") {
+                document.getElementById("Residential").style.display = "none";
+                document.getElementById("Commmercial").style.display = "block";
+            }
+        }
+
+
+        function calculate() {
+            var town = document.getElementById('town').value;
+            var property_type = document.getElementById('property_type').value;
+            var input_num = document.getElementById('input_num').value;
+            var input_num1 = document.getElementById('input_num1').value;
+
+            if (town == 'Nathiagali' && property_type == 'Commmercial') {
+                var result = eval(input_num1 * 1000);
+            } else {
+                if (town == 'Donga_Gali' && property_type == 'Commmercial') {
+                    var result = eval(input_num1 * 1000);
+                } else {
+                    if (town == 'Thandiani' && property_type == 'Commmercial') {
+                        var result = eval(input_num1 * 1000);
+                    } else {
+                        if (town == 'Khaira_Gali' && property_type == 'Commmercial') {
+                            var result = eval(input_num1 * 500);
+                        } else {
+                            if (town == 'Chanlga_Gali' && property_type == 'Commmercial') {
+                                var result = eval(input_num1 * 500);
+                            } else {
+                                if (town == 'Ayubia' && property_type == 'Commmercial') {
+                                    var result = eval(input_num1 * 500);
+                                } else {
+                                    if (town == 'Khanaspur' && property_type == 'Commmercial') {
+                                        var result = eval(input_num1 * 500);
+                                    } else {
+                                        if (town == 'empty' || property_type == 'empty') {
+                                            var result = 0.00;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (town == 'Nathiagali' && property_type == 'Residential') {
+                var result = eval(input_num * 5000);
+            } else {
+                if (town == 'Donga_Gali' && property_type == 'Residential') {
+                    var result = eval(input_num * 5000);
+                } else {
+                    if (town == 'Thandiani' && property_type == 'Residential') {
+                        var result = eval(input_num * 5000);
+                    } else {
+                        if (town == 'Khaira_Gali' && property_type == 'Residential') {
+                            var result = eval(input_num * 4000);
+                        } else {
+                            if (town == 'Chanlga_Gali' && property_type == 'Residential') {
+                                var result = eval(input_num * 4000);
+                            } else {
+                                if (town == 'Ayubia' && property_type == 'Residential') {
+                                    var result = eval(input_num * 4000);
+                                } else {
+                                    if (town == 'Khanaspur' && property_type == 'Residential') {
+                                        var result = eval(input_num * 4000);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            document.getElementById('result').innerHTML = result * 2;
+
+        }
+
+    </script>
 
 
 

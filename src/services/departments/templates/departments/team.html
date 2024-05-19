@@ -1,4 +1,5 @@
 {% extends 'website/base.html' %}
+{% load core_tags %}
 
 {% load static %}
 
@@ -10,108 +11,106 @@
 {% block content %}
 
 
+    <!--==================================================-->
+    <!-- Start Breadcumb Area -->
+    <!--==================================================-->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcumb-content">
+                        <div class="breadcumb-title">
+                            <h4>Teams</h4>
+                        </div>
+                        <ul>
+                            <li><a href="#"><img
+                                    src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">GDA</a>
+                            </li>
+                            <li>Teams</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--==================================================-->
+    <!-- End Breadcumb Area -->
+    <!--==================================================-->
 
-<!--==================================================-->
-<!-- Start Breadcumb Area -->
-<!--==================================================-->
-<div class="breadcumb-area mt-4">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-12 text-center">
-				<div class="breadcumb-content">
-					<div class="breadcumb-title">
-						<h4>Meet Our Team</h4>
-					</div>
-					<ul>
-						<li><a href="index.html"><img src="assets/images/inner-images/breadcumb-text-shape.png" alt="">GDA</a></li>
-						<li>Our Team</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Breadcumb Area -->
-<!--==================================================-->
 
+    <!--==================================================-->
+    <!-- Strat Team Area-->
+    <!--==================================================-->
+        <section class="event-details-section">
 
-<!--==================================================-->
-<!-- Strat Team Area-->
-<!--==================================================-->
-<div class="team-area inner">
-		<div class="container "> 
-        	<div class="row ">
-            	<div class="col-lg-12 text-center">
-                	<div class="section-title center">
-                    	<h4>Our Team</h4>
-                	</div>
-            	</div>
-        	</div>
-        	<div class="container">
-    			<div class="row">
-        			{% for chairman in chairmen %}
-        				<div class="col-lg-4 col-md-6">
-            				<div class="single-team-box">
-                				<div class="single-team-thumb">
-                    				<img src="{{ chairman.image.url }}" alt="{{ chairman.name }}">
-                				</div>
-                				<div class="team-content">
-                    				<h4>{{ chairman.name }}</h4>
-                    				<p>Chairman Board of Authority GDA</p>
-                    				<div class="team-social-icon">
-                        				<!-- Social icons here -->
-                    				</div>
-                				</div>
-            				</div>
-        				</div>
-        			{% endfor %}
-        			{% for director_general in director_generals %}
-        			<div class="col-lg-4 col-md-6">
-            			<div class="single-team-box">
-                			<div class="single-team-thumb">
-                    			<img src="{{ director_general.image.url }}" alt="{{ director_general.name }}">
-                			</div>
-                			<div class="team-content">
-                    			<h4>{{ director_general.name }}</h4>
-                    			<p>Director General GDA</p>
-                    			<div class="team-social-icon">
-                        		<!-- Social icons here -->
-                    			</div>
-                			</div>
-            			</div>
-        			</div>
-        			{% endfor %}
-    			</div>
-			</div>
+    <div class="team-area inner">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title center">
+                        <h4>Our Team</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    {% for object in chairmen %}
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-team-box">
+                                <div class="single-team-thumb">
+                                    <img src="{{ object.image|image_or_placeholder }}" style="height:250px" alt="">
+                                </div>
+                                <div class="team-content">
+                                    <h4>{{ object.name }}</h4>
+                                    <p>Chairmen</p>
+                                    <div class="team-social-icon">
+                                        <p class="text-secondary p-3">{{ object.message }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% for object in director_generals %}
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-team-box">
+                                <div class="single-team-thumb">
+                                    <img src="{{ object.image|image_or_placeholder }}" style="height:250px" alt="">
+                                </div>
+                                <div class="team-content">
+                                    <h4>{{ object.name }}</h4>
+                                    <p>Director General</p>
+                                    <div class="team-social-icon">
+                                        <p class="text-secondary p-3">{{ object.message }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% for object in directors %}
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-team-box">
+                                <div class="single-team-thumb">
+                                    <img src="{{ object.image|image_or_placeholder }}" style="height:250px" alt="">
+                                </div>
+                                <div class="team-content">
+                                    <h4>{{ object.name }}</h4>
+                                    <p>Director of {{ object.department }}</p>
+                                    <div class="team-social-icon">
+                                        <p class="text-secondary p-3">{{ object.message }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
 
-			<div class="container">
-    			<div class="row">
-        			{% for director in directors %}
-        				<div class="col-lg-4 col-md-6">
-            				<div class="single-team-box">
-                				<div class="single-team-thumb">
-                   					<img src="{{ director.image.url }}" alt="{{ director.name }}">
-                				</div>
-                				<div class="team-content">
-                    				<h4>{{ director.name }}</h4>
-                    				<p>{{ director.department }}</p>
-                    				<div class="team-social-icon">
-                        				<!-- Social icons here -->
-                    				</div>
-                				</div>
-            				</div>
-        				</div>
-        			{% endfor %}
-    			</div>
-			</div>
-
-    	</div>
-</div>
-
-<!--==================================================-->
-<!-- End Team Area-->
-<!--==================================================-->
+                </div>
+            </div>
+        </div>
+    </div>
+        </section>
+    <!--==================================================-->
+    <!-- End Team Area-->
+    <!--==================================================-->
 
 {% endblock content %}
     

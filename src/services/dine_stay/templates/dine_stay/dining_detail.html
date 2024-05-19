@@ -1,93 +1,315 @@
 {% extends 'website/base.html' %}
+{% load core_tags %}
 {% load static %}
 
-{% block title %} Cafe Details {% endblock title %}
-    
+{% block title %}
+    Hotel & Cafe Details
+{% endblock title %}
+
+
+{% block style %}
+
+    /* Custom Styles */
+    .hotel-details-section {
+    font-family: 'Arial', sans-serif; /* You can choose a more decorative font if preferred */
+    color: #333; /* Standard text color for readability */
+    background-color: #f4f4f4; /* Light background to offset the text and image */
+    }
+
+    .hotel-details-section h2 {
+    color: #0056b3; /* A deeper blue for the hotel name */
+    font-size: 2.8rem; /* Slightly larger font size */
+    }
+
+    .hotel-details-section h3 {
+    color: #008000; /* A rich green for subheadings */
+    font-size: 1.8rem; /* Slightly larger font size */
+    margin-top: 1rem; /* Space above the subheading */
+    }
+
+    .hotel-details-section p {
+    font-size: 1.1rem;
+    line-height: 1.8; /* Increased line-height */
+    color: #555; /* Slightly lighter text for the description */
+    }
+
+    .hotel-info strong {
+    color: #343a40; /* Bootstrap's dark grey */
+    }
+
+    .list-inline-item .badge {
+    background-color: #ff9800; /* A bright orange for tags */
+    color: #fff;
+    padding: 0.5em 1em;
+    }
+
+    .additional-images img {
+    border: 4px solid #0056b3; /* Blue border for additional images */
+    margin: 0.5rem; /* Space around images */
+    }
+
+    /* Main Image Enhancement */
+    .hotel-main-image {
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3); /* Add shadow for depth */
+    border-radius: 10px; /* Rounded corners for the image */
+    }
+
+    /* Responsive Image Grid */
+    @media (min-width: 992px) {
+    .additional-images .p-1 {
+    width: 33.3333%; /* Three images per row on larger screens */
+    padding: 0.5rem;
+    }
+    }
+
+    /* Product Card Styles */
+    .product-card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px; /* Fixed width */
+    height: 400px; /* Fixed height */
+    }
+
+    .product-card img {
+    width: 100%; /* Full width of the card */
+    height: 200px; /* Fixed height for the image */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    }
+
+    .product-card .card-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px; /* Remaining height for the content */
+    }
+
+    .product-card .card-title, .card-text {
+    margin: 0;
+    }
+
+{% endblock style %}
+
 
 {% block content %}
 
-<!--==================================================-->
-<!-- Start Breadcumb Area -->
-<!--==================================================-->
-<div class="breadcumb-area">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-12 text-center">
-				<div class="breadcumb-content">
-					<div class="breadcumb-title">
-						<h4>Hotels</h4>
-					</div>
-					<ul>
-						<li><a href="index.html"><img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Cafe</a></li>
-						<li>Details</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Breadcumb Area -->
-<!--==================================================-->
-
-
-<section class="hotel-details-section">
-    <div class="container py-5">
-        <div class="row">
-
-            {% for hotel in dinings %}
-            
-            <!-- Hotel Details -->
-            <div class="col-lg-12">
-                <h2 class="mt-0 text-center text-uppercase mb-4">{{hotel.name}}</h2>
-                <h3 class="pt-4">Description</h3>
-                <p class="mb-4">{{hotel.description}}</p>
-
-                <h3>Details</h3>
-                <p class="mb-4">{{hotel.content | safe}}</p>
-
-                <div class="hotel-info mb-4"> 
-                    <p><strong>Phone Number:</strong> {{ hotel.phone }}</p>
-                    <p><strong>Area:</strong> {{hotel.area.name}}</p>
-                    <p><strong>Location:</strong> {{ hotel.address }}</p>
-                    <p><strong>Features:</strong> 
-                        <ul>
-                            {% for feature in hotel.features.all %}
-                                <li>{{ feature.name }}</li>
-                            {% endfor %}
-                        </ul>
-                    </p>
-                </div>
-                
-
-            <!-- Hotel Image Carousel -->
-            <div class="col-lg-12 order-lg-first">
-                <div id="imageCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
-                    {% for img in hotel.images.all %}
-                    
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="{{img.image.url}}" class="d-block w-100" alt="Image 1">
+    <!--==================================================-->
+    <!-- Start Breadcumb Area -->
+    <!--==================================================-->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcumb-content">
+                        <div class="breadcumb-title">
+                            <img src="{{ object.image|image_or_placeholder }}"
+                                 style="height: 100px;border-radius: 30px" class="img-rounded">
+                            <h4>{{ object }}</h4>
+                            <p class="text-white">{{ object.detail }}</p>
                         </div>
+                        <ul>
+                            <li><a href="index.html"><img
+                                    src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Galiyat</a>
+                            </li>
+                            <li>{{ object }} accommodation</li>
+                        </ul>
                     </div>
-                    {% endfor %}
-
-                    <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
             </div>
-            
-            {% endfor %}
         </div>
     </div>
-</section>
+    <!--==================================================-->
+    <!-- End Breadcumb Area -->
+    <!--==================================================-->
+    <div class="project-details-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="project-details-content">
+                                <h4>{{ object.name }}</h4>
+                                <p class="project-details-desc">{{ object.description }}</p>
+                                <p class="project-details-desc">{{ object.content|safe }}</p>
+                                <div class="row align-items-center">
+
+                                    <div class="col-lg-12">
+                                        <div class="project-details-list-item">
+                                            <h4>Accommodation Features</h4>
+                                            <ul>
+                                                {% for object in object.features.all %}
+                                                    <li><i class="bi bi-check-circle-fill"></i>{{ object }}
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="project-details-right">
+                                <div class="project-details-info">
+                                    <p>Area :</p>
+                                    <h6>{{ object.area }}</h6>
+                                </div>
+                                <div class="project-details-info">
+                                    <p>Category :</p>
+                                    <h6>{{ object.category }}</h6>
+                                </div>
+                                <div class="project-details-info">
+                                    <p>Phone :</p>
+                                    <h6>{{ object.phone }}</h6>
+                                </div>
+                                <div class="project-details-info">
+                                    <p>Email :</p>
+                                    <h6>{{ object.email }}</h6>
+                                </div>
+                                <div class="project-details-info">
+                                    <p>Social Links :</p>
+                                    <h6>
+
+                                        &nbsp;&nbsp;<i class="bi bi-facebook"></i>
+                                        &nbsp;&nbsp;<i class="bi bi-instagram"></i>
+                                        &nbsp;&nbsp;<i class="bi bi-link-45deg"></i>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="card mt-4">
+                                <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0"
+                                        marginwidth="0"
+                                        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{ object.latitude }},{{ object.longitude }}+(My%20Business%20Name)&amp;t=k&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                                    <a href="https://www.gps.ie/">gps vehicle tracker
+                                    </a>
+                                </iframe>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 
+
+    <!--==================================================-->
+    <!-- Strat Echofy Project Area Home-Two -->
+    <!--==================================================-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-title center">
+                    <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Images</h4>
+                    <h1>Images of {{ object }}</h1>
+                </div>
+            </div>
+        </div>
+        {% if object.accommodation_images %}
+
+            <div class="row">
+                <div class="project-list-2 owl-carousel">
+                    {% for image in object.accommodation_images.all %}
+
+                        <div class="col-lg-12">
+                            <div class="single-project-box">
+                                <div class="project-thumb">
+                                    <img src="{{ image.image|image_or_placeholder }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+
+        {% else %}
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <b class="text-danger text-center">Images Not Uploaded Yet</b>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="blog-area home-six">
+        <div class="container " style="margin-top: 100px;">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title center">
+                        <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">More Accommodation
+                        </h4>
+                        <h1>More Hotels & Cafe at Galiyat</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% if more_hotels_and_cafe %}
+                    {% for object in more_hotels_and_cafe %}
+                        <div class="col-lg-4 col-md-6 mb-4 ">
+                            <div class="single-blog-box">
+                                <div class="blog-thumb">
+                                    <img src="{{ object.thumbnail|image_or_placeholder }}" alt="">
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-text">
+                                        <span>{{ object.category }}</span>
+                                    </div>
+                                    <a href="{% url 'diny_stay:dining_detail' object.id %}">{{ object.name }}</a>
+                                    <p>{{ object.description|slice:100 }}...</p>
+
+                                    <div class="blog-button">
+                                        <a href="{% url 'diny_stay:dining_detail' object.id %}">Explore
+                                            More<i class="bi bi-arrow-right-short"></i></a>
+                                    </div>
+                                </div>
+                                <div class="meta-blog">
+                                    <span>{{ object.created_at.date }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to remove the disabled class from navigation buttons and dots
+            function removeDisabled() {
+                var disabledElements = document.querySelectorAll(' .owl-dots.disabled');
+                disabledElements.forEach(function (element) {
+                    element.classList.remove('disabled');
+                });
+            }
+
+            var owlDots = document.querySelectorAll('.owl-dots');
+
+            // Loop through each element with the class "owl-dots"
+            owlDots.forEach(function (dot) {
+                // Remove the "disabled" class
+                dot.classList.remove('disabled');
+
+                // Add click event listener to each dot
+                dot.addEventListener('click', function () {
+                    // Remove the "disabled" class when a dot is clicked
+                    dot.classList.remove('disabled');
+                });
+            });
+
+            // Call the function initially
+            removeDisabled();
+
+            // Check for and remove the disabled class every 5 seconds
+            setInterval(removeDisabled, 1); // 5000 milliseconds = 5 seconds
+        });
+
+    </script>
 {% endblock content %}
-    
