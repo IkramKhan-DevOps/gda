@@ -22,7 +22,7 @@
                                 <div class="footer-social-icon">
                                     <ul>
                                         <li class="text">FOLOW US :</li>
-                                        <li><a href="{{ app.facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href=" {{ app.facebook }} "><i class="fab fa-facebook-f"></i></a></li>
                                         <li><a href="{{ app.twitter }}"><i class="fab fa-twitter"></i></a></li>
                                         <li><a href="{{ app.instagram }}"><i class="fab fa-instagram"></i></a></li>
                                     </ul>
@@ -37,9 +37,7 @@
             <div class="row add-footer-class">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer-logo">
-                        <a href="{% url 'website:home' %}"><img width="75px"
-                                                                src="{{ app.logo|image_or_placeholder:"70x70" }}"
-                                                                alt="logo"></a>
+                        <a href="{% url 'website:home' %}"><img width="75px" src="{{ app.logo|image_or_placeholder:'70x70' }}" alt="logo"></a>
                     </div>
                     <p class="footer-desc">{{ app.tagline }}</p>
                     <div class="footer-contect-info">
@@ -47,8 +45,8 @@
                             <h4>Contact</h4>
                         </div>
                         <ul>
-                            <li><i class="bi bi-telephone-plus-fill"></i>{{ app.contact_phone1 }}</li>
-                            <li><i class="bi bi-envelope-open-fill"></i>{{ app.contact_email1 }}</li>
+                            <li><i class="bi bi-telephone-plus-fill"></i><a href="tel:{{app.contact_phone1}}" style="color:white;">{{app.contact_phone1}}</a></li>
+                            <li><i class="bi bi-envelope-open-fill"></i><a href="mailto:mediacellgda@gmail.com" style="color:white;">{{app.contactemail1}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -75,15 +73,8 @@
                         </div>
                         <div class="footer-widget-menu">
                             <ul>
-                                {% comment %} <li><a href="{% url 'events:events' %}"><i class="fas fa-angle-right"></i> Events</a></li> {% endcomment %}
-                                {% comment %} <li><a href=" {% url 'feedback:feedback' %} "><i class="fas fa-angle-right"></i>Feedback</a></li> {% endcomment %}
-                                <li><a href="{% url 'website:emergency_contact' %}"><i class="fas fa-angle-right"></i>Emergency
-                                    Services</a></li>
-                                <li><a href="{% url 'website:jurisdiction' %}"><i class="fas fa-angle-right"></i>Area Of
-                                    jurisdiction</a></li>
                                 <li><a href="{% url 'departments:departments' %}"><i class="fas fa-angle-right"></i>Departments</a>
                                 </li>
-
 
                             </ul>
                         </div>

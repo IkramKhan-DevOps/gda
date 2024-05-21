@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.views import View
 from django.views.generic import TemplateView
 from django.urls import reverse_lazy
@@ -7,15 +7,13 @@ from src.core.models import NewsLetter
 from .models import Visit
 from django.views.generic.edit import CreateView
 from ...services.feedback.forms import ContactForm
-from ...services.feedback.signals import send_feedback_email
 from ...apps.weather.bll import get_galiyat_weather
-from ...services.attractions.models import Attraction, AttractionArea
+from ...services.attractions.models import  AttractionArea
 from ...services.departments.models import Directors, DirectorGeneral, Chairman
 from ...services.dine_stay.models import Accommodation, Dining
 from ...services.management.models import HomeSlider
 
 """ OFFICIAL """
-
 
 class NewsLetterCreateView(View):
 
@@ -80,14 +78,6 @@ class HomeTemplateView(TemplateView):
         return context
 
 
-def about(request):
-    return render(request, 'website/about.html')
-
-
-def budget(request):
-    return render(request, 'website/budget.html')
-
-
 class ContactView(CreateView):
     template_name = 'website/contactUs.html'
     form_class = ContactForm
@@ -98,68 +88,3 @@ class ContactView(CreateView):
         messages.success(self.request, "Your message has been sent successfully!")
         return response
 
-
-def team(request):
-    return render(request, 'website/team.html')
-
-
-def teamDetails(request):
-    return render(request, 'website/teamDetails.html')
-
-
-def act(request):
-    return render(request, 'website/gda_act.html')
-
-
-def department(request):
-    return render(request, 'website/departments.html')
-
-
-def departmentDetails(request):
-    return render(request, 'website/departments_details.html')
-
-
-def hotels(request):
-    return render(request, 'website/hotels.html')
-
-
-def hotelsDetails(request):
-    return render(request, 'website/hotels_details.html')
-
-
-def tenders(request):
-    return render(request, 'website/tenders.html')
-
-
-def cafe(request):
-    return render(request, 'website/cafe.html')
-
-
-def cafedetail(request):
-    return render(request, 'website/cafedetail.html')
-
-
-def watertax(request):
-    return render(request, 'website/watertax.html')
-
-
-def conservancytax(request):
-    return render(request, 'website/conservancytax.html')
-
-
-
-
-def boqs(request):
-    return render(request, 'website/boqs.html')
-
-
-def emergencyContact(request):
-    return render(request, 'website/emergencyContact.html')
-
-
-def jurisdiction(request):
-    return render(request, 'website/jurisdiction.html')
-
-
-def buildingByeLaws(request):
-    return render(request, 'website/buildingbyelaws.html')
