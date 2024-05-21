@@ -72,6 +72,18 @@
                                 </ul>
                             </li>
 
+                            
+                            <li class="menu-item-has-children"><a href="/">Explore Galiyat<i class="fas fa-chevron-down"></i></a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <li><a href="{% url 'attractions:attractions_list' %}">Attraction Points</a></li>
+                                        <li><a href="{% url 'forest:wildlife_list' %}">Wild Life</a></li>
+                                        <li><a href="{% url 'forest:greenery_list' %}">Greenery</a></li>
+                                    </li>
+                                </ul>
+                            </li>                            
+                            
+
                             <li class="menu-item-has-children"><a href="#">Tax Calculator<i
                                     class="fas fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
@@ -81,7 +93,6 @@
                                 </ul>
                             </li>
 
-                            <li><a href="{% url 'attractions:attractions_list' %}">Attractions</a></li>
                             <li><a href="{% url 'events:event_list' %}">Events</a></li>
                             <li class="menu-item-has-children"><a href="#">More<i class="fas fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
