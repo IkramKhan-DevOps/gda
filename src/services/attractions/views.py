@@ -1,8 +1,7 @@
 from django.core.paginator import Paginator
-
 from .filters import AttractionAreaFilter, AttractionPointFilter
 from .models import Attraction, AttractionArea, AttractionCategory
-from django.views.generic import ListView, DetailView, TemplateView, View
+from django.views.generic import ListView, DetailView
 
 
 class AttractionAreaView(ListView):

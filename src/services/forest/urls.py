@@ -9,5 +9,5 @@ path('wildlife/types/', WildlifeTypeListView.as_view(), name='wildlife_type'),
 
 path('greenery/types/', GreeneryListView.as_view(), name='greenery_type' ),
 path('greenery/<slug:slug>/', GreeneryDetailView.as_view(), name='greenery_detail'),
-path('greenery/list/', GreeneryTypeListView.as_view(), name='greenery_list' ),
+path('greenery/type/<slug:slug>/', GreeneryTypeListView.as_view(), name='greenery_list'),
 ]
