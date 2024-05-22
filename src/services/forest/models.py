@@ -45,7 +45,6 @@ class WildlifeType(models.Model):
         )
     
     details = models.CharField(max_length=255,default="GDA is working on ways to save these type of species more", help_text="Write details about the type")
-    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
     
     class Meta:
         ordering = ('-id',)
@@ -58,10 +57,6 @@ class WildlifeType(models.Model):
     def delete(self, *args, **kwargs):
         self.image.delete()
         super().delete(*args, **kwargs)
-        
-    def save(self, *args, **kwargs):
-        self.slug = self.name.replace(' ', '-').lower()
-        super(GreeneryType, self).save(*args, **kwargs)
         
     
 class Greenery(models.Model):
@@ -107,7 +102,6 @@ class GreeneryType(models.Model):
         )
     
     details = models.CharField(max_length=255, help_text="Write details about the type",default="GDA is working on Preserving its Forests to Keep Galiyat Green")
-    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
     
 
     class Meta:
@@ -121,7 +115,3 @@ class GreeneryType(models.Model):
     def delete(self, *args, **kwargs):
         self.image.delete()
         super().delete(*args, **kwargs)
-        
-    def save(self, *args, **kwargs):
-        self.slug = self.name.replace(' ', '-').lower()
-        super(GreeneryType, self).save(*args, **kwargs)
