@@ -12,7 +12,7 @@ class WildlifeListView(ListView):
     slug_url_kwarg = 'slug'
 
     def get_queryset(self):
-        return self.model.objects.filter(area__slug=self.kwargs['slug'], is_active=True)
+        return self.model.objects.filter(slug=self.kwargs['slug'], is_active=True)
 
     def get_context_data(self, **kwargs):
         context = super(WildlifeListView, self).get_context_data(**kwargs)
@@ -66,7 +66,8 @@ class GreeneryListView(ListView):
     slug_url_kwarg = 'slug'
 
     def get_queryset(self):
-        return self.model.objects.filter(area__slug=self.kwargs['slug'], is_active=True)
+        return self.model.objects.filter(slug=self.kwargs['slug'], is_active=True)
+
 
     def get_context_data(self, **kwargs):
         context = super(GreeneryListView, self).get_context_data(**kwargs)

@@ -1,6 +1,6 @@
 import django_filters
 
-from src.services.forest.models import Greenery,  Wildlife
+from src.services.forest.models import Greenery,  Wildlife, GreeneryType, WildlifeType
 
 
 class WildLifeFilter(django_filters.FilterSet):
@@ -34,7 +34,7 @@ class WildLifeTypeFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(field_name='name', lookup_expr='icontains')
 
     class Meta:
-        model = Wildlife
+        model = WildlifeType
         fields = ['name']
 
     def __init__(self, *args, **kwargs):
@@ -47,7 +47,7 @@ class GreeneryTypeFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(field_name='name', lookup_expr='icontains')
 
     class Meta:
-        model = Greenery
+        model = GreeneryType
         fields = ['name']
 
     def __init__(self, *args, **kwargs):
