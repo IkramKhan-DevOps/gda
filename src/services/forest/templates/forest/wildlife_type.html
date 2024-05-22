@@ -78,9 +78,6 @@
                                         {% endif %}
                                     </div>
                                     <div class="blog-content">
-                                        <div class="blog-text">
-                                            <span>{{ object.created_at }}</span>
-                                        </div>
                                         <a href="{% url 'forest:wildlife_list' object.slug %}">{{ object.name }}</a>
                                         <p>{{ object.detail|slice:100 }}...</p>
 
@@ -88,9 +85,6 @@
                                             <a href="{% url 'forest:wildlife_list' object.slug %}">Explore
                                                 More<i class="bi bi-arrow-right-short"></i></a>
                                         </div>
-                                    </div>
-                                    <div class="meta-blog">
-                                        <span>{{ object.created_at.date }}</span>
                                     </div>
                                 </div>
                             </div>

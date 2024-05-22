@@ -3,11 +3,10 @@ from .models import Greenery, Wildlife, WildlifeType, GreeneryType
 from .filters import GreeneryFilter, GreeneryTypeFilter, WildLifeFilter, WildLifeTypeFilter
 from django.core.paginator import Paginator
 
-#done
+
 class WildlifeListView(ListView):
     model = Wildlife
     template_name = 'forest/wildlife.html'
-    context_object_name = 'wildlife_list'
     paginate_by = 6
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
@@ -40,19 +39,16 @@ class WildlifeDetailView(DetailView):
         return context
 
 
-
-
 class WildlifeTypeListView(ListView):
     model = WildlifeType
     template_name = 'forest/wildlife_type.html'
-    paginate_by = 6
-    
+
     def get_queryset(self):
         return WildlifeType.objects.filter(is_active=True)
 
     def get_context_data(self, **kwargs):
         context = super(WildlifeTypeListView, self).get_context_data(**kwargs)
-        _filter = WildLifeFilter(self.request.GET, queryset=self.get_queryset())
+        _filter = WildLifeTypeFilter(self.request.GET, queryset=self.get_queryset())
         context['filter_form'] = _filter.form
         paginator = Paginator(_filter.qs, 20)
         page_number = self.request.GET.get('page')

@@ -17,7 +17,7 @@ class GreeneryTypeAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
     fieldsets = (
-        ('', {'fields': ('name', 'image')}),
+        ('', {'fields': ('name','details', 'image')}),
     )
     
 @admin.register(Wildlife)
@@ -37,6 +37,6 @@ class WildlifeTypeAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
     fieldsets = (
-        ('', {'fields': ('name', 'image')}),
+        ('', {'fields': ('name','details', 'image')}),
     )
     
