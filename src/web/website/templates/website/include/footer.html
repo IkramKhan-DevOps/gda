@@ -37,7 +37,14 @@
             <div class="row add-footer-class">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer-logo">
-                        <a href="{% url 'website:home' %}"><img width="75px" src="{{ app.logo|image_or_placeholder:'70x70' }}" alt="logo"></a>
+                        <a href="{% url 'website:home' %}">
+                            
+                            {% if app.logo %}
+                                <img width="75px" src="{{ app.logo|image_or_placeholder:'70x70' }}" alt="logo">
+                            {% else %}
+                                <img src="{% static 'core/images/logos/logo.png' %}" alt="logo" width="250px">
+                            {% endif %}
+                        </a>
                     </div>
                     <p class="footer-desc">{{ app.tagline }}</p>
                     <div class="footer-contect-info">
@@ -46,7 +53,7 @@
                         </div>
                         <ul>
                             <li><i class="bi bi-telephone-plus-fill"></i><a href="tel:{{app.contact_phone1}}" style="color:white;">{{app.contact_phone1}}</a></li>
-                            <li><i class="bi bi-envelope-open-fill"></i><a href="mailto:mediacellgda@gmail.com" style="color:white;">{{app.contactemail1}}</a></li>
+                            <li><i class="bi bi-envelope-open-fill" ><p style="color:white;">{{app.contactemail1}} </p></i></li>
                         </ul>
                     </div>
                 </div>

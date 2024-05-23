@@ -4,6 +4,19 @@
 
 {% block title %} About us {% endblock title %}
 
+{% block style %}
+    h4 {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .responsibility-item {
+      margin-bottom: 20px;
+    }
+
+{% endblock style %}
+    
+
 {% block content %}
 
 
@@ -43,7 +56,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12">
                     <div class="about-thumb">
-                        <img height=600px src="{% static 'website/images/home2/galiyat-map.jpg' %}" style="width: 95%"
+                        <img height=600px src="{% static 'website/images/home2/galiyat-map.jpg' %}" width="650px"
                              alt="">
                     </div>
                 </div>
@@ -72,10 +85,41 @@
                             Galiyat Development Authority as well. Creation of GDA The Galiyat Development Authority was
                             established on 8th June 1999 as a succession body of Hazara Hill Tract Improvement Trust
                             under GDA act of 1996.</p>
-
-
                     </div>
                 </div>
+                <div class="container">
+                    <div class="row">
+                      <div class="col-12">
+                        <h4>Our Responsibilities</h4>
+                        <ul class="list-group">
+                          <li class="list-group-item responsibility-item">
+                            <h6>SUPPLY OF WATER</h6>
+                            <p>Water supply is being ensured to the stakeholders i.e. Plot owners, Shopkeepers with nominal charges. Water is being streamlined to water tanks from different streams located at Galiyat and distributed through pumping to the tanks located at Nathiagali, Ayubia, etc.</p>
+                          </li>
+                          <li class="list-group-item responsibility-item">
+                            <h6>SANITATION</h6>
+                            <p>GDA has sufficient sanitation staff at Galiyat for sanitation and cleanliness of the main and town roads. GDA has three compactors for garbage collection and disposal. Cleanliness campaigns are regularly run by GDA to raise awareness among the general public and visitors. GDA actively participates in the Govt. of Pakistan manifesto of “Clean and Green Pakistan”.</p>
+                          </li>
+                          <li class="list-group-item responsibility-item">
+                            <h6>BEAUTIFICATION OF GALIYAT</h6>
+                            <p>A comprehensive project has been completed for the beautification of Galiyat. The purpose of the project was the uplifting of Galiyat. Five rest areas were established along the highway with male and female washrooms and a flower market was established at Nathiagali.</p>
+                          </li>
+                          <li class="list-group-item responsibility-item">
+                            <h6>STREET LIGHTS</h6>
+                            <p>Street lights were installed in the Galiyat region from Nathiagali to Ayubia as part of the “Beautification of Galiyat” project.</p>
+                          </li>
+                          <li class="list-group-item responsibility-item">
+                            <h6>COMPLAINT CELL</h6>
+                            <p>An online Complaint Cell has been established in GDA to hear grievances from the general public. GDA takes immediate steps to resolve grievances. Mostly, complaints regarding encroachments, street lights, sanitation, water supply, rest houses, and snow/slide clearance are received and addressed.</p>
+                          </li>
+                          <li class="list-group-item responsibility-item">
+                            <h6>CONTROL ROOM FOR SNOW / SLIDE CLEARANCE</h6>
+                            <p>During the snowfall season, a 24/7 control room is established for information dissemination regarding weather conditions, road situations, rescue, and snow/slide clearance. The Control Room of GDA remains in close liaison with the District Government, field staff, media, and contractors. During snow, GDA works in collaboration with KPHA and the C & W department.</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
             </div>
         </div>
     </div>
