@@ -1,195 +1,100 @@
 {% extends 'website/base.html' %}
 {% load static %}
-{% load widget_tweaks %}
 {% load core_tags %}
 
 
 
 
 {% block title %} Wild life Details {% endblock title %}
-  
+
 
 {% block content %}
 
 
-<!--==================================================-->
-<!-- Start  Breadcumb Area -->
-<!--==================================================-->
+    <!--==================================================-->
+    <!-- Start  Breadcumb Area -->
+    <!--==================================================-->
 
-                    <div class="breadcumb-area">
-                        <div class="container">
-                            <div class="row align-items-center">
-                                <div class="col-lg-12 text-center">
-                                    <div class="breadcumb-content">
-                                        <div class="breadcumb-title">
-                                            <h4>Greenery Types</h4>
-                                        </div>
-                                        <ul>
-                                            <li><a href="{% url 'website:home' %}">
-                                                <img
-                                                        src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}"
-                                                        alt="">{{wildlife_details.name}}</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="breadcumb-area mt-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcumb-content">
+                        <div class="breadcumb-title">
+                            <h4>{{ wildlife_details.name }}</h4>
                         </div>
-                    </div>	
+                        <ul>
 
-<!--==================================================-->
-<!-- End Breadcumb Area -->
-<!--==================================================-->
-<div class="project-details-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="project-details-content">
-                            <h4>{{ object.name }}</h4>
-                            <p class="project-details-desc">{{ object.description }}</p>
-                            <p class="project-details-desc">{{ object.content|safe }}</p>
-                            <div class="row align-items-center">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="project-details-right">
-                            <div class="project-details-info">
-                                <p>Type :</p>
-                                <h6>{{ object.types }}</h6>
-                            </div>
-                            <div class="project-details-info">
-                                <p>Scientific name :</p>
-                                <h6>{{ object.scientific_name}}</h6>
-                            </div>
-                            
-                        </div>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
+    <!--==================================================-->
+    <!-- End Breadcumb Area -->
+    <!--==================================================-->
 
-
-<!--==================================================-->
-<!-- Strat  Project Area Home-Two -->
-<!--==================================================-->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <div class="section-title center">
-                <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Images</h4>
-                <h1>Images of {{ object }}</h1>
-            </div>
-        </div>
-    </div>
-    {% if object.image %}
-
+    <div class="container mt-5 mb-5">
         <div class="row">
-            <div class="project-list-2 owl-carousel">
-                {% for image in object.image.all %}
-
+            <div class="col-lg-12">
+                <div class="row">
                     <div class="col-lg-12">
-                        <div class="single-project-box">
-                            <div class="project-thumb">
-                                <img src="{{ image.image|image_or_placeholder }}" alt="">
-                            </div>
+                        <div class="blog-details-thumb">
+                            <img src="{{ wildlife_details.image|image_or_placeholder }}" alt="">
                         </div>
-                    </div>
-                {% endfor %}
-
-
-            </div>
-        </div>
-
-    {% else %}
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <b class="text-danger text-center">Images Not Uploaded Yet</b>
-            </div>
-        </div>
-    {% endif %}
-</div>
-
-<div class="blog-area home-six">
-    <div class="container " style="margin-top: 100px;">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="section-title center">
-                    <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">More Wild Life
-                    </h4>
-                    <h1>More Wild Life at Galiyat</h1>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            {% if more_hotels_and_cafe %}
-                {% for object in more_hotels_and_cafe %}
-                    <div class="col-lg-4 col-md-6 mb-4 ">
-                        <div class="single-blog-box">
-                            <div class="blog-thumb">
-                                <img src="{{ object.thumbnail|image_or_placeholder }}" alt="">
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-text">
-                                    <span>{{ object.type }}</span>
-                                </div>
-                                <a href="{% url 'diny_stay:dining_detail' object.id %}">{{ object.name }}</a>
-                                <p>{{ object.description|slice:100 }}...</p>
-
-                                <div class="blog-button">
-                                    <a href="{% url 'diny_stay:dining_detail' object.id %}">Explore
-                                        More<i class="bi bi-arrow-right-short"></i></a>
-                                </div>
-                            </div>
+                        <div class="blog-details-content">
                             <div class="meta-blog">
-                                <span>{{ object.created_at.date }}</span>
+                                <span class="mate-text">{{ wildlife_details.scientific_name }}</span>
+                            </div>
+                            <h4 class="blog-details-title">{{ wildlife_details.slug|capfirst }}</h4>
+
+                            <p class="blog-details-desc">{{ wildlife_details.description }} </p>
+
+                            <div class="blog-details-author-talk">
+                                <div class="blog-details-quote">
+                                    <img src="assets/images/inner-images/blog-details-quote.png" alt="">
+                                </div>
+                                <div class="blog-details-author-title">
+                                    <p>{{ wildlife_details.types.name }}</p>
+                                    <span>Types</span>
+                                </div>
+                            </div>
+
+                            <p class="blog-details-desc two mt-5">{{ wildlife_details.content|safe }}</p>
+
+                            <h3 class="blog-details-title">SAFETY</h3>
+
+                            <div class="blog-details-list-item">
+                                <ul>
+                                    <li><i class="bi bi-check-circle-fill"></i>Ensure minimal human interference in
+                                        wildlife habitats
+                                    </li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Implement secure monitoring systems to
+                                        protect endangered species
+                                    </li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Promote the use of non-invasive research
+                                        techniques
+                                    </li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Enforce strict regulations against
+                                        illegal poaching and trade
+                                    </li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Develop wildlife corridors to allow safe
+                                        passage between habitats
+                                    </li>
+                                    <li><i class="bi bi-check-circle-fill"></i>Engage local communities in wildlife
+                                        conservation efforts
+                                    </li>
+                                </ul>
+
                             </div>
                         </div>
                     </div>
-                {% endfor %}
-            {% endif %}
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Function to remove the disabled class from navigation buttons and dots
-        function removeDisabled() {
-            var disabledElements = document.querySelectorAll(' .owl-dots.disabled');
-            disabledElements.forEach(function (element) {
-                element.classList.remove('disabled');
-            });
-        }
 
-        var owlDots = document.querySelectorAll('.owl-dots');
-
-        // Loop through each element with the class "owl-dots"
-        owlDots.forEach(function (dot) {
-            // Remove the "disabled" class
-            dot.classList.remove('disabled');
-
-            // Add click event listener to each dot
-            dot.addEventListener('click', function () {
-                // Remove the "disabled" class when a dot is clicked
-                dot.classList.remove('disabled');
-            });
-        });
-
-        // Call the function initially
-        removeDisabled();
-
-        // Check for and remove the disabled class every 5 seconds
-        setInterval(removeDisabled, 1); // 5000 milliseconds = 5 seconds
-    });
-
-</script>
 {% endblock content %}

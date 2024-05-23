@@ -1,0 +1,88 @@
+{% extends 'website/base.html' %}
+{% load core_tags %}
+{% load static %}
+
+{% block title %} Forest {% endblock title %}
+
+{% block style %}
+
+{% endblock style %}
+
+{% block content %}
+
+    {# BACKGROUND BANNER FOREST #}
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcumb-content">
+                        <div class="breadcumb-title">
+                            <h4>FORESTORY</h4>
+                        </div>
+                        <ul>
+                            <li><a href="{% url 'website:home' %}"><img
+                                    src="assets/images/inner-images/breadcumb-text-shape.png" alt="">GDA</a></li>
+                            <li>Forest</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# SELECT YOUR CHOICE #}
+    <div class="service-area home-two inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title center">
+                        <h1>GDA Provides a Flourishing Environment</h1>
+                        <p>Experience the beauty of wildlife and greenery with GDA, where nature's wonders come alive
+                            in perfect harmony.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <a href="{% url 'forest:wildlife_list' %}">
+                        <div class="single-service-box">
+                            <div class="service-thumb">
+                                <img src="{% static 'website/images/home2/services-1.png' %}" alt="">
+                            </div>
+                            <div class="service-content">
+                                <a href="{% url 'forest:wildlife_list' %}">Wild Life</a>
+                                <p>Pioneering efforts to protect wildlife and preserve their natural habitats.</p>
+                                <div class="service-button">
+                                    <a href="{% url 'forest:wildlife_list' %}">Discover More<i
+                                            class="bi bi-arrow-right-short"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+                    <a href="{% url 'forest:greenery_list' %}">
+                        <div class="single-service-box">
+                            <div class="service-thumb">
+                                <img src="{% static 'website/images/home2/services-1.png' %}" alt="">
+                            </div>
+                            <div class="service-content">
+                                <a href="{% url 'forest:greenery_list' %}">Greenery</a>
+                                <p>Promoting greenery & sustainable landscapes for a healthier planet.</p>
+                                <div class="service-button">
+                                    <a href="{% url 'forest:greenery_list' %}">Discover More<i
+                                            class="bi bi-arrow-right-short"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
