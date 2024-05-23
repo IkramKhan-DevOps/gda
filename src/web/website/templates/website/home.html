@@ -92,8 +92,7 @@
     <div class="hero-slides owl-carousel">
         {% if home_slider %}
             {% for slider in home_slider %}
-                <div class="hero-area d-flex align-items-center"
-                     style="background-image: url('{{ slider.image|image_or_placeholder }}')">
+                <div class="hero-area d-flex align-items-center" style="background-image: url('{{ slider.image|image_or_placeholder }}')">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-12">
@@ -121,17 +120,15 @@
                     </div>
                     <div class="hero-social-icon" data-animation="fadeInLeft" data-delay="1000ms">
                         <ul>
-                            <li><a href="https://www.facebook.com/gdaabbottabad/"><i class="fab fa-facebook-f"></i></a>
-                            </li>
-                            <li><a href="https://twitter.com/gdaabbottabad?lang=en"><i class="fab fa-twitter"></i></a>
-                            </li>
-                            <li><a href="https://www.instagram.com/gdaabbottabad/"><i class="fab fa-instagram"></i></a>
-                            </li>
-                            <li class="text">Follow Us</li>
+                            <li><a href=" {{ app.facebook }} "><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="{{ app.twitter }}"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="{{ app.instagram }}"><i class="fab fa-instagram"></i></a></li>
+                            <li class="text">FOLOW US :</li>
                         </ul>
                     </div>
                 </div>
             {% endfor %}
+
         {% else %}
             <div class="hero-area d-flex align-items-center">
                 <div class="container">
@@ -151,8 +148,7 @@
                                     practices. Progressively fabricate done</p>
                             </div>
                             <div class="echofy-button" data-animation="fadeInUp" data-delay="1000ms">
-                                <a href="{% url 'website:contact_us' %}">Let’s Talk <img src="{% static 'website/images/home1/button-shape.png' %}"
-                                                            alt=""></a>
+                                <a href="{% url 'website:contact_us' %}">Let’s Talk <img src="{% static 'website/images/home1/button-shape.png' %}" alt=""></a>
                                 <img class="two" src="{% static 'website/images/home1/button-shape-2.png' %}" alt="">
                             </div>
                             <div class="echofy-button two" data-animation="fadeInUp" data-delay="1200ms">
@@ -259,14 +255,13 @@
                                         <h3 class="text-white">{{ chairman.name }}</h3><br>
                                         <h3 class="text-white">Chairman Galiyat Development Authority</h3><br>
 
-                                        <p class="text-white">{{ chairman.message }}.</p>
+                                        <p class="text-white">{{ chairman.message }}</p>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-
 
                 </div>
                 <div class="col-lg-6">
@@ -407,7 +402,9 @@
             </div>
         </div>
     </div>
-    <!-- Strat Service Area -->
+    
+    <!--==================================================-->
+    <!-- Start Service Area -->
     <!--==================================================-->
     <div class="service-area">
         <div class="container">
@@ -473,9 +470,13 @@
                         <h1>Getting A Greener Future</h1>
                         <h1>Safe Environment</h1>
                         <p class="section-desc">
-                            Competently cultivate worldwide e-tailers through principle-centered value
-                            professionally engineer high-payoff deliverables without exceptional processes.
-                            Rapidiously network cost effective vortals
+                            We are dedicated to cleaning Galiyat to create a healthier and more inviting environment. 
+                            Regular waste management and cleaning initiatives help maintain the region's natural beauty 
+                            and promote a sustainable ecosystem. Additionally, our efficient snow operations ensure that 
+                            roads and pathways are cleared promptly, enhancing safety and accessibility for tourists. 
+                            These efforts not only improve the quality of life for local residents but also attract more 
+                            visitors, boosting the local economy. By maintaining cleanliness and timely snow removal, 
+                            we ensure that Galiyat remains a pristine and welcoming destination year-round.
                         </p>
                     </div>
                     <div class="skills-item">
@@ -494,18 +495,18 @@
                                 <i class="bi bi-check"></i>
                             </div>
                             <div class="skills-item-title">
-                                <h4>Dirty Recycling</h4>
+                                <h4>Saving Greenery</h4>
                             </div>
                         </div>
                     </div>
                     <div class="skills-content">
-                        <p>Recycling</p>
+                        <p>Waste Removal</p>
                         <div class="skill-bg"></div>
                         <div class="skills html"><span class="number">90%</span></div>
                     </div>
 
                     <div class="skills-content">
-                        <p>Ocean Cleaning</p>
+                        <p>Plantation</p>
                         <div class="skill-bg"></div>
                         <div class="skills css"><span class="number">80%</span></div>
                     </div>
@@ -546,7 +547,7 @@
                         <div class="counter-content">
                             <h4 class="counter">100</h4>
                             <span>+</span>
-                            <p>Team Member</p>
+                            <p>People to serve you</p>
                         </div>
                     </div>
                 </div>
@@ -556,9 +557,9 @@
                             <img src="{% static 'website/images/home1/counter-icon-2.png' %}" alt="">
                         </div>
                         <div class="counter-content">
-                            <h4 class="counter">960</h4>
-                            <span>+</span>
-                            <p>Complete Works</p>
+                            <h4 class="counter">100</h4>
+                            <span>%</span>
+                            <p>Safe Envoirnment</p>
                         </div>
                     </div>
                 </div>
@@ -568,8 +569,9 @@
                             <img src="{% static 'website/images/home1/counter-icon-3.png' %}" alt="">
                         </div>
                         <div class="counter-content">
-                            <h4 class="counter">38</h4>
-                            <p>Award Winning</p>
+                            <h4 class="counter">100</h4>
+                            <span>%</span>
+                            <p>Clear Roads</p>
                         </div>
                     </div>
                 </div>
@@ -579,8 +581,9 @@
                             <img src="{% static 'website/images/home1/counter-icon-4.png' %}" alt="">
                         </div>
                         <div class="counter-content">
-                            <h4 class="counter">4.7</h4>
-                            <p>Avg Ratings</p>
+                            <h4 class="counter">10</h4>
+                            <span>/10</span>
+                            <p>Services</p>
                         </div>
                     </div>
                 </div>
@@ -593,50 +596,6 @@
     <!--==================================================-->
 
 
-
-    <!--==================================================-->
-    <!-- Strat Process Area -->
-    <!--==================================================-->
-    {#    <div class="process-area">#}
-    {#        <div class="container">#}
-    {#            <div class="row align-items-center" id="poress-row">#}
-    {#                <div class="col-lg-6 col-md-12">#}
-    {#                    <div class="porcess-thumb">#}
-    {#                        <img src="{% static 'website/images/home1/process-thumb.jpg' %}" alt="">#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#                <div class="col-lg-6 col-md-12">#}
-    {#                    <div class="process-left">#}
-    {#                        <div class="section-title left">#}
-    {#                            <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Contact Us</h4>#}
-    {#                            <h1>Fresh Environmental</h1>#}
-    {#                            <h1>Plant & Safe Trees</h1>#}
-    {#                            <p class="section-desc">#}
-    {#                                Competently cultivate worldwide e-tailers through principle-centered value#}
-    {#                                professionally engineer high-payoff deliverables without exceptional processes.#}
-    {#                                Rapidiously network cost effective vortals#}
-    {#                            </p>#}
-    {#                        </div>#}
-    {#                        <div class="echofy-button">#}
-    {#                            <a href="contact.html">Contact Us <img#}
-    {#                                    src="{% static 'website/images/home1/button-shape.png' %}" alt=""></a>#}
-    {#                            <img class="two" src="{% static 'website/images/home1/button-shape-2.png' %}" alt="">#}
-    {#                        </div>#}
-    {#                        <div class="process-shape">#}
-    {#                            <img src="{% static 'website/images/home1/about-shape-2.png' %}" alt="">#}
-    {#                        </div>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#            </div>#}
-    {#        </div>#}
-    {#    </div>#}
-
-    <!--==================================================-->
-    <!-- End Process Area -->
-    <!--==================================================-->
-
-
-
     <!--==================================================-->
     <!-- Strat Project Area -->
     <!--==================================================-->
@@ -646,9 +605,8 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="section-title left">
-                        <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Our Projects</h4>
-                        <h1>Finished the Latest Leading</h1>
-                        <h1>Environmental Works</h1>
+                        <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Stay at Galiyat</h4>
+                        <h1>Explore The Places to Stay at Galiyat</h1>
                     </div>
                 </div>
             </div>
@@ -700,7 +658,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-title center">
-                        <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Working Process</h4>
+                        <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">We are focused about</h4>
                         <h1>Building a Greener Future</h1>
                     </div>
                 </div>
@@ -712,10 +670,12 @@
                             <img src="{% static 'website/images/home1/process-two-icon1.png' %}" alt="">
                         </div>
                         <div class="process-two-content">
-                            <h4>Sustainable Solutions</h4>
-                            <p>Proactively drive maintainable value in next
-                                mission-critical infrastructures, eggplant,
-                                and new environmental nature.
+                            <h4>Saving Trees</h4>
+                            <p>
+                                We actively promote tree planting and raise awareness about the harms of deforestation by 
+                                organizing various campaigns for locals and educating both tourists and residents on the 
+                                importance of planting trees. Additionally, we take responsibility for nurturing these trees, 
+                                recognizing their crucial role in maintaining a healthy environment.
                             </p>
                         </div>
                     </div>
@@ -726,10 +686,11 @@
                             <img src="{% static 'website/images/home1/process-two-icon2.png' %}" alt="">
                         </div>
                         <div class="process-two-content">
-                            <h4>Renewable Energy</h4>
-                            <p>Proactively drive maintainable value in next
-                                mission-critical infrastructures, eggplant,
-                                and new environmental nature.
+                            <h4>Ensuring Safety</h4>
+                            <p>
+                                At Galiyat, we prioritize every aspect of safety by launching snow operations promptly as soon as 
+                                it starts snowing. We conduct rescue missions and clear landslides while continuously monitoring all 
+                                activities. Our team works closely with local and traffic police to ensure a safe environment for families.
                             </p>
                         </div>
                     </div>
@@ -741,9 +702,11 @@
                         </div>
                         <div class="process-two-content">
                             <h4>Fresh Environment</h4>
-                            <p>Proactively drive maintainable value in next
-                                mission-critical infrastructures, eggplant,
-                                and new environmental nature.
+                            <p>
+                                The Galiyat Forest is home to a diverse range of plant species, 
+                                wildlife, trees, and herbs. Visit us to breathe the fresh air and 
+                                experience the natural beauty of this gem, the number one tourist 
+                                destination in Pakistan.
                             </p>
                         </div>
                     </div>
@@ -765,9 +728,8 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="section-title left">
-                        <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Our Projects</h4>
-                        <h1>Finished the Latest Leading</h1>
-                        <h1>Environmental Works</h1>
+                        <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Dine at Galiyat</h4>
+                        <h1>Explore the place to Dine in Galiyat</h1>
                     </div>
                 </div>
             </div>

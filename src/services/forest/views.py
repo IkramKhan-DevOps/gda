@@ -1,42 +1,60 @@
 from django.views.generic import ListView, DetailView
 from .models import Greenery, Wildlife, WildlifeType, GreeneryType
+from .filters import GreeneryFilter, GreeneryTypeFilter, WildLifeFilter, WildLifeTypeFilter
+from django.core.paginator import Paginator
 
-#done
+
 class WildlifeListView(ListView):
     model = Wildlife
     template_name = 'forest/wildlife.html'
-    context_object_name = 'wildlife_list'
     paginate_by = 6
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
-    
+
     def get_queryset(self):
-        return Wildlife.objects.filter(is_active=True)
+        return self.model.objects.filter(slug=self.kwargs['slug'], is_active=True)
+
+    def get_context_data(self, **kwargs):
+        context = super(WildlifeListView, self).get_context_data(**kwargs)
+        _filter = WildLifeFilter(self.request.GET, queryset=self.get_queryset())
+        context['filter_form'] = _filter.form
+        paginator = Paginator(_filter.qs, 20)
+        page_number = self.request.GET.get('page')
+        page_object = paginator.get_page(page_number)
+        context['object_list'] = page_object
+        context['area_name'] = Wildlife.objects.filter(slug=self.kwargs.get('slug')).first()
+        return context
     
     
 class WildlifeDetailView(DetailView):
     model = Wildlife
     template_name = 'forest/wildlife_detail.html'
-    context_object_name = 'wildlife_details'
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
-    
+
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        wildlife = self.get_object()
-        context['wildlife_details'] = wildlife
+        context = super(GreeneryDetailView, self).get_context_data(**kwargs)
+        context['attraction_category'] = WildlifeType.objects.all()[:15]
+        context['latest_attractions'] = Wildlife.objects.filter(area_id__in=WildlifeType.objects.all())
         return context
 
 
-#done
 class WildlifeTypeListView(ListView):
     model = WildlifeType
     template_name = 'forest/wildlife_type.html'
-    paginate_by = 6
-    context_object_name = 'wildlife_types'
-    
+
     def get_queryset(self):
-        return WildlifeType.objects.all()    
+        return WildlifeType.objects.filter(is_active=True)
+
+    def get_context_data(self, **kwargs):
+        context = super(WildlifeTypeListView, self).get_context_data(**kwargs)
+        _filter = WildLifeTypeFilter(self.request.GET, queryset=self.get_queryset())
+        context['filter_form'] = _filter.form
+        paginator = Paginator(_filter.qs, 20)
+        page_number = self.request.GET.get('page')
+        page_object = paginator.get_page(page_number)
+        context['object_list'] = page_object
+        return context
 
 
 class GreeneryListView(ListView):
@@ -46,25 +64,51 @@ class GreeneryListView(ListView):
     paginate_by = 6
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
-    
+
     def get_queryset(self):
-        return Greenery.objects.filter(is_active=True)
+        return self.model.objects.filter(slug=self.kwargs['slug'], is_active=True)
+
+
+    def get_context_data(self, **kwargs):
+        context = super(GreeneryListView, self).get_context_data(**kwargs)
+        _filter = GreeneryFilter(self.request.GET, queryset=self.get_queryset())
+        context['filter_form'] = _filter.form
+        paginator = Paginator(_filter.qs, 20)
+        page_number = self.request.GET.get('page')
+        page_object = paginator.get_page(page_number)
+        context['object_list'] = page_object
+        context['area_name'] = Greenery.objects.filter(slug=self.kwargs.get('slug')).first()
+        return context
     
     
 class GreeneryDetailView(DetailView):
     model = Greenery
     template_name = 'forest/greenery_detail.html'
-    context_object_name = 'greenery_details'
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
+
+    def get_context_data(self, **kwargs):
+        context = super(GreeneryDetailView, self).get_context_data(**kwargs)
+        context['attraction_category'] = GreeneryType.objects.all()[:15]
+        context['latest_attractions'] = Greenery.objects.filter(area_id__in=GreeneryType.objects.all())
+        return context
+
     
     
 class GreeneryTypeListView(ListView):
     model = GreeneryType
     template_name = 'forest/greenery_type.html'
-    context_object_name = 'greenery_types'
     paginate_by = 6
     
     def get_queryset(self):
-        return GreeneryType.objects.all()
-    
+        return GreeneryType.objects.filter(is_active=True)
+
+    def get_context_data(self, **kwargs):
+        context = super(GreeneryTypeListView, self).get_context_data(**kwargs)
+        _filter = GreeneryTypeFilter(self.request.GET, queryset=self.get_queryset())
+        context['filter_form'] = _filter.form
+        paginator = Paginator(_filter.qs, 20)
+        page_number = self.request.GET.get('page')
+        page_object = paginator.get_page(page_number)
+        context['object_list'] = page_object
+        return context

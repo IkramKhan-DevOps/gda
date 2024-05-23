@@ -3,6 +3,7 @@ from django_resized import ResizedImageField
 from django_ckeditor_5.fields import CKEditor5Field
 from django.utils.text import slugify
 
+
 class Wildlife(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(max_length=255, help_text='short description of the wildlife', null = True)
@@ -43,7 +44,11 @@ class WildlifeType(models.Model):
     image = ResizedImageField(
         size=[800, 600], quality=75, upload_to='forest/wildlife/type', help_text='size of image must be 800*600', null=True
         )
-
+    
+    details = models.CharField(max_length=255,default="GDA is working on ways to save these type of species more", help_text="Write details about the type")
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)    
+    
     class Meta:
         ordering = ('-id',)
         verbose_name = 'Wildlife type'
@@ -99,6 +104,10 @@ class GreeneryType(models.Model):
         size=[800, 600], quality=75, upload_to='forest/greenery/type', help_text='size of image must be 800*600', null=True
         )
     
+    details = models.CharField(max_length=255, help_text="Write details about the type",default="GDA is working on Preserving its Forests to Keep Galiyat Green")
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)   
+
 
     class Meta:
         ordering = ('-id',)
@@ -111,4 +120,3 @@ class GreeneryType(models.Model):
     def delete(self, *args, **kwargs):
         self.image.delete()
         super().delete(*args, **kwargs)
-        
