@@ -14,7 +14,7 @@ from .views import (
     watertax,
     conservancytax,
     boqs, emergencyContact, jurisdiction, ContactView,
-    buildingByeLaws, HomeTemplateView
+    buildingByeLaws, HomeTemplateView, GalleryImageView, ForestView
 )
 
 from django.urls import path
@@ -32,6 +32,7 @@ urlpatterns += [
     path('about/', about, name='about'),
     path('budget/', budget, name='budget'),
     path('contact-us/', ContactView.as_view(), name='contact_us'),
+    path('forest-view/', ForestView.as_view(), name='forest'),
     # path('team/', team, name='team'),
     path('teamDetails/', teamDetails, name='teamDetails'),
     path('act/', act, name='gda_act'),
@@ -40,6 +41,7 @@ urlpatterns += [
     path('hotels/', hotels, name='hotels'),
     path('hotelsdetails/', hotelsDetails, name='hotels_details'),
     path('tenders/', tenders, name='tenders'),
+    path('gallery/', GalleryImageView.as_view(), name='gallery'),
     path('cafe/', cafe, name='cafe'),
     path('cafedetail/', cafedetail, name='cafedetail'),
     path('watertax/', watertax, name='watertax'),

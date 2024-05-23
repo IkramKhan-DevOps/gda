@@ -33,7 +33,7 @@ a.meanmenu-reveal{display:none}
   text-align: left;
   text-decoration: none;
   text-transform: capitalize;
-  width: 90%;   
+  width: 90%;
 }
 .mobile-menu-area {
   background: #262626;
@@ -124,7 +124,7 @@ a.meanmenu-reveal{display:none}
 }
 .mean-container .mean-bar::before {
     color: #fff;
-    content: "Echofy";
+    content: "GDA";
     font-size: 28px;
     font-weight: 600;
     left: 10px;

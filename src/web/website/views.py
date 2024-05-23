@@ -1,18 +1,18 @@
+
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.urls import reverse_lazy
 from src.core.models import NewsLetter
 from .models import Visit
 from django.views.generic.edit import CreateView
 from ...services.feedback.forms import ContactForm
-from ...services.feedback.signals import send_feedback_email
 from ...apps.weather.bll import get_galiyat_weather
 from ...services.attractions.models import Attraction, AttractionArea
 from ...services.departments.models import Directors, DirectorGeneral, Chairman
 from ...services.dine_stay.models import Accommodation, Dining
-from ...services.management.models import HomeSlider
+from ...services.management.models import HomeSlider, GalleryImage
 
 """ OFFICIAL """
 
@@ -99,6 +99,10 @@ class ContactView(CreateView):
         return response
 
 
+class ForestView(TemplateView):
+    template_name = 'website/forest.html'
+
+
 def team(request):
     return render(request, 'website/team.html')
 
@@ -131,6 +135,12 @@ def tenders(request):
     return render(request, 'website/tenders.html')
 
 
+class GalleryImageView(ListView):
+    model = GalleryImage
+    template_name = 'website/gallery.html'
+    context_object_name = 'images'
+
+
 def cafe(request):
     return render(request, 'website/cafe.html')
 
@@ -145,8 +155,6 @@ def watertax(request):
 
 def conservancytax(request):
     return render(request, 'website/conservancytax.html')
-
-
 
 
 def boqs(request):
