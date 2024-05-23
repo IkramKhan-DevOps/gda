@@ -1,6 +1,8 @@
 import math
-
 from django import template
+from django import template
+from datetime import datetime
+
 
 register = template.Library()
 
@@ -89,3 +91,9 @@ def cool_number(value, num_decimals=2):
         return formatted_number.format(int_value/1000000000.0).rstrip('0').rstrip('.') + 'B'
     else:
         return formatted_number.format(int_value/1000000000000.0).rstrip('0').rstrip('.') + 'T'
+    
+    
+
+@register.simple_tag
+def current_year():
+    return datetime.now().year

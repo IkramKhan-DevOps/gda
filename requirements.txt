@@ -23,3 +23,8 @@ django-browser-reload
 drf-yasg
 django-phonenumber-field[phonenumbers]
 django-jazzmin
+openmeteo-requests
+requests-cache 
+retry-requests 
+numpy 
+pandas

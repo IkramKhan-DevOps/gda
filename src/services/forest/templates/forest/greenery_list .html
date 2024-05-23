@@ -1,0 +1,241 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load core_tags %}
+
+
+{% block title %} Greenery List{% endblock title %}
+
+{% block content %}
+ 
+<!--==================================================-->
+    <!-- Start Breadcumb Area -->
+    <!--==================================================-->
+
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcumb-content">
+                        <div class="breadcumb-title">
+                            <h4>Greenery List</h4>
+                        </div>
+                        <ul>
+                            <li><a href="{% url 'website:home' %}">
+                                <img
+                                        src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}"
+                                        alt="">Galiyat</a>
+                            </li>
+                            <li>Greenery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--==================================================-->
+    <!-- End Breadcumb Area -->
+    <!--==================================================-->
+
+    <section class="feature-five mt-5 mb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="get">
+                        <div class="row ">
+                            <div class="input-group mb-3">
+                                {% render_field filter_form.name class="form-control" placeholder='Wild Life List ' %}
+                                <small class="filter_form-text text-muted">{{ filter_form.name.help_text }}</small>
+                                {% if filter_form.name.errors %}
+                                    <ul class="text-danger">
+                                        {% for error in filter_form.name.errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+    
+                                {% render_field filter_form.category class="form-control" placeholder='Wild Life Galiyat' %}
+                                <small class="filter_form-text text-muted">{{ filter_form.category.help_text }}</small>
+                                {% if filter_form.category.errors %}
+                                    <ul class="text-danger">
+                                        {% for error in filter_form.category.errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-success btn-lg" type="submit"><i
+                                            class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+    
+                        </div>
+                    </form>
+    
+                </div>
+            </div>
+        </div>
+         <div class=" home-six">
+        <div class="container">
+            <div class="row" id="attraction_point_list">
+    
+                {% if object_list %}
+                    {% for object in object_list %}
+                        <div class="col-lg-4 col-md-6 mb-4  card-length">
+                            <div class="single-blog-box">
+                                <div class="blog-thumb">
+                                    {% if object.thumbnail %}
+                                        <img src="{{ object.thumbnail|image_or_placeholder }}" alt="">
+                                    {% else %}
+                                        <img src="https://placehold.co/200" alt="">
+                                    {% endif %}
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-text">
+                                        <span>{{ object.created_at }}</span>
+                                    </div>
+                                    <a href="{% url 'attractions:attraction_points' object.id %}">{{ object.name }}</a>
+                                    <p>{{ object.detail|slice:100 }}...</p>
+    
+                                    <div class="blog-button">
+                                        <a href="{% url 'attractions:attraction_points' object.slug %}">Explore
+                                            More<i class="bi bi-arrow-right-short"></i></a>
+                                    </div>
+                                </div>
+                                <div class="meta-blog">
+                                    <span>{{ object.created_at.date }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+    
+                {% else %}
+    
+                    <div class="mt-50 mb-100 ml-200">
+                        <h3 class="text-danger">Appologies, Greenery Section is currently Unavailable</h3>
+                    </div>
+                {% endif %}
+    
+    
+            </div>
+            <nav class="custome-pagination">
+                <ul class="pagination justify-content-center">
+                    {% if object_list.has_next %}
+                        <li class="page-item">
+                            <button id="load-more-btn" class="btn btn-success btn-md text-white mt-4">Load More
+                            </button>
+                            <div class="align-items-center mb-4 mt-3 mt-sm-0" id="loading-spinner"
+                                 style="display:none;">
+    
+                                <div class="spinner-grow text-success" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-success" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-success" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-success" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-success" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-success" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+    
+                            </div>
+    
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <div class="row align-items-center mb-4 text-center text-sm-start" id="pagination-element">
+                <div class="col-sm-5">
+                    <div class="text-muted" id="pagination-info">
+                        Showing {{ object_list.start_index }} to {{ object_list.end_index }}
+                        of {{ object_list.paginator.count }} entries
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    
+    </section>
+    
+    
+    {% endblock content %}
+    
+    {% block internal-js %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $("#id_category option:first").text("Select Category");
+    
+            var page = {% if object_list.has_next %}{{ object_list.next_page_number }}{% else %}null{% endif %};
+            var maxPages = {{ object_list.paginator.num_pages }};
+            var loading = false;
+    
+            function loadMore() {
+                if (loading || page === null || page > maxPages) {
+                    return;
+                }
+                loading = true;
+                $('#load-more-btn').hide();
+                $('#loading-spinner').show();
+                var searchQuery = window.location.search;
+    
+                var filter_queryset = null
+                if (searchQuery) {
+                    filter_queryset = searchQuery + '&page=' + page
+                } else {
+                    filter_queryset = '?page=' + page
+                }
+    
+                $.ajax({
+                    url: filter_queryset,
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (data) {
+                        var $data = $(data);
+                        var $shopList = $data.find('#attraction_point_list');
+    
+                        if ($shopList.find('.card-length').length > 0) {
+                            $('#attraction_point_list').append($shopList.html());
+                            $('#loading-spinner').hide();
+                            $('#load-more-btn').show();
+                            page++;
+                            loading = false;
+    
+                            updatePaginationInfo();
+                        } else {
+                            $('#loading-spinner').hide();
+                            $('#load-more-btn').hide();
+                        }
+                    },
+                    error: function () {
+                        loading = false;
+                    }
+                });
+            }
+    
+            function updatePaginationInfo() {
+                $('#pagination-info').text('Showing 1 to ' + $('#attraction_point_list .card-length').length + ' of {{ object_list.paginator.count }} entries');
+    
+                if (page === null || page > maxPages) {
+                    $('#load-more-btn').hide();
+                }
+            }
+    
+            if (page === null || page > maxPages) {
+                $('#load-more-btn').hide();
+            }
+    
+            $('#load-more-btn').on('click', loadMore);
+        });
+    </script>
+    {% endblock %}

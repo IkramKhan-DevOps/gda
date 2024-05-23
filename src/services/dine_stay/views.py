@@ -95,17 +95,3 @@ class DiningListView(ListView):
         return context
 
 
-class DiningDetailView(DetailView):
-    model = Dining
-    template_name = 'dine_stay/dining_detail.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(EventDetailView, self).get_context_data(**kwargs)
-        context['event_type'] = EventType.objects.all()[:15]
-        context['latest_events'] = Event.objects.order_by("-created_at")
-        return context
-        context = super(DiningDetailView, self).get_context_data(**kwargs)
-        context['more_hotels_and_cafe'] = Dining.objects.all()[:3]
-        return context
-
-
