@@ -8,7 +8,7 @@ class GreeneryAdmin(admin.ModelAdmin):
     search_fields = ('name', 'id')
     readonly_fields = ('created_at',)
     fieldsets = (
-        ('', {'fields': ('name', 'image', 'content','description','is_active', 'types')}),
+        ('', {'fields': ('name', 'scientific_name','image', 'content','description','is_active', 'types')}),
         ('Dates', {'fields': ('created_at',)}),
     )
     

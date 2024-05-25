@@ -45,6 +45,7 @@ class WildlifeType(models.Model):
         size=[800, 600], quality=75, upload_to='forest/wildlife/type', help_text='size of image must be 800*600', null=True
         )
     
+    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
     details = models.CharField(max_length=255,default="GDA is working on ways to save these type of species more", help_text="Write details about the type")
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)    
@@ -60,6 +61,12 @@ class WildlifeType(models.Model):
     def delete(self, *args, **kwargs):
         self.image.delete()
         super().delete(*args, **kwargs)
+    
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
         
     
 class Greenery(models.Model):
@@ -104,6 +111,7 @@ class GreeneryType(models.Model):
         size=[800, 600], quality=75, upload_to='forest/greenery/type', help_text='size of image must be 800*600', null=True
         )
     
+    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
     details = models.CharField(max_length=255, help_text="Write details about the type",default="GDA is working on Preserving its Forests to Keep Galiyat Green")
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)   
@@ -120,3 +128,9 @@ class GreeneryType(models.Model):
     def delete(self, *args, **kwargs):
         self.image.delete()
         super().delete(*args, **kwargs)
+        
+    def save(self, *args, **kwargs):
+        self.slug = self.name.replace(' ', '-').lower()
+        super(GreeneryType, self).save(*args, **kwargs)
+
+        

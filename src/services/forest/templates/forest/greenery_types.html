@@ -2,49 +2,46 @@
 {% load static %}
 {% load widget_tweaks %}
 {% load core_tags %}
+{% load crispy_forms_filters %}
 
 
-{% block title %} Greenery Types{% endblock title %}
+{% block title %} Greenery Type{% endblock title %}
 
 {% block content %}
-
-<!--==================================================-->
-    <!-- Start Breadcumb Area -->
-    <!--==================================================-->
-
-    <div class="breadcumb-area">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcumb-content">
-                        <div class="breadcumb-title">
-                            <h4>Greenery Types</h4>
-                        </div>
-                        <ul>
-                            <li><a href="{% url 'website:home' %}">
-                                <img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Galiyat</a>
-                            </li>
-                            <li>Greenery Types</li>
-                        </ul>
+                                <!--==================================================-->
+                                            <!-- Start  Breadcumb Area -->
+                                <!--==================================================-->
+                                
+<div class="breadcumb-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12 text-center">
+                <div class="breadcumb-content">
+                    <div class="breadcumb-title">
+                        <h4>Explore Greenery at Galiyat</h4>
                     </div>
+                    <ul>
+                        <li><a href="{% url 'website:home' %}">
+                            <img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Greenery Types</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--==================================================-->
-    <!-- End Breadcumb Area -->
-    <!--==================================================-->
-
-
+</div>
+                                <!--==================================================-->
+                                                <!-- End Breadcumb Area -->
+                                <!--==================================================-->
     <section class="feature-five mt-5 mb-50">
+        
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <form method="get">
                         <div class="row ">
                             <div class="input-group mb-3">
-                                {% render_field filter_form.name class="form-control" placeholder='Nathia Gali Church Park ' %}
+                                {% render_field filter_form.name class="form-control" placeholder='Search Greenery in Galiyat' %}
                                 <small class="filter_form-text text-muted">{{ filter_form.name.help_text }}</small>
                                 {% if filter_form.name.errors %}
                                     <ul class="text-danger">
@@ -53,20 +50,16 @@
                                         {% endfor %}
                                     </ul>
                                 {% endif %}
-
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-success btn-lg" type="submit"><i
-                                            class="fa fa-search"></i>
-                                    </button>
+                                    <button class="btn btn-outline-success btn-lg" type="submit"><i class="fa fa-search"></i></button>
                                 </div>
                             </div>
-
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
+
         <div class=" home-six">
             <div class="container">
                 <div class="row" id="attraction_areas_list">
@@ -83,33 +76,23 @@
                                         {% endif %}
                                     </div>
                                     <div class="blog-content">
-                                        <div class="blog-text">
-                                            <span>{{ object.created_at }}</span>
-                                        </div>
-                                        <a href="{% url 'attractions:attraction_points' object.id %}">{{ object.name }}</a>
-                                        <p>{{ object.detail|slice:100 }}...</p>
+                                        <a href="{% url 'forest:greenery_list' object.slug %}">{{ object.name }}</a>
+                                        <p>{{ object.details|slice:200 }}...</p>
 
                                         <div class="blog-button">
-                                            <a href="{% url 'attractions:attraction_points' object.slug %}">Explore
+                                            <a href="{% url 'forest:greenery_list' object.slug %}">Explore
                                                 More<i class="bi bi-arrow-right-short"></i></a>
                                         </div>
-                                    </div>
-                                    <div class="meta-blog">
-                                        <span>{{ object.created_at.date }}</span>
                                     </div>
                                 </div>
                             </div>
                         {% endfor %}
 
                     {% else %}
-
                     <div class="mt-50 mb-100 ml-sm-0 ml-md-200">
-                        <h3 class="text-danger">Apologies, Attractions are Currently Unavailable</h3>
+                        <h3 class="text-danger">Apologies, Greenery type is Currently Unavailable</h3>
                     </div>
-                    
                     {% endif %}
-
-
                 </div>
                 <nav class="custome-pagination">
                     <ul class="pagination justify-content-center">
@@ -117,9 +100,8 @@
                             <li class="page-item">
                                 <button id="load-more-btn" class="btn btn-success btn-md text-white mt-4">Load More
                                 </button>
-                                <div class="align-items-center mb-4 mt-3 mt-sm-0" id="loading-spinner"
-                                     style="display:none;">
-
+                                <div class="align-items-center mb-4 mt-3 mt-sm-0" id="loading-spinner" style="display:none;">
+                                    
                                     <div class="spinner-grow text-success" role="status">
                                         <span class="sr-only">Loading...</span>
                                     </div>
@@ -138,9 +120,7 @@
                                     <div class="spinner-grow text-success" role="status">
                                         <span class="sr-only">Loading...</span>
                                     </div>
-
                                 </div>
-
                             </li>
                         {% endif %}
                     </ul>
@@ -154,9 +134,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </section>
 
 

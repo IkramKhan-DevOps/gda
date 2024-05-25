@@ -4,7 +4,7 @@
 {% load core_tags %}
 
 
-{% block title %} Wild life List{% endblock title %}
+{% block title %} Greenery List{% endblock title %}
 
 {% block content %}
 <!--==================================================-->
@@ -17,11 +17,11 @@
             <div class="col-lg-12 text-center">
                 <div class="breadcumb-content">
                     <div class="breadcumb-title">
-                        <h4>Wild Life List</h4>
+                        <h4>Greenery</h4>
                     </div>
                     <ul>
                         <li><a href="{% url 'website:home' %}">
-                            <img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Wild Life in Galiyat</a>
+                            <img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Greenery in Galiyat</a>
                         </li>
                     </ul>
                 </div>
@@ -41,7 +41,7 @@
                 <form method="get">
                     <div class="row ">
                         <div class="input-group mb-3">
-                            {% render_field filter_form.name class="form-control" placeholder='Wild Life List ' %}
+                            {% render_field filter_form.name class="form-control" placeholder='Search Greenery Here' %}
                             <small class="filter_form-text text-muted">{{ filter_form.name.help_text }}</small>
                             {% if filter_form.name.errors %}
                                 <ul class="text-danger">
@@ -51,7 +51,7 @@
                                 </ul>
                             {% endif %}
 
-                            {% render_field filter_form.category class="form-control" placeholder='Wild Life Galiyat' %}
+                            {% render_field filter_form.category class="form-control" placeholder='Greenery in Galiyat' %}
                             <small class="filter_form-text text-muted">{{ filter_form.category.help_text }}</small>
                             {% if filter_form.category.errors %}
                                 <ul class="text-danger">
@@ -92,11 +92,11 @@
                                 <div class="blog-text">
                                     <span>{{ object.created_at }}</span>
                                 </div>
-                                <a href="{% url 'forest:wildlife_detail' object.slug %}">{{ object.name }}</a>
+                                <a href="{% url 'forest:greenery_detail' object.slug %}">{{ object.name }}</a>
                                 <p>{{ object.description|slice:100 }}...</p>
 
                                 <div class="blog-button">
-                                    <a href="{% url 'forest:wildlife_detail' object.slug %}">Explore More<i class="bi bi-arrow-right-short"></i></a>
+                                    <a href="{% url 'forest:greenery_detail' object.slug %}">Explore More<i class="bi bi-arrow-right-short"></i></a>
                                 </div>
                             </div>
                             <div class="meta-blog">
@@ -108,7 +108,7 @@
 
             {% else %}
                 <div class="mt-50 mb-100 ml-200">
-                    <h3 class="text-danger">Appologies, Wild Life List is Unavailable</h3>
+                    <h3 class="text-danger">Appologies, Greenery List is Unavailable</h3>
                 </div>
             {% endif %}
         </div>

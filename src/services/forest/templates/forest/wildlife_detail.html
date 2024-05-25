@@ -11,7 +11,6 @@
 
 {% block content %}
 
-
 <!--==================================================-->
 <!-- Start  Breadcumb Area -->
 <!--==================================================-->
@@ -22,13 +21,13 @@
                                 <div class="col-lg-12 text-center">
                                     <div class="breadcumb-content">
                                         <div class="breadcumb-title">
-                                            <h4>Greenery Types</h4>
+                                            <h4>{{object.name}}</h4>
                                         </div>
                                         <ul>
-                                            <li><a href="{% url 'website:home' %}">
-                                                <img
-                                                        src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}"
-                                                        alt="">{{wildlife_details.name}}</a>
+                                            <li>
+                                                <a href="{% url 'website:home' %}"> 
+                                                    <img src="{% static 'website/images/inner-images/breadcumb-text-shape.png' %}" alt="">Details
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -44,83 +43,57 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="project-details-content">
-                            <h4>{{ object.name }}</h4>
-                            <p class="project-details-desc">{{ object.description }}</p>
-                            <p class="project-details-desc">{{ object.content|safe }}</p>
-                            <div class="row align-items-center">
+                <div class="project-details-content">
+                    <h4>{{ object.name }}</h4>
+                    <br>
+                    {% if object.image %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="project-single">
+                                    <div class="project-thumb">
+                                        <img src="{{ object.image|image_or_placeholder }}" alt="Project Image">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {% else %}
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+                                <p class="text-danger text-center"><strong>Images Not Uploaded Yet!</strong></p>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <br> <br> <br>
+                    <p class="project-details-desc">{{ object.description }}</p>
+                    <p class="project-details-desc">{{ object.content|safe }}</p>
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="project-details-right">
-                            <div class="project-details-info">
-                                <p>Type :</p>
-                                <h6>{{ object.types }}</h6>
-                            </div>
-                            <div class="project-details-info">
-                                <p>Scientific name :</p>
-                                <h6>{{ object.scientific_name}}</h6>
-                            </div>
-                            
-                        </div>
+                <div class="project-details-right">
+                    <div class="project-details-info">
+                        <p>Type:</p>
+                        {% for wildlife_type in object.types.all %}
+                            <h6>{{ wildlife_type.name }}</h6>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="project-details-info">
+                        <p>Scientific Name:</p>
+                        <h6>{{ object.scientific_name }}</h6>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 
 <!--==================================================-->
 <!-- Strat  Project Area Home-Two -->
 <!--==================================================-->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <div class="section-title center">
-                <h4><img src="{% static 'website/images/home1/section-shape.png' %}" alt="">Images</h4>
-                <h1>Images of {{ object }}</h1>
-            </div>
-        </div>
-    </div>
-    {% if object.image %}
-
-        <div class="row">
-            <div class="project-list-2 owl-carousel">
-                {% for image in object.image.all %}
-
-                    <div class="col-lg-12">
-                        <div class="single-project-box">
-                            <div class="project-thumb">
-                                <img src="{{ image.image|image_or_placeholder }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-
-
-            </div>
-        </div>
-
-    {% else %}
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <b class="text-danger text-center">Images Not Uploaded Yet</b>
-            </div>
-        </div>
-    {% endif %}
-</div>
 
 <div class="blog-area home-six">
-    <div class="container " style="margin-top: 100px;">
+    <div class="container " style="margin-top: 10px;">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="section-title center">
@@ -136,17 +109,17 @@
                     <div class="col-lg-4 col-md-6 mb-4 ">
                         <div class="single-blog-box">
                             <div class="blog-thumb">
-                                <img src="{{ object.thumbnail|image_or_placeholder }}" alt="">
+                                <img src="{{ object.image|image_or_placeholder }}" alt="">
                             </div>
                             <div class="blog-content">
                                 <div class="blog-text">
-                                    <span>{{ object.type }}</span>
+                                    <span>{{ object.types.name }}</span>
                                 </div>
-                                <a href="{% url 'diny_stay:dining_detail' object.id %}">{{ object.name }}</a>
-                                <p>{{ object.description|slice:100 }}...</p>
+                                <a href="{% url 'forest:wildlife_detail' object.slug %}">{{ object.name }}</a>
+                                <p>{{ object.description|slice:200 }}...</p>
 
                                 <div class="blog-button">
-                                    <a href="{% url 'diny_stay:dining_detail' object.id %}">Explore
+                                    <a href="{% url 'forest:wildlife_detail' object.slug %}">Explore
                                         More<i class="bi bi-arrow-right-short"></i></a>
                                 </div>
                             </div>

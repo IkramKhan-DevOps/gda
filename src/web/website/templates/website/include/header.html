@@ -42,6 +42,7 @@
     <!--==================================================-->
     <!-- Start Header Area -->
     <!--==================================================-->
+    
     <div class="header-area" id="sticky-header">
         <div class="container">
             <div class="row align-items-center">
@@ -51,7 +52,6 @@
                             
                             {% if  app.logo %}
                             <img src="{{ app.logo.url }}" alt="logo" height="50">
-                        
                             {% else %}
                             <img src="{% static 'core/images/logos/logo.png' %}" alt="logo" height="50">
                             {% endif %}
@@ -78,7 +78,7 @@
                                     <li>
                                         <li><a href="{% url 'attractions:attractions_list' %}">Attraction Points</a></li>
                                         <li><a href="{% url 'forest:wildlife_type' %}">Wild Life</a></li>
-                                        {% comment %} <li><a href="{% url 'forest:greenery_type' %}">Greenery</a></li> {% endcomment %}
+                                        <li><a href="{% url 'forest:greenery_type' %}">Greenery</a></li>
                                     </li>
                                 </ul>
                             </li>                            
@@ -109,7 +109,6 @@
         </div>
     </div>
 
-
     <div class="mobile-menu-area sticky d-sm-block d-md-block d-lg-none ">
         <div class="mobile-menu">
             <nav class="header-menu">
@@ -131,7 +130,7 @@
                             <li>
                                 <li><a href="{% url 'attractions:attractions_list' %}">Attraction Points</a></li>
                                 <li><a href="{% url 'forest:wildlife_type' %}">Wild Life</a></li>
-                                {% comment %} <li><a href="{% url 'forest:greenery_type' %}">Greenery</a></li> {% endcomment %}
+                                <li><a href="{% url 'forest:greenery_type' %}">Greenery</a></li>
                             </li>
                         </ul>
                     </li>                            
@@ -163,7 +162,7 @@
 
 
     <!--==================================================-->
-    <!-- End Header Area -->
+                    <!-- End Header Area -->
     <!--==================================================-->
 
 </header>
