@@ -1,7 +1,8 @@
-from random import sample
+from random import random, sample
 
 from django.contrib.sites.models import Site
 from django.db import IntegrityError
+from random import random
 from faker import Faker
 from django.conf import settings
 from core.settings import DOMAIN
@@ -16,6 +17,12 @@ from src.services.attractions.models import (
 )
 from src.services.management.models import Document, DocumentType
 from src.services.users.models import User
+
+from io import BytesIO
+from PIL import Image
+from django.core.files.base import ContentFile
+from src.services.forest.models import Greenery,GreeneryType,Wildlife,WildlifeType
+from src.services.departments.models import Department, Personnel, Directors, DirectorGeneral, Chairman, Projects
 
 fake = Faker()
 
@@ -130,7 +137,7 @@ def document_type_fake():
         {"name": "Policy"},
         {"name": "Terms & Conditions"},
         {"name": "Privacy Policy"},
-        {"name": "User Manual"},
+        {"name": "Tax Policy"},
     ]
 
     for document_type_data in document_types:
@@ -185,10 +192,10 @@ def document_fake():
 def event_type_fake():
     __print_start("Event Type")
     event_types = [
-        {"name": "Webinar", "description": "Webinar description"},
-        {"name": "Workshop", "description": "Workshop description"},
-        {"name": "Seminar", "description": "Seminar description"},
-        {"name": "Conference", "description": "Conference description"},
+        {"name": "Snow Festival", "description": "Webinar description"},
+        {"name": "Music Concert", "description": "Workshop description"},
+        {"name": "Plants Health", "description": "Seminar description"},
+        {"name": "Lets Plant More Trees", "description": "Conference description"},
     ]
 
     for event_type_data in event_types:
@@ -211,10 +218,10 @@ def event_type_fake():
 def event_fake():
     __print_start("Event")
     events = [
-        {"name": "Webinar", "event_type": "Webinar", "description": "Webinar description"},
-        {"name": "Workshop", "event_type": "Workshop", "description": "Workshop description"},
-        {"name": "Seminar", "event_type": "Seminar", "description": "Seminar description"},
-        {"name": "Conference", "event_type": "Conference", "description": "Conference description"},
+        {"name": "Snow Festival", "event_type": "entertainment", "description": "lorem ipsum dolor sit amet, consectetur adip   occum lorem ipsum dolor sit amet, consectetur adip   occumlorem ipsum dolor sit amet, consectetur adip   occum lorem ipsum dolor sit amet, consectetur adip   occum"},
+        {"name": "Music Concert", "event_type": "entertainment", "description": "lorem ipsum dolor sit amet, consectetur adip   occumlorem ipsum dolor sit amet, lorem ipsum dolor sit amet, consectetur adip   occumlorem ipsum dolor sit amet, consectetur adip   occumconsectetur adip   occumlorem ipsum dolor sit amet, consectetur adip   occum"},
+        {"name": "Plants Health", "event_type": "plantation", "description": "lorem ipsum dolor sit amet, consectetur adip   occumlorem ipsum dolor sit amet, consectetur adip   occumlorem ipsum dolor sit amet, consectetur adip   occumlorem ipsum dolor sit amet, consectetur adip   occumlorem ipsum dolor sit amet, consectetur adip   occumlorem ipsum dolor sit amet, consectetur adip   occum"},
+        {"name": "Lets Plant More Trees", "event_type": "plantation", "description": "lorem ipsum dolor sit amet, consectetur adip   occumlorem ipsum dolor sit amet, consectetur adip   occumlorem ipsum dolor sit amet, consectetur adip   occumlorem ipsum dolor sit amet, consectetur adip   occumlorem ipsum dolor sit amet, consectetur adip   occumlorem ipsum dolor sit amet, consectetur adip   occum"},
     ]
 
     for i in range(10):
@@ -435,16 +442,16 @@ def attraction_category_fake():
 def attraction_fake():
     __print_start("Attraction")
     attractions = [
-        {"name": "John X Museum"},
-        {"name": "Jane Y Park"},
+        {"name": "Nathiagali"},
+        {"name": "Kuza Gali"},
         {"name": "Michael Z Zoo"},
-        {"name": "Emily A Beach"},
-        {"name": "David B Shopping Mall"},
-        {"name": "Sophia C Amusement Park"},
-        {"name": "Daniel D Theater"},
-        {"name": "Olivia E Cinema"},
-        {"name": "William F Library"},
-        {"name": "Emma G Gym"},
+        {"name": "Changla Gali"},
+        {"name": "Harnoi"},
+        {"name": "Bagnotar"},
+        {"name": "Thandiani"},
+        {"name": "Khanaspur"},
+        {"name": "Ayubia"},
+        {"name": "Chruch Park"},
         {"name": "Noah H Spa"},
         {"name": "Ava I Salon"},
         {"name": "Liam J Hotel"},
@@ -553,10 +560,156 @@ def dining_venue_fake():
 
     print("Dining Venue ended")
 
+""" MANAGEMENT """
+def create_fake_image():
+    """Creates a fake image using PIL and returns a ContentFile."""
+    image = Image.new('RGB', (500, 500), color=fake.color())
+    image_file = BytesIO()
+    image.save(image_file, format='PNG')
+    return ContentFile(image_file.getvalue(), 'test_image.png')
+
+def create_departments(num=10):
+    for _ in range(num):
+        department_data = {
+            'name': fake.company(),
+            'description': fake.paragraph(),
+            'content': fake.text(),
+            'mission_statement': fake.paragraph(),
+            'image': create_fake_image(),
+            'is_active': True,
+        }
+        department = Department.objects.create(**department_data)
+        department.save()
+
+def create_personnel():
+    for _ in range(10):
+        personnel_data = {
+            'name': fake.name(),
+            'message': fake.text(),
+            'image': create_fake_image(),
+            'is_active': True,
+        }
+        personnel = Personnel.objects.create(**personnel_data)
+        personnel.save()
+
+def create_directors():
+    departments = Department.objects.all()
+    for _ in range(5):
+        department = fake.random_element(departments)
+        director_data = {
+            'name': fake.name(),
+            'message': fake.text(),
+            'image': create_fake_image(),
+            'is_active': True,
+            'department': department,
+        }
+        director = Directors.objects.create(**director_data)
+        director.save()
+
+def create_director_generals():
+    for _ in range(5):
+        director_general_data = {
+            'name': fake.name(),
+            'message': fake.text(),
+            'image': create_fake_image(),
+            'is_active': True,
+        }
+        director_general = DirectorGeneral.objects.create(**director_general_data)
+        director_general.save()
+
+def create_chairmen():
+    for _ in range(5):
+        chairman_data = {
+            'name': fake.name(),
+            'message': fake.text(),
+            'image': create_fake_image(),
+            'is_active': True,
+        }
+        chairman = Chairman.objects.create(**chairman_data)
+        chairman.save()
+
+def create_projects(num=10):
+    for _ in range(num):
+        project_data = {
+            'title': fake.catch_phrase(),
+            'description': fake.paragraph(),
+            'content': fake.text(),
+            'image': create_fake_image(),
+            'video': fake.url(),
+            'is_active': True,
+            'is_ongoing': fake.boolean(),
+            'is_completed': not fake.boolean(),
+        }
+        project = Projects.objects.create(**project_data)
+        project.save()
+
+
+def create_wildlife_types(num=10):
+    for _ in range(num):
+        name = fake.word()
+        wildlife_type_data = {
+            'name': name,
+            'image': create_fake_image(),
+            'details': fake.sentence(),
+            'is_active': True,
+        }
+        wildlife_type = WildlifeType.objects.create(**wildlife_type_data)
+        wildlife_type.save()
+
+def create_greenery_types(num=10):
+    for _ in range(num):
+        name = fake.word()
+        greenery_type_data = {
+            'name': name,
+            'image': create_fake_image(),
+            'details': fake.sentence(),
+            'is_active': True,
+        }
+        greenery_type = GreeneryType.objects.create(**greenery_type_data)
+        greenery_type.save()
+
+# For Wildlife and Greenery, handle unique constraints
+def create_wildlife(num=20):
+    wildlife_types = list(WildlifeType.objects.all())
+    for _ in range(num):
+        # Assuming Wildlife.name needs to be unique
+        name = fake.name()
+        while Wildlife.objects.filter(name=name).exists():
+            name = fake.name()
+        wildlife_data = {
+            'name': name,
+            'description': fake.sentence(),
+            'content': fake.text(),
+            'image': create_fake_image(),
+            'scientific_name': fake.sentence(nb_words=3),
+            'is_active': True,
+        }
+        wildlife = Wildlife.objects.create(**wildlife_data)
+        wildlife.types.set(wildlife_types)
+        wildlife.save()
+
+def create_greenery(num=20):
+    greenery_types = list(GreeneryType.objects.all())
+    for _ in range(num):
+        name = fake.name()
+        while Greenery.objects.filter(name=name).exists():
+            name = fake.name()
+        greenery_data = {
+            'name': name,
+            'scientific_name': fake.sentence(nb_words=3),
+            'image': create_fake_image(),
+            'description': fake.sentence(),
+            'content': fake.text(),
+            'is_active': True,
+        }
+        greenery = Greenery.objects.create(**greenery_data)
+        greenery.types.set(greenery_types)
+        greenery.save()
+
 
 def main():
-    basic_configuration()
-    #
+    # basic_configuration()
+    
     # country_fake()
     # load_newsletters()
 
@@ -569,11 +722,23 @@ def main():
     # guest_fake()
     # accommodation_fake()
     # dining_venue_fake()
-    #
+    
     # attraction_feature_fake()
     # attraction_category_fake()
     # attraction_fake()
-
+    
+    
+    # create_departments()
+    # create_personnel()
+    # create_directors()
+    # create_director_generals()
+    # create_chairmen()
+    # create_projects()
+    
+    # create_wildlife_types()
+    # create_greenery_types()
+    # create_wildlife()
+    # create_greenery()
 
 if __name__ == '__main__':
     main()

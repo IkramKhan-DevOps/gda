@@ -28,3 +28,10 @@ requests-cache
 retry-requests 
 numpy 
 pandas
+prettier
+prettier
+zod
+zod
+zod
+zod
+zod

@@ -52,7 +52,6 @@ def format_visit_count(count):
 
 class HomeTemplateView(TemplateView):
     template_name = 'website/home.html'
-
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
         context['weather_data'] = get_galiyat_weather()

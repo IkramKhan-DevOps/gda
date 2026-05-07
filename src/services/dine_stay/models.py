@@ -7,7 +7,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 """" ACCOMMODATIONS """
 
-
 class AccommodationFeature(models.Model):
     name = models.CharField(max_length=255, unique=True)
 

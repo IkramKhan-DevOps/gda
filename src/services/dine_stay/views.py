@@ -17,8 +17,6 @@ class AccommodationListView(ListView):
 
     paginate_by = 10
 
-
-
     def get_queryset(self):
         return Accommodation.objects.filter(is_active=True)
 
